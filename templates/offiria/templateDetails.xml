@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<install version="1.6" type="template">
+	<name>Offiria</name>
+	<creationDate>18/01/12</creationDate>
+	<author>JomSocial Team</author>
+	<authorEmail>support@jomsocial.com</authorEmail>
+	<authorUrl>http://www.jomsocial.com</authorUrl>
+	<copyright>Copyright (C) Slashes n Dots Sdn Bhd. All rights reserved.</copyright>
+	<license>GPL</license>
+	<version>1.7.2</version>
+	<description>Offiria</description>
+	<files>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+		<folder>images</folder>
+		<folder>css</folder>
+		<folder>js</folder>
+	</files>
+	<positions>
+		<position>left</position>
+		<position>right</position>
+		<position>login</position>
+		<position>breadcrumbs</position>
+	</positions>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="colorVariation"
+					type="list"
+					default="white"
+					label="Color Variation"
+					description="Base Color of template">
+					<option
+						value="blue">blue</option>
+					<option
+						value="red">red</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</install>

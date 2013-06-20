@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plans default="starter">	
+	<plan name="starter" description="Tall">
+		<price>48</price>
+		<userlimit>30</userlimit>
+		<storage>10</storage>
+		<duration>30</duration>
+		<support>Basic Forum Support</support>
+	</plan>
+	<plan name="plus" description="Grande">
+		<price>89</price>
+		<userlimit>60</userlimit>
+		<storage>20</storage>
+		<duration>30</duration>
+		<support>Customized branding option;Priority email support</support>
+	</plan>
+	<plan name="professional" description="Venti">
+		<price>149</price>
+		<userlimit>120</userlimit>
+		<storage>40</storage>
+		<duration>30</duration>
+		<support>Customized branding option;Support for domain locking*;Priority email support</support>
+	</plan>
+</plans>

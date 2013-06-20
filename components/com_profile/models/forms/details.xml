@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="work" description="COM_PROFILE_LABEL_DETAILS_DESCRIPTION_WORK">
+			<field name="work_department" type="text" label="COM_PROFILE_LABEL_DETAILS_DEPARTMENT" />
+			<field name="work_position" type="text" label="COM_PROFILE_LABEL_DETAILS_POSITION" />
+			<field name="work_title" type="text" label="COM_PROFILE_LABEL_DETAILS_TITLE" required="true" />
+			<field name="work_experience" type="textarea" label="COM_PROFILE_LABEL_DETAILS_EXPERIENCE" />
+			<field name="work_skills" type="text" label="COM_PROFILE_LABEL_DETAILS_SKILLS"  />
+		</fieldset>
+		<fieldset name="contact" description="COM_PROFILE_LABEL_DETAILS_DESCRIPTION_CONTACT">
+			<field name="contact_secondemail" type="text" label="COM_PROFILE_LABEL_DETAILS_SECONDARY_EMAIL" />
+
+			<field name="contact_mobilephone" type="multifield" label="COM_PROFILE_LABEL_DETAILS_CONTACT_NUMBER">
+				<param name="contact_mobilephone_no" type="text" />
+				<param name="contact_mobilephone_location" type="list">
+					<option value="Work">COM_PROFILE_LABEL_DETAILS_WORK_OPTION</option>
+					<option value="Home">COM_PROFILE_LABEL_DETAILS_HOME_OPTION</option>
+				</param>
+			</field>
+
+			<field name="contact_im" type="multifield" label="COM_PROFILE_LABEL_DETAILS_INSTANT_MESSENGER">
+				<param name="contact_im_type" type="list">
+					<option value="Google Talk">Google Talk</option>
+					<option value="Skype">Skype</option>
+					<option value="Yahoo! Messenger">Yahoo! Messenger</option>
+					<option value="MSN">MSN</option>
+				</param>
+				<param name="contact_im_content" type="text" />
+				<param name="contact_im_location" type="list">
+					<option value="Work">COM_PROFILE_LABEL_DETAILS_WORK_OPTION</option>
+					<option value="Home">COM_PROFILE_LABEL_DETAILS_HOME_OPTION</option>
+				</param>
+			</field>
+
+		</fieldset>
+		<fieldset name="personal" description="COM_PROFILE_LABEL_DETAILS_DESCRIPTION_PERSONAL">
+			<field name="personal_hobbies" type="text" label="COM_PROFILE_LABEL_DETAILS_INTEREST_HOBBIES" />
+			<field name="personal_relationstatus" type="text" label="COM_PROFILE_LABEL_DETAILS_RELATIONSHIP_STATUS" />
+			<field name="personal_address" type="text" label="COM_PROFILE_LABEL_DETAILS_ADDRESS" />
+		</fieldset>
+		<fieldset name="socialnetwork" description="COM_PROFILE_LABEL_DETAILS_DESCRIPTION_SOCIAL_NETWORK">
+			<field name="socialnetwork_twitter" type="text" label="Twitter" />
+			<field name="socialnetwork_facebook" type="text" label="Facebook" />
+		</fieldset>
+	</fields>
+</form>

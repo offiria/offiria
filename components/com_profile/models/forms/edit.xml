@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!-- $Id: frontend.xml 20899 2011-03-07 20:56:09Z ian $ -->
+<form>
+	<fields name="params">
+		<!--  Basic user account settings. -->
+		<fieldset name="edit">
+			<field name="name" id="name" type="text" label="COM_PEOPLE_LABEL_NAME">
+			</field>
+			
+			<field name="email" id="email" type="text" label="COM_PEOPLE_LABEL_EMAIL">
+			</field>
+
+			<field name="timezone" id="timezone" type="timezone" label="COM_PEOPLE_LABEL_TIMEZONE">
+				<option value="">JOPTION_USE_DEFAULT</option>
+			</field>
+
+			<field name="language" id="language" type="language" client="site" label="COM_PEOPLE_LABEL_LANGUAGE" filter="cmd">
+				<option value="">JOPTION_USE_DEFAULT</option>
+				<option value="bm-MY">Bahasa Melayu (Malaysia)</option>
+				<option value="es-ES">Spanish (Spain)</option>
+				<option value="de-DE">Deutsch (German)</option>
+			</field>
+			
+			<field name="about_me" id="about me" type="textarea" label="COM_PEOPLE_LABEL_ABOUT_ME" class="vertical" required="true">
+			</field>
+
+		</fieldset>
+	</fields>
+</form>

@@ -1,0 +1,94 @@
+/*
+  960 Grid System ~ Core CSS.
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+*/
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+body {
+  min-width: 320px;
+}
+.container_12 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100%;
+}
+#eHeader h1 {
+  font-size: 18px;
+}
+#eHeader-left {
+  margin: 0;
+  padding-right: 10px;
+  width: 100%;
+  text-align: center;
+}
+#eHeader-right {
+  display: none;
+}
+#eHeader-content {
+  display: none;
+}
+#eContent-inner {
+  background: #fff;
+}
+#main-content {
+  padding-bottom: 20px;
+  padding-left: 3%;
+  padding-right: 3%;
+  background-color: #fff;
+  border-left: 0 none;
+  min-height: 600px;
+  width: 94%;
+  display: block;
+  float: none !important;
+}
+#main-content #content-left {
+  margin: 0;
+  width: 100%;
+  float: none !important;
+  display: block;
+}
+#main-content #sidebar-right {
+  display: none;
+}
+#sidebar-left {
+  display: none;
+}
+/* Stream Style starts here */
+#stream-post .stream-post-message .stream-post-message-share textarea {
+  width: 100%;
+}
+.stream-post-details input {
+  width: 90%;
+}
+.stream-post-message-tabs {
+  padding-bottom: 8px !important;
+}
+.stream-post-message-tabs ul {
+  display: none;
+}
+.message-content {
+  width: 81%;
+  float: left;
+}
+.message-event-content {
+  width: 50%;
+}
+li.todo-item > span {
+  width: 90%;
+}
+.message-avatar {
+  padding: 2px;
+}
+.message-avatar img {
+  width: 35px;
+}
+#eFooter {
+  display: none;
+}

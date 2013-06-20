@@ -1,0 +1,212 @@
+/* Log-in Box
+--------------------------*/
+  #offiria_loginbox {
+    font:12px 'Open Sans',arial,helvetica;
+    color:#666;
+    width:350px;
+    background:#fff;
+    margin:auto;
+    padding:30px;
+      -moz-border-radius:6px;
+      -webkit-border-radius:6px;
+      -o-border-radius:6px;
+      border-radius:6px;
+      box-shadow:0 0 4px #ccc;
+  }
+  #offiria_loginbox h3,
+  #offiria_loginbox .backh3 {
+    display:none;
+  }
+  #offiria_loginbox .moduletable {
+    padding:0;
+  }
+  #offiria_loginbox .offiria-logo {
+    background:url('../images/offiria.png') no-repeat 11px 27px;
+    margin-bottom:30px;
+    border-bottom:1px solid #eee;
+    text-indent:-99999px;
+    height:145px;
+    width:350px;
+  }
+  #offiria_loginbox input.offiria_inputbox,
+  #offiria_loginbox #user-registration input[type=email],
+  #offiria_loginbox #user-registration input[type=text],
+  #offiria_loginbox #member-registration input[type=email],
+  #offiria_loginbox #member-registration input[type=text],
+  #offiria_loginbox #member-registration input[type=password] {
+    display:block;
+    height:36px;
+    width:344px;
+    margin:20px 0 0;
+    border:3px solid #f9f9f9;
+    text-indent:15px;
+    color:#666;
+      -moz-box-shadow:inset 0 0 1px #888;
+      -webkit-box-shadow:inset 0 0 1px #888;
+      -o-box-shadow:inset 0 0 1px #888;
+      box-shadow:inset 0 0 1px #888;
+      -moz-border-radius:6px;
+      -webkit-border-radius:6px;
+      -o-border-radius:6px;
+      border-radius:6px;
+      background: #fff;
+      background: -moz-linear-gradient(top,  #eeeeee 0%, #ffffff 13%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(13%,#ffffff));
+      background: -webkit-linear-gradient(top,  #eeeeee 0%,#ffffff 13%);
+      background: -o-linear-gradient(top,  #eeeeee 0%,#ffffff 13%);
+      background: -ms-linear-gradient(top,  #eeeeee 0%,#ffffff 13%);
+      background: linear-gradient(top,  #eeeeee 0%,#ffffff 13%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#ffffff',GradientType=0 );
+  }
+  #offiria_loginbox input.offiria_inputbox:hover,
+  #offiria_loginbox #user-registration input[type=email]:hover,
+  #offiria_loginbox #user-registration input[type=text]:hover,
+  #offiria_loginbox #member-registration input[type=email]:hover,
+  #offiria_loginbox #member-registration input[type=text]:hover,
+  #offiria_loginbox #member-registration input[type=password]:hover {
+    border:3px solid #FFFBDB;
+      -moz-box-shadow:inset 0 0 1px #9E7418;
+      -webkit-box-shadow:inset 0 0 1px #9E7418;
+      -o-box-shadow:inset 0 0 1px #9E7418;
+      box-shadow:inset 0 0 1px #9E7418; 
+  } 
+  #offiria_loginbox input.offiria_inputbox:focus,
+  #offiria_loginbox #user-registration input[type=email]:focus,
+  #offiria_loginbox #user-registration input[type=text]:focus,
+  #offiria_loginbox #member-registration input[type=email]:focus,
+  #offiria_loginbox #member-registration input[type=text]:focus,
+  #offiria_loginbox #member-registration input[type=password]:focus {
+    border:3px solid #E8F3FA;
+      -moz-box-shadow:inset 0 0 1px #112F40;
+      -webkit-box-shadow:inset 0 0 1px #112F40;
+      -o-box-shadow:inset 0 0 1px #112F40;
+      box-shadow:inset 0 0 1px #112F40;
+  }
+  #offiria_loginbox label {
+    display:block;
+    color:#666;
+    font-size:11px;
+    margin:10px;
+  }
+  #offiria_loginbox input.offiria_inputsubmit {
+    display:block;
+    width:100%;
+    padding:5px 0;
+    cursor:pointer;
+    border:1px solid #64963B;
+    color:#fff;
+    font-size:16px;
+    text-shadow:0 1px 0 #477521;
+    background-color:#a4dd6e;
+      -moz-border-radius:4px;
+      -webkit-border-radius:4px;
+      -o-border-radius:4px;
+      border-radius:4px;
+      -moz-box-shadow:inset 0 1px 0 #BEED91;
+      -webkit-box-shadow:inset 0 1px 0 #BEED91;
+      -o-box-shadow:inset 0 1px 0 #BEED91;
+      box-shadow:inset 0 1px 0 #BEED91;
+      background-image: -moz-linear-gradient(top,  #a4dd6e 0%, #77bc3e 100%);
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a4dd6e), color-stop(100%,#77bc3e));
+      background-image: -webkit-linear-gradient(top,  #a4dd6e 0%,#77bc3e 100%);
+      background-image: -o-linear-gradient(top,  #a4dd6e 0%,#77bc3e 100%);
+      background-image: -ms-linear-gradient(top,  #a4dd6e 0%,#77bc3e 100%);
+      background-image: linear-gradient(top,  #a4dd6e 0%,#77bc3e 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4dd6e', endColorstr='#77bc3e',GradientType=0 );
+  }
+  #offiria_loginbox input.offiria_inputsubmit:hover {
+    border:1px solid #6BAD34;
+    background-color:#adea75;
+      -moz-box-shadow:inset 0 1px 0 #C6F59A;
+      -webkit-box-shadow:inset 0 1px 0 #C6F59A;
+      -o-box-shadow:inset 0 1px 0 #C6F59A;
+      box-shadow:inset 0 1px 0 #C6F59A;
+      background-image: -moz-linear-gradient(top,  #adea75 0%, #80c944 100%);
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#adea75), color-stop(100%,#80c944));
+      background-image: -webkit-linear-gradient(top,  #adea75 0%,#80c944 100%);
+      background-image: -o-linear-gradient(top,  #adea75 0%,#80c944 100%);
+      background-image: -ms-linear-gradient(top,  #adea75 0%,#80c944 100%);
+      background-image: linear-gradient(top,  #adea75 0%,#80c944 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adea75', endColorstr='#80c944',GradientType=0 );
+  }
+  #offiria_loginbox span {
+    display:block;
+    margin:20px -30px;
+    text-align:center;
+  }
+  #offiria_loginbox span a {
+    padding:0 4px;
+    text-decoration:none;
+    color:#FFC380;
+    font-size:11px;
+  }
+  #offiria_loginbox span a:hover {
+    color:#FF9012;
+    text-decoration:underline;
+  }
+  #offiria_loginbox #user-registration fieldset,
+  #offiria_loginbox #user-registration dl,
+  #offiria_loginbox #user-registration dt,
+  #offiria_loginbox #user-registration dd,
+  #offiria_loginbox #member-registration fieldset,
+  #offiria_loginbox #member-registration dl,
+  #offiria_loginbox #user-registration span,
+  #offiria_loginbox #member-registration span {
+    margin-bottom:0;
+    display:inline;
+  }
+  #offiria_loginbox #user-registration input[type=email],
+  #offiria_loginbox #user-registration input[type=text] {
+    margin:0 0 20px;
+  }
+  #offiria_loginbox #user-registration p {
+    background:#FFFDDB;
+    padding:8px;
+    margin-top:15px;
+      -moz-border-radius:4px;
+      -webkit-border-radius:4px;
+      -o-border-radius:4px;
+      border-radius:4px;
+  }
+  #offiria_loginbox #user-registration label,
+  #offiria_loginbox #member-registration label {
+    margin:4px 0 0;
+  }
+  #offiria_loginbox #member-registration input[type=email],
+  #offiria_loginbox #member-registration input[type=text],
+  #offiria_loginbox #member-registration input[type=password] {
+    height:24px;
+    margin:0;
+  }
+  #offiria_loginbox #user-registration legend,
+  #offiria_loginbox #member-registration legend {
+    display:block;
+    width:100%;
+    border-bottom:1px solid #eee;
+    font:700 14px 'Open Sans',arial,helvetica;
+    padding:0 0 5px;
+    text-transform:uppercase;
+    text-align:center;
+  }
+  #offiria_loginbox #member-registration .red,
+  #offiria_loginbox #user-registration span,
+  #offiria_loginbox #member-registration span {
+    color:red;
+    margin:0;
+  }
+  #offiria_loginbox #member-registration input[type=submit] {
+    width:100px;
+    padding:3px 0;
+    font-size:13px;
+    display:inline;
+    vertical-align:middle;
+  }
+  #offiria_loginbox #member-registration>div {
+    text-align:center;
+    margin-top:15px;
+  }
+
+
+
+
+

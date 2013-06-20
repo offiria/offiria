@@ -1,0 +1,279 @@
+body {
+  font-size: 13px;
+  background: #214463;
+}
+.installer-container {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  background: #FFF;
+  box-shadow: 0 0 4px #333;
+  border-radius: 5px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  overflow: hidden;
+}
+h1 {
+  text-align: left;
+  margin: 0 0 5px 0;
+  font-size: 0px;
+  height: 48px;
+  color: #4d4d4d;
+  text-shadow: 0 1px 0 #fff;
+  background: url(../images/logo.png) center 0 no-repeat;
+  text-indent: -9999px;
+}
+.header-section,
+.intro-section,
+.site-section,
+.offiria-section,
+.footer-section {
+  border-bottom: 1px solid #ddd;
+  display: block;
+  background: #F9F9F9;
+}
+.header-section h2,
+.intro-section h2,
+.site-section h2,
+.offiria-section h2,
+.footer-section h2 {
+  color: #4d4d4d;
+  font-size: 18px;
+  line-height: 25px;
+}
+.header-section h2 span,
+.intro-section h2 span,
+.site-section h2 span,
+.offiria-section h2 span,
+.footer-section h2 span {
+  font-size: 12px;
+  color: #999;
+}
+.header-section .span9,
+.intro-section .span9,
+.site-section .span9,
+.offiria-section .span9,
+.footer-section .span9 {
+  background: #fff;
+}
+.header-section .span9 .main-content,
+.intro-section .span9 .main-content,
+.site-section .span9 .main-content,
+.offiria-section .span9 .main-content,
+.footer-section .span9 .main-content {
+  border-left: 1px solid #ddd;
+  padding: 20px 20px 14px;
+}
+.header-section .span9 .main-content span.title-desc,
+.intro-section .span9 .main-content span.title-desc,
+.site-section .span9 .main-content span.title-desc,
+.offiria-section .span9 .main-content span.title-desc,
+.footer-section .span9 .main-content span.title-desc {
+  font-size: 12px;
+  color: #999999;
+}
+.header-section .header-content,
+.intro-section .header-content,
+.site-section .header-content,
+.offiria-section .header-content,
+.footer-section .header-content,
+.header-section .footer-content,
+.intro-section .footer-content,
+.site-section .footer-content,
+.offiria-section .footer-content,
+.footer-section .footer-content {
+  border-left: 1px solid #ddd;
+  padding: 12px 20px 6px;
+}
+.header-section .footer-content,
+.intro-section .footer-content,
+.site-section .footer-content,
+.offiria-section .footer-content,
+.footer-section .footer-content {
+  padding: 20px 20px 17px;
+  box-shadow: 0 1px 0 #fff inset;
+}
+.header-section .footer-content .pull-left,
+.intro-section .footer-content .pull-left,
+.site-section .footer-content .pull-left,
+.offiria-section .footer-content .pull-left,
+.footer-section .footer-content .pull-left {
+  margin-top: 13px;
+  font-size: 12px;
+}
+.header-section .footer-content .pull-right input,
+.intro-section .footer-content .pull-right input,
+.site-section .footer-content .pull-right input,
+.offiria-section .footer-content .pull-right input,
+.footer-section .footer-content .pull-right input {
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.header-section .footer-content a,
+.intro-section .footer-content a,
+.site-section .footer-content a,
+.offiria-section .footer-content a,
+.footer-section .footer-content a {
+  color: #467089;
+}
+.header-section .i-content,
+.intro-section .i-content,
+.site-section .i-content,
+.offiria-section .i-content,
+.footer-section .i-content {
+  width: 45px;
+  height: 45px;
+  display: block;
+  background: url(../images/icons.png) no-repeat 0 0;
+  margin-left: 18px;
+  margin-top: 17px;
+}
+.header-section .i-content.intro,
+.intro-section .i-content.intro,
+.site-section .i-content.intro,
+.offiria-section .i-content.intro,
+.footer-section .i-content.intro {
+  background-position: -6px -9px;
+}
+.header-section .i-content.site,
+.intro-section .i-content.site,
+.site-section .i-content.site,
+.offiria-section .i-content.site,
+.footer-section .i-content.site {
+  background-position: -6px -91px;
+}
+.header-section .i-content.offiria,
+.intro-section .i-content.offiria,
+.site-section .i-content.offiria,
+.offiria-section .i-content.offiria,
+.footer-section .i-content.offiria {
+  background-position: -6px -178px;
+}
+.header-section .help-inline,
+.intro-section .help-inline,
+.site-section .help-inline,
+.offiria-section .help-inline,
+.footer-section .help-inline,
+.header-section .help-block,
+.intro-section .help-block,
+.site-section .help-block,
+.offiria-section .help-block,
+.footer-section .help-block {
+  color: #777;
+}
+.header-section .help-inline.available,
+.intro-section .help-inline.available,
+.site-section .help-inline.available,
+.offiria-section .help-inline.available,
+.footer-section .help-inline.available,
+.header-section .help-block.available,
+.intro-section .help-block.available,
+.site-section .help-block.available,
+.offiria-section .help-block.available,
+.footer-section .help-block.available,
+.header-section .help-inline.not-available,
+.intro-section .help-inline.not-available,
+.site-section .help-inline.not-available,
+.offiria-section .help-inline.not-available,
+.footer-section .help-inline.not-available,
+.header-section .help-block.not-available,
+.intro-section .help-block.not-available,
+.site-section .help-block.not-available,
+.offiria-section .help-block.not-available,
+.footer-section .help-block.not-available {
+  background: #468847;
+  border-radius: 3px;
+  color: #fff;
+  padding: 4px 10px 4px 8px;
+  margin-left: 5px;
+}
+.header-section .help-inline.not-available,
+.intro-section .help-inline.not-available,
+.site-section .help-inline.not-available,
+.offiria-section .help-inline.not-available,
+.footer-section .help-inline.not-available,
+.header-section .help-block.not-available,
+.intro-section .help-block.not-available,
+.site-section .help-block.not-available,
+.offiria-section .help-block.not-available,
+.footer-section .help-block.not-available {
+  background: #B94A48;
+}
+.header-section .help-block,
+.intro-section .help-block,
+.site-section .help-block,
+.offiria-section .help-block,
+.footer-section .help-block {
+  margin-top: 5px;
+}
+.domain-section .help-inline.domain-name {
+  color: #333 !important;
+}
+.intro-section h2 {
+  margin-bottom: 8px;
+}
+.header-section {
+  background: #f5f5f5;
+  /* Old browsers */
+
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmNWY1ZjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #ffffff 0%, #f5f5f5 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f5f5f5));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, #ffffff 0%, #f5f5f5 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #ffffff 0%, #f5f5f5 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #ffffff 0%, #f5f5f5 100%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%);
+  /* W3C */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
+  /* IE6-8 */
+
+  box-shadow: 0 -1px 0 #ffffff inset;
+}
+.header-section .span9 {
+  background: 0 none;
+}
+.form-horizontal .theform {
+  margin-top: 20px;
+}
+.form-horizontal .control-label {
+  width: 110px;
+  text-align: left;
+}
+.user-content {
+  border-bottom: 0 none;
+}
+.installation-notes {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  display: block;
+  background: #F9F9F9;
+}
+.installation-notes .well {
+  margin: 0;
+  padding: 12px;
+}
+.installation-notes .well span.label {
+  margin-right: 4px;
+}
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}

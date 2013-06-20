@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<update xmlns="http://ns.adobe.com/air/framework/update/description/1.0">
+    <versionNumber>0.1</versionNumber>
+    <url>http://offiria.jomsocial.com/updater/apps/desktop.air</url>
+    <description><![CDATA[
+    ChangeLog
+  ]]></description>
+</update>

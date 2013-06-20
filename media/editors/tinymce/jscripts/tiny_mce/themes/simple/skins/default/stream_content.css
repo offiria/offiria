@@ -1,0 +1,31 @@
+body, td, pre {
+	font-family:'Lucida Grande','Lucida Sans Unicode',helvetica,arial,verdana,sans-serif;
+	/*
+	font: 13px/1.5 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	*/
+	font-size: 13px;
+}
+
+body {
+	background-color: #FFFFFF;
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+}
+
+.mceVisualAid {
+	border: 1px dashed #BBBBBB;
+}
+
+/* MSIE specific */
+
+* html body {
+	scrollbar-3dlight-color: #F0F0EE;
+	scrollbar-arrow-color: #676662;
+	scrollbar-base-color: #F0F0EE;
+	scrollbar-darkshadow-color: #DDDDDD;
+	scrollbar-face-color: #E0E0DD;
+	scrollbar-highlight-color: #F0F0EE;
+	scrollbar-shadow-color: #F0F0EE;
+	scrollbar-track-color: #F5F5F5;	
+}

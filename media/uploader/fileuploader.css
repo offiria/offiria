@@ -1,0 +1,37 @@
+.qq-uploader {  margin-top: 10px; position:relative; width: 100%;}
+
+.qq-upload-button {
+	
+    display:block; /* or inline-block */
+    width: 105px; padding: 5px 0; text-align:center;    
+    background: #F8FAFB;
+	border-bottom:none #ddd;color:#000000;
+}
+.qq-upload-button-hover {background:#F8FAFB;}
+.qq-upload-button-focus {outline:1px dotted black;}
+
+.qq-uploader-edit {
+	display:inline;
+}
+.qq-upload-drop-area {
+    background: none repeat scroll 0 0 #FF9797; border-radius: 6px 6px 6px 6px;
+    height: 40px;left: -60px; min-height: 50px;position: absolute;
+    text-align: center;top: -70px; width: 570px; z-index: 2; 
+}
+.qq-upload-drop-area span {
+    display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
+}
+.qq-upload-drop-area-active {background:#FF7171;}
+
+.qq-upload-list {margin:15px 35px; padding:0; list-style:disc;}
+.qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
+.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
+    margin-right: 7px;
+}
+
+.qq-upload-file {}
+.qq-upload-spinner {display:inline-block; background: url("loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
+.qq-upload-size,.qq-upload-cancel {font-size:11px;}
+
+.qq-upload-failed-text {display:none;}
+.qq-upload-fail .qq-upload-failed-text {display:inline;}

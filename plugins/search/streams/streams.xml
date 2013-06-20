@@ -1,0 +1,16 @@
+<?xml version="1.8" encoding="utf-8"?>
+<install version="1.8.2" type="plugin" group="search" method="upgrade">
+	<name>Search - Streams</name>
+	<author>Offiria</author>
+	<creationDate>April 2012</creationDate>
+	<copyright>Copyright 2008 - 2012 by Slashes &amp; Dots Sdn Bhd. All rights reserved</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@azrul.com</authorEmail>
+	<authorUrl>http://www.jomsocial.com</authorUrl>
+	<version>2.2.4</version>
+	<description>Search - Streams</description>
+	<files>
+		<filename plugin="streams">streams.php</filename>
+	</files>
+	<params />
+</install>
