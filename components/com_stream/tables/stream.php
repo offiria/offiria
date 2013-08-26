@@ -508,6 +508,9 @@ class StreamTableStream extends JTable
     public function __set ( $name, $value )
     {
     	$rawObj = json_decode($this->raw);
+    	if(empty($rawObj)){
+    		$rawObj = new stdClass();
+    	}
     	$rawObj->$name =  $value;
     	$this->raw = json_encode( $rawObj );
 	}

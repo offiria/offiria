@@ -92,15 +92,15 @@ function pagination_list_render($list)
 	
 	foreach( $list['pages'] as $page )
 	{
-		if($page['data']['active']) {
-			//$html .= '<strong>';
-		}
+		// if($page['data']['active']) {
+		// 	//$html .= '<strong>';
+		// }
 
 		$html .= $page['data'];
 
-		if($page['data']['active']) {
-			//$html .= '</strong>';
-		}
+		// if($page['data']['active']) {
+		// 	//$html .= '</strong>';
+		// }
 	}
 
 	$html .= $list['next']['data'];

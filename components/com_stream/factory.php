@@ -35,7 +35,7 @@ class StreamFactory
 	 * Return the model instance
 	 * @param type $name 
 	 */
-	public function getModel( $name = '', $prefix = '', $config = array() )
+	public static function getModel( $name = '', $prefix = '', $config = array() )
 	{
 		static $modelInstances = null;
 		

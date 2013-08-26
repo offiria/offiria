@@ -376,7 +376,7 @@ class StreamMessage
 	/**
 	 *  Return the number of new message since the last message id
 	 */	 	
-	public function countMessageSince( $message_id )
+	public static function countMessageSince( $message_id )
 	{
 		$my = JXFactory::getUser();
 		$model = StreamFactory::getModel('stream');
