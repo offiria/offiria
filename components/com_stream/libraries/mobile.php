@@ -12,7 +12,7 @@ jimport('joomla.xfactory');
 jimport('joomla.environment.browser');
 
 class StreamMobile {	
-	public function isMobile() {
+	public static function isMobile() {
 		/**
 		 * Store the mobile value by our preferences and what is consider as mobile
 		 * @param Boolean true if its a mobile
@@ -20,7 +20,7 @@ class StreamMobile {
 		$mobile = false;
 
 		 // detect the browser by checking user agent
-		 $browser =& JBrowser::getInstance();
+		 $browser = JBrowser::getInstance();
 		 $ua = $browser->getAgentString();
 
 		 switch ($ua) {

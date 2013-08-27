@@ -113,7 +113,7 @@ class StreamTemplate
 	/**
 	 * Alias to $document->countModules function
 	 */	 	
-	public function countModules($condition)
+	public static function countModules($condition)
 	{
 		$document	= JFactory::getDocument();
 		return $document->countModules($condition);
@@ -122,7 +122,7 @@ class StreamTemplate
 	/**
 	 * Render external module position
 	 */	 	
-    public function renderModules($position, $attribs = array())
+    public static function renderModules($position, $attribs = array())
     {
 	    jimport( 'joomla.application.module.helper' );
 
@@ -147,7 +147,7 @@ class StreamTemplate
     /**
      *   Escape output string
      */	     
-    public function escape( $var, $function='htmlspecialchars' )
+    public static function escape( $var, $function='htmlspecialchars' )
     {
 		if (in_array($function, array('htmlspecialchars', 'htmlentities')))
 		{
@@ -161,7 +161,7 @@ class StreamTemplate
      * Replace all _QQQ_ to "
      * Language file now uses new _QQQ_ to maintain Joomla 1.6 compatibility
      */	 
-    public function quote($str)
+    public static function quote($str)
     {
 	    $str = str_replace('_QQQ_','"', $str);
 	    return $str;

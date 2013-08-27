@@ -54,9 +54,9 @@ class StreamTableFile extends JTable
 		$this->_params = new JParameter($this->params);
 	}
 	
-	public function load( $id )
+	public function load( $keys = NULL, $reset = true )
 	{
-		$ret = parent::load($id);
+		$ret = parent::load($keys);
 		$this->_params = new JParameter($this->params);
 		return $ret;
 	}
@@ -73,7 +73,7 @@ class StreamTableFile extends JTable
 		return $ret;
 	}
 	
-	public function store(){
+	public function store($updateNulls = false){
 		
 		$now = new JDate();
 		if( $this->created == null)
@@ -88,7 +88,7 @@ class StreamTableFile extends JTable
 	/**
 	 * Delete the files as well
 	 */	 	
-	public function delete(){
+	public function delete($pk = NULL){
 		jimport('joomla.filesystem.file');
 		JFile::delete(JPATH_ROOT.DS.$this->path);
 		

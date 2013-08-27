@@ -14,7 +14,7 @@ class StreamComment
 	 * Return the comment HTML
 	 * @param type $stream_id 
 	 */
-	public function getCommentSummaryHTML( $stream )
+	public static function getCommentSummaryHTML( $stream )
 	{
 		$tmpl	= new StreamTemplate();
 		$model	= StreamFactory::getModel('stream');

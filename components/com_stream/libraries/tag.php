@@ -12,7 +12,7 @@ class StreamTag
 	}
 
 	public function getTrending($group = null) {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$my = JXFactory::getUser();
 		$groupModel = StreamFactory::getModel('groups');
 		$now = new JXDate();

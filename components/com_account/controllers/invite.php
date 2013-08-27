@@ -19,7 +19,7 @@ class AccountControllerInvite extends JController
 	const ALREADY_REGISTERED_FLAG = 4;
 	const SENT_FLAG = 2;
 	
-	public function display() 
+	public function display($cachable = false, $urlparams = false) 
 	{		
 		// Only admin can use this function to invite guests
 		$jxConfig = new JXConfig();

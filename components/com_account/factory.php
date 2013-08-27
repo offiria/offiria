@@ -21,7 +21,7 @@ class AccountFactory
 	/**
 	 *  Return single instance of the model object
 	 */	 	
-	public function getModel($name)
+	public static function getModel($name)
 	{
 		static $modelInstances = null;
 		
@@ -51,7 +51,7 @@ class AccountFactory
 	/**
 	 * Return single instance view
 	 */	 	
-	public function getView( $name='', $prefix='', $viewType='' )
+	public static function getView( $name='', $prefix='', $viewType='' )
 	{
 		static $viewInstances = null;
 		

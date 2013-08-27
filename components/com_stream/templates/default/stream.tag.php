@@ -1,5 +1,5 @@
 <?php
-$uri =& JURI::getInstance();
+$uri = JURI::getInstance();
 $uriBase = $uri->toString( array('scheme', 'host', 'port'));
 
 $data = json_decode($stream->raw);

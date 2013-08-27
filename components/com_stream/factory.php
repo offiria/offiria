@@ -67,7 +67,7 @@ class StreamFactory
 	/**
 	 * Return single instance view
 	 */	 	
-	public function getView( $name='', $prefix='', $viewType='' )
+	public static 	function getView( $name='', $prefix='', $viewType='' )
 	{
 		static $viewInstances = null;
 		

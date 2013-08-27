@@ -11,7 +11,7 @@ class ProfileModelDetail extends JModel
 {
 	public function getDetails($userid){
 
-		$db =& JFactory::getDBO();
+		$db = JFactory::getDBO();
 		$query  = 'SELECT * FROM ' . $db->nameQuote('#__user_details')
 				. ' WHERE ' . $db->nameQuote( 'user_id' ) . '=' . $db->Quote( $userid );
 		$db->setQuery($query);
@@ -25,7 +25,7 @@ class ProfileModelDetail extends JModel
 	}
 
 	public function removeDetails($userid){
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		//remove all the user details
 		$query	= 'DELETE FROM ' . $db->nameQuote( '#__user_details' ) . ' WHERE ' . $db->nameQuote( 'user_id' ) . '=' . $db->Quote( $userid );

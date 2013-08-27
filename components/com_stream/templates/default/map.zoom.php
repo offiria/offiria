@@ -23,12 +23,12 @@ $mobile = StreamMobile::isMobile();
 </div>
 <?php else: ?>
 <div class="map-container">
-	<a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=<?php echo $address; ?>" target="_blank"><img src="https://maps.google.com/maps/api/staticmap?center=<?php echo urlencode($address); ?>&amp;zoom=14&amp;size=480x200&amp;sensor=false&amp;markers=color:red|<?php echo urlencode($address); ?>"></a>
+	<a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=amp;q=<?php echo $address; ?>" target="_blank"><img src="https://maps.google.com/maps/api/staticmap?center=<?php echo urlencode($address); ?>&amp;zoom=14&amp;size=480x200&amp;sensor=false&amp;markers=color:red|<?php echo urlencode($address); ?>"></a>
 </div>
 <?php endif; ?>
 
 <div class="map-details">
 	<small class="map-loc"><span><?php echo $address; ?></span></small>
-	<small class="map-bigger"><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=<?php echo $address; ?>" target="_blank"><?php echo JText::_('View larger map');?></a></small>
+	<small class="map-bigger"><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=amp;q=<?php echo $address; ?>" target="_blank"><?php echo JText::_('View larger map');?></a></small>
 	<div class="clear"></div>
 </div>

@@ -1,5 +1,5 @@
 <?php
-$document =& JFactory::getDocument();
+$document = JFactory::getDocument();
 require_once(JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'helpers'.DS.'html.php');
 require_once(JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'helpers'.DS.'milestones.php');
 /* Global javascripts */
