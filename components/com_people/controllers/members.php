@@ -17,7 +17,7 @@ class PeopleControllerMembers extends JController
 	/**
 	 *
 	 */	 	
-	public function display(){
+	public function display($cachable = false, $urlparams = false){
 		
 		JRequest::setVar('view', 'members');
 		parent::display(true);

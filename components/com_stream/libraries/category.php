@@ -37,7 +37,7 @@ class StreamCategory
 	 * @deprecated @see getByCategory($category)
 	 */
 	public function getBlogs() {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = 'SELECT * FROM ' . $db->nameQuote('#__stream_category') .
 			'WHERE ' . $db->nameQuote('type') . "='blog'";
 		

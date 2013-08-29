@@ -782,7 +782,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function countUnRead($filter)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$unRead = 0;
 
 		// Skip the whole db query if no user specified

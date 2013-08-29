@@ -15,7 +15,7 @@ class StreamControllerTodo extends JController
 	/**
 	 *
 	 */
-	public function display(){
+	public function display($cachable = false, $urlparams = false){
 		$document 	= JFactory::getDocument();
 		$viewType	= $document->getType();	
  		$viewName	= JRequest::getCmd('view', 'todo');

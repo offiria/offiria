@@ -99,7 +99,7 @@ class StreamFactory
 	/**
 	 * Include the given file
 	 */	 	
-	public function load($src){
+	public static function load($src){
 		$src = str_replace('.', DS, $src);
 		include_once(JPATH_ROOT.DS.'components'.DS.'com_stream'.DS.$src. '.php');
 	}

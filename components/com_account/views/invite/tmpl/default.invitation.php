@@ -7,7 +7,7 @@
 						<?php echo JText::_('COM_ACCOUNT_LABEL_LAST_INVITED_DATE');?>:
 						<span class="last-invite-date"><?php echo JXDate::formatDate($rowData->last_invite_date);?></span>
 
-						<?php if($rowData->group_limited): ?>
+						<?php if( !empty($rowData->group_limited)): ?>
 							<?php echo JText::_('Limited to these groups');?>:
 							<span class="last-invite-date">
 								<?php

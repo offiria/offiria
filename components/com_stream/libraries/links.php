@@ -54,7 +54,7 @@ class StreamLinks
 								   'h'=>self::IMAGE_THUMBNAIL_HEIGHT));
 	}
 
-	public function format($json) {
+	public static function format($json) {
 		$service = self::getInstance();
 		if (!is_string ($json)) {
 			return false;

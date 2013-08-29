@@ -52,7 +52,7 @@ class AccountViewAccount extends AccountView
 			$domainName		= (isset($postParam['domain_name'])) ? $postParam['domain_name'] : $domainName;
 		}
 		
-		$form =& JForm::getInstance('profileForm', JPATH_ROOT.DS.'components'.DS.'com_profile'.DS.'models'.DS.'forms'.DS.'edit.xml');
+		$form = JForm::getInstance('profileForm', JPATH_ROOT.DS.'components'.DS.'com_profile'.DS.'models'.DS.'forms'.DS.'edit.xml');
 
 		$this->assignRef('profileForm', $form);
 		$this->assignRef('my', $my);
@@ -65,7 +65,7 @@ class AccountViewAccount extends AccountView
 		$this->assignRef('allow_invite', $allowInvite);
 		$this->assignRef('allow_anon', $allowAnon);
 		
-		$this->assignRef('domain_editable', $configHelper->allowChangeDomain());
+		$this->assign('domain_editable', $configHelper->allowChangeDomain());
 		
 		$doc = JFactory::getDocument();
 		$doc->setTitle(JText::_("COM_ACCOUNT_LABEL_ACCOUNT_SETTING"));

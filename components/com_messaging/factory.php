@@ -12,7 +12,7 @@ class MessagingFactory
 	 * Return the model instance
 	 * @param type $name 
 	 */
-	public function getModel( $name = '', $prefix = '', $config = array() )
+	public static function getModel( $name = '', $prefix = '', $config = array() )
 	{
 		static $modelInstances = null;
 		
@@ -44,7 +44,7 @@ class MessagingFactory
 	/**
 	 * Return single instance view
 	 */	 	
-	public function getView( $name='', $prefix='', $viewType='' )
+	public static function getView( $name='', $prefix='', $viewType='' )
 	{
 		static $viewInstances = null;
 		

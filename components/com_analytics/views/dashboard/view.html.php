@@ -33,11 +33,11 @@ class AnalyticsViewDashboard extends AnalyticsView
 		$analyticIndex = array_search($analyticsGroupBy, $validGroupType);
 		$analyticIndex = ($analyticIndex === false) ? 1 : $analyticIndex;
 		
-		$this->assignRef('analyticHtml', $this->generateAnalytics());
-		$this->assignRef('analyticType', $validGroupType);		
-		$this->assignRef('analyticIndex', $analyticIndex);
-		$this->assignRef('activeUserList', $this->getActiveUser());
-		$this->assignRef('activeGroupList', $this->getActiveGroup());
+		$this->assign('analyticHtml', $this->generateAnalytics());
+		$this->assign('analyticType', $validGroupType);		
+		$this->assign('analyticIndex', $analyticIndex);
+		$this->assign('activeUserList', $this->getActiveUser());
+		$this->assign('activeGroupList', $this->getActiveGroup());
 		parent::display($tpl);
 		
 	}
@@ -58,12 +58,19 @@ class AnalyticsViewDashboard extends AnalyticsView
 		$linechart->chart->renderTo = 'dashboard';
 		$linechart->chart->type = 'area';
 		//$linechart->tooltip->enabled = false;
+		$linechart->yAxis = new StdClass;
+		$linechart->xAxis = new StdClass;
+		$linechart->yAxis->title = new StdClass;
 		$linechart->yAxis->title->text = '';
 		$linechart->yAxis->min = 0;
+		$linechart->yAxis->labels = new StdClass;
+		$linechart->xAxis->labels = new StdClass;
 		$linechart->yAxis->labels->enabled = true;
 		$linechart->xAxis->labels->enabled = true;
 		
 		$linechart->xAxis->categories =  JAnalytics::getXAxisCategory($analyticsGroupBy);
+		$linechart->legend = new StdClass;
+		$linechart->credits  = new StdClass;
 		$linechart->legend->enabled = false;
 		$linechart->credits->enabled = false;
 		//$linechart->title->text = 'Line Chart';
