@@ -28,7 +28,7 @@
 		<td colspan="2" style="border:1px solid #e2e2e2; background: #fff;">
 			<table cellpadding="0" cellspacing="0" style="width: 590px; margin: 8px auto;">
 				<tr>
-					<td style="background: #1A304D; padding: 21px 20px 19px; color: #fff; font-size:20px; font-weight: bold;">Invitation to <?php echo JText::_('CUSTOM_SITE_NAME');?> <span style="display: block; font-size: 15px; text-transform: normal; margin-top: 2px; font-weight: normal;">Super User is inviting you to join his site at <strong><?php echo JURI::base(); ?></strong> </span></td>
+					<td style="background: #1A304D; padding: 21px 20px 19px; color: #fff; font-size:20px; font-weight: bold;">Invitation to <?php echo JText::_('CUSTOM_SITE_NAME');?> <span style="display: block; font-size: 15px; text-transform: normal; margin-top: 2px; font-weight: normal;"><?php echo $sender->get('name');?> is inviting you to join his site at <strong><?php echo JURI::base(); ?></strong> </span></td>
 					<td style="text-align: center; background: #264260; width: 80px; height: 80px; vertical-align: middle;"><img src="<?php echo JURI::base(); ?>/templates/<?php echo $currentTemplate;?>/images/email/icon-info.png" /></td>
 				</tr>
 				
