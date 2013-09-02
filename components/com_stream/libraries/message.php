@@ -361,7 +361,7 @@ class StreamMessage
 	/**
 	 * Return nicely formatted filesize
 	 */	 	
-	function formatBytes($size, $precision = 2)
+	static public function formatBytes($size, $precision = 2)
 	{
 	    if($size == 0)
 	    	return '0';

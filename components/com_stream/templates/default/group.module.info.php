@@ -31,6 +31,18 @@ if(JXUtility::csvCount($followers) > 0){
 		$chartData1 = JAnalytics::get('', null, $group->id, '', 'day');
 
 		$linechart = new HighRollerLineChart();
+
+		$linechart->legend = new stdClass();
+		$linechart->credits = new stdClass();
+		
+		$linechart->yAxis = new stdClass();
+		$linechart->yAxis->title = new stdClass();
+		$linechart->yAxis->labels = new stdClass();
+
+		$linechart->xAxis = new stdClass();
+		$linechart->xAxis->title = new stdClass();
+		$linechart->xAxis->labels = new stdClass();
+
 		$linechart->chart->renderTo = 'linechart';
 		//$linechart->tooltip->enabled = false;
 		$linechart->yAxis->title->text = '';

@@ -62,7 +62,7 @@ class StreamTag
 	}
 
 	public function updateTrending($tag, $group_id, $add=true) {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$now = new JXDate();
 		$nowDate = $now->format('Y-m-d');
 

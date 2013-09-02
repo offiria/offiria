@@ -22,7 +22,7 @@ class PeopleViewMembers extends JView
 
 	function display($tpl = null)
 	{
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$document->addScript(JURI::root().'media/jquery/jquery-1.7.min.js');
 		
 		/* action form submitted */
@@ -60,7 +60,7 @@ class PeopleViewMembers extends JView
 		$this->assignRef( 'filterItems', $filterItems );
 
 		// load members
-		$userModel = AFactory::getModel('members');
+		$userModel = PeopleFactory::getModel('members');
 		$members = $userModel->getMembers($filter);
 		$this->assignRef( 'members', $members );
 
@@ -78,7 +78,7 @@ class PeopleViewMembers extends JView
 		$action = $data[0];
 		$user_arr = explode(',',$data[1]);
 		
-		$memberModel = AFactory::getModel('members');
+		$memberModel = PeopleFactory::getModel('members');
 
 		/* only admin are allowed to remove member */
 		$my = JXFactory::getUser();

@@ -34,16 +34,16 @@ class AccountTableIntegration extends JTable
 		parent::__construct( '#__integrations', 'name', $db );
 	}
 	
-	public function load($name)
+	public function load($keys = NULL, $reset = true)
 	{
-		$ret = parent::load($name);
+		$ret = parent::load($keys);
 		$this->_params->loadString($this->params);
 		return $ret;
 	}
 	
-	public function bind($data)
+	public function bind($src, $ignore = array() )
 	{
-		$ret = parent::bind($data);
+		$ret = parent::bind($src);
 		$this->_params->loadString($this->params);
 		return $ret;
 		

@@ -20,7 +20,7 @@ class StreamViewItem extends JView
 	function display($tpl = null)
 	{
         //parent::display($tpl);
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$document->addScript(JURI::root().'media/jquery/jquery-1.7.min.js');
 		$document->addScript(JURI::root().'media/jquery/autogrow.min.js');
 		//$document->addScript(JURI::root().'components/com_stream/assets/javascript/script.js'); // this doesn't exist, do we still need this?

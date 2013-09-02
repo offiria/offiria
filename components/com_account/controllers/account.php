@@ -361,7 +361,7 @@ class AccountControllerAccount extends JController
 	}
 	
 	public function manageDepartment() {
-		$table =& JTable::getInstance('Category', 'StreamTable');
+		$table = JTable::getInstance('Category', 'StreamTable');
 		$mainframe = JFactory::getApplication();
 
 		if ($_POST) {
@@ -455,7 +455,7 @@ class AccountControllerAccount extends JController
 
 	public function categories() {
 		JRequest::setVar('view', 'categories');
-		$table =& JTable::getInstance('Category', 'StreamTable');
+		$table = JTable::getInstance('Category', 'StreamTable');
 		$c = new StreamCategory();
 		$category = JRequest::getVar('category');
 		$mainframe = JFactory::getApplication();

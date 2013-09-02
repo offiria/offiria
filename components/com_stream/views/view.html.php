@@ -27,8 +27,8 @@ class StreamView extends JView
 	public function addPathway( $text , $link = '' )
 	{
 		// Set pathways
-		$mainframe		=& JFactory::getApplication();
-		$pathway		=& $mainframe->getPathway();
+		$mainframe		= JFactory::getApplication();
+		$pathway		= $mainframe->getPathway();
 		
 		$pathwayNames	= $pathway->getPathwayNames();
 		

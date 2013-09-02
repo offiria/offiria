@@ -71,7 +71,7 @@ if($task != 'azrul_ajax')
 function StreamAjaxEntry($func, $args = null)
 {
 	// For AJAX calls, we need to load the language file manually.
-	$lang =& JFactory::getLanguage();
+	$lang = JFactory::getLanguage();
 	$lang->load( 'com_stream' );
 	
 	$response = new JAXResponse();

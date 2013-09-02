@@ -24,7 +24,7 @@ class PeopleControllerMembers extends JController
 	}
 
 	public function listUser() {
-		$model = AFactory::getModel('members');
+		$model = PeopleFactory::getModel('members');
 		$results = $model->getMembers();
 		// filter needed value only
 		$vals = array();

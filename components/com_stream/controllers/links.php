@@ -15,7 +15,7 @@ class StreamControllerLinks extends JController {
 	/**
 	 *
 	 */
-	public function display() {
+	public function display($cachable = false, $urlparams = false) {
 		$view = StreamFactory::getView('links', '', 'html');
 		echo $view->display();
 	}

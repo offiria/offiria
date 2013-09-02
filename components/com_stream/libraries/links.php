@@ -47,7 +47,7 @@ class StreamLinks
 	 * imageAssetThumbnailPath will simply append post/prefix to a url and load the image directly
 	 * @return String string of correct asset path
 	 */
-	public function imageAssetThumbnailPath($url) {
+	public static function imageAssetThumbnailPath($url) {
 		return self::ASSET_STORAGE_PATH.'/?'.
 			http_build_query(array('url'=>urlencode($url), 
 								   'w'=>self::IMAGE_THUMBNAIL_WIDTH, 

@@ -17,7 +17,7 @@ class StreamControllerMessage extends JController
 	/**
 	 *
 	 */	 	
-	public function display(){
+	public function display($cachable = false, $urlparams = false){
 		parent::display( null );
 	}	
 	

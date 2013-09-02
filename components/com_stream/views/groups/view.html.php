@@ -73,7 +73,7 @@ class StreamViewGroups extends StreamView
 		$html = '';
 		$this->_addPathway($group);
 		
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$this->_attachScripts();
 		$document->setTitle($group->name);
 		
@@ -155,7 +155,7 @@ class StreamViewGroups extends StreamView
 	 */
 	public function show_events($group)
 	{
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$this->_addPathway($group);
 		$this->_attachScripts();
 		$document->setTitle($group->name);
@@ -182,7 +182,7 @@ class StreamViewGroups extends StreamView
 		jimport('joomla.html.pagination');
 		$jconfig = new JConfig();
 		
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$this->_addPathway($group);
 		$this->_attachScripts();
 		$document->setTitle($group->name);
@@ -233,7 +233,7 @@ class StreamViewGroups extends StreamView
 		$jconfig = new JConfig();
 		jimport('joomla.html.pagination');
 		
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$this->_addPathway($group);
 		$this->_attachScripts();
 		$document->setTitle($group->name);
@@ -293,7 +293,7 @@ class StreamViewGroups extends StreamView
 		$jconfig = new JConfig();
 		jimport('joomla.html.pagination');
 		
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$this->_addPathway($group);
 		$this->_attachScripts();
 		$document->setTitle($group->name);
@@ -347,7 +347,7 @@ class StreamViewGroups extends StreamView
 		jimport('joomla.html.pagination');
 
 		$html = '';
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$this->_addPathway($group);
 		$this->_attachScripts();
 		$document->setTitle($group->name);

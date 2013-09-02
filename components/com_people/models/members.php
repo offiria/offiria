@@ -71,7 +71,7 @@ class PeopleModelMembers extends JModel
 		// Lets load the content if it doesn't already exist
 		if (empty($this->_data))
 		{
-			$db	   =& $this->getDBO();
+			$db	   = $this->getDBO();
 
 			/*
 			 * this will contain an array of user id to be filtered to, which filter position/department

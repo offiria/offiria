@@ -172,7 +172,7 @@ class StreamTableGroup extends JTable
 	 * @return array id(s) of groups name
 	 */
 	public function listGroupsByUser($userid) {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$q = "SELECT " . $db->nameQuote('id') . " FROM " . $db->nameQuote('#__groups') .
 			" WHERE " . $db->nameQuote('members') . " LIKE '%" . $userid . "%'";
 		$db->setQuery($q);
