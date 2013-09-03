@@ -6,7 +6,7 @@ require_once(JPATH_ROOT.DS.'components'.DS.'com_messaging'.DS.'tables'.DS.'file.
 
 class MessagingControllerInbox extends JController
 {
-	public function display()
+	public function display($cachable = false, $urlparams = false)
 	{
 		JRequest::setVar('view', 'inbox');
 		parent::display();
@@ -15,7 +15,7 @@ class MessagingControllerInbox extends JController
 	public function read()
 	{
 		$msgId = JRequest::getVar('msgid', '', 'REQUEST');
-		$my = & JFactory::getUser();
+		$my = JFactory::getUser();
 
 		$filter = array();
 

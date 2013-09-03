@@ -21,7 +21,7 @@ class StreamLinks
 		return new $className;
 	}
 
-	public function grab($url, $opt=array()) {
+	public static function grab($url, $opt=array()) {
 		$service = self::getInstance();
 		$result = $service->grab($url, $opt);
 
@@ -77,7 +77,7 @@ class StreamLinks
 	 * Maintenance
 	 * This will run in maintenance mode where the initial fetch fail to load
 	 */
-	public function refetch() {
+	public static function refetch() {
 		$service = self::getInstance();
 		$EMPTY_TIMESTAMP = '0000-00-00 00:00:00';
 		$IGNORE_TAG = $service->getIgnoreTag();
@@ -146,7 +146,7 @@ class StreamLinks
 		return $db->query($q);
 	}
 
-	private function sendLog($email, $data) {
+	public static function sendLog($email, $data) {
 		if (mail($email,'StreamLinks::refetch', $data)) {
 			return true;
 		}

@@ -15,7 +15,7 @@ class MessagingView extends JView
 	{
 		// Set pathways
 		$mainframe = JFactory::getApplication();
-		$pathway =& $mainframe->getPathway();
+		$pathway = $mainframe->getPathway();
 
 		$pathwayNames = $pathway->getPathwayNames();
 

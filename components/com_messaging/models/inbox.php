@@ -24,7 +24,7 @@ class MessagingModelInbox extends JModel
 		if (empty($this->_data)) {
 			$this->_data = array();
 
-			$db =& $this->getDBO();
+			$db = $this->getDBO();
 
 			$sql = 'SELECT MAX(b.' . $db->nameQuote('id') . ') AS ' . $db->nameQuote('bid');
 			$sql .= ' FROM ' . $db->nameQuote('#__msg_recepient') . ' as a, ' . $db->nameQuote('#__msg') . ' as b';
@@ -90,7 +90,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function getParent($msgId)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		if (empty($msgId))
 			return 0;
@@ -131,7 +131,7 @@ class MessagingModelInbox extends JModel
 		if (empty($this->_data)) {
 			$this->_data = array();
 
-			$db =& $this->getDBO();
+			$db = $this->getDBO();
 
 			$sql = 'SELECT b.*, a.' . $db->nameQuote('to') . ', c.' . $db->nameQuote('name') . ' as ' . $db->nameQuote('to_name')
 				. ' FROM ' . $db->nameQuote('#__msg_recepient') . ' as a, '
@@ -202,7 +202,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function getFullMessages($id)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		$parentmsgid = $this->getParent($id);
 
@@ -221,7 +221,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function getSentMessages($id)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my = CFactory::getUser();
 
 		$parentmsgid = $this->getParent($id);
@@ -242,7 +242,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function getReadBy($id)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		$query = 'SELECT DISTINCT(' . $db->nameQuote('to') . ') FROM ' . $db->nameQuote('#__msg_recepient')
 			. ' WHERE ' . $db->nameQuote('msg_id') . '=' . $db->Quote($id)
@@ -260,7 +260,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function &getMessage($id)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$sql = 'SELECT * FROM ' . $db->nameQuote('#__msg')
 			. ' WHERE ' . $db->nameQuote('id') . '=' . $db->Quote($id);
 
@@ -279,7 +279,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function &getRecepientMessage($id)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$sql = 'SELECT * FROM ' . $db->nameQuote('#__msg_recepient')
 			. ' WHERE ' . $db->nameQuote('msg_id') . '=' . $db->Quote($id);
 
@@ -299,7 +299,7 @@ class MessagingModelInbox extends JModel
 	public function getLastSentTime($id)
 	{
 		$user = JXFactory::getUser($id);
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$sql = 'SELECT ' . $db->nameQuote('posted_on')
 			. ' FROM ' . $db->nameQuote('#__msg')
 			. ' WHERE ' . $db->nameQuote('from') . '=' . $db->Quote($id)
@@ -325,7 +325,7 @@ class MessagingModelInbox extends JModel
 		$my = JFactory::getUser();
 		$to = $my->id;
 
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		$sql = 'select a.* from ' . $db->nameQuote('#__msg_recepient') . ' a';
 		$sql .= " where a." . $db->nameQuote('to') . " = {$to} and a." . $db->nameQuote('msg_parent') . " = (select distinct b." . $db->nameQuote('msg_parent');
@@ -345,7 +345,7 @@ class MessagingModelInbox extends JModel
 	public function &getMessages($filter = array(), $read = false)
 	{
 		$my = JFactory::getUser();
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		if (empty($this->_data)) {
 			$this->_data = array();
@@ -407,7 +407,7 @@ class MessagingModelInbox extends JModel
 
 	public function send($vars)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my = JFactory::getUser();
 
 		$date = JFactory::getDate(); //get the time without any offset!
@@ -451,7 +451,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function sendReply($obj, $replyMsgId)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my = JFactory::getUser();
 
 		$originalMsg = JTable::getInstance('Message', 'MessagingTable');
@@ -494,7 +494,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function addReceipient($msgObj, $recepientId)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my = JFactory::getUser();
 
 		$recepient = new stdClass();
@@ -518,7 +518,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function removeReceipient($parentMsgId, $recepientId)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		/*$sql = 'UPDATE ' . $db->nameQuote('#__msg_recepient')
 			. ' SET ' . $db->nameQuote('deleted') . '=' . $db->Quote('1')
@@ -542,7 +542,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function removeReceivedMsg($msgId, $userid)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		// get original sender and recepient
 		$originalMsg = JTable::getInstance('Message', 'MessagingTable');
@@ -606,7 +606,7 @@ class MessagingModelInbox extends JModel
 
 	public function &getUserId($param = array())
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$userId = 0;
 		$sql = "";
 
@@ -642,7 +642,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function markMessageAsRead($filter)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my = JFactory::getUser();
 
 		// update all the messages that belong to current user.
@@ -665,7 +665,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function markMessageAsUnread($filter)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my = JFactory::getUser();
 
 		// update all the messages that belong to current user.
@@ -688,7 +688,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function markAsRead($filter)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my =& JXFactory::getUser();
 
 		// update all the messages that belong to current user.
@@ -711,7 +711,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function markAsUnread($filter)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my =& JXFactory::getUser();
 
 		// update all the messages that belong to current user.
@@ -732,7 +732,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function canReply($userid, $msgId)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$sql = 'SELECT COUNT(*) FROM ' . $db->nameQuote('#__msg_recepient')
 			. ' WHERE (' . $db->nameQuote('msg_parent') . '=' . $db->Quote($msgId) . ' OR ' . $db->nameQuote('msg_id') . '=' . $db->Quote($msgId) . ' ) '
 			. ' AND ( ' . $db->nameQuote('to') . '=' . $db->Quote($userid) . ' OR ' . $db->nameQuote('msg_from') . '=' . $db->Quote($userid) . ' )';
@@ -759,7 +759,7 @@ class MessagingModelInbox extends JModel
 	{
 		CFactory::load('helpers', 'time');
 		$date = CTimeHelper::getDate();
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		//Joomla 1.6 JDate::getOffset returns in second while in J1.5 it's in hours
 		$query = 'SELECT COUNT(*) FROM ' . $db->nameQuote('#__msg') . ' AS a '
@@ -813,7 +813,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function getRecepientCount($filter)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$msgCnt = 0;
 
 		$sql = 'select count(' . $db->Quote('1') . ') as ' . $db->nameQuote('recepient_count');
@@ -835,7 +835,7 @@ class MessagingModelInbox extends JModel
 	/* Count the number of replies in a thread */
 	public function countReplies($msgid)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		// with the given msgid, get the parent.
 		$sql = 'SELECT ' . $db->nameQuote('id');
@@ -860,7 +860,7 @@ class MessagingModelInbox extends JModel
 	public function getParticipantsID($msgid, $exclusion = 0)
 	{
 		$getParticipantsIDs = array();
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 
 		// with the given msgid, get the parent.
 		$sql = 'SELECT ' . $db->nameQuote('parent');
@@ -908,7 +908,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function &getMultiRecepientID($filter = array())
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my = JFactory::getUser();
 
 		$originalMsg = new CTableMessage($db);
@@ -938,7 +938,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function &getUnReadInbox()
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my = CFactory::getUser();
 
 		$sql = 'SELECT b.' . $db->nameQuote('id') . ', b.' . $db->nameQuote('from') . ', b.' . $db->nameQuote('parent') . ', b.' . $db->nameQuote('from_name') . ', b.' . $db->nameQuote('posted_on') . ', b.' . $db->nameQuote('subject');
@@ -963,7 +963,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function &getLatestMessage($filter = array(), $limit = 5)
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my = JFactory::getUser();
 
 		$user_id = (empty($filter['user_id'])) ? $my->id : $filter['user_id'];
@@ -989,7 +989,7 @@ class MessagingModelInbox extends JModel
 
 	public function getUserInboxCount()
 	{
-		$db =& $this->getDBO();
+		$db = $this->getDBO();
 		$my = JFactory::getUser();
 		$inboxResult = array();
 

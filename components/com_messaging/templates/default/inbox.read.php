@@ -71,7 +71,7 @@ if(!empty($messages))
 <div class="inbox-reply">
 	<div class="user-avatar">
 		<?php
-		$user =& JXFactory::getUser();
+		$user = JXFactory::getUser();
 		?>
 		<img class="cAvatar"border="0" author="85" alt="" src="<?php echo $user->getThumbAvatarURL(); ?>" />
 	</div>

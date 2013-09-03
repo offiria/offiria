@@ -34,9 +34,9 @@ class MessagingTableFile extends JTable
 		parent::__construct( '#__msg_files', 'id', $db );
 	}
 	
-	public function load($id)
+	public function load($keys = NULL, $reset = true)
 	{
-		return parent::load($id);
+		return parent::load($keys);
 	}
 	
 	public function bind($src, $ignore = array())
@@ -50,24 +50,24 @@ class MessagingTableFile extends JTable
 		return $ret;
 	}
 	
-	public function store()
+	public function store($updateNulls = false)
 	{
 		$now = new JDate();
 		if( $this->created == null)
 			$this->created =  $now->toMySQL();
 		
-		return parent::store();
+		return parent::store($updateNulls);
 	}
 	
 	/**
 	 * Delete the files as well
 	 */	 	
-	public function delete()
+	public function delete($pk = NULL)
 	{
 		jimport('joomla.filesystem.file');
 		JFile::delete(JPATH_ROOT.DS.$this->path);
 		
-		parent::delete();
+		parent::delete($pk);
 	}
 	
 	/**

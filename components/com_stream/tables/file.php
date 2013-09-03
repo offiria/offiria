@@ -130,7 +130,6 @@ class StreamTableFile extends JTable
 		{
 			curl_setopt($ch, CURLOPT_URL, 'https://crocodoc.com/api/v2/document/upload');
 			$post = array(
-				//"token" => "Oe8fA1mQ59LSwtBlKy4Nkbvn",
 				"token" => $jxConfig->get("crocodocs"),
 				"file"=>"@".$tmpPath,
 			);
