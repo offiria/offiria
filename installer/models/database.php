@@ -14,7 +14,7 @@ class DBConnection
 	public static function connect($dbname='default', $host='localhost', $user='root', $password='') {
 		try {
 			// connects to the database
-			self::$DB = new PDO("mysql:dbname=$dbname;host:=$host" , $user , $password);
+			self::$DB = new PDO("mysql:dbname=$dbname;host=$host" , $user , $password);
 			// set the error reporting attribute
 			self::$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}
