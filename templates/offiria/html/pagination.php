@@ -111,7 +111,7 @@ function pagination_list_render($list)
 }
 
 function pagination_item_active(&$item) {
-	return "<li class=\"active\"><a href=\"".rtrim(JURI::root(), '/').$item->link."\" title=\"".$item->text."\">".$item->text."</a></li>";
+	return "<li class=\"active\"><a href=\"".$item->link."\" title=\"".$item->text."\">".$item->text."</a></li>";
 }
 
 function pagination_item_inactive(&$item) {
