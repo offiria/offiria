@@ -69,7 +69,7 @@ class OauthModelApplication extends JModel
 	 * Implements OAuth2::getAccessToken().
 	 */
 	public function getAccessToken($oauth_token) {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = "SELECT redirect_uri, expires, scope FROM " . $db->nameQuote('#__oauth_tokens') . " WHERE oauth_token='$oauth_token'";
 		$db->setQuery($query);
 		$result = $db->loadAssoc();
@@ -105,7 +105,7 @@ class OauthModelApplication extends JModel
 	 * Overrides OAuth2::getAuthCode().
 	 */
 	public function getAuthCode($code) {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = "SELECT code, client_id, redirect_uri, expires, scope FROM " . $db->nameQuote('#__oauth_tokens') . " WHERE code='$code'";
 		$db->setQuery($query);
 		$result = $db->loadAssoc();

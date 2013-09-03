@@ -29,7 +29,7 @@ class JMap
 	 * Fetch google map data refere to
 	 * http://code.google.com/apis/maps/documentation/geocoding/#Geocoding	 
 	 */	 	
-	public function getAddressData($address)
+	public static function getAddressData($address)
 	{
 		
 		$url = JMap::GEOCODE_URL . 'address='.urlencode($address) .'&sensor=false';
@@ -51,7 +51,7 @@ class JMap
 	 * Given a string address, we will try to validate and see if google think 
 	 * it is allright
 	 */	 	
-	public function validateAddress($address)
+	public static function validateAddress($address)
 	{
 		
 		$content = JMap::getAddressData($address);

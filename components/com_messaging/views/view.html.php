@@ -14,7 +14,7 @@ class MessagingView extends JView
 	public function addPathway($text, $link = '')
 	{
 		// Set pathways
-		$mainframe =& JFactory::getApplication();
+		$mainframe = JFactory::getApplication();
 		$pathway =& $mainframe->getPathway();
 
 		$pathwayNames = $pathway->getPathwayNames();

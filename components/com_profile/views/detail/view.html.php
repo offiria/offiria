@@ -16,14 +16,14 @@ class ProfileViewDetail extends ProfileView
 
 		JForm::addFieldPath(JPATH_COMPONENT . DS . 'models' . DS . 'fields');
 
-		$form =& JForm::getInstance('form', JPATH_ROOT.DS.'components'.DS.'com_profile'.DS.'models'.DS.'forms'.DS.'details.xml');
+		$form = JForm::getInstance('form', JPATH_ROOT.DS.'components'.DS.'com_profile'.DS.'models'.DS.'forms'.DS.'details.xml');
 
 		$detailModel = ProfileFactory::getModel('detail');
 		$form->bind(array('params'=>$detailModel->getDetails($user->id)));
 
 		$this->assignRef('form', $form);
 
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$document->addScript(JURI::root().'media/jquery/jquery-1.7.min.js');
 		$document->setTitle(JText::_('COM_PROFILE_LABEL_EDIT_DETAILS'));
 

@@ -42,7 +42,7 @@ class ProfileViewEdit extends ProfileView
 		/* $jLang = JFactory::getLanguage(); */
 		/* $this->assignRef('languageList', $jLang->getKnownLanguages()); */
 
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$document->addScript(JURI::root().'media/jquery/jquery-1.7.min.js');
 		$document->setTitle(JText::_('COM_PROFILE_LABEL_EDIT_PROFILE'));
 

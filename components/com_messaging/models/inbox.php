@@ -18,7 +18,7 @@ class MessagingModelInbox extends JModel
 	public function &getInbox($_isread = true)
 	{
 		jimport('joomla.html.pagination');
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 		$to = $my->id;
 
 		if (empty($this->_data)) {
@@ -122,7 +122,7 @@ class MessagingModelInbox extends JModel
 	public function &getSent()
 	{
 		jimport('joomla.html.pagination');
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 		$from = $my->id;
 
 		$limit = $this->getState('limit');
@@ -322,7 +322,7 @@ class MessagingModelInbox extends JModel
 	 */
 	public function &getUserMessage($id)
 	{
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 		$to = $my->id;
 
 		$db =& $this->getDBO();
@@ -344,7 +344,7 @@ class MessagingModelInbox extends JModel
 
 	public function &getMessages($filter = array(), $read = false)
 	{
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 		$db =& $this->getDBO();
 
 		if (empty($this->_data)) {
@@ -408,9 +408,9 @@ class MessagingModelInbox extends JModel
 	public function send($vars)
 	{
 		$db =& $this->getDBO();
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 
-		$date =& JFactory::getDate(); //get the time without any offset!
+		$date = JFactory::getDate(); //get the time without any offset!
 		$cDate = $date->toMySQL();
 
 		$obj = new stdClass();
@@ -452,7 +452,7 @@ class MessagingModelInbox extends JModel
 	public function sendReply($obj, $replyMsgId)
 	{
 		$db =& $this->getDBO();
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 
 		$originalMsg = JTable::getInstance('Message', 'MessagingTable');
 
@@ -495,7 +495,7 @@ class MessagingModelInbox extends JModel
 	public function addReceipient($msgObj, $recepientId)
 	{
 		$db =& $this->getDBO();
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 
 		$recepient = new stdClass();
 		$recepient->msg_id = $msgObj->id;
@@ -643,7 +643,7 @@ class MessagingModelInbox extends JModel
 	public function markMessageAsRead($filter)
 	{
 		$db =& $this->getDBO();
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 
 		// update all the messages that belong to current user.
 		$sql = 'UPDATE ' . $db->nameQuote('#__msg_recepient')
@@ -666,7 +666,7 @@ class MessagingModelInbox extends JModel
 	public function markMessageAsUnread($filter)
 	{
 		$db =& $this->getDBO();
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 
 		// update all the messages that belong to current user.
 		$sql = 'UPDATE ' . $db->nameQuote('#__msg_recepient')
@@ -909,7 +909,7 @@ class MessagingModelInbox extends JModel
 	public function &getMultiRecepientID($filter = array())
 	{
 		$db =& $this->getDBO();
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 
 		$originalMsg = new CTableMessage($db);
 		$originalMsg->load($filter['reply_id']);
@@ -964,7 +964,7 @@ class MessagingModelInbox extends JModel
 	public function &getLatestMessage($filter = array(), $limit = 5)
 	{
 		$db =& $this->getDBO();
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 
 		$user_id = (empty($filter['user_id'])) ? $my->id : $filter['user_id'];
 
@@ -990,7 +990,7 @@ class MessagingModelInbox extends JModel
 	public function getUserInboxCount()
 	{
 		$db =& $this->getDBO();
-		$my =& JFactory::getUser();
+		$my = JFactory::getUser();
 		$inboxResult = array();
 
 		// Select all recent message to the user

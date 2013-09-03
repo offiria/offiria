@@ -22,7 +22,7 @@ class ProfileViewNotification extends ProfileView
 
 	function display($tpl = null)
 	{	     
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$document->addScript(JURI::root()."/media/jquery/jquery-1.7.min.js");
 		$document->addScript(JURI::root().'components/com_profile/assets/javascript/script.js');
 		

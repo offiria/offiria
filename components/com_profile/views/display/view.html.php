@@ -107,7 +107,7 @@ class ProfileViewDisplay extends ProfileView
 				break;
 		}
 
-		//$document =& JFactory::getDocument();
+		//$document = JFactory::getDocument();
 		// $document->setTitle(JText::_('COM_PROFILE_LABEL_PROFILE_PAGE').': '.$user->name);
 		$groupView = StreamFactory::getView('groups');
 		JXModule::addBuffer('right', $groupView->getUserActiveGroupsHTML($user->id));

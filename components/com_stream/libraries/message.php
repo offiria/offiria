@@ -80,7 +80,12 @@ class StreamMessage
 		return $str;	
 	}
 	
-	public function getHashtags($message){
+	/**
+	 * Return the hashtags of the messages
+	 * @param  [type] $message [description]
+	 * @return [type]          [description]
+	 */
+	public static function getHashtags($message){
 		preg_match_all("/(?!.*\=)#(\w\w+)/", $message, $matches, PREG_SET_ORDER);
 		$result = array();
 		if(!empty( $matches )) 
@@ -94,7 +99,7 @@ class StreamMessage
 		return $result;
 	}
 	
-	static function sortAttachment($fileA, $fileB){
+	public static function sortAttachment($fileA, $fileB){
 		if($fileA->getParam('has_preview') && !$fileB->getParam('has_preview')){
 			return 1;
 		}

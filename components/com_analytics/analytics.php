@@ -69,7 +69,7 @@ if($task != 'azrul_ajax')
 function analyticsAjaxEntry($func, $args = null)
 {
 	// For AJAX calls, we need to load the language file manually.
-	$lang =& JFactory::getLanguage();
+	$lang = JFactory::getLanguage();
 	$lang->load( 'com_analytics' );
 	
 	$response = new JAXResponse();

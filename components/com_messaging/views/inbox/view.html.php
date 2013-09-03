@@ -74,8 +74,8 @@ class MessagingViewInbox extends MessagingView
 	 */
 	public function read($data)
 	{
-		$mainframe =& JFactory::getApplication();
-		$my =& JFactory::getUser();
+		$mainframe = JFactory::getApplication();
+		$my = JFactory::getUser();
 		$doc = JFactory::getDocument();
 
 		// Add file attachment library

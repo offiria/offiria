@@ -471,7 +471,7 @@ class JXUser extends JUser
 	 * @param String $forDisplay get the display, if true then return value will be formatted to the proper display
 	 * @return String depends on the value of format
   	*/
-	public function getUserTime($user_id = null, $forDisplay = false) {
+	public static function getUserTime($user_id = null, $forDisplay = false) {
 		$config = new JXConfig();
 		$user = JFactory::getUser($user_id);
 

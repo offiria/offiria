@@ -60,7 +60,7 @@ class StreamComment
 	/**
 	 *
 	 */	 	
-	public function deleteComments($stream_id)
+	public static function deleteComments($stream_id)
 	{
 		$model	= StreamFactory::getModel('stream');
 		$model->deleteComments($stream_id);

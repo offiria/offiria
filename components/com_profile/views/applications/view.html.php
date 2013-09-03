@@ -18,7 +18,7 @@ class ProfileViewApplications extends ProfileView
 
 	function display($tpl = null)
 	{	     
-		$document =& JFactory::getDocument();
+		$document = JFactory::getDocument();
 		$document->setTitle(JText::_('COM_PROFILE_LABEL_APPLICATIONS'));
 		
 		$apps = new Applications();

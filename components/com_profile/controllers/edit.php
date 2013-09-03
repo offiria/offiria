@@ -18,7 +18,7 @@ class ProfileControllerEdit extends JController
      /**
       *
       */
-	public function display()
+	public function display($cachable = false, $urlparams = false)
 	{
 		if ($_POST)
 		{

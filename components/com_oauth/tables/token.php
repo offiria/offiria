@@ -59,7 +59,7 @@ class OauthTableToken extends JTable
  	 * @return stdClass object containing entries
 	 */
 	public function listAll() {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = 'SELECT * FROM ' . $db->nameQuote('#__users_token');
 		$db->setQuery($query);
 		$result = $db->loadObjectList();
@@ -72,7 +72,7 @@ class OauthTableToken extends JTable
 	 * @return stdClass object containing entries
 	 */
 	public function listByUser($userId) {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = 'SELECT * FROM ' . $db->nameQuote('#__oauth_tokens') .
 			'WHERE ' . $db->nameQuote('user_id') . "='". $userId . "'";
 		$db->setQuery($query);
