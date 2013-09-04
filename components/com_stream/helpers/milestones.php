@@ -4,7 +4,7 @@ class StreamMilestonesHelper {
 	/**
 	 *
 	 */	 	
-	public function getSelectList($group_id = null, $selected = '')
+	public static function getSelectList($group_id = null, $selected = '')
 	{
 		$streamModel = StreamFactory::getModel('stream');
 		$milestones = $streamModel->getStream(array('type' => 'milestone', 'group_id'=> $group_id ));
