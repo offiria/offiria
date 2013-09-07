@@ -54,7 +54,7 @@ $view = JRequest::getVar('view', 'display');
 		</span><br/>
 		<span><b>
 			<?php 
-				echo (empty($this->user->work_title)) ? JText::_('COM_PROFILE_WORK_TITLE_DUMMY') : $this->user->work_title;
+				echo (empty($this->user->work_title)) ? JText::_('COM_PROFILE_WORK_TITLE_DUMMY') : $this->escape($this->user->work_title);
 			?>
 		</b></span>
 		<p>
@@ -63,7 +63,7 @@ $view = JRequest::getVar('view', 'display');
 		  $aboutMe = $this->user->getParam('about_me');
 		  if (!empty($aboutMe)): ?>
 		<span class="error">
-		<?php echo $aboutMe; ?>
+		<?php echo $this->escape($aboutMe); ?>
 		</span>
 		<?php endif; ?>
 		</p>
