@@ -18,8 +18,8 @@ CREATE TABLE IF NOT EXISTS `fk280_analytics` (
   `created` datetime NOT NULL,
   `year` smallint(5) unsigned NOT NULL,
   `month` tinyint(3) unsigned NOT NULL,
-  `day` tinyint(3) unsigned NOT NULL,
   `week` tinyint(3) unsigned NOT NULL,
+  `day` tinyint(3) unsigned NOT NULL,
   `hour` tinyint(3) unsigned NOT NULL,
   `ip` varchar(16) NOT NULL,
   PRIMARY KEY (`id`),
@@ -39,8 +39,8 @@ class AnalyticsTable extends JTable
 	var $created = null;
 	var $year = null;
 	var $month = null;
-	var $day = null;
 	var $week = null;
+	var $day = null;
 	var $hour = null;
 	var $ip = null;
 	
