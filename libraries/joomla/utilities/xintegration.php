@@ -75,7 +75,7 @@ abstract class JXIntegration
 		return null;
 	}
 	
-	public function isActiveDirectory($type)
+	public static function isActiveDirectory($type)
 	{
 		$adType = self::$_supported[0];
 		return ($type === $adType);

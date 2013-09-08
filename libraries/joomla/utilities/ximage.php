@@ -101,14 +101,18 @@ class JXImage
 		//return JXImage::resize( $srcPath , $destPath , $destType , $destWidth , $destHeight , $sourceX , $sourceY , $currentWidth , $currentHeight);
 	}
 	
-	static public function crop($srcPath, $destPath, $cropWidth, $cropHeight, $sourceX, $sourceY, $cropMaxWidth=64, $cropMaxHeight=64)
+	public static function crop($srcPath, $destPath, $cropWidth, $cropHeight, $sourceX, $sourceY, $cropMaxWidth=64, $cropMaxHeight=64)
 	{
+
 		$jImage		= new JImage($srcPath);
-		$imageInfo	= $jImage->getImageFileProperties($srcPath);
+		
+		$imageInfo	= JImage::getImageFileProperties($srcPath);
+
 		try {
 			if ($cropWidth == 0 && $cropHeight == 0)
 			{
 				$cropThumb = $jImage->resize($cropMaxWidth, $cropMaxHeight);
+
 			}
 			else
 			{

@@ -27,14 +27,14 @@ class ProfileViewEdit extends ProfileView
 
 		$this->assignRef('user', $user);
 		// use JForm to create standardize 
-		$form =& JForm::getInstance('profileForm', JPATH_ROOT.DS.'components'.DS.'com_profile'.DS.'models'.DS.'forms'.DS.'edit.xml');
+		$form = JForm::getInstance('profileForm', JPATH_ROOT.DS.'components'.DS.'com_profile'.DS.'models'.DS.'forms'.DS.'edit.xml');
 
 		$this->assignRef('profileForm', $form);
-		$this->assignRef('userEmail', $user->get('email'));
-		$this->assignRef('userTimezone', $user->getParam('timezone'));
-		$this->assignRef('userLanguage', $user->getParam('language'));
-		$this->assignRef('userAboutMe', $user->getParam('about_me'));
-		$this->assignRef('isIntegration', JXIntegration::isActiveDirectory($user->getParam('integration')));
+		$this->assign('userEmail', $user->get('email'));
+		$this->assign('userTimezone', $user->getParam('timezone'));
+		$this->assign('userLanguage', $user->getParam('language'));
+		$this->assign('userAboutMe', $user->getParam('about_me'));
+		$this->assign('isIntegration', JXIntegration::isActiveDirectory($user->getParam('integration')));
 
 
 		/* $this->assignRef('timezoneList', $this->getTimezoneList()); */
