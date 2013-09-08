@@ -56,7 +56,7 @@ class AnalyticsTable extends JTable
 
 class JAnalytics 
 {
-	static protected $groupType = array('hour', 'week', 'day', 'month', 'year');
+	static protected $groupType = array('hour', 'day', 'week', 'month', 'year');
 	
 	public static function log($action, $user_id = null, $group_id = 0)
 	{
@@ -75,8 +75,8 @@ class JAnalytics
 		$table->created = $date->toMySQL();
 		$table->year 	= $date->format('Y');
 		$table->month 	= $date->format('n');
-		$table->day 	= $date->format('j');
 		$table->week 	= $date->format('W');
+		$table->day 	= $date->format('j');
 		$table->hour 	= $date->format('G');
 		
 		$table->store();
