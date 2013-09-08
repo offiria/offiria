@@ -22,6 +22,9 @@ defined('_JEXEC') or die;
 		// decide if need to show header line
 		$showHeader = ($count == 0 || ($count > 0 && ($result->section != $this->results[$count-1]->section)));
 		switch (strtolower($result->section)) {
+			case "uncategorised":
+				// @todo: return result for normal article content
+				break;
 			case 'profiles':
 ?>
 	
@@ -62,6 +65,7 @@ defined('_JEXEC') or die;
 				break; // profile case
 			case 'files':
 			default:
+				
 				$user = JXFactory::getUser($result->objectInfo->user_id);
 ?>
 	
