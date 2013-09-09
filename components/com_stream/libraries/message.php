@@ -284,7 +284,7 @@ class StreamMessage
 				$video = JTable::getInstance( 'Video' , 'StreamTable' );
 				if($video->load($videoid)){
 					$html .= '<div class="message-content-video" id="video-'.$videoid.'">
-						<img class="message-content-video-thumbnail interactive" src="https://assets.offiria.com/?url='. urlencode($video->thumb) .'" embed_id="'.$videoid.'"  embed_type="videos"/>
+						<img class="message-content-video-thumbnail interactive" src="'. urlencode($video->thumb) .'" embed_id="'.$videoid.'"  embed_type="videos"/>
 						<span class="video-duration">'. StreamMessage::formatDuration($video->duration).'</span>
 						<div class="message-content-preview-desc">
 							<div class="preview-title">'.JHtmlString::truncate($video->title, 24).'</div>
