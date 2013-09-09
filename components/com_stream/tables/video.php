@@ -75,7 +75,7 @@ class StreamTableVideo extends JTable
 	/**
 	 *
 	 */	 	
-	public function store(){
+	public function store($updateNulls = false){
 		$this->params = $this->_params->toString();
 		
 		return parent::store();
@@ -102,7 +102,7 @@ class StreamTableVideo extends JTable
 	/**
 	 * Delete the files as well
 	 */	 	
-	public function delete(){
+	public function delete($pk = NULL){
 		jimport('joomla.filesystem.file');
 		JFile::delete(JPATH_ROOT.DS.$this->path);
 		
