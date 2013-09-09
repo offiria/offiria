@@ -35,17 +35,17 @@ foreach ($fieldSets as $name => $fieldSet) :
 				$values = json_decode($field->value, true);
 
 				if(!is_array($values) || is_null($values)){
-if ($field->fieldname == 'work_department' && !empty ($depts)) {
-    // if it's department, lets fetch the value
-    foreach ($depts as $dept) { if ($field->value == $dept->id) echo $dept->category; }
-} elseif ($field->fieldname == 'work_position' && !empty ($positions)) {
-    // if it's position, lets fetch the value
-    foreach ($positions as $position) { if ($field->value == $position->id) echo $position->category; }
-} else {
-    // If it's not decoded it means it's not a multiple value field/array
-    echo StreamTemplate::escape($field->value);
-}
-					echo StreamTemplate::escape($field->value);
+					if ($field->fieldname == 'work_department' && !empty ($depts)) {
+					    // if it's department, lets fetch the value
+					    foreach ($depts as $dept) { if ($field->value == $dept->id) echo $dept->category; }
+					} elseif ($field->fieldname == 'work_position' && !empty ($positions)) {
+					    // if it's position, lets fetch the value
+					    foreach ($positions as $position) { if ($field->value == $position->id) echo $position->category; }
+					} else {
+					    // If it's not decoded it means it's not a multiple value field/array
+					    echo StreamTemplate::escape($field->value);
+					}
+					
 				} else {
 
 					echo '<ul>';
