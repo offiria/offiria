@@ -16,6 +16,7 @@
 				<param name="contact_mobilephone_location" type="list">
 					<option value="Work">COM_PROFILE_LABEL_DETAILS_WORK_OPTION</option>
 					<option value="Home">COM_PROFILE_LABEL_DETAILS_HOME_OPTION</option>
+					<option value="Mobile">COM_PROFILE_LABEL_DETAILS_MOBILE_OPTION</option>
 				</param>
 			</field>
 
