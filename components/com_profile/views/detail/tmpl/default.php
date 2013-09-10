@@ -69,7 +69,7 @@ $positions = $category->getByCategory('position');
 				<?php 
 				  // this required fields is validated for filled the getting started task
 				  if ($field->required) {
-				  $requiredFields[] = $field->fieldname;
+				  	$requiredFields[] = $field->fieldname;
 				  }
 				?>
 				<?php endforeach; ?>
