@@ -1,5 +1,8 @@
 <?php
 $my = JXFactory::getUser();
+$category = new StreamCategory();
+$depts = $category->getByCategory('department');
+$positions = $category->getByCategory('position');
 ?>
 <div class="alert alert-info">
 	<?php if($this->user->id == $my->id){ ?>
@@ -21,6 +24,8 @@ foreach ($fieldSets as $name => $fieldSet) :
 	
 		<ul>
 			<?php foreach ($this->form->getFieldset($name) as $id => $field) : ?>
+			<?php $values = json_decode($field->value, true); ?>
+			<?php if (($field->fieldname == 'personal_birthday' && $values[0]['personal_birthday_age_public'] == 'Public') || ($field->fieldname != 'personal_birthday')) : ?>
 			<li>
 				<?php echo '<div class="profile-details-box">'; ?>
 
@@ -29,21 +34,31 @@ foreach ($fieldSets as $name => $fieldSet) :
 				<?php echo '<div class="profile-data">'; ?>
 					
 				<?php
-				$values = json_decode($field->value, true);
+				
 
 				if(!is_array($values) || is_null($values)){
-					// If it's not decoded it means it's not a multiple value field/array
-					echo StreamTemplate::escape($field->value);
+					if ($field->fieldname == 'work_department' && !empty ($depts)) {
+					    	// if it's department, lets fetch the value
+						foreach ($depts as $dept) { if ($field->value == $dept->id) echo $dept->category; }
+					} elseif ($field->fieldname == 'work_position' && !empty ($positions)) {
+						// if it's position, lets fetch the value
+						foreach ($positions as $position) { if ($field->value == $position->id) echo $position->category; }
+					} else {
+						// If it's not decoded it means it's not a multiple value field/array
+						echo StreamTemplate::escape($field->value);
+					}
 				} else {
 
 					echo '<ul>';
 
 					foreach($values as $value){
-
-						echo '<li><div class="profile-arrow">&#8250;</div>';
-
+						if ($field->fieldname != 'personal_birthday') {
+							echo '<li><div class="profile-arrow">&#8250;</div>';
+						} else {
+							echo '<li>';
+						}
 						// Get the last item so we can wrap it with rounded brackets
-						$last_item = end($value);
+						//$last_item = end($value);
 
 						foreach($value as $elementKey=>$elementValue){
 							echo '<div class="' . $elementKey . ' details-' . strtolower(str_replace(' ', '-', $elementValue)) . '">';
@@ -65,6 +80,7 @@ foreach ($fieldSets as $name => $fieldSet) :
 				?>
 
 			</li>
+			<?php endif; ?>
 			<?php endforeach; ?>
 		</ul>
 	</div>
