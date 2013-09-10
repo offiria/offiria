@@ -132,7 +132,7 @@ class JMap
 				<img src="http://maps.google.com/maps/api/staticmap?center=<?php echo urlencode($address); ?>&amp;zoom=2&amp;size=<?php echo $width; ?>x<?php echo $height; ?>&amp;sensor=false&amp;markers=color:red|<?php echo urlencode($address); ?>" style="display: block;">
 			</div>
 			<small class="mapLoc"><span><?php echo $address; ?></span></small>
-			<small class="mapBigger"><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=<?php echo $address; ?>" target="_blank"><?php echo JText::_('View larger map');?></a></small>
+			<small class="mapBigger"><a href="https://www.google.com/maps?t=m&output=classic&q=<?php echo $address; ?>" target="_blank"><?php echo JText::_('View larger map');?></a></small>
 			<div class="clear"></div>
 		</div>
 		<?php
