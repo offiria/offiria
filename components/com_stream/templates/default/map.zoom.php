@@ -29,6 +29,6 @@ $mobile = StreamMobile::isMobile();
 
 <div class="map-details">
 	<small class="map-loc"><span><?php echo $address; ?></span></small>
-	<small class="map-bigger"><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=amp;q=<?php echo $address; ?>" target="_blank"><?php echo JText::_('View larger map');?></a></small>
+	<small class="map-bigger"><a href="https://www.google.com/maps?t=m&output=classic&q=<?php echo $address; ?>" target="_blank"><?php echo JText::_('View larger map');?></a></small>
 	<div class="clear"></div>
 </div>
