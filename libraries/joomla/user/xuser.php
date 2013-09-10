@@ -264,7 +264,7 @@ class JXUser extends JUser
 	 */	 	
 	public function getThumbAvatarURL()
 	{
-		if(empty($this->id) || is_null($this->username)){
+		if(empty($this->id) || is_null($this->username) || $this->username == 'anon'){
 			$avatar = 'images'.DS.'avatar'.DS.$this->_anonAvatarThumb;
 		} else {
 			$avatar = $this->getThumbAvatarPath();
