@@ -1749,13 +1749,16 @@ div.submit {
 .data-grid .profile-data .contact_mobilephone_location,
 .data-grid .profile-data .contact_im_location,
 .data-grid .profile-data .contact_mobilephone_no,
+.data-grid .profile-data .personal_birthday_age_public,
 .data-grid .profile-data .contact_im_type,
+.data-grid .profile-data .personal_birthday_date,
 .data-grid .profile-data .contact_im_content {
   display: block;
   float: left;
   margin-left: 5px;
 }
 .data-grid .profile-data .contact_mobilephone_location,
+.data-grid .profile-data .personal_birthday_age_public,
 .data-grid .profile-data .contact_im_location {
   color: #BBBBBB;
   font-size: 11px;
