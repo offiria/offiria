@@ -16,6 +16,7 @@
 				<param name="contact_mobilephone_location" type="list">
 					<option value="Work">COM_PROFILE_LABEL_DETAILS_WORK_OPTION</option>
 					<option value="Home">COM_PROFILE_LABEL_DETAILS_HOME_OPTION</option>
+					<option value="Mobile">COM_PROFILE_LABEL_DETAILS_MOBILE_OPTION</option>
 				</param>
 			</field>
 
@@ -38,6 +39,14 @@
 			<field name="personal_hobbies" type="text" label="COM_PROFILE_LABEL_DETAILS_INTEREST_HOBBIES" />
 			<field name="personal_relationstatus" type="text" label="COM_PROFILE_LABEL_DETAILS_RELATIONSHIP_STATUS" />
 			<field name="personal_address" type="text" label="COM_PROFILE_LABEL_DETAILS_ADDRESS" />
+
+			<field name="personal_birthday" type="multifield" label="COM_PROFILE_LABEL_DETAILS_BIRTHDAY" multiple="false">
+				<param name="personal_birthday_date" type="text" />
+				<param name="personal_birthday_age_public" type="list">
+					<option value="Hidden">COM_PROFILE_LABEL_DETAILS_BIRTHDAY_HIDDEN_OPTION</option>
+					<option value="Public">COM_PROFILE_LABEL_DETAILS_BIRTHDAY_PUBLIC_OPTION</option>
+				</param>
+			</field>
 		</fieldset>
 		<fieldset name="socialnetwork" description="COM_PROFILE_LABEL_DETAILS_DESCRIPTION_SOCIAL_NETWORK">
 			<field name="socialnetwork_twitter" type="text" label="Twitter" />

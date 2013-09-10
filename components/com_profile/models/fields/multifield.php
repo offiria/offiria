@@ -12,6 +12,8 @@ class JFormFieldMultiField extends JFormField {
 	public function getInput() {
 
 		$this->_multiFieldsId = 'multiTexts_' . $this->id;
+		$showButtons = ((!$this->element['multiple'])?true:false);
+
 		$values = json_decode($this->value, true); // decode data from db
 		$totalRows = 1;
 		$html = $jsInputHtml = array();
@@ -35,7 +37,7 @@ class JFormFieldMultiField extends JFormField {
 				$elementName = $this->name . "[$i][" . $element['name'] . "]"; // name for POST
 				$showRemove = false; // hide remove button
 
-				if($i > 0) {
+				if($i > 0 && $showButtons == true) {
 					$showRemove = true;
 				}
 
@@ -59,7 +61,7 @@ class JFormFieldMultiField extends JFormField {
 				}
 			}
 
-			if($i == 0) {
+			if($i == 0 && $showButtons == true) {
 				$html[] = '<a href="#" id="add"><span>Add</span></a>';
 			}
 
