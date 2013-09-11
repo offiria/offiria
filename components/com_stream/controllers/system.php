@@ -276,7 +276,9 @@ class StreamControllerSystem extends JController
 				if ($jxConfig->isCrocodocsEnabled())
 				{
 					// Preview not ready, query status
-					$http = new JHttp();
+					$options = new JRegistry();
+					$transport = new JHttpTransportCurl($options);
+					$http = new JHttp($options, $transport);
 
 					$response =  $http->get('https://crocodoc.com/api/v2/document/status?token='.$jxConfig->get(JXConfig::CROCODOCS).'&uuids='.$file->getParam('uuid'));
 
@@ -317,7 +319,10 @@ class StreamControllerSystem extends JController
 
 					if( time() > $file->getParam('previewExpiry')) {
 						// File uploaded, try to create session
-						$http = new JHttp();
+						$options = new JRegistry();
+						$transport = new JHttpTransportCurl($options);
+						$http = new JHttp($options, $transport);
+						
 						$response =  $http->post( 'https://crocodoc.com/api/v2/session/create' , array('token' => '$jxConfig->get(JXConfig::CROCODOCS)', 'uuid' => $file->getParam('uuid') ) );
 						//$response =  $http->post( 'https://crocodoc.com/api/v2/session/create' , array('token' => 'Oe8fA1mQ59LSwtBlKy4Nkbvn', 'uuid' => $uuid ) );
 

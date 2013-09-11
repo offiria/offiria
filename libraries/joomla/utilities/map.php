@@ -34,7 +34,10 @@ class JMap
 		
 		$url = JMap::GEOCODE_URL . 'address='.urlencode($address) .'&sensor=false';
 
-		$http = new JHttp();
+		$options = new JRegistry();
+		$transport = new JHttpTransportCurl($options);
+		$http = new JHttp($options, $transport);
+
 		$response =  $http->get( $url );
 		$content = $response->body;
 	
@@ -56,7 +59,6 @@ class JMap
 		
 		$content = JMap::getAddressData($address);
 		$isValid = false;
-		
 		if(!empty($content)){
 			$isValid = $content->status == 'OK';
 		}

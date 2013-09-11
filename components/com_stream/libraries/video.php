@@ -49,7 +49,7 @@ class StreamVideo {
 		return $urls;
 	}
 	
-	public function getType($message){
+	public static function getType($message){
 		preg_match_all('~
 	        # Match non-linked youtube URL in the wild. (Rev:20111012)
 	        https?://         # Required scheme. Either http or https.
@@ -92,7 +92,7 @@ class StreamVideo {
 	/**
 	 * Return video object
 	 */	 	
-	public function getVideo($type)
+	public static function getVideo($type)
 	{
 		StreamFactory::load('libraries.videos.'.$type);
 		$classname = 'StreamVideo'. ucfirst($type);
