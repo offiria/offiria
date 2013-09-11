@@ -23,14 +23,14 @@ class AccountControllerAccount extends JController
 		{
 			$proceedSave	= true;
 			$configHelper	= new JXConfig();
-			$mainframe		= JFactory::getApplication();
+			$mainframe	= JFactory::getApplication();
 			
 			// Set the posted data to update the configuration
 			$postdata = JRequest::getVar('params');
 						
-			$param[JXConfig::TIMEZONE]		= $postdata['timezone'];
-			$param[JXConfig::LANGUAGE]		= $postdata['language'];
-			$param[JXConfig::SITENAME]		= $postdata['sitename'];
+			$param[JXConfig::TIMEZONE]	= $postdata['timezone'];
+			$param[JXConfig::LANGUAGE]	= $postdata['language'];
+			$param[JXConfig::SITENAME]	= $postdata['sitename'];
 			$param[JXConfig::ALLOW_INVITE]	= (isset($postdata['allow_invite'])) ? intval($postdata['allow_invite']) : '0';
 			$param[JXConfig::ALLOW_ANON]	= (isset($postdata['allow_anon'])) ? intval($postdata['allow_anon']) : '0';
 			
@@ -150,10 +150,10 @@ class AccountControllerAccount extends JController
 			$postdata = JRequest::getVar('jform');
 			
 			$param['crocodocs']		= $postdata['crocodocs'];
-			$param['crocodocsenable']= $postdata['crocodocsenable'];
-			$param['scribd_api']	= $postdata['scribd_api'];
-			$param['scribd_secret']	= $postdata['scribd_secret'];
-			$param['scribdenable']	= $postdata['scribdenable'];
+			$param['crocodocsenable']	= $postdata['crocodocsenable'];
+			$param['scribd_api']		= $postdata['scribd_api'];
+			$param['scribd_secret']		= $postdata['scribd_secret'];
+			$param['scribdenable']		= $postdata['scribdenable'];
 			$param['diffbot']		= $postdata['diffbot'];
 			
 			$param['mailer']		= $postdata['mailer'];
@@ -164,7 +164,7 @@ class AccountControllerAccount extends JController
 			$param['smtpuser']		= $postdata['smtpuser'];
 			$param['smtppass']		= $postdata['smtppass'];
 			$param['smtphost']		= $postdata['smtphost'];
-			$param['smtpsecure']	= $postdata['smtpsecure'];
+			$param['smtpsecure']		= $postdata['smtpsecure'];
 			$param['smtpport']		= $postdata['smtpport'];
 			
 			$saveAction = $configHelper->saveConfig($param);
@@ -370,19 +370,22 @@ class AccountControllerAccount extends JController
 			$position = JRequest::getVar('position', NULL);
 
 			// give precedence at the top of form
-			$type = (!empty($department)) ? 'department' : 'position';
-			$category = (!empty($department)) ? $department : $position;
-			if ($table->create($category, $type)) {
-				$mainframe->redirect(JRoute::_('index.php?option=com_account&task=manageDepartment&view=account'), 
-									 JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_SUCCESS_CREATE'));
-			}
-			else {
-				$mainframe->enqueueMessage(JRoute::_('index.php?option=com_account&task=manageDepartment&view=account'), 
-										   JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_ERROR_CREATE'), 'error');
-				if ($c->isExist($category, $position)) {
+			$type = (isset($department)) ? 'department' : 'position';
+			if (trim($department) != '') {
+				$category = (!empty($department)) ? $department : $position;
+				if ($table->create($category, $type)) {
 					$mainframe->redirect(JRoute::_('index.php?option=com_account&task=manageDepartment&view=account'), 
+									 JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_SUCCESS_CREATE'));
+				} else {
+					$mainframe->enqueueMessage(JRoute::_('index.php?option=com_account&task=manageDepartment&view=account'), 
+										   JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_ERROR_CREATE'), 'error');
+					if ($c->isExist($category, $position)) {
+						$mainframe->redirect(JRoute::_('index.php?option=com_account&task=manageDepartment&view=account'), 
 										 JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_ALREADY_EXIST'), 'error');
+					}
 				}
+			} else {
+				$mainframe->enqueueMessage(JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_ERROR_CREATE'), 'error');				
 			}
 		}
 
@@ -473,19 +476,18 @@ class AccountControllerAccount extends JController
 		}
 
 		if ($_POST) {
-			if (JRequest::getVar('blog_category')) { 
+			if (trim(JRequest::getVar('blog_category')) != '') { 
 				$type = 'blog';
 				$category = JRequest::getVar('blog_category');
-			}
-			else if (JRequest::getVar('event_category')) {
+			} else if (trim(JRequest::getVar('event_category')) != '') {
 				$type = 'event';
 				$category = JRequest::getVar('event_category');
-			}
-			else if (JRequest::getVar('group_category')) {
+			} else if (trim(JRequest::getVar('group_category')) != '') {
 				$type = 'group';
 				$category = JRequest::getVar('group_category');
-			}
-			else {
+			} else {
+				$mainframe->enqueueMessage(JText::_('COM_ACCOUNT_LABEL_ERROR_CREATE'), 'error');				
+				parent::display();
 				return false;
 			}
 
