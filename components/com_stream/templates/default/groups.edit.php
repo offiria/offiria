@@ -28,7 +28,7 @@
 			</div>
 			
 			<div class="control-group">
-				<label class="control-label" for="title">Group Description:</label>
+				<label class="control-label" for="title"><?php echo JText::_('COM_STREAM_LABEL_GROUP_DESCRIPTION');?>:</label>
 				
 				<div class="controls">
 					<textarea  style="resize:vertical;" name="description" ><?php echo $group->description; ?></textarea>
@@ -78,7 +78,7 @@
 		</form>
 	</div>
 	<div class="modal-footer">
-		<a class="btn" data-dismiss="modal">Cancel</a>
+		<a class="btn" data-dismiss="modal"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></a>
 		<a href="#" id="groups-edit-save" class="btn btn-primary" name="groups-edit-save"><?php echo JText::_('COM_STREAM_LABEL_SAVE'); ?></a>
 	</div>
 </div>
