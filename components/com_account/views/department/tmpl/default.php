@@ -34,7 +34,7 @@ $positions = $Category->getByCategory('position');
 				<td>
 					<span>
 						<a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment&action=remove&category_id=' . $dept->id);
-						?>" onclick="javascript:return confirm('<?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE_CONFIRMATION'); ?>');"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></a>
+						?>" onclick="javascript:return confirm('<?php echo JText::_('COM_ACCOUNT_LABEL_DEPARTMENT_REMOVE_CONFIRMATION'); ?>');"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></a>
 					</span>
 				</td>
 			</tr>
@@ -64,7 +64,7 @@ $positions = $Category->getByCategory('position');
 				<td>
 					<span>
 						<a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment&action=remove&category_id=' . $pos->id);
-						?>"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></a>
+						?>" onclick="javascript:return confirm('<?php echo JText::_('COM_ACCOUNT_LABEL_POSITION_REMOVE_CONFIRMATION'); ?>');"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></a>
 					</span>
 				</td>
 			</tr>
