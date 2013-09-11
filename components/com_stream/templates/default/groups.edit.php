@@ -61,7 +61,7 @@
 			<?php endif; ?>
 			<div class="control-group last">
 				<div class="controls">
-					<input type="checkbox" name="access" value="1" <?php if($group->access == 1){echo ' checked="checked" '; } ?>>&nbsp;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_PRIVATE_GROUP'); ?>
+					<label for="private_group_checkbox" class="checkbox"><input type="checkbox" name="access" value="1" id="private_group_checkbox" <?php if($group->access == 1){echo ' checked="checked" '; } ?>>&nbsp;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_PRIVATE_GROUP'); ?></label>
 				</div>
 			</div>
 			<!--
