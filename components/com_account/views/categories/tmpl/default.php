@@ -47,7 +47,7 @@ defined('_JEXEC') or die;
 				<td>
 					<span>
 						<a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=categories&action=remove&category=' . $list->id);
-						?>"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></a>
+						?>" onclick="javascript:return confirm('<?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE_CONFIRMATION'); ?>');"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></a>
 					</span>
 				</td>
 			</tr>
