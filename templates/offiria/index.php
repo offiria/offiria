@@ -353,7 +353,7 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 	<!-- Invite -->
 	<div class="container admin-message">
 		<div class="alert alert-warning clearfix">
-			<div class="admin-text pull-left"><?php echo sprintf(JText::_('COM_STREAM_INVITATION_ALERT'), JText::_('CUSTOM_SITE_NAME'));?></div>
+			<div class="admin-text pull-left"><?php echo sprintf(JText::_('COM_STREAM_INVITATION_ALERT'), JText::_('CUSTOM_SITE_NAME'), JText::_('CUSTOM_SITE_NAME'));?></div>
 			<div class="pull-right"><a href="<?php echo JRoute::_('index.php?option=com_account&view=invite'); ?>" class="btn btn-inverse"><?php echo JText::_('COM_STREAM_INVITATION_ALERT_BTN_INVITE');?> &raquo;</a></div>
 		</div>
 	</div>
