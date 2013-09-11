@@ -353,11 +353,8 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 	<!-- Invite -->
 	<div class="container admin-message">
 		<div class="alert alert-warning clearfix">
-			<div class="admin-text pull-left">
-			<strong>Invite your colleagues here!</strong> There is no fun working on <?php echo JText::_('CUSTOM_SITE_NAME');?> alone, you won't be able to properly evaluate what <?php echo JText::_('CUSTOM_SITE_NAME');?> can do for your team if you're all alone here. Invite your colleagues over, all of them. There is no limit to the number of people you can invite. 
-			<span class="small">This message will automatically disappear once there are more than 5 people in your network</span>
-			</div>
-			<div class="pull-right"><a href="<?php echo JRoute::_('index.php?option=com_account&view=invite'); ?>" class="btn btn-inverse">Invite! &raquo;</a></div>
+			<div class="admin-text pull-left"><?php echo sprintf(JText::_('COM_STREAM_INVITATION_ALERT'), JText::_('CUSTOM_SITE_NAME'));?></div>
+			<div class="pull-right"><a href="<?php echo JRoute::_('index.php?option=com_account&view=invite'); ?>" class="btn btn-inverse"><?php echo JText::_('COM_STREAM_INVITATION_ALERT_BTN_INVITE');?> &raquo;</a></div>
 		</div>
 	</div>
 	<?php } ?>
