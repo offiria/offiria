@@ -148,6 +148,26 @@ class DBManager
 		catch (RuntimeException $e)	{
 			return false;
 		}
+		
+
+		// install anon user
+		$alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+		$pass = '';
+	    for ($i = 0; $i < 8; $i++) {
+	        $n = rand(0, count($alphabet)-1);
+	        $pass[$i] = $alphabet[$n];
+	    }
+	    $pass = $pass . ':' . $salt;
+		$query = "INSERT INTO `$table` (id, name, username, email, password, sendEmail,  block, registerDate, lastvisitDate, params) " . 
+			"VALUES(43, 'Anonymous', 'anon', 'anon@anon.com', 1, '$pass', 1, '$date', '$date', '')";
+		try	{
+			$stmt = $db->prepare($query);
+			$stmt->execute();
+		}
+		catch (RuntimeException $e)	{
+			return false;
+		}
+
 		return true;
 	}
 
