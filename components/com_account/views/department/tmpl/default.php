@@ -45,7 +45,7 @@ $positions = $Category->getByCategory('position');
 					<form class="well form-search" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment'); ?>">
 					<label><?php echo JText::_('COM_ACCOUNT_LABEL_ADD_NEW_DEPARTMENT'); ?></label>
 					<input type="text" class="input-medium" id="department_category" name="department">
-						<button class="btn" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
+						<button class="btn btn-primary" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
 					</form>
 				</td>
 			</tr>
@@ -75,7 +75,7 @@ $positions = $Category->getByCategory('position');
 					<form class="well form-search" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment'); ?>">
 					<label><?php echo JText::_('COM_ACCOUNT_LABEL_ADD_NEW_POSITION'); ?></label>
 					<input type="text" class="input-medium" id="position_category" name="position">
-						<button class="btn" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
+						<button class="btn btn-primary" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
 					</form>
 				</td>
 			</tr>

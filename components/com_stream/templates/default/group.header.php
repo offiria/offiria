@@ -5,29 +5,23 @@ $groupTitle = StreamTemplate::escape($docTitle);
 $task = JRequest::getVar('task');
 ?>
 
-<div class="group-page-title clearfix">
-	<div class="group-page-title-inner pull-left">
+<div class="customlist-page-title clearfix">
+	<div class="customlist-page-title-inner pull-left">
+<!--div class="group-page-title clearfix">
+	<div class="group-page-title-inner pull-left">-->
 		<h1><?php echo $groupTitle; ?></h1>
-		
-		<?php if($group->access) : ?>
-			
-			<span class="label label-danger">Private Group</span>
-
-		<?php elseif ($group->archived) : ?>
-			
-			<span class="label">Archived Group</span>
-	
-		<?php else : ?>
-			
-			<span class="label label-info">Public Group</span>
-		
+		 
+		<?php if($group->access) : ?><span class="label label-danger"><?php echo JText::_('COM_STREAM_LABEL_PRIVATE_GROUP');?></span>
+		<?php elseif ($group->archived) : ?><span class="label"><?php echo JText::_('COM_STREAM_LABEL_ARCHIVED_GROUP');?></span>
+		<?php else : ?><span class="label label-info"><?php echo JText::_('COM_STREAM_LABEL_PUBLIC_GROUP');?></span>
 		<?php endif; ?>
-		
 		<div class="clear"></div>
 	</div>
 	
-	<div class="group-module-actions pull-right">
+	<div class="customlist-page-action pull-right">
+	<!--div class="group-module-actions pull-right">-->
 		<form name="group-actions">
+			<div class="btn-group pull-right" id="cl-menu" style="display: block;">
 			<?php if(!$group->isMember($my->id)) { ?>
 				<?php if(!$group->isFollower($my->id)) { ?>
 			<a href="#followGroup" class="btn"><?php echo JText::_('COM_STREAM_LABEL_FOLLOW');?></a>
@@ -41,6 +35,23 @@ $task = JRequest::getVar('task');
 			<a href="#leaveGroup" class="btn btn-warning"><?php echo JText::_('COM_STREAM_LABEL_LEAVE_GROUP');?></a>
 			<?php }  ?>
 			<input type="hidden" name="group_id" value="<?php echo $group->id; ?>"/>
+			
+			<?php if($my->authorise('stream.group.edit', $group)) { ?>			
+				<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="cl"><span class="caret"></span></span></button>
+				<ul class="dropdown-menu">
+					<li><a href="<?php echo JRoute::_('index.php?option=com_stream&view=groups&task=show_members&group_id='.$group->id);?>" class="add-members-group">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_MANAGE_MEMBERS');?></a></li>
+					<li><a href="#editGroup" onclick="S.groups.create(this);return false;" data-group_id="<?php echo $group->id; ?>">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_EDIT_GROUP');?></a></li>
+
+					<?php if($group->archived){ ?>
+					<li><a href="#archiveGroup" onclick="S.groups.unarchive(this);return false;" data-group_id="<?php echo $group->id; ?>">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_REOPEN_GROUP');?></a></li>
+					<?php } else { ?>
+					<li><a href="#archiveGroup" onclick="S.groups.archive(this);return false;" data-group_id="<?php echo $group->id; ?>">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_ARCHIVE_GROUP');?></a></li>
+					<?php } ?>
+
+					<li><a onclick="S.groups.remove(this);return false;"  href="#deleteGroup" data-group_id="<?php echo $group->id; ?>">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_DELETE_GROUP');?></a></li>
+				</ul>
+			</div>			
+			<?php } ?>		
 		</form>
 		<div class="clear"></div>
 	</div>
@@ -55,8 +66,8 @@ $task = JRequest::getVar('task');
 		<li <?php if($task == 'show_milestones') { echo 'class="active"'; } ?>><a href="<?php echo JRoute::_('index.php?option=com_stream&view=groups&task=show_milestones&group_id='.$group->id ); ?>"><?php echo JText::sprintf('COM_STREAM_LABEL_GROUP_NUM_MILESTONES',$group->count('milestone')) ;?></a></li>
 		<li <?php if($task == 'show_files') { echo 'class="active"'; } ?>><a href="<?php echo JRoute::_('index.php?option=com_stream&view=groups&task=show_files&group_id='.$group->id ); ?>"><?php echo JText::sprintf('COM_STREAM_LABEL_GROUP_NUM_FILES',$group->count('file')) ;?></a></li>
 		
-		<?php if($my->authorise('stream.group.edit', $group)) { ?>
-		<li class="group-admin-settings">
+		<?php //if($my->authorise('stream.group.edit', $group)) { ?>
+		<!--li class="group-admin-settings">
 			<div class="btn-group pull-right">
 			<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 			<ul class="dropdown-menu">
@@ -75,8 +86,8 @@ $task = JRequest::getVar('task');
 
 			</ul>
 			</div>
-		</li>
-		<?php } ?>
+		</li-->
+		<?php //} ?>
 	</ul>
 	
 	<?php /* if($show_back){ ?>

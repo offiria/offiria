@@ -384,12 +384,16 @@ class StreamTableStream extends JTable
     	$rawObj = json_decode($this->raw);
     	$properties = $this->getProperties();
     	$rawColumn = @array_diff($src, $properties);
+    	
 		foreach ( $rawColumn as $k => $v)
-		{
+		{ 
 			// Only process fields not in the ignore array.
 			if (!in_array($k, $ignore)) {
+				
 				if (isset($src[$k])) {
 					$rawObj->$k = $src[$k];
+				} else if (is_null($src[$k])) {
+					$rawObj->$k = '';
 				}
 			}
 		}

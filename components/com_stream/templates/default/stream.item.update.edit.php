@@ -46,7 +46,7 @@ $params = json_decode($params);
 			<?php
 			// TODO: place these in a template once we have a consistent html structure/styling between the post box and edit box
 			if($my->isAdmin()) :
-				$pinOptions = array(JText::_('COM_STREAM_LABEL_UNPINNED') => '0', JText::_('COM_STREAM_LABEL_FORADAY') => '1 day', JText::_('COM_STREAM_LABEL_FORAWEEK') => '1 week', JText::_('COM_STREAM_LABEL_FORAWEEK') => '1 month');
+				$pinOptions = array(JText::_('COM_STREAM_LABEL_UNPINNED') => '0', JText::_('COM_STREAM_LABEL_FORADAY') => '1 day', JText::_('COM_STREAM_LABEL_FORAWEEK') => '1 week', JText::_('COM_STREAM_LABEL_FORAMONTH') => '1 month');
 			?>
 			<div class="pinned-message-action">
 				<label><?php echo JText::_('COM_STREAM_LABEL_PINTOTOP'); ?>:</label>

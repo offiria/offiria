@@ -9,8 +9,7 @@ class JFormFieldMultiField extends JFormField {
 
 	private $_multiFieldsId;
 
-	public function getInput() {
-
+	public function getInput($showButtons = true) {
 		$this->_multiFieldsId = 'multiTexts_' . $this->id;
 		$showButtons = ((!$this->element['multiple'])?true:false);
 

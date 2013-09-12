@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_account
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
  */
@@ -28,6 +28,8 @@ class AccountViewIntegration extends AccountView
 		
 		$doc = JFactory::getDocument();
 		$doc->setTitle(JText::_("COM_ACCOUNT_LABEL_THIRD_PARTY_INTEGRATION"));
+		$this->addPathway( JText::_('JXLIB_SETTINGS'), JRoute::_('index.php?option=com_account&view=account'));
+		$this->addPathway(JText::_('COM_ACCOUNT_LABEL_THIRD_PARTY_INTEGRATION'));
 		$this->assignRef('row', $row);
 		
 		parent::display($tpl);

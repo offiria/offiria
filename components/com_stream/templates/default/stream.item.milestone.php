@@ -32,13 +32,13 @@ $milestoneLabel = '';
 switch($milestoneStatus) {
 	case OVERDUE:
 		$milestoneClass = 'overdue';
-		$milestoneDaysText = $milestoneDays . ' days late';
+		$milestoneDaysText = $milestoneDays . ' ' . JText::_('COM_STREAM_LABEL_DAYS_LATE');
 		$milestoneDaysClass = 'day-overdue';
 		$milestoneLabel = 'label-important';
 		break;
 	case INCOMPLETE:
 		$milestoneClass = 'incomplete';
-		$milestoneDaysText = $milestoneDays . ' days left';
+		$milestoneDaysText = $milestoneDays . ' ' . JText::_('COM_STREAM_LABEL_DAYS_LEFT');
 		$milestoneDaysClass = 'day-left';
 		$milestoneLabel = 'label-warning';
 		break;
@@ -78,12 +78,12 @@ switch($milestoneStatus) {
 							<div class="vanity-title">
 								<?php echo StreamMessage::format($stream->message); ?>
 							</div>
-							<div class="progress progress-info progress-striped" milestone="<?php echo $stream->id; ?>">
+							<div class="progress progress-info progress-striped tips" milestone="<?php echo $stream->id; ?>" title="<?php echo $stream->getParam('progress', 0);?>%">
 								<div class="bar" style="width: <?php echo $stream->getParam('progress'); ?>%;"></div>
 							</div>
 							<div class="small">
 								<?php
-								echo 'Due: ' . $startDate->format( JText::_('JXLIB_DATE_SHORT_FORMAT')) . '&nbsp;&#8226;&nbsp;';
+								echo JText::_('COM_STREAM_LABEL_DUE_DATE') . ': ' . $startDate->format( JText::_('JXLIB_DATE_SHORT_FORMAT')) . '&nbsp;&#8226;&nbsp;';
 
 								if($milestoneTaskCount > 0) {
 									echo $milestoneTaskCompletedCount . '/' . $milestoneTaskCount . ' task completed';
@@ -182,7 +182,7 @@ switch($milestoneStatus) {
 						<input type="button" class="topic-add stream-form-topic-add" name="" value="Add Topic" />
 					</div>
 		
-					<a href="javascript:void(0)" class="message-topic-edit topic-edit-change">Edit</a>
+					<a href="javascript:void(0)" class="message-topic-edit topic-edit-change"><?php echo JText::_('COM_STREAM_LABEL_EDIT');?></a>
 		
 					<?php endif; ?>
 				</div>
@@ -222,7 +222,7 @@ switch($milestoneStatus) {
 	if( $my->authorise('stream.message.edit', $stream) ) {
 	?>
 	<div class="message-remove">
-		<a href="javascript:void(0);" class="remove" original-title="Delete">Delete</a>
+		<a href="javascript:void(0);" class="remove" original-title="Delete"><?php echo JText::_('COM_STREAM_LABEL_DELETE');?></a>
 	</div>
 	<?php } ?>
 		

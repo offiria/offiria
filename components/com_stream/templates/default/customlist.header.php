@@ -16,41 +16,40 @@ $task = JRequest::getVar('task');
 			</div>
 
 			<?php else: ?>
-
 			<div class="customlist-filter clearfix" id="cl-view-show" style="display: block">
 				<span><?php echo JText::_('COM_STREAM_LABEL_STREAM_MESSAGES'); ?></span>
 				<?php if(isset($filterArr['group_ids'])): ?>
-				<span class="filtered-item groups">in <strong><?php echo count($filterArr['group_ids']); ?> Group</strong></span>
+				<span class="filtered-item groups"><?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_IN'); ?> <strong><?php echo count($filterArr['group_ids']); ?> <?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_GROUP'); ?></strong></span>
 				<?php endif; ?>
 				<?php if(isset($filterArr['user_ids'])): ?>
-				<span class="filtered-item people">by <strong><?php echo count($filterArr['user_ids']); ?> People</strong></span>
+				<span class="filtered-item people"><?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_BY'); ?> <strong><?php echo count($filterArr['user_ids']); ?> <?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_PEOPLE'); ?></strong></span>
 				<?php endif; ?>
 				<?php if(isset($filterArr['tags'])): ?>
-				<span class="filtered-item tags">with <strong><?php echo count($filterArr['tags']); ?> Tag</strong></span>
+				<span class="filtered-item tags"><?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_WITH'); ?> <strong><?php echo count($filterArr['tags']); ?> <?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_TAG'); ?></strong></span>
 				<?php endif; ?>
 				<?php if(isset($filterArr['create_start'])): ?>
-				<span class="filtered-item tags">from <strong><?php echo StreamTemplate::escape($filterArr['create_start'][0]); ?></strong></span>
+				<span class="filtered-item tags"><?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_FROM'); ?> <strong><?php echo StreamTemplate::escape($filterArr['create_start'][0]); ?></strong></span>
 				<?php endif; ?>
 				<?php if(isset($filterArr['create_end'])): ?>
-				<span class="filtered-item tags">to <strong><?php echo StreamTemplate::escape($filterArr['create_end'][0]); ?></strong></span>
+				<span class="filtered-item tags"><?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_TO'); ?> <strong><?php echo StreamTemplate::escape($filterArr['create_end'][0]); ?></strong></span>
 				<?php endif; ?>
 			</div>
 
 			<?php endif; ?>
 
 			<div class="customlist-filter clearfix" id="cl-view-edit" style="display: none">
-				<div class="cl-text pull-left">Messages</div>
+				<div class="cl-text pull-left"><?php echo JText::_('COM_STREAM_LABEL_STREAM_MESSAGES'); ?></div>
 				<ul class="customlist-list clearfix pull-left">
 					<li class="filter-item groups">
-						<span class="pull-left">in</span>
+						<span class="pull-left"><?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_IN'); ?></span>
 						<div class="btn-group">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<span class="filter-count"><?php echo (isset($filterArr['group_ids'])) ? count($filterArr['group_ids']) : ''; ?></span> Group
+								<span class="filter-count"><?php echo (isset($filterArr['group_ids'])) ? count($filterArr['group_ids']) : ''; ?></span> <?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_GROUP'); ?>
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
 								<li class="cl-search">
-									<input type="text" placeholder="Search Groups" id="tfk-input-groups"/>
+									<input type="text" placeholder="<?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_SEARCH_GROUPS'); ?>" id="tfk-input-groups"/>
 									<input type="hidden" class="cl-selected-input" name="group_ids" />
 								</li>
 								<li class="cl-list-item tfk-selected" style="display: none"></li>
@@ -60,15 +59,15 @@ $task = JRequest::getVar('task');
 					</li>
 
 					<li class="filter-item people">
-						<span class="pull-left">by</span>
+						<span class="pull-left"><?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_BY'); ?></span>
 						<div class="btn-group">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<span class="filter-count"><?php echo (isset($filterArr['user_ids'])) ? count($filterArr['user_ids']) : ''; ?></span> People
+								<span class="filter-count"><?php echo (isset($filterArr['user_ids'])) ? count($filterArr['user_ids']) : ''; ?></span> <?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_PEOPLE'); ?>
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
 								<li class="cl-search">
-									<input type="text" placeholder="Search People" id="tfk-input-people"/>
+									<input type="text" placeholder="<?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_SEARCH_PEOPLE'); ?>" id="tfk-input-people"/>
 									<input type="hidden" class="cl-selected-input" name="user_ids" />
 								</li>
 								<li class="cl-list-item tfk-selected" style="display: none"></li>
@@ -78,15 +77,15 @@ $task = JRequest::getVar('task');
 					</li>
 
 					<li class="filter-item tags">
-						<span class="pull-left">with</span>
+						<span class="pull-left"><?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_WITH'); ?></span>
 						<div class="btn-group">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<span class="filter-count"><?php echo (isset($filterArr['tags'])) ? count($filterArr['tags']) : ''; ?></span> Tag
+								<span class="filter-count"><?php echo (isset($filterArr['tags'])) ? count($filterArr['tags']) : ''; ?></span> <?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_TAG'); ?>
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
 								<li class="cl-search">
-									<input type="text" placeholder="Search Tags" id="tfk-input-tags"/>
+									<input type="text" placeholder="<?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_SEARCH_TAGS'); ?>" id="tfk-input-tags"/>
 									<input type="hidden" class="cl-selected-input" name="tags" />
 								</li>
 								<li class="cl-list-item tfk-selected" style="display: none"></li>
@@ -96,13 +95,13 @@ $task = JRequest::getVar('task');
 					</li>
 
 					<li class="filter-item date">
-						<span class="pull-left">from</span>
-						<input type="text" name="create_start" style="width:80px;" class="hasdatepicker" value="<?php echo (isset($filterArr['create_start'])) ? $filterArr['create_start'][0] : ''; ?>" placeholder="from" id="tfk-input-from"/>
+						<span class="pull-left"><?php //echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_FROM'); ?></span>
+						<input type="text" name="create_start" style="width:80px;" class="hasdatepicker" value="<?php echo (isset($filterArr['create_start'])) ? $filterArr['create_start'][0] : ''; ?>" placeholder="<?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_FROM'); ?>" id="tfk-input-from"/>
 					</li>
-
+					
 					<li class="filter-item tags">
-						<span class="pull-left">to</span>
-						<input type="text" name="create_end" style="width:80px;" class="hasdatepicker" value="<?php echo (isset($filterArr['create_end'])) ? $filterArr['create_end'][0] : ''; ?>" placeholder="To" id="tfk-input-to"/>
+						<span class="pull-left"><?php //echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_TO'); ?></span>
+						<input type="text" name="create_end" style="width:80px;" class="hasdatepicker" value="<?php echo (isset($filterArr['create_end'])) ? $filterArr['create_end'][0] : ''; ?>" placeholder="<?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_TO'); ?>" id="tfk-input-to"/>
 					</li>
 				</ul>
 				<div class="clear"></div>
@@ -113,14 +112,14 @@ $task = JRequest::getVar('task');
 			<div class="btn-group pull-right" id="cl-menu" style="display: block;">
 				<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="cl"><span class="caret"></span></span></button>
 				<ul class="dropdown-menu">
-					<li><a href="#edit">Edit List</a></li>
-					<li><a href="#rename" data-customlist_id="<?php echo $customList->id; ?>">Rename List</a></li>
-					<li><a href="#delete" data-customlist_id="<?php echo $customList->id; ?>">Delete List</a></li>
+					<li><a href="#edit">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_EDIT'); ?></a></li>
+					<li><a href="#rename" data-customlist_id="<?php echo $customList->id; ?>">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_RENAME'); ?></a></li>
+					<li><a href="#delete" data-customlist_id="<?php echo $customList->id; ?>">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_DELETE'); ?></a></li>
 				</ul>
 			</div>
 			<div id="cl-btn-editcancel" style="display: none;">
-				<a class="btn" href="#cancel"><?php echo JText::_('Cancel'); ?></a>
-				<button class="btn btn-primary" type="submit"><?php echo JText::_('Save'); ?></button>
+				<a class="btn" href="#cancel"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></a>
+				<button class="btn btn-primary" type="submit"><?php echo JText::_('COM_STREAM_LABEL_SAVE'); ?></button>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -154,7 +153,7 @@ $(function() {
 
 		var customlist_id = $(this).data('customlist_id');
 
-		if (confirm('Are you sure you want to delete this list?')) {
+		if (confirm('<?php echo JText::_('COM_STREAM_LABEL_CUSTOMLIST_DELETE_CONFIRM'); ?>')) {
 			$.ajax({
 				type:"POST",
 				url:S.path['customlist.delete'],

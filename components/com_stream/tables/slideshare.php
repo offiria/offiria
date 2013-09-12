@@ -85,7 +85,10 @@ class StreamTableSlideshare extends JTable
 		
 		$feedURL = 'http://www.slideshare.net/api/oembed/2?url='. $this->source . '&format=json';
 		
-		$http = new JHttp();
+		$options = new JRegistry();
+		$transport = new JHttpTransportCurl($options);
+		$http = new JHttp($options, $transport);
+
 		$response =  $http->get( $feedURL );
 		$this->response = $response->body;
 		

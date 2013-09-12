@@ -6,7 +6,7 @@ $date = new JDate( $stream->created );
 ?>			
 <li id="message_<?php echo $stream->id; ?>" class="message-item compact-item">
 
-	<span class="label-compact label-milestone">Milestone</span>
+	<span class="label-compact label-milestone"><?php echo JText::_('COM_STREAM_LABEL_MILESTONE');?></span>
 	
 	<div class="message-content-compact milestone-compact">
 		
@@ -14,9 +14,9 @@ $date = new JDate( $stream->created );
 			
 			<span class="meta-title-compact">
 				<?php if ($stream->created == $stream->updated ) { ?>
-				<?php echo StreamTemplate::escape($user->name); ?> created Milestone: 
+				<?php echo StreamTemplate::escape($user->name); ?> <?php echo JText::_('COM_STREAM_LABEL_CREATED_MILESTONE');?>: 
 				<?php } else { ?>
-				Milestone updated - 
+				<?php echo JText::_('COM_STREAM_LABEL_MILESTONE_UPDATED');?> - 
 				<?php } ?>
 				<a href="<?php echo $stream->getUri();; ?>">
 					<?php echo StreamTemplate::escape($stream->message); ?>
@@ -36,10 +36,10 @@ $date = new JDate( $stream->created );
 	
 		<div class="message-meta small" style="display: none;">
 			• <a class="meta-like" href="#<?php echo (!$stream->isLike($my->id))? '' : 'un'; ?>like"><?php echo (!$stream->isLike($my->id)) ? JText::_('COM_STREAM_LIKE_LABEL') : JText::_('COM_STREAM_UNLIKE_LABEL'); ?></a>
-			• <a class="meta-comment" href="#comment">Comment</a>
+			• <a class="meta-comment" href="#comment"><?php echo JText::_('COM_STREAM_LABEL_COMMENT1');?></a>
 			<?php
 			if( $my->authorise('stream.message.edit', $stream) ){ ?>
-				• <a class="meta-edit" href="#edit">Edit</a>
+				• <a class="meta-edit" href="#edit"><?php echo JText::_('COM_STREAM_LABEL_EDIT');?></a>
 				<?php
 			}
 			?>
@@ -55,7 +55,7 @@ $date = new JDate( $stream->created );
 	if( $my->authorise('stream.message.edit', $stream) ) {
 	?>
 	<div class="message-remove">
-		<a href="javascript:void(0);" class="remove" original-title="Delete">Delete</a>
+		<a href="javascript:void(0);" class="remove" original-title="Delete"><?php echo JText::_('COM_STREAM_LABEL_DELETE');?></a>
 	</div>
 	<?php } ?>
 	<div class="clear"></div>

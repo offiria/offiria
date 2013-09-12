@@ -49,7 +49,7 @@ $data = json_decode($stream->raw);
 						$milestone->load($data->milestone);
 						$mDate = new JDate($milestone->start_date);
 						?>
-						Milestone: <a href="<?php echo $milestone->getUri(); ?>"><?php echo StreamTemplate::escape($milestone->message); ?></a>
+						<?php echo JText::_('COM_STREAM_LABEL_MILESTONE');?>: <a href="<?php echo $milestone->getUri(); ?>"><?php echo StreamTemplate::escape($milestone->message); ?></a>
 						- <span class="hint"><?php echo $mDate->format( JText::_('JXLIB_DATE_SHORT_FORMAT')); ?></span>
 					</div>
 					<?php } ?>

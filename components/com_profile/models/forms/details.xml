@@ -39,7 +39,7 @@
 			<field name="personal_hobbies" type="text" label="COM_PROFILE_LABEL_DETAILS_INTEREST_HOBBIES" />
 			<field name="personal_relationstatus" type="text" label="COM_PROFILE_LABEL_DETAILS_RELATIONSHIP_STATUS" />
 			<field name="personal_address" type="text" label="COM_PROFILE_LABEL_DETAILS_ADDRESS" />
-
+			
 			<field name="personal_birthday" type="multifield" label="COM_PROFILE_LABEL_DETAILS_BIRTHDAY" multiple="false">
 				<param name="personal_birthday_date" type="text" />
 				<param name="personal_birthday_age_public" type="list">

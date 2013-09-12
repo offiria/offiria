@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_account
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
  */
@@ -46,6 +46,8 @@ class AccountViewInvite extends AccountView
 		$pendingStat= AccountTableUsersInvite::PENDING;
 		$doc = JFactory::getDocument();
 		$doc->setTitle(JText::_("COM_ACCOUNT_LABEL_INVITE_USERS"));
+		$this->addPathway( JText::_('JXLIB_SETTINGS'), JRoute::_('index.php?option=com_account&view=account'));
+		$this->addPathway(JText::_('COM_ACCOUNT_LABEL_INVITE_USERS'));
 		$this->assignRef('inviteEmail', $inviteEmail);
 		$this->assignRef('pagination', $pagination);
 		$this->assignRef('pendingStat', $pendingStat);
@@ -87,5 +89,54 @@ class AccountViewInvite extends AccountView
 		}
 		
 		return $html;
+	}
+	
+	public function modMembersBirthday() {
+		$html = '';
+		$members = ''; 
+		$i = 0;
+		$birthdaymember = array();
+		$today = getdate();
+
+		$db = JFactory::getDbo();
+		$query = 'SELECT u.username, u.name, ud.value FROM ' . $db->nameQuote('#__users') . ' u' .
+			' LEFT JOIN ' . $db->nameQuote('#__user_details') . ' ud ON ud.user_id = u.id' .
+			' WHERE u.block = 0 AND ud.field = "personal_birthday"';	
+		$db->setQuery($query);
+		$result = $db->loadObjectList();
+		
+		foreach ($result as $key => $value) {
+			// [{"personal_birthday_date":"26.11.1978","personal_birthday_age_public":"Public"}]
+			$data = json_decode($value->value, true);
+			
+			foreach($data as $elementKey=>$elementValue) {
+				// To-do: after the proper format has been applied in profile edit field;
+				$mday = substr($elementValue["personal_birthday_date"],0,2);
+				$month = substr($elementValue["personal_birthday_date"],3,2);
+				if ($elementValue["personal_birthday_age_public"] == 'Public' && $mday == $today['mday'] && $month == $today['mon']) {
+					$birthdaymember[$value->username] = $value->name;
+				}
+			}
+		}
+
+		$numOfMembers = count($birthdaymember);
+		if ($numOfMembers > 0) {
+			foreach ($birthdaymember as $key => $value) {
+				$i++;
+				$members .= '<a href="' . JRoute::_('index.php?option=com_messaging&view=inbox&to=' . $key) . '"><b>' . $value . '</b></a>';
+				if ($i == $numOfMembers) {	// last member, don't add separator
+				} elseif ($i == $numOfMembers - 1) { // last but one member, add 'and' separator	
+					$members .= ' ' . JText::_('COM_ACCOUNT_LABEL_MEMBERS_BIRTHDAY_AND') . ' ';		
+				} else {
+					$members .= ', ';		
+				}
+			}
+
+			ob_start();
+			require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'templates'.DS.'modMembersBirthday.php');
+			$html = ob_get_contents();
+			ob_end_clean();
+		}
+		return $html;;
 	}
 }

@@ -13,7 +13,10 @@ class StreamVideoVimeo{
 		$this->videoId 	= $this->getId();
 		$feedURL = 'http://vimeo.com/api/v2/video/'.$this->videoId.'.json';
 		
-		$http = new JHttp();
+		$options = new JRegistry();
+		$transport = new JHttpTransportCurl($options);
+		$http = new JHttp($options, $transport);
+		
 		$response =  $http->get( $feedURL );
 		$this->responseObj = json_decode($response->body);
 		$this->responseObj = $this->responseObj[0]; // only take the first response

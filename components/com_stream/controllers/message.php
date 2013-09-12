@@ -144,10 +144,14 @@ class StreamControllerMessage extends JController
 				$stream->setParam('loc_valid', 1);
 			}
 			$stream->setParam('hide_map', JRequest::getVar('hide_map', '0'));
+		} else {
+			$rawData = json_decode($stream->raw);
+			$rawData->location = "";
+			$stream->raw = json_encode($rawData);
+			$stream->store();
 		}
-
 		$rawData = json_decode($stream->raw);
-
+		
 		// Pin the stream item to the top and store the message
 		$pinTill = JRequest::getString('pinned', null);
 
@@ -395,6 +399,11 @@ class StreamControllerMessage extends JController
 				$stream->setParam('loc_valid', 1);
 			}
 			$stream->setParam('hide_map', JRequest::getVar('hide_map', '0'));
+		} else {
+			$rawData = json_decode($stream->raw);
+			$rawData->location = "";
+			$stream->raw = json_encode($rawData);
+			$stream->store();
 		}
 		
 		

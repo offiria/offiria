@@ -251,7 +251,7 @@ class StreamMessage
 						<img width="'.$width.'" height="'.$height.'" src="'.$imgSrc.'" />
 						<div>
 						<a href="'.$viewLink.'" target="_blank">View full-size image</a> 
-						â€¢ <a href="'.$dlLink.'">Download</a></div>
+						• <a href="'.$dlLink.'">Download</a></div>
 						</div>';
 					
 					$prevRandId = $randId;

@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_account
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
  */
@@ -38,7 +38,7 @@ $jxConfig = new JXConfig();
 				<input type="text" name="params[domain_name]" value="<?php echo $this->domain_name;?>" id="params_domain_name" readonly<?php //echo ($this->domain_editable) ? '' : 'readonly';?>><span class="domain-name"><?php echo $jxConfig->getDomainSuffix();?></span>
 			</li>
 			<li class="clearfix">
-			  <label class="" for="params_allow_anon" id="params_allow_anon-lbl">Comment Setting</label>			  
+			  <label class="" for="params_allow_anon" id="params_allow_anon-lbl"><?php echo JText::_('COM_ACCOUNT_LABEL_COMMENT_SETTINGS');?></label>			  
 			  <label class="checkbox"><input type="checkbox" value="1" id="params_allow_anon" name="params[allow_anon]" <?php echo (intval($this->allow_anon) == 1) ? 'checked' : '';?> ><?php echo JText::_('COM_ACCOUNT_ALLOW_ANONYMOUS_COMMENT');?></label>	
 			</li>
 		</ul>
@@ -46,13 +46,14 @@ $jxConfig = new JXConfig();
 		<h3 class="section-title"><?php echo JText::_('COM_ACCOUNT_LABEL_REGISTRATION');?></h3>
 		<ul class="account-form">
 			<li class="clearfix">
-			  <label class="" for="params_allow_invite" id="params_allow_invite-lbl">Member Setting</label>			  
+			  <label class="" for="params_allow_invite" id="params_allow_invite-lbl"><?php echo JText::_('COM_ACCOUNT_LABEL_MEMBER_SETTINGS');?></label>			  
 			  <label class="checkbox"><input type="checkbox" value="1" id="params_allow_invite" name="params[allow_invite]" <?php echo (intval($this->allow_invite) == 1) ? 'checked' : '';?> ><?php echo JText::_('COM_ACCOUNT_LABEL_ALLOW_MEMBERS_INVITE');?></label>	
 			</li>
 					
 			<li>
 				<label for="params_limit_email_domain" class="" id="params_limit_email_domain-lbl"><?php echo JText::_('COM_ACCOUNT_LABEL_LIMIT_EMAIL_DOMAIN');?></label>
-				<input type="text" name="params[limit_email_domain]" value="<?php echo $this->limit_email_domain;?>" id="params_limit_email_domain">
+				<input type="text" name="params[limit_email_domain]" value="<?php echo $this->limit_email_domain;?>" id="params_limit_email_domain"><br />
+				<span class=""><?php echo JText::_('COM_ACCOUNT_LABEL_LIMIT_EMAIL_DOMAIN_NOTE');?></span>		
 			</li>	
 		</ul>
 		

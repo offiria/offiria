@@ -45,8 +45,10 @@ class ProfileViewEdit extends ProfileView
 		$document = JFactory::getDocument();
 		$document->addScript(JURI::root().'media/jquery/jquery-1.7.min.js');
 		$document->setTitle(JText::_('COM_PROFILE_LABEL_EDIT_PROFILE'));
-
-	    parent::display($tpl);
+		$this->addPathway( JText::_('NAVIGATOR_LABEL_PROFILE'), JRoute::_('index.php?option=com_profile&view=edit'));
+		$this->addPathway(JText::_('COM_PROFILE_LABEL_EDIT_PROFILE'));
+	    
+		parent::display($tpl);
 	}
 
 }

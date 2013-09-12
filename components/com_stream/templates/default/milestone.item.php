@@ -30,13 +30,13 @@ if (!defined("OVERDUE"))
 	switch($milestoneStatus) {
 		case OVERDUE:
 			$milestoneClass = 'overdue';
-			$milestoneDaysText = $milestoneDays . ' days late';
+			$milestoneDaysText = $milestoneDays . ' ' . JText::_('COM_STREAM_LABEL_DAYS_LATE');
 			$milestoneDaysClass = 'day-overdue';
 			$milestoneLabel = 'label-important';
 			break;
 		case INCOMPLETE:			
 			$milestoneClass = 'incomplete';
-			$milestoneDaysText = $milestoneDays . ' days left';
+			$milestoneDaysText = $milestoneDays . ' ' . JText::_('COM_STREAM_LABEL_DAYS_LEFT');
 			$milestoneDaysClass = 'day-left';
 			$milestoneLabel = 'label-warning';
 			break;
@@ -57,14 +57,14 @@ if (!defined("OVERDUE"))
 				<?php echo $milestoneDays;?>
 			</div>
 			<div class="day-status">
-				days left
+				<?php echo JText::_('COM_STREAM_LABEL_DAYS_LEFT');?>
 			</div>
 			<?php } elseif ($milestoneStatus == OVERDUE) { ?>
 			<div class="day-count">
 				<?php echo $milestoneDays;?>
 			</div>
 			<div class="day-status">
-				days late
+				<?php echo JText::_('COM_STREAM_LABEL_DAYS_LATE');?>
 			</div>
 			<?php } ?>
 		</li>
@@ -76,13 +76,13 @@ if (!defined("OVERDUE"))
 				<span><a href="<?php echo $milestone->getUri();?>"><?php echo StreamMessage::format($milestone->message); ?></a></span>
 			</div>
 			<?php if ($milestoneStatus != COMPLETED) { ?>			
-			<div class="progress progress-info progress-striped" milestone="<?php echo $milestone->id;?>">
+			<div class="progress progress-info progress-striped tips" milestone="<?php echo $milestone->id;?>" title="<?php echo $milestone->getParam('progress', 0);?>%">
 				<div class="bar" style="width: <?php echo $milestone->getParam('progress', 0);?>%;"></div>
 			</div>
 			<?php } ?>
 			<div class="content">
 				<div class="small">
-					<span>Due date: <?php echo $startDate->format( JText::_('JXLIB_DATE_SHORT_FORMAT')); ?></span>
+					<span><?php echo JText::_('COM_STREAM_LABEL_DUE_DATE'); ?>: <?php echo $startDate->format( JText::_('JXLIB_DATE_SHORT_FORMAT')); ?></span>
 				</div>
 				<!-- TASK LIST PLACEHOLDER. REMOVE EVERYTHING IN BETWEEN THIS COMMENT ONCE COMPLETED. -->
 				<?php 
@@ -101,8 +101,8 @@ if (!defined("OVERDUE"))
 					<!--button class="btn btn-mini editMilestone">Edit</button-->
 					<button data-toggle="dropdown" class="btn btn-mini dropdown-toggle"><span class="caret"></span></button>
 					<ul class="dropdown-menu message-meta pull-right">
-						<li><a href="#edit"  data-type="list">Edit</a></li>
-						<li><a href="#deleteMilestone">Delete</a></li>
+						<li><a href="#edit"  data-type="list">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_EDIT');?></a></li>
+						<li><a href="#deleteMilestone">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_DELETE');?></a></li>
 					</ul>
 				</div>
 			</div>

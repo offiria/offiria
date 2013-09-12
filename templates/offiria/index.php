@@ -418,9 +418,10 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 								    <a class="dropdown-toggler" data-toggle="dropdown" href="#"><?php echo JText::_('COM_PROFILE_LABEL_PROFILE_SETTINGS');?><span class="caret"></span></a>
 									
 								    <ul class="dropdown-menu">
-								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit'); ?>"><?php echo JText::_('COM_PROFILE_LABEL_EDIT_PROFILE');?></a></li>
-								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=changeAvatar'); ?>"><?php echo JText::_('COM_PROFILE_LABEL_PROFILE_AVATAR');?></a></li>
-								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=notification'); ?>"><?php echo JText::_('COM_PROFILE_LABEL_NOTIFICATION');?></a></li>
+								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit'); ?>">&raquo;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_EDIT_PROFILE');?></a></li>
+									  <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=details'); ?>">&raquo;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_EDIT_DETAILS');?></a></li>
+								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=changeAvatar'); ?>">&raquo;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_PROFILE_AVATAR');?></a></li>
+								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=notification'); ?>">&raquo;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_NOTIFICATION');?></a></li>
 								    </ul>
 								</div>
 							</div>
@@ -498,7 +499,7 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 									endforeach;
 								else:
 								?>
-									<div class="alert alert-info" style="margin-bottom: 8px;">You can personalize your stream messages by creating a custom list. <a href="#" onclick="S.customlist.create(this);return false;">Click here to create yours</a>.</div>
+									<div class="alert alert-info" style="margin-bottom: 8px;"><?php echo JText::_('COM_STREAM_LABEL_STREAM_INFO');?> <a href="#" onclick="S.customlist.create(this);return false;"><?php echo JText::_('COM_STREAM_LABEL_STREAM_CREATE');?></a>.</div>
 								<?php
 								endif;
 								?>
@@ -724,21 +725,19 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 								<input type="submit">
 								<div class="clear"></div>
 							</form>
-						</div>
+						</div>		
 						<div id="<?php if (($view == 'groups' && preg_match("/^show(_.+)?$/", $task) && $group_id > 0) || $view == 'customlist'): ?>group-pages<?php endif; ?>" class="sidebar-right-inner blocks">
 						
 							<?php
 							// Add guest invite right module
 							$accountView = AccountFactory::getView('invite');
 							JXModule::addBuffer('right', $accountView->modMemberInvite());
-		
+							JXModule::addBuffer('right', $accountView->modMembersBirthday());
+							
 							$buffer =& JXModule::getBuffer('right');
-
-							foreach($buffer as $buff)
-							{
+							foreach($buffer as $buff) {
 								echo $buff;
 							}
-
 							?>
 							<?php /* if($option == 'com_stream' && $view == 'company') { ?>
 							<img src="<?php echo JURI::root().'components/com_stream/assets/images/hot_topics.png'; ?>" />

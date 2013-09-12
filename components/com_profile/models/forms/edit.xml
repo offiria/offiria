@@ -19,7 +19,7 @@
 				<option value="bm-MY">Bahasa Melayu (Malaysia)</option>
 				<option value="es-ES">Spanish (Spain)</option>
 				<option value="de-DE">Deutsch (German)</option>
-				<option value="et-EE">Eesti (Estonian)</option>				
+				<option value="et-EE">Eesti (Estonian)</option>
 			</field>
 			
 			<field name="about_me" id="about me" type="textarea" label="COM_PEOPLE_LABEL_ABOUT_ME" class="vertical" required="true">

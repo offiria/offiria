@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_administrator
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
  */
@@ -20,6 +20,8 @@ class ProfileViewApplications extends ProfileView
 	{	     
 		$document = JFactory::getDocument();
 		$document->setTitle(JText::_('COM_PROFILE_LABEL_APPLICATIONS'));
+		$this->addPathway( JText::_('NAVIGATOR_LABEL_PROFILE'), JRoute::_('index.php?option=com_profile&view=edit'));
+		$this->addPathway(JText::_('COM_PROFILE_LABEL_APPLICATIONS'));
 		
 		$apps = new Applications();
 		// contains the user object
@@ -29,6 +31,7 @@ class ProfileViewApplications extends ProfileView
 		}
 
 		$this->assignRef('userDevices', $rows);
+		
 		parent::display($tpl);
 	}
 }

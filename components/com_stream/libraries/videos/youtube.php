@@ -14,7 +14,10 @@ class StreamVideoYoutube{
 		$this->videoId 	= $this->getId();
 		$feedURL = 'http://gdata.youtube.com/feeds/api/videos/' . $this->videoId;
 		
-		$http = new JHttp();
+		$options = new JRegistry();
+		$transport = new JHttpTransportCurl($options);
+		$http = new JHttp($options, $transport);
+		
 		$response =  $http->get( $feedURL );
 		$this->xmlContent = $response->body;
 		

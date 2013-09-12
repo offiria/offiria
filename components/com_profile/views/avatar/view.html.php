@@ -29,6 +29,8 @@ class ProfileViewAvatar extends ProfileView
 		$this->assignRef('user', $user);
 
 		$document->setTitle(JText::_('COM_PROFILE_LABEL_PROFILE_AVATAR'));
+		$this->addPathway( JText::_('NAVIGATOR_LABEL_PROFILE'), JRoute::_('index.php?option=com_profile&view=edit'));
+		$this->addPathway(JText::_('COM_PROFILE_LABEL_PROFILE_AVATAR'));
 
 		parent::display($tpl);
 	}

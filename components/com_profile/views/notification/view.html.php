@@ -30,7 +30,9 @@ class ProfileViewNotification extends ProfileView
 		
 		$this->assignRef('notification', $notification);
 		$document->setTitle(JText::_('COM_PROFILE_LABEL_NOTIFICATION'));
-
+		$this->addPathway( JText::_('NAVIGATOR_LABEL_PROFILE'), JRoute::_('index.php?option=com_profile&view=edit'));
+		$this->addPathway(JText::_('COM_PROFILE_LABEL_NOTIFICATION'));
+		
 		parent::display($tpl);
 	}
 }

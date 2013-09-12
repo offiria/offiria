@@ -23,14 +23,14 @@ class AccountControllerAccount extends JController
 		{
 			$proceedSave	= true;
 			$configHelper	= new JXConfig();
-			$mainframe	= JFactory::getApplication();
+			$mainframe		= JFactory::getApplication();
 			
 			// Set the posted data to update the configuration
 			$postdata = JRequest::getVar('params');
 						
-			$param[JXConfig::TIMEZONE]	= $postdata['timezone'];
-			$param[JXConfig::LANGUAGE]	= $postdata['language'];
-			$param[JXConfig::SITENAME]	= $postdata['sitename'];
+			$param[JXConfig::TIMEZONE]		= $postdata['timezone'];
+			$param[JXConfig::LANGUAGE]		= $postdata['language'];
+			$param[JXConfig::SITENAME]		= $postdata['sitename'];
 			$param[JXConfig::ALLOW_INVITE]	= (isset($postdata['allow_invite'])) ? intval($postdata['allow_invite']) : '0';
 			$param[JXConfig::ALLOW_ANON]	= (isset($postdata['allow_anon'])) ? intval($postdata['allow_anon']) : '0';
 			
@@ -152,8 +152,8 @@ class AccountControllerAccount extends JController
 			$param['crocodocs']		= $postdata['crocodocs'];
 			$param['crocodocsenable']	= $postdata['crocodocsenable'];
 			$param['scribd_api']		= $postdata['scribd_api'];
-			$param['scribd_secret']		= $postdata['scribd_secret'];
-			$param['scribdenable']		= $postdata['scribdenable'];
+			$param['scribd_secret']	= $postdata['scribd_secret'];
+			$param['scribdenable']	= $postdata['scribdenable'];
 			$param['diffbot']		= $postdata['diffbot'];
 			
 			$param['mailer']		= $postdata['mailer'];
