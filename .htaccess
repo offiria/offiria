@@ -17,6 +17,7 @@
 
 ## Can be commented out if causes errors, see notes above.
 Options +FollowSymLinks
+Options -Indexes
 
 ## Mod_rewrite in use.
 
