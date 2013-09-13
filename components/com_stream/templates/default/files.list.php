@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package		JomSocial
  * @subpackage	Core 
@@ -8,18 +7,14 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-function getStreamMessage($streamTbl, &$streamMsg, $stream_id)
-{
-	if (!array_key_exists($stream_id, $streamMsg))
-	{
+function getStreamMessage($streamTbl, &$streamMsg, $stream_id) {
+	if (!array_key_exists($stream_id, $streamMsg)) {
 		$streamTbl->load($stream_id);
 		$streamMsg[$stream_id] = $streamTbl;
 	}
-	
 	return $streamMsg[$stream_id];
 }
 ?>
-
 <link rel="stylesheet" href="<?php echo JURI::root();?>media/uploader/fileuploader.css" type="text/css" />
 <script src="<?php echo JURI::root();?>media/uploader/fileuploader.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -101,8 +96,6 @@ function getStreamMessage($streamTbl, &$streamMsg, $stream_id)
 				}
 			});
 			
-			
-
 			/* bind action to edit action to rename/replace attachment */
 			$('div.file-action a[href="#replaceFile"]').live('click', function (e) {	
 				e.preventDefault();
@@ -121,7 +114,7 @@ function getStreamMessage($streamTbl, &$streamMsg, $stream_id)
 					fileReplace.createReplaceUploader();
 				}
 			});
-			
+		
 			$('input.replace-file-control').live('click', function() {
 				var container = $('div#file-upload-container');
 				container.modal('hide');
@@ -163,7 +156,7 @@ $(document).ready(function() {
 		$arrFilename = explode('.', $row->filename);
 		$extension = strtolower(array_pop($arrFilename));
 		$fullFilename = implode('.', $arrFilename);
-	?>
+		?>
 		<li id="file_item_<?php echo $row->id;?>">
 			<div class="file-list-avatar">
 				<img src="<?php echo $user->getThumbAvatarURL(); ?>" title="<?php echo $user->name;?>" />
@@ -192,36 +185,31 @@ $(document).ready(function() {
 								}
 							}
 							?>
-							(<?php echo StreamMessage::formatBytes($row->filesize); ?>)
+							(<?php echo StreamMessage::formatBytes($row->filesize); ?> | <?php echo $date->format(JText::_('JXLIB_DATE_SHORT_FORMAT')); ?>)
 						</span>
+						<? if ($streamObj->message != "") { ?>
 						<div class="file-list-meta-content">
 							<div class="file-list-meta-inner">
-								<span>Attached in:</span>
+								<span><?php echo JText::_('COM_STREAM_LABEL_FILE_ATTACHED_IN'); ?>:</span>
 								<a href="<?php echo $streamObj->getUri();?>"><?php echo StreamTemplate::escape(JHtmlString::truncate($streamObj->message, 200));?></a>
 							</div>
 							<span class="uploader"><a href="<?php echo $user->getURL();?>" class="actor-link"><?php echo $this->escape($user->name); ?></a></span>
 						</div>
-					</div>
-					
-					<?php /*
-					<div class="file-count">
-						<?php echo JXUtility::csvCount($row->followers); ?>
-						<?php echo $date->format(JText::_('JXLIB_DATE_SHORT_FORMAT')); ?>
-					</div>
-					*/ ?>
-					
+						
+						<? } ?>
+					</div>		
 					<div class="clear"></div>
 				</div>
 				
 				<div class="file-action">
 					<div class="btn-group">
-						<button class="btn btn-mini download-file" data-dl_loc="<?php echo JRoute::_('index.php?option=com_stream&view=system&task=download&file_id='.$row->id); ?>">Download</button>
+						<button class="btn btn-mini download-file" data-dl_loc="<?php echo JRoute::_('index.php?option=com_stream&view=system&task=download&file_id='.$row->id); ?>"><?php echo JText::_('COM_STREAM_LABEL_FILE_DOWNLOAD'); ?></button>
 						<?php if ($my->authorise('stream.file.edit', $row)) {?>
 						<button data-toggle="dropdown" class="btn btn-mini dropdown-toggle"><span class="caret"></span></button>
 						<ul class="dropdown-menu" data-file_id="<?php echo $row->id;?>">
-							<li><a href="#editFile">Edit</a></li>
-							<li><a href="#replaceFile">Replace</a></li>
-							<li><a href="#deleteFile">Delete</a></li>
+							<li><a href="#editFile">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_FILE_EDIT'); ?></a></li>
+							<li><a href="#replaceFile">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_FILE_REPLACE'); ?></a></li>
+							<li><a href="#deleteFile">&raquo;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_FILE_DELETE'); ?></a></li>
 						</ul>
 						<?php } ?>
 					</div>
@@ -235,9 +223,7 @@ $(document).ready(function() {
 	<?php } ?>
 </ul>
 
-<?php 
-if (count($files) == 0)
-{?>
+<?php if (count($files) == 0) {?>
 <div class="alert-message block-message info alert-empty-stream">   
 	<p><?php echo JText::_('COM_STREAM_NO_FILE');?></p>        
 </div>
@@ -246,19 +232,19 @@ if (count($files) == 0)
 <div class="modal" id="file-upload-container" style="display:none;">	
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
-		<h3>Edit File</h3>
+		<h3><?php echo JText::_('COM_STREAM_LABEL_FILE_EDIT_FILE');?></h3>
 		<div class="error_msg"></div>
 	</div>
 	<div class="modal-body">	
 		<form method="post" class="edit" id="file-replace-form" action="<?php echo JRoute::_("index.php?option=com_stream&view=files");?>" enctype="multipart/form-data">
 			<ul>
 				<li class="edit-file-control">
-					<label for="new_name" id="new_name-lbl">Rename to:</label>
+					<label for="new_name" id="new_name-lbl"><?php echo JText::_('COM_STREAM_LABEL_FILE_RENAME_TO');?>:</label>
 					<input type="text" name="new_name" id="new_name" />
 					<span class="file-extension"></span>
 				</li>
 				<li class="replace-file-control">
-					<label for="upload-file" id="upload-file-lbl">Replace with:</label>
+					<label for="upload-file" id="upload-file-lbl"><?php echo JText::_('COM_STREAM_LABEL_FILE_REPLACE_WITH');?>:</label>
 					<div id="file-replace-item">
 						<noscript>
 							<p>Please enable JavaScript to use file uploader.</p>
@@ -272,8 +258,9 @@ if (count($files) == 0)
 		</form>
 	</div>
 	<div class="modal-footer">
+		<a class="btn" data-dismiss="modal"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></a>
 		<input type="button" class="btn btn-primary edit-file-control" value="<?php echo JText::_('COM_STREAM_LABEL_SAVE');?>" />
-		<input type="button" class="btn btn-primary replace-file-control" value="<?php echo JText::_('COM_STREAM_LABEL_DONE');?>" />
+		<input type="button" class="btn btn-primary replace-file-control" value="<?php echo JText::_('COM_STREAM_LABEL_REPLACE');?>" />
 	</div>
 </div>
 

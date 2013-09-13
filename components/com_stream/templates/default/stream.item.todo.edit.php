@@ -12,8 +12,9 @@ $files = $stream->getFiles();
 	
 	<div class="stream-post-todo-list">
 		<ul>
-	<?php
+		<?php
 	  	$data = json_decode($stream->raw);
+		$date = new JDate($stream->end_date);
 	  	$todoIndex = 0;
 	  	$states = array();
 	  	$doneBy = array();
@@ -45,48 +46,54 @@ $files = $stream->getFiles();
 			}
 			
 		}
-	  ?>
+		?>
 	  	<li>
 			<input class="" type="text" value="" placeholder="<?php echo JText::_('COM_STREAM_DEFAULT_LABEL_TYPE_TODO_AND_ENTER');?>" name="todo[]" autocomplete="off">
 			<span><a href="#deleteTodo"><?php echo JText::_('COM_STREAM_LABEL_DELETE');?></a></span>
 		</li>
 		</ul>
-	
 	</div>
 	
 	<div class="stream-post-details">
 		<!--input type="text" autocomplete="off" class="person" name="location" placeholder="<?php //echo JText::_('COM_STREAM_DEFAULT_LABEL_WHO_INCHARGE');?>"-->
-		<input type="text" autocomplete="off" class="start-date" name="end_date" placeholder="<?php echo JText::_('COM_STREAM_DEFAULT_LABEL_DUE');?>" value="<?php echo substr($stream->end_date, 0, 10); ?>">
+		<input type="text" autocomplete="off" class="start-date" name="end_date" placeholder="<?php echo JText::_('COM_STREAM_DEFAULT_LABEL_DUE');?>" value="<?php echo $date->format(JText::_('JXLIB_DATE_FORMAT_EVENT')); ?>">
 		<div class="clear"></div>
 	</div>
 	
 	<div class="stream-post-details-select">
-	
 		<?php
-			$group_id = $stream->group_id;
-			$streamModel = StreamFactory::getModel('stream');
-			$milestones = $streamModel->getStream(array('type' => 'milestone', 'group_id'=> $group_id ));
+		$group_id = $stream->group_id;
+		$streamModel = StreamFactory::getModel('stream');
+		$milestones = $streamModel->getStream(array('type' => 'milestone', 'group_id'=> $group_id ));
 		?>
-	
-		<label>Milestone:</label>
+		<label><?php echo JText::_('COM_STREAM_LABEL_MILESTONE');?>:</label>
 		<select name="milestone">
-			<option value="">None</option>
+			<option value=""><?php echo JText::_('COM_STREAM_LABEL_TODO_NONE');?></option>
 			<?php
-			foreach( $milestones as $mstone ){
+			foreach($milestones as $mstone){
 				$selected = ($mstone->id == $data->milestone) ? ' selected="selected" ' : ''; 
 			?> 
 			<option <?php echo $selected; ?> value="<?php echo $mstone->id; ?>"><?php echo $mstone->message; ?></option>
 			<?php } ?>
 		</select>
-
 	</div>
+	<div class="clear"></div>
 	
-	<div class="stream-post-details-select stream-posted">
+	<?php include('stream.item.common.uploader.php'); ?>
+	
+	<input type="hidden" name="type" value="<?php echo $stream->type; ?>" />
+	<input type="hidden" name="states" value="<?php echo implode(',', $states); ?>" />
+	<input type="hidden" name="done_by" value="<?php echo implode(',', $doneBy); ?>" />
+	<input type="hidden" name="done_on" value="<?php echo implode(',', $doneOn); ?>" />		
+	<input type="hidden" name="message_id" value="<?php echo $stream->id; ?>" />
+	
+	<div class="form-actions">
+		<div class="pinned-message-action">
 		<label>
 			<?php echo JText::_('COM_STREAM_LABEL_MESSAGE_GROUP_EDIT'); ?> 
 		</label>
 		<select name="group_id">
-			<option value="0">Public</option>
+			<option value="0"><? echo JText::_('COM_STREAM_LABEL_PUBLIC'); ?></option>
 			<?php
 			$my = JXFactory::getUser();
 			$groups = $my->getParam('groups_member');
@@ -101,24 +108,10 @@ $files = $stream->getFiles();
 				}
 			}
 			?>
-	</select>
-	</div>
-	
-	<div class="clear"></div>
-	
-	<?php include('stream.item.common.uploader.php'); ?>
-	
-	<input type="hidden" name="type" value="<?php echo $stream->type; ?>" />
-	<input type="hidden" name="states" value="<?php echo implode(',', $states); ?>" />
-	<input type="hidden" name="done_by" value="<?php echo implode(',', $doneBy); ?>" />
-	<input type="hidden" name="done_on" value="<?php echo implode(',', $doneOn); ?>" />		
-	<input type="hidden" name="message_id" value="<?php echo $stream->id; ?>" />
-	
-	<div class="form-actions">
-      <button class="btn btn-primary" type="submit" name="message-edit-save">Save changes</button>
-      <button class="btn" type="reset" name="message-edit-cancel">Cancel</button>
+		</select>
+		</div>
+		<button class="btn" type="reset" name="message-edit-cancel"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></button>
+		<button class="btn btn-info submit" type="submit" name="message-edit-save"><?php echo JText::_('COM_STREAM_LABEL_SAVE_CHANGES'); ?></button>
     </div>
-    
 </form>
-
 </div>

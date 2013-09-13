@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_People
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
  */
@@ -27,6 +27,7 @@ class PeopleViewMembers extends JView
 		
 		/* action form submitted */
 		$action = explode('_',JRequest::getVar('action')); //check if there is any user_id to modify
+		$lview 	= JRequest::getVar('lview');
 		
 		if(isset($action[1]) && $action[1] != ''){
 			$saved = $this->_save( $action );
@@ -35,7 +36,7 @@ class PeopleViewMembers extends JView
 			// We have to do 1 redirect to make sure the template is applied
 			//$app->redirect($_SERVER['REQUEST_URI']);
 			$mainframe = JFactory::getApplication();
-			$mainframe->redirect(JRoute::_('index.php?option=com_people&view=members'), JText::_('COM_PEOPLE_USERGROUP_CHANGED'));
+			$mainframe->redirect(JRoute::_('index.php?option=com_people&view=members&lview='.$lview), JText::_('COM_PEOPLE_USERGROUP_CHANGED'));
 		}
 
 		// alphabet filtering
@@ -67,8 +68,9 @@ class PeopleViewMembers extends JView
 		// pagination
 		$pagination = $userModel->getPagination();
 		$this->assignRef( 'pagination', $pagination );
-
-        parent::display($tpl);
+		$this->addPathway(JText::_('COM_PEOPLE_LABEL_YOUR_MEMBERS'));
+        
+		parent::display($tpl);
 	}
 	
 	/*
@@ -100,5 +102,18 @@ class PeopleViewMembers extends JView
 				break;
 		}
 	}
-	
+
+	public function addPathway($text, $link = '')
+	{
+		// Set pathways
+		$mainframe = JFactory::getApplication();
+		$pathway = $mainframe->getPathway();
+
+		$pathwayNames = $pathway->getPathwayNames();
+
+		// Test for duplicates before adding the pathway
+		if (!in_array($text, $pathwayNames)) {
+			$pathway->addItem($text, $link);
+		}
+	}	
 }

@@ -196,7 +196,7 @@ class StreamModelGroups {
 		}
 		
 		// Category
-		if( isset( $filter['category_id']))
+		if( isset( $filter['category_id']) && $filter['category_id'] != NULL)
 		{ 
 			$where[] = $db->nameQuote('category_id') ."=". $db->Quote($filter['category_id']);
 			

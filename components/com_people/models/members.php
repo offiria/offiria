@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_People
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
  */
@@ -83,17 +83,11 @@ class PeopleModelMembers extends JModel
 			 * The department and position are stored inside details table which explains the hassle to compare them
 			 */
 			// this only runs if both argument is supplied as inner join is needed
-			if (JRequest::getVar('department_id', false) && JRequest::getVar('position_id', false)) {
-				$positionId = JRequest::getVar('position_id');
-				$departmentId = JRequest::getVar('department_id');
-				$q = "SELECT t1.user_id " .
-					"FROM #__user_details as t1 " .
-					"JOIN #__user_details as t2 " .
-					"ON t1.user_id = t2.user_id " .
-					"WHERE t1.field='work_department' " .
-					"AND t1.value='$departmentId' " .
-					"AND t2.field='work_position' " .
-					"AND t2.value='$positionId'; ";
+			$positionId = JRequest::getVar('position_id', false);
+			$departmentId = JRequest::getVar('department_id', false);
+			if ($departmentId && $positionId) {
+				$q = "SELECT t1.user_id FROM #__user_details as t1 JOIN #__user_details as t2 ON t1.user_id = t2.user_id " .
+					"WHERE t1.field='work_department' AND t1.value='$departmentId' AND t2.field='work_position' AND t2.value='$positionId'; ";
 				// be safe and run from within condition
 				$db->setQuery( $q );
 				$userIdAfterFilter = $db->loadColumn();
@@ -101,11 +95,11 @@ class PeopleModelMembers extends JModel
 			// whereas only normal query is needed to accomplish either one
 			else {
 				try {
-					if (JRequest::getVar('position_id') != NULL) {
+					if ($positionId) {
 						$q = "SELECT user_id FROM #__user_details WHERE " .
 							"field='work_position' AND value='".JRequest::getVar('position_id')."';";
 					}
-					if (JRequest::getVar('department_id', NULL) != NULL) { 
+					if ($departmentId) { 
 						$q = "SELECT user_id FROM #__user_details WHERE " . 
 							"field='work_department' AND value='".JRequest::getVar('department_id')."';";
 					}
@@ -120,7 +114,8 @@ class PeopleModelMembers extends JModel
 				}
 			}
 
-			$where = $this->_buildFilterConditions($filter);
+			// NB! We're not showing anonymous (system) user in the members list!
+			$where = "u.username <> 'anon' AND " . $this->_buildFilterConditions($filter);
 			$query	=  'SELECT u.id
 						FROM ' . $db->nameQuote( '#__users' ) . ' AS u
 						WHERE '. $where;

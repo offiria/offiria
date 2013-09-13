@@ -4149,6 +4149,7 @@ ul.members-menu li a:hover {
 #file-listing.list .file-list-meta .file-list-meta-content .file-list-meta-inner,
 #file-listing.grid .file-list-meta .file-list-meta-content .file-list-meta-inner {
   margin-bottom: 3px;
+  font-size: 11px;
 }
 #file-listing.grid {
   margin: 10px 0 0 -20px;

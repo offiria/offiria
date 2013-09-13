@@ -10,7 +10,7 @@
 		<!--CSSHACK-->
 		<div class="milestone-task-title">
 			<a href="<?php echo $task->getUri(); ?>"><?php echo StreamTemplate::escape($task->message); ?></a>
-			<span>&nbsp;&#8226;&nbsp;<a href="#toggleTasks">View all tasks</a></span>
+			<span>&nbsp;&#8226;&nbsp;<a href="#toggleTasks"><?php echo JText::_('COM_STREAM_LABEL_VIEW_ALL_TASKS'); ?></a></span>
 		</div>
 		<ul class="todolist noBorder" id="todo-list-<?php echo $task->id;?>">
 			<?php

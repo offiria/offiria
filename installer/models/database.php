@@ -158,7 +158,7 @@ class DBManager
 	    }
 	    $pass = $pass . ':' . $salt;
 		$query = "INSERT INTO `$table` (id, name, username, email, password, sendEmail,  block, registerDate, lastvisitDate, params) " . 
-			"VALUES(43, 'Anonymous', 'anon', 'anon@anon.com', 1, '$pass', 1, '$date', '$date', '')";
+			"VALUES(43, 'Anonymous', 'anon', 'anon@anon.com', '$pass', 1, 1, '$date', '$date', '')";
 		try	{
 			$stmt = $db->prepare($query);
 			$stmt->execute();

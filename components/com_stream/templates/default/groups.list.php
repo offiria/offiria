@@ -100,16 +100,9 @@
 
 <div class="blue-button">
 	<a class="btn btn-info" href="#createGroup" onclick="S.groups.create(this);return false;">
-		<i class="icon-plus icon-white"></i>New Group
+		<i class="icon-plus icon-white"></i><?php echo JText::_('COM_STREAM_LABEL_GROUP_NEW_GROUP'); ?>
 	</a>
 </div>
-
-<!--<div class="blue-button">
-	<form name="group-actions">
-		<a class="btn btn-info" onclick="S.groups.create(this);return false;" href="#createGroup"><?php /*echo JText::_('COM_STREAM_LABEL_CREATE_A_GROUP');*/?></a>
-	</form>
-</div>-->
-
 <?php 
 	$i			= 1; 
 	$my			= JXFactory::getUser();
@@ -122,12 +115,11 @@
 		$categoryName = $Category->getCategoryName($group->category_id);
 		// set default group name
 		$categoryName = ($categoryName) ? $categoryName : JText::_('COM_STREAM_LABEL_GROUP_DEFAULT_NAME');
-		$isFilteredByCategory = (JRequest::getVar('filter') == 'category');
-
-?>
+		$isFilteredByCategory = (JRequest::getVar('filter') == 'category' && JRequest::getVar('category_id') != NULL);
+		?>
 
 <div class="group-list">
-	
+
 	<div class="config-list-option">
 		<span class="toggle"><?php echo JText::_('COM_STREAM_LABEL_TOGGLE');?></span>
 		<ul class="list-option" style="display:none;">
@@ -138,25 +130,38 @@
 	</div>
 
 	<div class="group-list-title">
-		<?php if (!$isFilteredByCategory): ?>
-		<?php if ($Category->getCategoryName($group->category_id)): ?>
-		<a href="<?php echo JRoute::_('index.php?option=com_stream&view=groups&filter=category&category_id='.$group->category_id); ?>"><?php echo $categoryName; ?></a>
-		<?php else: ?>
-		<?php echo $categoryName; ?></a>
-		<?php endif;?>
-		<span class="message-in-groups">
+		<?php 
+		if (!$isFilteredByCategory) {
+			if ($Category->getCategoryName($group->category_id)) { ?>
+				<a href="<?php echo JRoute::_('index.php?option=com_stream&view=groups&filter=category&category_id='.$group->category_id); ?>"><?php echo $categoryName; ?></a><?
+			} else {
+				echo $categoryName; ?></a>
+			<?php }?>
+			<span class="message-in-groups">
+				<a href="<?php echo JRoute::_('index.php?option=com_stream&view=groups&task=show&group_id='.$group->id); ?>"><?php echo $this->escape($group->name); ?></a>
+			</span>
+		<?php } else { ?>
 			<a href="<?php echo JRoute::_('index.php?option=com_stream&view=groups&task=show&group_id='.$group->id); ?>"><?php echo $this->escape($group->name); ?></a>
-		</span>
-		<?php else: ?>
-			<a href="<?php echo JRoute::_('index.php?option=com_stream&view=groups&task=show&group_id='.$group->id); ?>"><?php echo $this->escape($group->name); ?></a>
-		<?php endif; ?>
+			
+		<?php }
+		if ($group->archived) {
+			echo '<span class="label">' . JText::_('COM_STREAM_LABEL_ARCHIVED_GROUP') . '</span>';
+		} else {
+			if ($group->access) {
+				echo '<span class="label label-danger">' . JText::_('COM_STREAM_LABEL_PRIVATE_GROUP') . '</span>';
+			} else {
+				echo '<span class="label label-info">' . JText::_('COM_STREAM_LABEL_PUBLIC_GROUP') . '</span>';
+			}
+		} ?>
 	</div>
+	
 	<div class="group-list-desc">
 		<?php echo StreamTemplate::escape($group->description); ?>
 	</div>
+	
 	<div class="group-list-content">
 		<div class="user-horizontal-list">
-			<label class="bold">Members:</label>
+			<label class="bold"><?php echo JText::_('COM_STREAM_LABEL_GROUP_MEMBERS'); ?>:</label>
 			<?php
 			foreach($members as $row){
 				$user = JXFactory::getUser($row);
@@ -174,8 +179,6 @@
 			<?php echo JText::_('COM_STREAM_LABEL_CREATED_BY');?>&nbsp;<a href="<?php echo $creator->getURL(); ?>"><?php echo $this->escape($creator->name); ?></a>
 		</div>
 	</div>
-
-
 </div>
 
 <?php 
