@@ -162,7 +162,10 @@ $data = json_decode($stream->raw);
 		</div>
 	</div>
 
-
+	<?php if(!empty($data->pinned)) : ?>
+		<div class="pinned-message"></div>
+	<?php endif; ?>
+	
 	<?php
 	// You can only delete your own message
 	if( $my->authorise('stream.message.edit', $stream) ) {

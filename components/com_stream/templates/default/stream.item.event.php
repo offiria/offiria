@@ -213,6 +213,10 @@ $typeClass = '';
 			
 		</div>
 	</div>
+
+	<?php if(!empty($data->pinned)) : ?>
+		<div class="pinned-message"></div>
+	<?php endif; ?>
 		
 	<?php
 	// You can only delete your own message
