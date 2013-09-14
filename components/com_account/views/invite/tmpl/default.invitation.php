@@ -26,9 +26,13 @@
 			</td>
 			<td><span class="label label-info"><?php echo $rowData->translateStatus($rowData->status);?></span></td>
 			<td>
+				<div class="custom-listing joined">
+				<h3 class="clearfix">
 				<?php if ($allowInvite) { ?>
-				<input class="btn" type="button" onclick="javascript: invitation.resendInvitation('<?php echo $rowData->invite_email;?>', '<?php echo $rowData->id;?>', this);" value="<?php echo JText::_('COM_ACCOUNT_LABEL_RESEND');?>" <?php echo ($rowData->status == $pendingStat) ? '' : 'disabled="disabled"';?>/>
-				<?php } ?>
-				<input class="btn" type="button" onclick="javascript: invitation.deleteInvitation('<?php echo $rowData->id;?>');" value="<?php echo JText::_('COM_ACCOUNT_LABEL_DELETE');?>" />
+				<a id="group-create" class="btn" href="#" onclick="javascript: invitation.resendInvitation('<?php echo $rowData->invite_email;?>', '<?php echo $rowData->id;?>', this);" <?php echo ($rowData->status == $pendingStat) ? '' : 'disabled="disabled"';?>><span><?php echo JText::_('COM_ACCOUNT_LABEL_RESEND');?></span></a>
+				<?php } ?></h3><h3 class="clearfix">
+				<a id="group-create" class="btn" href="#" onclick="javascript: invitation.deleteInvitation('<?php echo $rowData->id;?>');"><span><?php echo JText::_('COM_ACCOUNT_LABEL_DELETE');?></span></a>
+				</h3>
+				</div>			
 			</td>
 		</tr>

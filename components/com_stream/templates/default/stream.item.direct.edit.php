@@ -15,8 +15,8 @@ $files = $stream->getFiles();
 		<input type="hidden" name="message_id" value="<?php echo $stream->id; ?>" />
 		<?php include('stream.item.common.uploader.php'); ?>
 		<div class="form-actions">
-	      <button class="btn btn-primary" type="submit" name="message-edit-save">Save changes</button>
-	      <button class="btn" type="reset" name="message-edit-cancel">Cancel</button>
+			<button class="btn" type="reset" name="message-edit-cancel"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></button>
+			<button class="btn btn-info submit" type="submit" name="message-edit-save"><?php echo JText::_('COM_STREAM_LABEL_SAVE_CHANGES'); ?></button>
 	    </div>
     
 	</form>

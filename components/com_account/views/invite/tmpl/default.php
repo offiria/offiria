@@ -2,25 +2,18 @@
 /**
  * @version     1.0.0
  * @package     com_account
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
  */
 
 // no direct access
 defined('_JEXEC') or die;
-
+$filter 	= JRequest::getVar('filter', 'all'); 
+$get 		= JRequest::get('GET');
+$no			= 0;
 ?>
-<!-- @TODO: Remove inline styling -->
-<style type="text/css">
-	input[type="checkbox"] {
-	   margin-right:10px !important;
-	}
-</style>
-
-<div class="account-navbar">
-<?php echo $this->showNavBar(); ?>
-</div>
+<div class="account-navbar"><?php echo $this->showNavBar(); ?></div>
 
 <div id="account-invite">
 	<form class="edit" action="<?php echo JRoute::_('index.php?option=com_account&view=invite');?>" method="post">
@@ -39,7 +32,7 @@ defined('_JEXEC') or die;
 				<label for="params_group_limited" class=""><?php echo JText::_('COM_ACCOUNT_LABEL_GROUP_LIMITED');?></label>
 				<div class="params-invitation">
 					<?php foreach($this->myJoinedGroups as $idx=>$group): ?>
-					<input type="checkbox" class="checkbox" name="params[group_limited][]" value="<?php echo $group->id; ?>"><?php echo StreamTemplate::escape($group->name); ?><br>
+					<input type="checkbox" name="params[group_limited][]" value="<?php echo $group->id; ?>"><?php echo StreamTemplate::escape($group->name); ?><br/>
 					<?php endforeach; ?>
 				</div>
 				<div class="clear"></div>
@@ -56,6 +49,17 @@ defined('_JEXEC') or die;
 	</form>
 </div><!--end account-invite-->
 
+<ul class="nav nav-pills filter group-filter">
+	<!-- <input type="text" class="input-medium search-query" style="float: left; width: 82px; margin: 4px 10px 4px 0px;"> -->
+	
+	<li <?php if($filter == 'all') echo 'class="active"'; ?>>
+		<a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('filter' => 'all' )) ) ); ?>"><?php echo JText::_('COM_STREAM_LABEL_FILTER_ALL_TYPE'); ?></a>
+	</li>
+	<li <?php if($filter == 'pending') echo 'class="active"'; ?>><a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('filter' => 'pending' )) ) ); ?>"><?php echo JText::_('COM_ACCOUNT_LABEL_PENDING'); ?></a></li>
+	<li <?php if($filter == 'sent') echo 'class="active"'; ?>><a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('filter' => 'sent' )) ) ); ?>"><?php echo JText::_('COM_ACCOUNT_LABEL_REGISTERED'); ?></a></li>
+	<li <?php if($filter == 'cancelled') echo 'class="active"'; ?>><a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('filter' => 'cancelled' )) ) ); ?>"><?php echo JText::_('COM_ACCOUNT_LABEL_CANCELLED'); ?></a></li>
+</ul>
+
 <?php if (!empty($this->results)) { ?>
 <table id="table-invite" class="table table-bordered table-striped table-condensed table-novborder">
 	<thead>
@@ -69,14 +73,19 @@ defined('_JEXEC') or die;
 	<tbody>
 		<?php 
 		$no = count($this->results);
-		for ($i = 0; $i < $no; $i++)
-		{	
+		for ($i = 0; $i < $no; $i++) {	
 			echo $this->results[$i]->getRowHtml();
 		} // end for loop
 		?>
 	</tbody>
 </table>
 <?php } ?>
+
+<?php if (!$no) {?>
+<div class="alert-message block-message info alert-empty-stream">   
+	<p><?php echo JText::_('COM_ACCOUNT_LABEL_NO_INVITES');?></p>        
+</div>
+<?php }	?>
 
 <div class="pagination">
 <?php echo $this->pagination->getPagesLinks(); ?>

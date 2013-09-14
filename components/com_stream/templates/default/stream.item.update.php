@@ -110,9 +110,12 @@ $data = json_decode($stream->raw);
 			$end = strtotime("+1 day", mktime($tmpDate["hour"],$tmpDate["minute"],$tmpDate["second"],$tmpDate["month"],$tmpDate["day"], $tmpDate["year"]));	
 		}
 		$seconds_diff = $end - $start;
-	?>
-		<div class="pinned-message tips" title="<?php echo sprintf(JText::_('COM_STREAM_LABEL_PINNED_TIP'),floor($seconds_diff/3600/24)); ?>"></div>
-	<?php endif; ?>
+		
+		if (floor($seconds_diff/3600/24) >= 0) :
+		?>
+			<div class="pinned-message tips" title="<?php echo sprintf(JText::_('COM_STREAM_LABEL_PINNED_TIP'),floor($seconds_diff/3600/24)); ?>"></div>
+	<?php endif;
+	endif; ?>
 		
 	<?php	// You can only delete your own message
 	if( $my->authorise('stream.message.edit', $stream) ) {

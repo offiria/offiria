@@ -3,27 +3,19 @@ $document = JFactory::getDocument();
 require_once(JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'helpers'.DS.'html.php');
 require_once(JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'helpers'.DS.'milestones.php');
 /* Global javascripts */
-
-
 ?>
 
 <div id="stream-post">
 
 	<div class="stream-post-tabs">
 		<ul class="clearfix">
-			<li class="li-text" id=""><a href="javascript:void(0)"><?php echo JText::_('COM_STREAM_LABEL_UPDATE');?><span></span>
-			</a></li>
-			<li class="tab active" id=""><a href="#stream-post-update"><?php echo JText::_('COM_STREAM_LABEL_STATUS');?><span></span>
-			</a></li>
-			<li class="tab" id=""><a href="#stream-post-event"><?php echo JText::_('COM_STREAM_LABEL_EVENT');?><span></span>
-			</a></li>
-			<li class="tab" id=""><a href="#stream-post-milestone"><?php echo JText::_('COM_STREAM_LABEL_MILESTONE');?><span></span>
-			</a></li>
-			<li class="tab" id=""><a href="#stream-post-todo"><?php echo JText::_('COM_STREAM_LABEL_TODO');?><span></span>
-			</a></li>
+			<li class="li-text" id=""><a href="javascript:void(0)"><?php echo JText::_('COM_STREAM_LABEL_UPDATE');?><span></span></a></li>
+			<li class="tab active" id=""><a href="#stream-post-update"><?php echo JText::_('COM_STREAM_LABEL_STATUS');?><span></span></a></li>
+			<li class="tab" id=""><a href="#stream-post-event"><?php echo JText::_('COM_STREAM_LABEL_EVENT');?><span></span></a></li>
+			<li class="tab" id=""><a href="#stream-post-milestone"><?php echo JText::_('COM_STREAM_LABEL_MILESTONE');?><span></span></a></li>
+			<li class="tab" id=""><a href="#stream-post-todo"><?php echo JText::_('COM_STREAM_LABEL_TODO');?><span></span></a></li>
 			<?php if( empty($group_id)) { ?>
-			<li class="tab" id=""><a href="#stream-post-page"><?php echo JText::_('COM_STREAM_LABEL_BLOG');?><span></span>
-			</a></li>
+			<li class="tab" id=""><a href="#stream-post-page"><?php echo JText::_('COM_STREAM_LABEL_BLOG');?><span></span></a></li>
 			<?php } ?>
 			<!-- <li class="tab" id=""><a href="#stream-post-milestone"><?php echo JText::_('COM_STREAM_LABEL_MILESTONE');?><span></span></a></li> -->
 		</ul>
@@ -69,68 +61,66 @@ require_once(JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'helpers'.DS.'milest
 				<div class="clear"></div>
 			</div><!--end stream-message-links-->
 		
-		<script type="text/javascript">
-		$(function() {
-	
-		 // Add new input when the last input box get focus
-		$('#stream-post-todo input[name="todo\\[\\]"]:last').live('focus', function(e) {
-			// If we're the last input that get focus, add a new one at the bottom
-			//if ( e.which == 13)
-			{
-				// Make sure input is not empty
-				//if( $(this).val().length > 0 )
+			<script type="text/javascript">
+			$(function() {
+		
+			 // Add new input when the last input box get focus
+			$('#stream-post-todo input[name="todo\\[\\]"]:last').live('focus', function(e) {
+				// If we're the last input that get focus, add a new one at the bottom
+				//if ( e.which == 13)
 				{
-					
-					// Only add if the first one is not empty
-					//if( $('#stream-post-todo input[name="todo\\[\\]"]:first').val().length != 0 )
+					// Make sure input is not empty
+					//if( $(this).val().length > 0 )
 					{
-						$(this)
-							.clone().parents('li')
-							.insertBefore('#stream-post-todo input[name="todo\\[\\]"]:last')
-							.val('')
-							.focus();
+						
+						// Only add if the first one is not empty
+						//if( $('#stream-post-todo input[name="todo\\[\\]"]:first').val().length != 0 )
+						{
+							$(this)
+								.clone().parents('li')
+								.insertBefore('#stream-post-todo input[name="todo\\[\\]"]:last')
+								.val('')
+								.focus();
+						}
 					}
-				}
-				return false;
-			} 
-		});
-	});
-	</script>
+					return false;
+				} 
+			});
+			});
+			</script>
 
-	<?php if( empty($group_id)) { ?>
-	<!-- Blog -->
-	<div class="stream-post-message-share tab-content"
-		 id="stream-post-page" style="display: none">
-		<div class="stream-post-details">
-			<input type="text" autocomplete="off" class="page-title"
-				   name="title"
-				   placeholder="<?php echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_TITLE');?>">
-			<div class="clear"></div>
-		</div>
+			<?php if( empty($group_id)) { ?>
+			<!-- Blog -->
+			<div class="stream-post-message-share tab-content" id="stream-post-page" style="display: none">
+				<div class="stream-post-details">
+					<input type="text" autocomplete="off" class="page-title"
+						   name="title"
+						   placeholder="<?php echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_TITLE');?>">
+					<div class="clear"></div>
+				</div>
 
-		<textarea id="message-box-page" name="message"
-				  class="stream-post message-page-editor" style="resize: vertical;"
-				  cols="63" 
-				  placeholder="<?php echo JText::_('COM_STREAM_DEFAULT_LABEL_LONG_PAGE_HERE');?>"></textarea>
-		
-		<div class="stream-post-details-milestone">
-			<label><?php echo JText::_('COM_STREAM_DEFAULT_LABEL_CATEGORY_PROMPT'); ?></label>
-			<select name="blog_category">
-				<option><?php echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_DEFAULT_CATEGORY'); ?></option>
-				<?php
-				  $table = new StreamCategory();
-				  $blogs = $table->getBlogs();
-				  foreach ($blogs as $blog) {
-					  // add category that has been added
-				?>
-				<option value="<?php echo $blog->id; ?>"><?php echo $blog->category; ?></option>
-				<?php } ?>
-			</select>
-		</div>
-		
-		<input type="hidden" name="type" value="page">
-		</div>					<!--end stream-post-message-share tab-content-->
-		<?php } ?>
+				<textarea id="message-box-page" name="message"
+						  class="stream-post message-page-editor" style="resize: vertical;"
+						  cols="63" 
+						  placeholder="<?php echo JText::_('COM_STREAM_DEFAULT_LABEL_LONG_PAGE_HERE');?>"></textarea>
+				
+				<div class="stream-post-details-milestone">
+					<label><?php echo JText::_('COM_STREAM_DEFAULT_LABEL_CATEGORY_PROMPT'); ?></label>
+					<select name="category_id">
+						<option value="0"><?php echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_DEFAULT_CATEGORY'); ?></option>
+						<?php
+							$table = new StreamCategory();
+							$blogs = $table->getBlogs();
+							foreach ($blogs as $blog) {
+								// add category that has been added
+								?><option value="<?php echo $blog->id; ?>"><?php echo $blog->category; ?></option>
+							<?php } ?>
+					</select>
+				</div>
+				
+				<input type="hidden" name="type" value="page">
+				</div>					<!--end stream-post-message-share tab-content-->
+			<?php } ?>
 
 
 			<!-- @mention -->
@@ -179,17 +169,15 @@ require_once(JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'helpers'.DS.'milest
 					</li>
 					<li class="stream-post-topic-add active"><a href="#"><?php echo JText::_('COM_STREAM_LABEL_TOPIC');?></a></li> */?>
 				</ul>
-				<input type="hidden" name="group_id"
-					value="<?php echo isset($group_id)? $group_id: ''; ?>" /> <input
-					type="submit" class="btn btn-info submit"
-					value="<?php echo JText::_('COM_STREAM_LABEL_SHARE');?>" />
+				<input type="hidden" name="group_id" value="<?php echo isset($group_id)? $group_id: ''; ?>" /> 
+				<input type="submit" class="btn btn-info submit" value="<?php echo JText::_('COM_STREAM_LABEL_SHARE');?>" />
 				<div id="stream-post-loading" class="stream-loading"></div>
 
 				<?php
 				// TODO: place these in a template once we have a consistent html structure/styling between the post box and edit box
 				//if($my->authorise('core.admin')) :
 				if($my->isAdmin()) :
-					$pinOptions = array(JText::_('COM_STREAM_LABEL_UNPINNED') => '0', JText::_('COM_STREAM_LABEL_FORADAY') => '1 day', JText::_('COM_STREAM_LABEL_FORAWEEK') => '1 week', JText::_('COM_STREAM_LABEL_FORAWEEK') => '1 month');
+					$pinOptions = array(JText::_('COM_STREAM_LABEL_UNPINNED') => '0', JText::_('COM_STREAM_LABEL_FORADAY') => '1 day', JText::_('COM_STREAM_LABEL_FORAWEEK') => '1 week', JText::_('COM_STREAM_LABEL_FORAMONTH') => '1 month');
 				?>
 				<div class="pinned-message-action">
 					<label><?php echo JText::_('COM_STREAM_LABEL_PINTOTOP'); ?>:</label>
@@ -223,52 +211,54 @@ require_once(JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'helpers'.DS.'milest
 
    			switch (type) {
 				   case 'page':
-					   // page have multiple input type to check in custom method. grab the error manually
-					   var errors = [];
-					   // validate title
-					   errors.push(S.validate.element('notEmpty', $('.page-title'), 'reset'));
-					   // validate content manually
-					   var content = tinyMCE.activeEditor.getContent();
-					   if (S.validate.isNotEmpty(content)) {
-						   errors.push(true);
-					   }
-					   else {
-						   S.enqueueMessage('Field <b>Blog content</b> must not be blank', 'error');
-						   errors.push(false);
-					   }
-					   // check for falsy value in array
-					   if ($.inArray(false, errors) >= 0) {
-						   return false;
-					   }
-					   break;
+						// page have multiple input type to check in custom method. grab the error manually
+						var errors = [];
+						// validate title
+						if (!S.validate.element('notEmpty', $('.page-title'), 'reset', '<?php echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_TITLE'); ?>')) {
+							return false;
+						}
+						// validate content manually
+						var content = tinyMCE.activeEditor.getContent();
+						if (S.validate.isNotEmpty(content)) {
+							errors.push(true);
+						} else {
+							S.enqueueMessage('<?php echo JText::sprintf('COM_STREAM_VALIDATE_EMPTY_FIELD', JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_CONTENT')); ?>', 'error');
+							errors.push(false);
+						}
+						// check for falsy value in array
+						if ($.inArray(false, errors) >= 0) {
+							return false;
+						}
+						break;
 				   case 'milestone':
 						$dueDate = $('#stream-post-milestone').find('.start-date');
-						if (!S.validate.element('notEmpty', $('#stream-post-milestone textarea'), 'reset', '<?php echo
-					   JText::_('COM_STREAM_LABEL_MILESTONE'); ?>') || 
-					   !S.validate.element('notEmpty', $dueDate, 'reset', '<?php echo JText::_('COM_STREAM_LABEL_DUE_DATE'); ?>')) {
-						   return false;
-					   }
-					   break;
+						if (!S.validate.element('notEmpty', $('#stream-post-milestone textarea'), 'reset', '<?php echo JText::_('COM_STREAM_LABEL_MILESTONE'); ?>') || 
+							!S.validate.element('notEmpty', $dueDate, 'reset', '<?php echo JText::_('COM_STREAM_LABEL_DUE_DATE'); ?>')) {
+							return false;
+						}
+						break;
 				   case 'event':
-					   if (!(S.validate.element('notEmpty', $('#stream-post-event textarea'), 'reset', '<?php echo JText::_('COM_STREAM_LABEL_EVENT'); ?>')
-						   && S.validate.element('notEmpty', $('.start-date'), 'reset', '<?php echo JText::_('COM_STREAM_LABEL_START_DATE'); ?>'))) {
-						   return false;
-					   }
+						if (!S.validate.element('notEmpty', $('.event-title'), 'reset', '<?php echo JText::_('COM_STREAM_DEFAULT_LABEL_TYPE_YOUR_EVENT_TITLE'); ?>')) {
+							return false;
+						}
+					   
+						if (!(S.validate.element('notEmpty', $('#stream-post-event textarea'), 'reset', '<?php echo JText::_('COM_STREAM_LABEL_EVENT'); ?>')
+							&& S.validate.element('notEmpty', $('.start-date'), 'reset', '<?php echo JText::_('COM_STREAM_LABEL_START_DATE'); ?>'))) {
+							return false;
+						}
 
-					   if (!$('select[name="start_time"]').is(":visible")) {
-						   S.enqueueMessage('Field <b>Start Time</b> must not be blank', 'error');
-						   return false;
-					   }
-
-					   // when the start date is filled, the start time is required
-					   if ($('input[name="end_date"]').val().length !== 0) {
-						   if (!$('select[name="end_time"]').is(":visible")) {
-							   S.enqueueMessage('Field <b>End Time</b> must not be blank', 'error');
-							   return false;
-						   }
-					   }
-
-					   break;
+						if (!$('select[name="start_time"]').is(":visible")) {
+							S.enqueueMessage('<?php echo JText::sprintf('COM_STREAM_VALIDATE_EMPTY_FIELD', JText::_('COM_STREAM_LABEL_START_TIME')); ?>', 'error');
+							return false;
+						}
+						// when the start date is filled, the start time is required
+						if ($('input[name="end_date"]').val().length !== 0) {
+							if (!$('select[name="end_time"]').is(":visible")) {
+								S.enqueueMessage('<?php echo JText::sprintf('COM_STREAM_VALIDATE_EMPTY_FIELD', JText::_('COM_STREAM_LABEL_END_TIME')); ?>', 'error');
+								return false;
+							}
+						}
+						break;
 				   case 'todo':
 					   if (!S.validate.element('notEmpty', $('#stream-post-todo textarea'), 'reset', '<?php echo JText::_('COM_STREAM_LABEL_TODO'); ?>')) {
 						   return false;

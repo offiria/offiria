@@ -33,6 +33,7 @@ if($fullpage){
 $likeCount = $stream->countLike();
 $commentCount = $stream->getParam('comment_count', null);
 $date = new JDate( $stream->created );
+
 ?>
 
 <!-- new code -->
@@ -46,11 +47,11 @@ $date = new JDate( $stream->created );
 			<h1><?php echo $this->escape($data->title); ?></h1>
 		</a>
 		<span class="author small">
-			By <a href="<?php echo $user->getURL();?>" class="actor-link"><?php echo $this->escape($user->name); ?></a>
+			<?php echo JText::_('COM_STREAM_BLOG_LABEL_BY'); ?> <a href="<?php echo $user->getURL();?>" class="actor-link"><?php echo $this->escape($user->name); ?></a>
 		</span>
 	<?php } else { ?>
 		<span class="author-full small">
-			By <a href="<?php echo $user->getURL();?>" class="actor-link"><?php echo $this->escape($user->name); ?></a>
+			<?php echo JText::_('COM_STREAM_BLOG_LABEL_BY'); ?> <a href="<?php echo $user->getURL();?>" class="actor-link"><?php echo $this->escape($user->name); ?></a>
 		</span>
 	<?php } ?>
 	<div class="blog-header">
@@ -71,15 +72,18 @@ $date = new JDate( $stream->created );
 				</span>
 				<span class="small">
 					<?php echo JText::_('COM_STREAM_BLOG_LABEL_IN_CATEGORY'); ?>: 
-					<?php 
-							$categoryTable = JTable::getInstance('Category', 'StreamTable');
-							$categoryName = $categoryTable->getCategoryNameById($stream->category_id);
+					<?php					
+						$categoryTable = JTable::getInstance('Category', 'StreamTable');
+						if (isset($data->category_id)) {
+							$categoryName = $categoryTable->getCategoryNameById($data->category_id);
 							if (!empty($categoryName)) {
-								echo '<a href="' . JRoute::_('index.php?option=com_stream&view=blog&category_id=' . $stream->category_id) . '">' . $categoryName . '</a>';
-							}
-							else {
+								echo '<a href="' . JRoute::_('index.php?option=com_stream&view=blog&category_id=' . $data->category_id) . '">' . $categoryName . '</a>';
+							} else {
 								echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_DEFAULT_CATEGORY');
 							}
+						} else {
+							echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_DEFAULT_CATEGORY');
+						}
 					?>
 				</span>
 			</div>

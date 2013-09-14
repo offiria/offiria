@@ -45,24 +45,15 @@
 		})
 	});
 </script>
-<?php /* Old Style
-<div id="guest_invite_container">
-	<div id="invite_loading" style="display: none"><?php echo JText::_('COM_ACCOUNT_LABEL_PROCESSING_INVITE');?></div>
-	<div id="invite_form">
-		<div><?php echo JText::_('COM_ACCOUNT_LABEL_INVITE_FRIENDS_HERE');?></div>
-		<form action="<?php echo JRoute::_('index.php?option=com_account&view=invite');?>" id="guest_invite_form" method="get">
-			<div><input type="text" name="invitation" id="guest_emails"></div>
-			<span class="help-text" style="color: #888888; font-size:10px">- <?php echo JText::_('COM_ACCOUNT_LABEL_INVITE_HELP_TEXT');?> -</span>
-			<div style="float:right"><input class="btn" value="<?php echo JText::_('COM_ACCOUNT_LABEL_INVITE');?>" type="button" onclick="account.invite();" id="guest_invite_button"></div>
-			<div class="clear"></div>
-		</form>
-	</div>
-</div>
-*/ ?>
 <div class="moduletable" id="guest_invite_container">
-	<div id="invite_loading" style="display: none"><?php echo JText::_('COM_ACCOUNT_LABEL_PROCESSING_INVITE');?></div>
+	<div id="invite_loading" style="display: none">
+		<h3><?php echo JText::_('COM_ACCOUNT_LABEL_INVITE_FRIENDS_HERE');?></h3>
+		<?php echo JText::_('COM_ACCOUNT_LABEL_PROCESSING_INVITE');?>
+	</div>
+
 	<div id="invite_form">
 		<h3><?php echo JText::_('COM_ACCOUNT_LABEL_INVITE_FRIENDS_HERE');?></h3>
+
 		<form action="<?php echo JRoute::_('index.php?option=com_account&view=invite');?>" id="guest_invite_form" method="get">
 			
 			<div class="invitation">
@@ -73,15 +64,22 @@
 			
 			<div class="clear"></div>
 		</form>
-		<?php /*
-		<div class="alert alert-info invite">
-			<h4>Offiria helps:</h4>
+		
+		<?php
+		$my = JXFactory::getUser();
+		if(! $my->getParam(ALERT_INVITE_INTRO)){
+			echo '<div class="alert alert-info" data-alert_id="'.ALERT_INVITE_INTRO.'">
+			<a data-dismiss="alert" class="close">×</a>
+			<h4>' . JText::_('COM_STREAM_HELPER_INVITE1') . ':</h4>
 			<ul class="textlist">
-				<li>Your team stay well-informed.</li>
-				<li>Makes collaboration fast and easy.</li>
-				<li>Encourages ideas and knowledge sharing.</li>
+				<li class="divider"></li>
+				<li>' . JText::_('COM_STREAM_HELPER_INVITE2') . '</li>
+				<li>' . JText::_('COM_STREAM_HELPER_INVITE3') . '</li>
+				<li>' . JText::_('COM_STREAM_HELPER_INVITE4') . '</li>
 			</ul>
-		</div>
-		*/ ?>
+			</div>';
+	    }
+		?>
+		
 	</div>
 </div>

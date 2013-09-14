@@ -1,8 +1,8 @@
 <div class="data-grid">
 	
 	<div class="content-title">
-		<h3>Blogs</h3>
-		<a href="<?php echo JRoute::_('index.php?option=com_stream&view=blog&user_id='.$this->user->id);?>">Show All (<?php echo $this->blogCount; ?>)</a>		
+		<h3><?php echo JText::_('COM_PROFILE_CONTENT_BLOGS'); ?></h3>
+		<a href="<?php echo JRoute::_('index.php?option=com_stream&view=blog&user_id='.$this->user->id);?>"><?php echo JText::_('COM_PROFILE_CONTENT_SHOW_ALL'); ?> (<?php echo $this->blogCount; ?>)</a>		
 	</div>
 	
 	<ol class="content-list">
@@ -10,7 +10,7 @@
 			$date = new JDate($blog->created); 
 		?>
 			<li><a href="<?php echo $blog->getUri(); ?>"><?php echo StreamMessage::format($blog->getData()->title); ?></a> 
-				<span class="small hint">(<?php echo $date->format(JText::_('JXLIB_DATE_SHORT_FORMAT')); ?>	)</span>
+				<span class="small hint">(<?php echo $date->format(JText::_('JXLIB_DATE_SHORT_FORMAT')); ?>)</span>
 			</li>
 		<?php } ?>
 	</ol>
@@ -20,8 +20,8 @@
 <div class="data-grid">
 	
 	<div class="content-title">
-		<h3>Files</h3>
-		<a href="<?php echo JRoute::_('index.php?option=com_stream&view=files&user_id='.$this->user->id);?>">Show All (<?php echo $this->fileCount; ?>)</a>		
+		<h3><?php echo JText::_('COM_PROFILE_CONTENT_FILES'); ?></h3>
+		<a href="<?php echo JRoute::_('index.php?option=com_stream&view=files&user_id='.$this->user->id);?>"><?php echo JText::_('COM_PROFILE_CONTENT_SHOW_ALL'); ?> (<?php echo $this->fileCount; ?>)</a>		
 	</div>
 	
 	<ol class="content-list">
@@ -41,8 +41,8 @@
 <div class="data-grid">
 	
 	<div class="content-title">
-		<h3>Links</h3>
-		<a href="<?php echo JRoute::_('index.php?option=com_stream&view=links&user_id='.$this->user->id);?>">Show All (<?php echo $this->linkCount; ?>)</a>		
+		<h3><?php echo JText::_('COM_PROFILE_CONTENT_LINKS'); ?></h3>
+		<a href="<?php echo JRoute::_('index.php?option=com_stream&view=links&user_id='.$this->user->id);?>"><?php echo JText::_('COM_PROFILE_CONTENT_SHOW_ALL'); ?> (<?php echo $this->linkCount; ?>)</a>		
 	</div>
 	
 	<ol class="content-list">

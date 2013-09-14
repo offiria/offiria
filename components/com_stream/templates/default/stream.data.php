@@ -88,8 +88,7 @@ $date = new JDate();
 		
 		<?php if($total == 0) { ?>
 		<div class="alert-message block-message info alert-empty-stream">       
-			
-<p><?php echo JText::_('COM_STREAM_NO_MESSAGE'); ?></p>        
+			<p><?php echo JText::_('COM_STREAM_NO_MESSAGE'); ?></p>        
 		</div>
 		<?php } ?>
 	</div>

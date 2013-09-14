@@ -153,12 +153,12 @@ var Messaging = {
 				case 'unread': 
 					$("#inbox-listing li.inbox-list-unread input[type='checkbox']").each(function () {
 						$(this).attr('checked', true);
-					});
+					});					
 					break;
 				case 'none': 
 					$("#inbox-listing input[type='checkbox']").each(function () {
 						$(this).attr('checked', false);
-					});
+					});				
 					break;
 			}
 		},

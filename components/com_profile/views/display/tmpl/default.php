@@ -59,12 +59,12 @@ $view = JRequest::getVar('view', 'display');
 		</b></span>
 		<p>
 		<?php
-		  // add default about me data
-		  $aboutMe = $this->user->getParam('about_me');
-		  if (!empty($aboutMe)): ?>
-		<span class="error">
-		<?php echo $this->escape($aboutMe); ?>
-		</span>
+		// add default about me data
+		$aboutMe = $this->user->getParam('about_me');
+		if (!empty($aboutMe)): ?>
+			<span class="error">
+			<?php echo $this->escape($aboutMe); ?>
+			</span>
 		<?php endif; ?>
 		</p>
 	</div>
@@ -73,9 +73,9 @@ $view = JRequest::getVar('view', 'display');
 </div>
 
 <ul class="nav nav-pills filter">
-	<li <?php if($task=='activities'){ echo 'class="active"';} ?> ><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display&user='.$this->user->username); ?>">Activities</a></li>
-	<li <?php if($task=='bio'){ echo 'class="active"';} ?>><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display&task=bio&user='.$this->user->username); ?>">Bio</a></li>
-	<li <?php if($task=='content'){ echo 'class="active"';} ?>><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display&task=content&user='.$this->user->username); ?>">Content</a></li>
+	<li <?php if($task=='activities'){ echo 'class="active"';} ?> ><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display&user='.$this->user->username); ?>"><?php echo JText::_('COM_PROFILE_ACTIVITIES'); ?></a></li>
+	<li <?php if($task=='bio'){ echo 'class="active"';} ?>><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display&task=bio&user='.$this->user->username); ?>"><?php echo JText::_('COM_PROFILE_BIO'); ?></a></li>
+	<li <?php if($task=='content'){ echo 'class="active"';} ?>><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display&task=content&user='.$this->user->username); ?>"><?php echo JText::_('COM_PROFILE_CONTENT'); ?></a></li>
 	<?php if($task=='bio' && ($this->my->id == $this->user->id)): ?>
 	<li class="pull-right">
 	<a class="btn" href="<?php echo JRoute::_('index.php?option=com_profile&view=edit'); ?>"><?php echo JText::_('COM_PROFILE_LABEL_EDIT_YOUR_PROFILE'); ?></a>

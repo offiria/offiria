@@ -18,14 +18,17 @@ $date = new JDate( $stream->created );
 			<span class="small">
 				<?php echo JText::_('COM_STREAM_BLOG_LABEL_IN_CATEGORY'); ?>: 
 				<?php 
-				  $categoryTable = JTable::getInstance('Category', 'StreamTable');
-				  $category = $categoryTable->getCategoryNameById($stream->category_id);
-				  if (!empty($category)) {
-					  echo '<a href="' . JRoute::_('index.php?option=com_stream&view=blog&category=' . $category) . '">' . $category . '</a>';
-				  }
-				  else {
-					  echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_DEFAULT_CATEGORY');
-				  }
+					$categoryTable = JTable::getInstance('Category', 'StreamTable');
+					if (!empty($stream->category_id)) {
+						$category = $categoryTable->getCategoryNameById($stream->category_id);
+						if (!empty($category)) {
+							echo '<a href="' . JRoute::_('index.php?option=com_stream&view=blog&category=' . $category) . '">' . $category . '</a>';
+						} else {
+							echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_DEFAULT_CATEGORY');
+						}
+					} else {
+						echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_DEFAULT_CATEGORY');
+					}
 				?>
 			</span>
 		</div>

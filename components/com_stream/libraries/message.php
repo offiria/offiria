@@ -231,7 +231,7 @@ class StreamMessage
 					$dlLink = JRoute::_('index.php?option=com_stream&view=system&task=download&file_id='.$file->id);
 					
 					// Replace all <show_next> tag, since the previous one is clearly not the last one
-					$imgHtml = str_replace('<show_next>', '<div class="image_next btn btn-large" onclick="$(\'[rel=\\\'#'.$randId.'\\\']\').click();">&rarr;</div>', $imgHtml);
+					$imgHtml = str_replace('<show_next>', '<div class="image_next btn btn-large" onclick="$(\'[rel=\\\'#'.$randId.'\\\']\').click();">' . JText::_('COM_STREAM_LABEL_FILE_NEXT') . '</div>', $imgHtml);
 					
 					$imgHtml .= '
 						<div id="'.$randId.'" class="apple_overlay" style="width:'. ($width) .'px">';
@@ -239,7 +239,7 @@ class StreamMessage
 					
 					// IF this is NOT the first preview, add the 'PREV' button	
 					if($numPreview != 0){
-						$imgHtml .='<div class="image_prev btn btn-large" onclick="$(\'[rel=\\\'#'.$prevRandId.'\\\']\').click();">&larr;</div>';
+						$imgHtml .='<div class="image_prev btn btn-large" onclick="$(\'[rel=\\\'#'.$prevRandId.'\\\']\').click();">' . JText::_('COM_STREAM_LABEL_FILE_PREV') . '</div>';
 					}
 					$imgSrc = $dlLink;
 					if($file->getParam('preview_path') ){
@@ -250,8 +250,8 @@ class StreamMessage
 						<a class="close"></a>
 						<img width="'.$width.'" height="'.$height.'" src="'.$imgSrc.'" />
 						<div>
-						<a href="'.$viewLink.'" target="_blank">View full-size image</a> 
-						• <a href="'.$dlLink.'">Download</a></div>
+						<a href="'.$viewLink.'" target="_blank">' . JText::_('COM_STREAM_LABEL_FILE_FULL_SIZE_IMAGE') . '</a> 
+						&diams; <a href="'.$dlLink.'">' . JText::_('COM_STREAM_LABEL_FILE_DOWNLOAD') . '</a></div>
 						</div>';
 					
 					$prevRandId = $randId;

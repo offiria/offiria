@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_account
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
  */
@@ -23,6 +23,18 @@ class AccountModelUsersInvite extends JModel
 	{
 		$db			= JFactory::getDbo();
 		$condition	= ' WHERE invite_email <> "" ';
+
+		switch(JRequest::getVar('filter', 'all')) {
+			case 'pending':
+				$condition .= 'AND status = 1 ';
+				break;
+			case 'sent':
+				$condition .= 'AND (status = 2 OR status = 4) ';
+				break;
+			case 'cancelled':
+				$condition .= 'AND status = 3 ';
+				break;
+		}
 		$orderBy	= '';
 		
 		if (isset($filter['status']) && intval($filter['status']) > 0)

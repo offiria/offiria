@@ -1,8 +1,6 @@
 <!-- uploader start -->
-	
-	
 	<div class="edit-file-button clearfix">
-		<span>Attach:</span> 
+		<span><?php echo JText::_('COM_STREAM_LABEL_ATTACH');?></span> 
 		<span id="edit-file-uploader-<?php echo $stream->id; ?>" class="qq-uploader-edit"></span>
 		<!--<a href="#" onclick="return S.uploader.selectFile('edit-file-uploader-<?php echo $stream->id; ?>');"><?php echo JText::_('COM_STREAM_LABEL_UPLOAD'); ?></a> -->	
 	</div>

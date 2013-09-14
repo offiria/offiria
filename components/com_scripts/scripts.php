@@ -123,7 +123,7 @@ S.text['upload']= "<?php echo JText::_('COM_STREAM_LABEL_UPLOAD'); ?>";
 
 S.text['error.message.add.empty'] 	= "<?php echo JText::_('COM_STREAM_ERRMSG_CANT_POST_EMPTY_MSG');?>";
 S.text['error.todo.add.empty'] 		= "<?php echo JText::_('COM_STREAM_ERRMSG_CANT_CREATE_EMPTY_TODO');?>";
-S.text['confirm.file.delete'] 	= "<?php echo JText::_('COM_STREAM_MSG_PERMANENTLY_DELETE_FILE');?>";
+S.text['confirm.file.delete'] 		= "<?php echo JText::_('COM_STREAM_MSG_PERMANENTLY_DELETE_FILE');?>";
 S.text['confirm.message.delete'] 	= "<?php echo JText::_('COM_STREAM_MSG_PERMANENTLY_DELETE_POST');?>";
 S.text['confirm.group.archive'] 	= "<?php echo JText::_('COM_STREAM_MSG_ARCHIVE_GROUP');?>";
 S.text['confirm.group.delete'] 		= "<?php echo JText::_('COM_STREAM_MSG_DELETE_GROUP');?>";

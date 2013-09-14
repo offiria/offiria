@@ -1,8 +1,17 @@
 <?php
-$document = JFactory::getDocument();
-$docTitle = $document->getTitle();
+$document 	= JFactory::getDocument();
+$docTitle 	= $document->getTitle();
 $groupTitle = StreamTemplate::escape($docTitle);
-$task = JRequest::getVar('task');
+$task 		= JRequest::getVar('task');
+
+$Category 	= new StreamCategory();
+$categories = $Category->getGroups();
+$category	= '';
+if (isset($group->category_id)) {
+	foreach ($categories as $list) {
+		if ($list->id == $group->category_id) $category = $list->category;
+	}
+}
 ?>
 
 <div class="customlist-page-title clearfix">
@@ -15,7 +24,10 @@ $task = JRequest::getVar('task');
 		<?php elseif ($group->archived) : ?><span class="label"><?php echo JText::_('COM_STREAM_LABEL_ARCHIVED_GROUP');?></span>
 		<?php else : ?><span class="label label-info"><?php echo JText::_('COM_STREAM_LABEL_PUBLIC_GROUP');?></span>
 		<?php endif; ?>
+		<?php if ($category) { echo '<span class="label label-info">' . $category . '</span>'; } ?>
 		<div class="clear"></div>
+		
+		
 	</div>
 	
 	<div class="customlist-page-action pull-right">

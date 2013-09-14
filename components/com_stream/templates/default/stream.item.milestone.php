@@ -216,7 +216,26 @@ switch($milestoneStatus) {
 			<?php echo $comment; ?>
 		</div>
 	</div>
+	
+	<?
+	if(!empty($data->pinned)) :
+		$tmpDate = date_parse($stream->created);
+		$start = strtotime("now");
+		if ($data->pinned == "1 month") {
+			$end = strtotime("+1 month", mktime($tmpDate["hour"],$tmpDate["minute"],$tmpDate["second"],$tmpDate["month"],$tmpDate["day"], $tmpDate["year"]));	
+		} elseif ($data->pinned == "1 week") {
+			$end = strtotime("+1 week", mktime($tmpDate["hour"],$tmpDate["minute"],$tmpDate["second"],$tmpDate["month"],$tmpDate["day"], $tmpDate["year"]));	
+		} else {
+			$end = strtotime("+1 day", mktime($tmpDate["hour"],$tmpDate["minute"],$tmpDate["second"],$tmpDate["month"],$tmpDate["day"], $tmpDate["year"]));	
+		}
+		$seconds_diff = $end - $start;
 		
+		if (floor($seconds_diff/3600/24) >= 0) :
+		?>
+			<div class="pinned-message tips" title="<?php echo sprintf(JText::_('COM_STREAM_LABEL_PINNED_TIP'),floor($seconds_diff/3600/24)); ?>"></div>
+	<?php endif;
+	endif; ?>	
+	
 	<?php
 	// You can only delete your own message
 	if( $my->authorise('stream.message.edit', $stream) ) {

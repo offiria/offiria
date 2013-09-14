@@ -57,9 +57,9 @@ $params = json_decode($params);
 				</select>
 			</div>
 			<?php endif; ?>
-			<button class="btn btn-primary" type="submit" name="message-edit-save"><?php echo JText::_('COM_STREAM_LABEL_SAVE_CHANGES'); ?></button>
 			<button class="btn" type="reset" name="message-edit-cancel"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></button>
-	    </div>
+			<button class="btn btn-info submit" type="submit" name="message-edit-save"><?php echo JText::_('COM_STREAM_LABEL_SAVE_CHANGES'); ?></button>
+		</div>
     
 	</form>
 

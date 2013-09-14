@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_administrator
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Offiria Team
  */
@@ -38,7 +38,7 @@ class StreamViewLinks extends StreamView
 		{
 			$filter['user_id'] = $user_id;
 			$user = JXFactory::getUser($user_id);
-			$title = JText::sprintf("%1s's links", $user->name);
+			$title = JText::sprintf('COM_PROFILE_CONTENT_USER_LINKS', $user->name);
 		}
 		
 		$usrLinks	= $user->getParam('links', '');

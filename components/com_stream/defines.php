@@ -8,6 +8,7 @@ define('ALERT_BLOG_INTRO', 			'alt1');
 define('ALERT_FILE_INTRO', 			'alt2');
 define('ALERT_CALENDAR_INTRO', 		'alt3');
 define('ALERT_PRIVATE_MESSAGING',	'alt4');
+define('ALERT_INVITE_INTRO',		'alt5');
 
 define("OVERDUE", 1);
 define("INCOMPLETE", 2);

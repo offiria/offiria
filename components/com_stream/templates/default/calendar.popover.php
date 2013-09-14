@@ -5,12 +5,14 @@ $calContent ='';
 		foreach($eventList[$day] as $e){
 			$date = new JDate($e->start_date);
 			$data = $e->getData();
+			$rawData = json_decode($e->raw);
+			$message = JHtmlString::truncate(((isset($rawData->title)) ? $rawData->title : $e->message), 54);
 			
 			$on = $date->format(JText::_('JXLIB_TIME_SHORT_FORMAT'));	
 			if($on != '00:00:00')
 				$popOverContent .='<li><a href="'.$e->getUri().'"><div class="black-time">'.$on. '</div>';
 
-			$popOverContent .= '<div class="black-info"><div class="black-message">'. JHtmlString::truncate($e->message, 54).'</div>';
+			$popOverContent .= '<div class="black-info"><div class="black-message">'. $message .'</div>';
 
 			$location = (!empty($data->location))? $data->location : ''; 
 			$popOverContent .='<div class="black-location">'.$location. '</div></div>';

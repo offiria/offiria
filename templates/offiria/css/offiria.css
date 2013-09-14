@@ -1076,7 +1076,7 @@ form h3:first-child {
 }
 form label {
   display: block;
-  float: left;
+  ;float: left;
   font-weight: bold;
   margin-right: 5px;
   margin-top: 5px;
@@ -1962,7 +1962,10 @@ ol.stream li.compact-item {
 .blog-compact {
   line-height: 13px;
   padding-top: 0;
-  margin-left: 83px;
+  margin-left: 78px;
+  display: block;
+  margin-right: 10px;
+  margin-top: 8px;
 }
 .blog-compact .meta-title-compact {
   display: block;
@@ -1970,8 +1973,10 @@ ol.stream li.compact-item {
   margin-top: 1px;
 }
 .milestone-compact {
-  margin-top: 1px;
   margin-left: 78px;
+  display: block;
+  margin-right: 10px;
+  margin-top: 8px;
 }
 .meta-compact {
   color: #444;
@@ -2020,10 +2025,12 @@ ol.stream li.compact-item {
 }
 .label-blog {
   background: #0071bc;
-  margin: 8px 9px 0;
-  padding: 2px 4px 3px;
-  font-size: 11px;
-  line-height: 12px;
+  /*margin: 8px 9px 0;*/
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 8px;
+  line-height: 15px;
 }
 .label-event {
   background: #ff8c1c;
@@ -2032,7 +2039,11 @@ ol.stream li.compact-item {
 }
 .label-milestone {
   background: #9dd02e;
-  margin: 0 8px 0 0;
+  /*margin: 0 8px 0 0;*/
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 8px;
   line-height: 15px;
 }
 /* End Label Compact Design */
@@ -2144,6 +2155,7 @@ span.stream-topics-close {
   background: url(../images/icon-sprite-grey.png) no-repeat -6px -715px;
   border-bottom: 0 none;
 }
+.stream-post-details input.event-title,
 .stream-post-details input.page-title {
   border-bottom: 0 none;
   width: 92%;
@@ -8055,4 +8067,7 @@ ul.todolist li.todo-item > span {
 .people-autocomplete li a {
   float: right;
   width: 100%;
+}
+input[type="checkbox"] {
+	margin-right:10px !important;
 }

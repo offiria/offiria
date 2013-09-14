@@ -53,8 +53,22 @@ $params = json_decode($params);
 	<input type="hidden" name="message_id" value="<?php echo $stream->id; ?>" />
 	
 	<div class="form-actions">
-      <button class="btn btn-primary" type="submit" name="message-edit-save">Save changes</button>
-      <button class="btn" type="reset" name="message-edit-cancel">Cancel</button>
+		<?php
+		// TODO: place these in a template once we have a consistent html structure/styling between the post box and edit box
+		if($my->isAdmin()) :
+			$pinOptions = array(JText::_('COM_STREAM_LABEL_UNPINNED') => '0', JText::_('COM_STREAM_LABEL_FORADAY') => '1 day', JText::_('COM_STREAM_LABEL_FORAWEEK') => '1 week', JText::_('COM_STREAM_LABEL_FORAMONTH') => '1 month');
+		?>
+		<div class="pinned-message-action">
+			<label><?php echo JText::_('COM_STREAM_LABEL_PINTOTOP'); ?>:</label>
+			<select name="pinned">
+				<?php foreach($pinOptions as $optionKey => $optionValue) : ?>
+				<option value="<?php echo $optionValue; ?>" <?php if(!empty($data->pinned) && $data->pinned == $optionValue) echo 'selected="selected"'; ?>><?php echo $optionKey; ?></option>
+				<?php endforeach; ?>
+			</select>
+		</div>
+		<?php endif; ?>		
+		<button class="btn" type="reset" name="message-edit-cancel"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></button>
+		<button class="btn btn-info submit" type="submit" name="message-edit-save"><?php echo JText::_('COM_STREAM_LABEL_SAVE_CHANGES'); ?></button>
     </div>
     
 </form>

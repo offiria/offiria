@@ -29,32 +29,30 @@ class StreamControllerMessage extends JController
 	/**
 	 *  Add message
 	 */	 	                       
-	public function add()
-	{
+	public function add() {
+		// Get the HTML code to append		
 		$user	= JXFactory::getUser();
-		if($user->id==0){
+		if($user->id == 0){
 		    echo "Please login to post.";
 		    exit;
 		}  
 		
-		$streamModel = StreamFactory::getModel('stream');
-		$fileModel  = StreamFactory::getModel('files');
-		$activity = new StreamActivity();
+		$streamModel	= StreamFactory::getModel('stream');
+		$fileModel  	= StreamFactory::getModel('files');
+		$activity 		= new StreamActivity();
 		$activity->update($user->id, JRequest::getVar('type'));
 		
 		// Get group 
 		$group = null;
 		$customGroupNotification = null;
 		
-		if( JRequest::getVar('group_id') )
-		{
+		if( JRequest::getVar('group_id') ) {
 			$group	= JTable::getInstance( 'Group' , 'StreamTable' );
 			$group->load(JRequest::getVar('group_id'));
 		}
 		
 		// Is this a 'direct'/private message type?
-		if( JRequest::getVar('type') == 'direct' )
-		{
+		if( JRequest::getVar('type') == 'direct' ) {
 			// create a private group and add members
 			$group	= JTable::getInstance( 'Group' , 'StreamTable' );
 			$group->members = $user->id;
@@ -62,8 +60,7 @@ class StreamControllerMessage extends JController
 			
 			// Add more members
 			$members = JRequest::getVar('members');
-			foreach($members as $memberName)
-			{
+			foreach($members as $memberName) {
 				$memberId = JUserHelper::getUserId($memberName);
 				$group->members = JXUtility::csvInsert($group->members, $memberId);
 			}
@@ -71,8 +68,7 @@ class StreamControllerMessage extends JController
 			$group->store();
 			
 			// After we have the group id, add it to each user's list
-			foreach($members as $memberName)
-			{
+			foreach($members as $memberName) {
 				$memberId = JUserHelper::getUserId($memberName);
 				$memberObj = JXFactory::getUser($memberId);
 				
@@ -116,7 +112,7 @@ class StreamControllerMessage extends JController
 			$stream->start_date = (strpos(JRequest::getVar('start_date'), '0000-00-00 00:00') === false) 
 				? JRequest::getVar('start_date') : $fallbackEventDuration['startDate']->format('Y-m-d h:i');
 			$stream->end_date = (strpos(JRequest::getVar('end_date'), '0000-00-00 00:00') === false) 
-				? JRequest::getVar('end_date') : $fallbackEventDuration['endDate']->format('Y-m-d h:i');;
+				? JRequest::getVar('end_date') : $fallbackEventDuration['endDate']->format('Y-m-d h:i');
 		}
 		
 		$stream->raw = json_encode( $postData );
