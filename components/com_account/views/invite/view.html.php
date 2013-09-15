@@ -58,6 +58,7 @@ class AccountViewInvite extends AccountView
 		parent::display($tpl);
 	}
 	
+	/* begin not used at the moment --
 	public function modInvitationList()
 	{
 		$usersInvite = AccountFactory::getModel('usersInvite');
@@ -74,16 +75,15 @@ class AccountViewInvite extends AccountView
 		$html		.= '</ul>';
 		return $html;
 	}
+	-- end not used at the moment */
 	
-	public function modMemberInvite()
-	{
+	public function modMemberInvite() {
 		$html = '';
 		$configHelper = new JXConfig();
 		
-		if ($configHelper->allowInvite() && $configHelper->allowUsersRegister())
-		{
+		if ($configHelper->allowInvite() && $configHelper->allowUsersRegister()) {
 			ob_start();
-			require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'templates'.DS.'modInviteGuest.php');
+			require_once(JPATH_ROOT.DS.'components'.DS.'com_account'.DS.'templates'.DS.'modules'.DS.'module.invite.guest.php');
 			$html = ob_get_contents();
 			ob_end_clean();
 		}
@@ -95,30 +95,10 @@ class AccountViewInvite extends AccountView
 		$html = '';
 		$members = ''; 
 		$i = 0;
-		$birthdaymember = array();
-		$today = getdate();
 
-		$db = JFactory::getDbo();
-		$query = 'SELECT u.username, u.name, ud.value FROM ' . $db->nameQuote('#__users') . ' u' .
-			' LEFT JOIN ' . $db->nameQuote('#__user_details') . ' ud ON ud.user_id = u.id' .
-			' WHERE u.block = 0 AND ud.field = "personal_birthday"';	
-		$db->setQuery($query);
-		$result = $db->loadObjectList();
+		$birthdayHelper = new AccountBirthdayHelper();
+		$birthdaymember = $birthdayHelper->getBirthdayMembest();
 		
-		foreach ($result as $key => $value) {
-			// [{"personal_birthday_date":"26.11.1978","personal_birthday_age_public":"Public"}]
-			$data = json_decode($value->value, true);
-			
-			foreach($data as $elementKey=>$elementValue) {
-				// To-do: after the proper format has been applied in profile edit field;
-				$mday = substr($elementValue["personal_birthday_date"],0,2);
-				$month = substr($elementValue["personal_birthday_date"],3,2);
-				if ($elementValue["personal_birthday_age_public"] == 'Public' && $mday == $today['mday'] && $month == $today['mon']) {
-					$birthdaymember[$value->username] = $value->name;
-				}
-			}
-		}
-
 		$numOfMembers = count($birthdaymember);
 		if ($numOfMembers > 0) {
 			foreach ($birthdaymember as $key => $value) {
@@ -133,7 +113,7 @@ class AccountViewInvite extends AccountView
 			}
 
 			ob_start();
-			require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'templates'.DS.'modMembersBirthday.php');
+			require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'templates'.DS.'modules'.DS.'module.members.birthday.php');
 			$html = ob_get_contents();
 			ob_end_clean();
 		}

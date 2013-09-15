@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_administrator
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Offiria Team
  */
@@ -55,7 +55,7 @@ class StreamViewFiles extends StreamView
 		$total = $fileModel->getTotal( $filter );
 		
 		// Show storage stats
-		// JXModule::addBuffer('right', $this->getStorageStatsHTML() );
+		JXModule::addBuffer('right', $this->getStorageStatsHTML(), 'file.module.storagestats');
 		
 		$doc = JFactory::getDocument();
 		$doc->setTitle($title);
@@ -91,10 +91,10 @@ class StreamViewFiles extends StreamView
 		
 		return $html;		
 					
-		//JXModule::addBuffer('right', $groupView->getNewGroupsHTML($myGroupsIds) );
-		//JXModule::addBuffer('right', $eventView->getUpcomingHTML() );
-		//echo $this->getStreamPostHTML();
-		//echo $this->getStreamDataHTML();
+		JXModule::addBuffer('right', $groupView->getNewGroupsHTML($myGroupsIds), 'group.module.groups');
+		JXModule::addBuffer('right', $eventView->getUpcomingHTML(), 'group.module.eventslist');
+		#echo $this->getStreamPostHTML();
+		#echo $this->getStreamDataHTML();
 	}
 	
 	/**
@@ -117,7 +117,7 @@ class StreamViewFiles extends StreamView
 		$tmpl = new StreamTemplate();
 		$tmpl->set('title', JText::_('COM_STREAM_LABEL_RELATED_FILES'));
 		$tmpl->set('files', $files)->set('total', $total)->set('group', $group);
-		$html = $tmpl->fetch('file.module.list');
+		$html = $tmpl->fetch('..'.DS.'modules'.DS.'file.module.list');
 		return $html;
 	}
 	
@@ -138,7 +138,7 @@ class StreamViewFiles extends StreamView
 		$tmpl = new StreamTemplate();
 		$tmpl->set('title', JText::_('COM_STREAM_LABEL_STORAGE_USAGE'));
 		$tmpl->set('used', $used)->set('total', $total);
-		$html = $tmpl->fetch('file.module.storagestats');
+		$html = $tmpl->fetch('..'.DS.'modules'.DS.'file.module.storagestats');
 		return $html;
 	}
 
@@ -149,10 +149,10 @@ class StreamViewFiles extends StreamView
 		$total = $fileModel->countFiles( array('user_id' => $user->id));
 
 		$tmpl = new StreamTemplate();
-		$tmpl->set('title', JText::_('COM_STREAM_LABEL_FILES'));
+		$tmpl->set('title', JText::_('COM_STREAM_LABEL_MY_FILES'));
 		$tmpl->set('files', $files)->set('total', $total);
 		$tmpl->set('user', $user);
-		$html = $tmpl->fetch('file.module.list');
+		$html = $tmpl->fetch('..'.DS.'modules'.DS.'file.module.list');
 		return $html;
 	}
 }

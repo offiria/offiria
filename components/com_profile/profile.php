@@ -14,7 +14,7 @@ if($controller = JRequest::getWord('view', 'display')) {
 	}
 }
 
-JXModule::addBuffer('right', ProfileView::showSideBar());
+JXModule::addBuffer('right', ProfileView::showSideBar(), '');
 
 // Create the controller
 $classname	= 'ProfileController'.ucfirst($controller);

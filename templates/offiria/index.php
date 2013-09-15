@@ -727,13 +727,20 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 							</form>
 						</div>		
 						<div id="<?php if (($view == 'groups' && preg_match("/^show(_.+)?$/", $task) && $group_id > 0) || $view == 'customlist'): ?>group-pages<?php endif; ?>" class="sidebar-right-inner blocks">
-						
 							<?php
-							// Add guest invite right module
 							$accountView = AccountFactory::getView('invite');
-							JXModule::addBuffer('right', $accountView->modMemberInvite());
-							JXModule::addBuffer('right', $accountView->modMembersBirthday());
+							if ($view == 'groups') {
+								// if groups page are opend, then move the birthday module at the last
+								JXModule::addBuffer('right', $accountView->modMembersBirthday(), 'module.members.birthday');
+							} else {
+								// adding birthday as a first module
+								JXModule::addBuffer('right_bday', $accountView->modMembersBirthday(), 'module.members.birthday');
+								$birthday =& JXModule::getBuffer('right_bday');
+								if (is_array($birthday) && count($birthday)) echo $birthday[0];
+							}
 							
+							// Add guest invite right module
+							JXModule::addBuffer('right', $accountView->modMemberInvite(), 'module.invite.guest');
 							$buffer =& JXModule::getBuffer('right');
 							foreach($buffer as $buff) {
 								echo $buff;

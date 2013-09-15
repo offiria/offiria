@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_administrator
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
  */
@@ -110,18 +110,18 @@ class ProfileViewDisplay extends ProfileView
 		//$document = JFactory::getDocument();
 		// $document->setTitle(JText::_('COM_PROFILE_LABEL_PROFILE_PAGE').': '.$user->name);
 		$groupView = StreamFactory::getView('groups');
-		JXModule::addBuffer('right', $groupView->getUserActiveGroupsHTML($user->id));
+		JXModule::addBuffer('right', $groupView->getUserActiveGroupsHTML($user->id), 'group.module.groups');
 		
 		// development
 		$fileView = StreamFactory::getView('files');
-		JXModule::addBuffer('right', $fileView->modUserFilesHTML($user));
+		JXModule::addBuffer('right', $fileView->modUserFilesHTML($user), 'file.module.list');
 
 		parent::display($tpl);
 	}
 	
 	public function generateAnalytics($user)
 	{
-		require_once( JPATH_ROOT. DS. 'libraries/HighRoller/HighRoller.php');
+		require_once(JPATH_ROOT. DS. 'libraries/HighRoller/HighRoller.php');
 		require_once(JPATH_ROOT. DS. 'libraries/HighRoller/HighRollerSeriesData.php');
 		require_once(JPATH_ROOT. DS. 'libraries/HighRoller/HighRollerLineChart.php');
 		require_once(JPATH_ROOT. DS. 'libraries/HighRoller/HighRollerColumnChart.php');

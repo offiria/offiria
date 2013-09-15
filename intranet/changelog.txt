@@ -1,0 +1,58 @@
+
+Build v1.1.5 - Dec 4, 2012
+^ Translate Inbox
+^ Translate Pin to Top
+^ Search shows unrelated/joined groups content 
+^ Translate advanced settings
+^ Change "List" from "Custom List" to "Stream"
+^ LDAP/integration bug
+^ Enable LDAP
+^ Version update check page
+^ Login username field focus
+^ Installer: Wrong username/password combination for Db Config
+^ Empty DB prefix causes database connection errors
+
+Build v1.1.4 - Nov 20, 2012
+^ Ability to re-pin messages
+^ Unable to open/download file attachment via Private Messages
+^ Can't reliably deactivate users
+^ XSS vulnerability fixed
+^ Remove trial period mention in invitation
+^ Translation updates
+
+Build v1.1.3 - Nov 8, 2012
+^ Installer instruction wording/spelling
+^ Include only packed version of the javascript in the release
+^ Department/Position Profile Display
+^ Error when searching for info that does exist in related content
+^ Custom list date range styling needs to be fixed
+^ MySQL username limit during signup
+^ Add Tags field won't allow any tag with "." and should display error when unable to accept such a tag
+^ Edit Profile Details for adding contact number and instant messenger is not functioning
+^ Re-pin messages
+^ Unable to open/download certain file attachment via Inbox/Private Message
+
+Build v1.1.2 - Nov 1, 2012
+^ Installer: Customizable table prefix
+^ Installer: Assumes that everyone's database is at "localhost"
+^ Invitation notification email within Offiria csites to invitees not working
+^ Admin cannot access Analytics page
+
+Build v1.1.1 - Oct 25, 2012
++ Added read by/seen by support to Mobile view
++ Inbox: Read by notification of recepients
+^ Clicking on the "Read by:" in mobile will bring to an awful error page 
+^ Image preview slider button positioning
+^ Support for other file extension types and their icon on Offiria
+^ IE9 quirks 
+^ File listing breaks when .docx are in it.
+^ Mobile search results page error
+^ Group files sql error when not logged in
+^ Failed error when replacing a file
+^ Avatar in private message compose box
+^ Style Search Results page to be mobile friendly
+^ Upcoming events dont appear on "Upcoming Events" sidebar block
+^ Private groups showing up in personal stream
+^ Ensuring the Offiria's Error pages end gracefully
+^ "installer" folder needs to be renamed to "installation"
+^ Stylize the install error message

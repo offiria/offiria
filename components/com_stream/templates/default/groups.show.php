@@ -1,12 +1,13 @@
 <?php if($group->isMember($my->id) || $my->isAdmin()) {
 	if($group->archived){ ?>
 		<div class="alert-message block-message warning group-filter">       
-		<p>This group has been archived. You can no longer leave a message in this group. An achived group simply mean that this group is no longer active and has either completed its objectives</p>        
+		<p><?php echo JText::_('COM_STREAM_GROUP_ARHIVED'); ?></p>        
 		</div>
 	<?php } else { 
 		
 		// Allow only group members to see the stream.post box
 		$userGroups = $my->getParam('groups_member');
+
 		if (JXUtility::csvExist($userGroups, $group->id))
 		{
 			if (JRequest::getVar('template') != 'mobile') {

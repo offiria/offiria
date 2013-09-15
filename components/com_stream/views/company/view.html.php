@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_administrator
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Offiria Team
  */
@@ -29,12 +29,12 @@ class StreamViewCompany extends StreamView
 		$eventView = StreamFactory::getView('events');
 
 		// Side bar modules
-		JXModule::addBuffer('right', $this->modTagsTrendingHTML());
+		JXModule::addBuffer('right', $this->modTagsTrendingHTML(),'stream.tag.trending');
 
 		if(!$my->isExtranetMember()) {
-			JXModule::addBuffer('right', $groupView->getNewGroupsHTML($my->getMergedGroupIDs()));
+			JXModule::addBuffer('right', $groupView->getNewGroupsHTML($my->getMergedGroupIDs()),'group.module.groups');
 		}
-		JXModule::addBuffer('right', $eventView->getUpcomingHTML());
+		JXModule::addBuffer('right', $eventView->getUpcomingHTML(), 'group.module.eventslist');
 
 		echo $this->getStreamPostHTML(); // Post box
 		echo $this->getStreamDataHTML(); // Stream items
@@ -76,7 +76,7 @@ class StreamViewCompany extends StreamView
 		}
 
 		// Trending tags at the right sidebar
-		JXModule::addBuffer('right', $this->modTagsTrendingHTML((isset($group)) ? $group : null));
+		JXModule::addBuffer('right', $this->modTagsTrendingHTML((isset($group)) ? $group : null), 'stream.tag.trending');
 
 		$html .= '<hr />';
 		$html .= $this->getStreamDataHTML($filter, $options);

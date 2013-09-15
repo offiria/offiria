@@ -151,7 +151,7 @@ class AccountControllerAccount extends JController
 			
 			$param['crocodocs']		= $postdata['crocodocs'];
 			$param['crocodocsenable']	= $postdata['crocodocsenable'];
-			$param['scribd_api']		= $postdata['scribd_api'];
+			$param['scribd_api']	= $postdata['scribd_api'];
 			$param['scribd_secret']	= $postdata['scribd_secret'];
 			$param['scribdenable']	= $postdata['scribdenable'];
 			$param['diffbot']		= $postdata['diffbot'];
@@ -164,8 +164,13 @@ class AccountControllerAccount extends JController
 			$param['smtpuser']		= $postdata['smtpuser'];
 			$param['smtppass']		= $postdata['smtppass'];
 			$param['smtphost']		= $postdata['smtphost'];
-			$param['smtpsecure']		= $postdata['smtpsecure'];
+			$param['smtpsecure']	= $postdata['smtpsecure'];
 			$param['smtpport']		= $postdata['smtpport'];
+			
+			// process all enabled/disabled modules
+			foreach ($GLOBALS['MODULES'] as $key => $value) {
+				$param['module_' . $key] = $postdata['module_' . $key];
+			}
 			
 			$saveAction = $configHelper->saveConfig($param);
 			

@@ -71,4 +71,27 @@ class JConfig {
 	public $captcha = '0';
 	public $style = 'blue';
 	public $postfix_domain = '.offiria.com';
+	public $module_module_invite_guest = '1';
+
+	public $module_module_members_birthday = '1';
+
+	public $module_event_module_attendee = '1';
+
+	public $module_file_module_list = '1';
+
+	public $module_file_module_storagestats = '1';
+
+	public $module_group_module_eventslist = '1';
+
+	public $module_group_module_groups = '1';
+
+	public $module_group_module_info = '1';
+
+	public $module_group_module_memberlist = '1';
+
+	public $module_group_module_milestones = '1';
+
+	public $module_stream_tag_trending = '1';
+
+	public $module_todo_module_pending = '1';
 }

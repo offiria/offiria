@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_administrator
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Offiria Team
  */
@@ -36,7 +36,7 @@ class StreamViewTodo extends StreamView
 		$doc->addStyleSheet(JURI::root().'media/uploader/fileuploader.css');
 		
 		//JXModule::addBuffer('right', '<div><strong>I am working on...</strong></div>');
-		JXModule::addBuffer('right', $this->modGetPendingTask(array('user_id' => $my->id)));
+		JXModule::addBuffer('right', $this->modGetPendingTask(array('user_id' => $my->id)), 'todo.module.pending');
 		$html .= $this->getStreamDataHTML();
 		
 		echo $html;
@@ -226,6 +226,6 @@ class StreamViewTodo extends StreamView
 			$tasks = '<div class="alert-message block-message info"><p>'.JText::_('COM_STREAM_LABEL_NO_PENDING_TASK').'</p></div>';
 		}
 		$tmpl->set('tasks', $tasks);
-		return $tmpl->fetch('todo.module.pending');
+		return $tmpl->fetch('..'.DS.'modules'.DS.'todo.module.pending');
 	}
 }

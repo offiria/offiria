@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_administrator
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Offiria Team
  */
@@ -53,7 +53,7 @@ class StreamViewMessage extends StreamView
 		
 		// Add attendee if this is an event
 		if($stream->type == 'event'){
-			JXModule::addBuffer('right', $this->modGetAttendeeHTML($stream));
+			JXModule::addBuffer('right', $this->modGetAttendeeHTML($stream), 'event.module.attendee');
 		}
 		
 		// Add attachment script

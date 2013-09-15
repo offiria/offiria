@@ -26,10 +26,14 @@ class JXModule {
 		return $instance[$position];
 	}
 	
-	public static function addBuffer($position, $html)
+	public static function addBuffer($position, $html, $module)
 	{
-		$buff =& JXModule::getBuffer($position);
-		$buff[] = $html;
+		// convert the module file name to permission ID
+		$configHelper	= new JXConfig();
+		if ($configHelper->get('module_' . str_replace(".", "_", $module)) == '1') {
+			$buff =& JXModule::getBuffer($position);
+			$buff[] = $html;
+		}
 		return true;
 	}
 }

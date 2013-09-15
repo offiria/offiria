@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_account
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,6 +12,8 @@ jimport('joomla.xfactory');
 require_once(JPATH_ROOT.DS.'components'.DS.'com_account'.DS.'views'.DS.'view.html.php');
 require_once(JPATH_ROOT.DS.'components'.DS.'com_account'.DS.'controller.php');
 require_once(JPATH_ROOT.DS.'components'.DS.'com_account'.DS.'helpers'.DS.'access.php');
+require_once(JPATH_ROOT.DS.'components'.DS.'com_account'.DS.'helpers'.DS.'birthday.php');
+require_once(JPATH_ROOT.DS.'components'.DS.'com_stream'.DS.'defines.php');
 require_once(JPATH_ROOT.DS.'components'.DS.'com_stream'.DS.'access.php');
 
 JLoader::register('StreamCategory', JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'libraries'.DS.'category.php'); 

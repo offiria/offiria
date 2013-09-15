@@ -41,7 +41,7 @@ class StreamViewEvents extends StreamView
 			'.JText::_('COM_STREAM_HELPER_EVENT').'</div>';
 	    	}
         
-		JXModule::addBuffer('right', $this->getUpcomingHotEvent() );
+		JXModule::addBuffer('right', $this->getUpcomingHotEvent(), 'group.module.eventslist');
 		// Show calendar
 		$now = new JDate();
 		StreamFactory::load('helpers'.DS.'calendar');
@@ -159,7 +159,7 @@ class StreamViewEvents extends StreamView
 		$tmpl = new StreamTemplate();
 		$tmpl->set('events', $pendingEvent);
 		$tmpl->set('title', JText::_('COM_STREAM_LABEL_UPCOMING_EVENTS'));
-		$html = $tmpl->fetch('group.module.eventlist');
+		$html = $tmpl->fetch('..'.DS.'modules'.DS.'group.module.eventlist');
 		return $html;
 	}
 	
@@ -205,7 +205,7 @@ class StreamViewEvents extends StreamView
 		$tmpl = new StreamTemplate();
 		$tmpl->set('events', $pendingEvent);
 		$tmpl->set('title', JText::_('COM_STREAM_LABEL_POPULAR_EVENTS'));
-		$html = $tmpl->fetch('group.module.eventlist');
+		$html = $tmpl->fetch('..'.DS.'modules'.DS.'group.module.eventlist');
 		return $html;
 	}
 

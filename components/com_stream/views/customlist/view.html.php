@@ -68,13 +68,13 @@ class StreamViewCustomlist extends StreamView
 
 		// Side bar
 		if (isset($filterArr['group_ids'])) {
-			JXModule::addBuffer('right', $this->getFilteredGroupsHTML($filterArr['group_ids']));
+			JXModule::addBuffer('right', $this->getFilteredGroupsHTML($filterArr['group_ids']),'group.module.groups');
 		}
 		if (isset($filterArr['user_ids'])) {
-			JXModule::addBuffer('right', $this->getFilteredUsersHTML($filterArr['user_ids']));
+			JXModule::addBuffer('right', $this->getFilteredUsersHTML($filterArr['user_ids']), 'group.module.memberlist');
 		}
 		if (isset($filterArr['tags'])) {
-			JXModule::addBuffer('right', $this->getFilteredTagsHTML($filterArr['tags']));
+			JXModule::addBuffer('right', $this->getFilteredTagsHTML($filterArr['tags']), 'stream.tag.trending');
 		}
 
 		if (!empty($buildConditionFilter)) {
@@ -101,7 +101,7 @@ class StreamViewCustomlist extends StreamView
 		$tmpl->set('title', JText::_('Groups'));
 		$tmpl->set('groups', $data);
 
-		$html = $tmpl->fetch('group.module.groups');
+		$html = $tmpl->fetch('..'.DS.'modules'.DS.'group.module.groups');
 
 		return $html;
 	}
@@ -118,7 +118,7 @@ class StreamViewCustomlist extends StreamView
 		$tmpl->set('title', JText::_('People'));
 		$tmpl->set('members', $users);
 
-		$html = $tmpl->fetch('group.module.memberlist');
+		$html = $tmpl->fetch('..'.DS.'modules'.DS.'group.module.memberlist');
 
 		return $html;
 	}
@@ -137,7 +137,7 @@ class StreamViewCustomlist extends StreamView
 		$tmpl->set('title', JText::_('Tags'));
 		$tmpl->set('trendingTags', $tagObjs);
 
-		$html = $tmpl->fetch('stream.tag.trending');
+		$html = $tmpl->fetch('..'.DS.'modules'.DS.'stream.tag.trending');
 
 		return $html;
 	}

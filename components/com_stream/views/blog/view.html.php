@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_administrator
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Offiria Team
  */
@@ -131,8 +131,8 @@ class StreamViewBlog extends StreamView
 		
 		$pagination = new JPagination($total,  JRequest::getVar('limitstart', 0) , $jconfig->list_limit);
 
-		JXModule::addBuffer('right', $this->modTagsTrendingHTML());
-		JXModule::addBuffer('right', $this->getArchiveHTML() );
+		JXModule::addBuffer('right', $this->modTagsTrendingHTML(), 'stream.tag.trending');
+		JXModule::addBuffer('right', $this->getArchiveHTML(), 'group.module.archive');
 		
 		$html = '';
 		
@@ -153,10 +153,11 @@ class StreamViewBlog extends StreamView
 	 */	 	
 	private function getArchiveHTML()
 	{
+		// TO-DO: put it on a sparate module view file
 		$model = StreamFactory::getModel('stream');
 		$data = $model->getMessageStats();
 		$html = '<div class="moduletable">
-			<h3>Archives</h3>
+			<h3>' . JText::_('COM_STREAM_BLOG_ARCHIVE') . '</h3>
 			<ul class="archivelist">';
 		
 		$monthList = array( 1 => 'JANUARY', 2=> 'FEBRUARY', 3 => 'MARCH', 

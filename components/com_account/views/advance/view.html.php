@@ -43,6 +43,12 @@ class AccountViewAdvance extends AccountView
 		$smtphost		= $configHelper->get('smtphost');
 		$smtpsecure		= $configHelper->get('smtpsecure');
 		$smtpport		= $configHelper->get('smtpport'); // 25
+		
+		// process all enabled/disabled modules
+		foreach ($GLOBALS['MODULES'] as $key => $value) {
+			${'module_' . $key} = $configHelper->get('module_' . $key);
+		}
+
 		//overwrite value with postParam when save error
 		$error = array();
 		if ($_POST)
@@ -65,6 +71,11 @@ class AccountViewAdvance extends AccountView
 			$smtphost		= $postParam['smtphost'];
 			$smtpsecure		= $postParam['smtpsecure'];
 			$smtpport		= $postParam['smtpport'];
+			
+			// process all enabled/disabled modules
+			foreach ($GLOBALS['MODULES'] as $key => $value) {
+				${'module_' . $key} = $postParam['module_' . $key];
+			}
 		}
 		
 
@@ -85,6 +96,11 @@ class AccountViewAdvance extends AccountView
 		$this->assignRef('smtphost', $smtphost);
 		$this->assignRef('smtpsecure', $smtpsecure);
 		$this->assignRef('smtpport', $smtpport);
+		
+		// process all enabled/disabled modules
+		foreach ($GLOBALS['MODULES'] as $key => $value) {
+			$this->assignRef('module_' . $key, ${'module_' . $key});
+		}
 		
 		$doc = JFactory::getDocument();
 		$doc->setTitle(JText::_("COM_ACCOUNT_LABEL_ACCOUNT_ADVANCE_SETTING"));

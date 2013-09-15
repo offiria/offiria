@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_administrator
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Offiria Team
  */
@@ -51,7 +51,7 @@ class StreamView extends JView
 		$attendees = $stream->getFollowers();
 		$tmpl = new StreamTemplate();
 		$tmpl->set('stream', $stream)->set('attendees', $attendees);
-		$html = $tmpl->fetch('event.module.attendee');
+		$html = $tmpl->fetch('..'.DS.'modules'.DS.'event.module.attendee');
 		return $html;
 	}
 
@@ -69,7 +69,7 @@ class StreamView extends JView
 			$tmpl->set('groupId', $group->id);
 		}
 
-		$html = $tmpl->fetch('stream.tag.trending');
+		$html = $tmpl->fetch('..'.DS.'modules'.DS.'stream.tag.trending');
 		return $html;
 	}
 }
