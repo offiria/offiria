@@ -82,7 +82,7 @@ class StreamLinksDiffbot
 	 */
 	public function imageToAsset($url) {
 		$path = '';
-		$uri = StreamLinks::ASSET_STORAGE_PATH.DS.'?url='.urlencode($url);
+		$uri = $url;
 		$u = JUri::getInstance($uri);
 		$registry = new JRegistry();
 		$curl = new JHttpTransportXCurl($registry);

@@ -48,10 +48,12 @@ class StreamLinks
 	 * @return String string of correct asset path
 	 */
 	public static function imageAssetThumbnailPath($url) {
-		return self::ASSET_STORAGE_PATH.'/?'.
-			http_build_query(array('url'=>urlencode($url), 
-								   'w'=>self::IMAGE_THUMBNAIL_WIDTH, 
-								   'h'=>self::IMAGE_THUMBNAIL_HEIGHT));
+		// return self::ASSET_STORAGE_PATH.'/?'.
+		// 	http_build_query(array('url'=>urlencode($url), 
+		// 						   'w'=>self::IMAGE_THUMBNAIL_WIDTH, 
+		// 						   'h'=>self::IMAGE_THUMBNAIL_HEIGHT));
+
+		return $url;
 	}
 
 	public static function format($json) {
