@@ -167,17 +167,22 @@ class StreamControllerMessage extends JController
 		// Any links in the message ?
 		$links = StreamMessage::getLinks($stream->message);
 		if(!empty($links)){
+
 			$userLinks = $user->getParam('links');
 			foreach($links as $row)
 				{
 					$link = JTable::getInstance( 'Link' , 'StreamTable' );
-					$link->load( array('link' => $row) );
-					$link->addUser( $user->id );
-					$link->store();
+					
+					// store only if 'load' allowed. It will return false for vides/slides etc.
+					if( $link->load( array('link' => $row) ) ) {
+						$link->addUser( $user->id );
+						$link->store();
 
-					$userLinks = JXUtility::csvInsert($userLinks, $link->id);
+						$userLinks = JXUtility::csvInsert($userLinks, $link->id);
+					}
 				}
 
+			// Update user links
 			$user->setParam('links', $userLinks);
 			$user->save();
 		}
