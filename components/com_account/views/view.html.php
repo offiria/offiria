@@ -22,7 +22,7 @@ class AccountView extends JView
 ?>
 		<ul class="menubar">
 		  <li <?php echo ($task == 'display' && $view == 'account') ? 'class="active"' : '';?>><a href="<?php echo JRoute::_('index.php?option=com_account&view=account');?>"><?php echo JText::_('COM_ACCOUNT_LABEL_ACCOUNT_SETTING');?></a></li>
-		  <li <?php echo ($task == 'advance' && $view == 'account') ? 'class="active"' : '';?>><a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=advance');?>"><?php echo JText::_('COM_ACCOUNT_LABEL_ACCOUNT_ADVANCE_SETTING');?></a></li>
+		  <li <?php echo ($task == 'advance') ? 'class="active"' : '';?>><a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=advance');?>"><?php echo JText::_('COM_ACCOUNT_LABEL_ACCOUNT_ADVANCE_SETTING');?></a></li>
 		  <!--li <?php echo ($task == 'integrations') ? 'class="active"' : '';?>><a href="<?php echo JRoute::_('index.php?option=com_account&view=integration');?>"><?php echo JText::_('COM_ACCOUNT_LABEL_INTEGRATIONS');?></a></li-->
 		  <li <?php echo ($task == 'categories') ? 'class="active"' : '';?>><a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=categories');?>"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORIES');?></a></li>
 		  <li <?php echo ($task == 'manageDepartment') ? 'class="active"' : '';?>><a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment');?>"><?php echo JText::_('COM_ACCOUNT_LABEL_MANAGE_DEPARTMENT');?></a></li>

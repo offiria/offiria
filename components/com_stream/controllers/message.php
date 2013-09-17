@@ -167,13 +167,21 @@ class StreamControllerMessage extends JController
 			foreach($links as $row)
 				{
 					$link = JTable::getInstance( 'Link' , 'StreamTable' );
+					// store only if 'load' allowed. It will return false for vides/slides etc.
+					if( $link->load( array('link' => $row) ) ) {
+						$link->addUser( $user->id );
+						$link->store();
+
+						$userLinks = JXUtility::csvInsert($userLinks, $link->id);
+					}
 					$link->load( array('link' => $row) );
 					$link->addUser( $user->id );
 					$link->store();
 
 					$userLinks = JXUtility::csvInsert($userLinks, $link->id);
 				}
-
+			
+			// Update user links
 			$user->setParam('links', $userLinks);
 			$user->save();
 		}

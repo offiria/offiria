@@ -257,6 +257,6 @@ class StreamViewCompany extends StreamView
 		$tmpl->set('firstDay', $firstDay)->set('lastDay', $lastDay)->set('today', $today)->set('weekNumber', $weekOfYear);
 		$tmpl->set('todos', $todo)->set('events', $events)->set('milestones', $milestones);
 		$tmpl->set('todoCount', count($todo))->set('eventCount', count($events))->set('milestoneCount', count($milestones))->set('showPopup', $showPopup);
-		return $tmpl->fetch('stream.module.dailyoverview');
+		return $tmpl->fetch('..'.DS.'modules'.DS.'stream.module.dailyoverview');
 	}
 }

@@ -448,7 +448,7 @@ a:focus {
   font-size: 13px;
   padding: 13px 18px 11px;
   display: block;
-  text-transform: capitalize;
+  /*text-transform: capitalize;*/
   height: 100%;
 }
 #sidebar-left .side-notification a:hover {
@@ -1076,7 +1076,7 @@ form h3:first-child {
 }
 form label {
   display: block;
-  ;float: left;
+  float: left;
   font-weight: bold;
   margin-right: 5px;
   margin-top: 5px;
@@ -1143,7 +1143,6 @@ form.edit .params-invitation textarea {
 form.edit .params-invitation span.help-text {
   margin-left: 0;
   margin-top: 2px;
-  text-transform: capitalize;
 }
 #category-container,
 #department-container {
@@ -1742,6 +1741,14 @@ ol.stream li.message-item {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
 }
+.message-content-milestone {
+  background-color: #9dd02e;
+  border: 1px solid #9acd32;
+}
+.message-content-page {
+  background-color: #0071bc;
+  border: 1px solid #4682b4;
+}
 .message-content-top {
   font-size: 13px;
   padding: 0;
@@ -1978,6 +1985,24 @@ ol.stream li.compact-item {
   margin-right: 10px;
   margin-top: 8px;
 }
+.milestone-compact .meta-compact .meta-title-compact a,
+.milestone-compact .meta-compact .meta-date-compact a {
+	color: #fafad2 !important;
+}
+.milestone-compact .meta-compact .meta-date-compact,
+.milestone-compact .meta-compact .meta-title-compact {
+	color: #fff !important;
+}
+.blog-compact .meta-compact .meta-title-compact a,
+.blog-compact .meta-compact .meta-dateblog-compact a {
+	color: #e0ffff !important;
+}
+.blog-compact .meta-compact .user-horizontal-list,
+.blog-compact .meta-compact .user-horizontal-list .small,
+.blog-compact .meta-compact .meta-dateblog-compact,
+.blog-compact .meta-compact .meta-title-compact {
+	color: #fff !important;
+}
 .meta-compact {
   color: #444;
   -ms-word-wrap: break-word;
@@ -2024,8 +2049,8 @@ ol.stream li.compact-item {
   background: #999999;
 }
 .label-blog {
-  background: #0071bc;
-  /*margin: 8px 9px 0;*/
+  background: #deb887;
+  border: 1px solid #fff;
   display: block;
   margin-left: 10px;
   margin-right: 10px;
@@ -2038,8 +2063,8 @@ ol.stream li.compact-item {
   line-height: 15px;
 }
 .label-milestone {
-  background: #9dd02e;
-  /*margin: 0 8px 0 0;*/
+  background: #ff8c00;
+  border: 1px solid #fff;
   display: block;
   margin-left: 10px;
   margin-right: 10px;
@@ -8070,4 +8095,132 @@ ul.todolist li.todo-item > span {
 }
 input[type="checkbox"] {
 	margin-right:10px !important;
+}
+
+/** http://www.paulund.co.uk/style-checkboxes-with-css
+ * Create the slider bar
+ */
+.checkboxOne {
+	width: 30px;
+	height: 11px;
+	background: #555;
+	position: relative;
+	border-radius: 20px;
+}
+/**
+ * Create the text for the On position
+ */
+.checkboxOne:before {
+	content: 'o';
+	position: absolute;
+	top: -4px;
+	left: 5px;
+	color: #26ca28;
+	font-size: 8px;
+}
+/**
+ * Create the label for the off position
+ */
+.checkboxOne:after {
+	content: 'o';
+	position: absolute;
+	top: -4px;
+	left: 19px;
+	color: #ddd;
+	font-size: 8px;
+}
+/**
+ * Create the slider from the label
+ */
+.checkboxOne label {
+	display: block;
+	width: 13px;
+	height: 7px;
+	border-radius: 40px;
+
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+	cursor: pointer;
+	position: absolute;
+	top: -3px;
+	left: -10px;
+	z-index: 1;
+	background: #ccc;
+}
+
+/**
+ * Move the slider in the correct position if the checkbox is clicked
+ */
+.checkboxOne input[type=checkbox]:checked + label {
+	left: 3px;
+	background: #26ca28;
+}
+
+/**
+ * Checkbox Three
+ */
+.checkboxThree {
+	width: 60px;
+	height: 20px;
+	background: #333;
+	border-radius: 50px;
+	position: relative;
+}
+/**
+ * Create the text for the On position
+ */
+.checkboxThree:before {
+	content: 'On';
+	text-transform: capitalize;
+	position: absolute;
+	top: 2px;
+	left: 7px;
+	height: 2px;
+	color: #26ca28;
+	font-size: 9px;
+}
+/**
+ * Create the label for the off position
+ */
+.checkboxThree:after {
+	content: 'Off';
+	text-transform: capitalize;
+	position: absolute;
+	top: 2px;
+	left: 35px;
+	height: 2px;
+	color: #ddd;
+	font-size: 9px;
+}
+/**
+ * Create the pill to click
+ */
+.checkboxThree label {
+	display: block;
+	width: 22px;
+	height: 12px;
+	border-radius: 50px;
+
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+	cursor: pointer;
+	position: absolute;
+	top: -1px;
+	z-index: 1;
+	left: -7px;
+	background: #ddd;
+}
+
+/**
+ * Create the checkbox event for the label
+ */
+.checkboxThree input[type=checkbox]:checked + label {
+	left: 22px;
+	background: #26ca28;
 }

@@ -24,7 +24,7 @@ if (isset($data->category_id)) {
 			<img class="cAvatar" border="0" author="85" alt="" src="<?php echo $user->getThumbAvatarURL(); ?>">
 		</a>
 	</div>			
-	<div class="message-content">			
+	<div class="message-content message-content-page">			
 		<span class="label-compact label-blog"><?php echo JText::_('COM_STREAM_LABEL_BLOG'); ?></span>
 		
 		<div class="message-content-compact blog-compact">

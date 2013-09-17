@@ -8,6 +8,7 @@
  */
 
 defined('JPATH_PLATFORM') or die;
+jimport('joomla.utilities.xconfig');
 
 class JXModule {
 	public static $buffer = array();
@@ -26,7 +27,7 @@ class JXModule {
 		return $instance[$position];
 	}
 	
-	public static function addBuffer($position, $html, $module)
+	public static function addBuffer($position, $html, $module='')
 	{
 		// convert the module file name to permission ID
 		$configHelper	= new JXConfig();

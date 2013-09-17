@@ -65,17 +65,17 @@ if(!$my->id)
 }
 
 // Should Be in Module
-include_once( JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'factory.php');
+#include_once( JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'factory.php');
 
-$option = JRequest::getVar('option');
-$view = JRequest::getVar('view');
-$task = JRequest::getVar('task');
-$group_id = JRequest::getVar('group_id');
+$option 	= JRequest::getVar('option');
+$view 		= JRequest::getVar('view');
+$task 		= JRequest::getVar('task');
+$group_id 	= JRequest::getVar('group_id');
 
 $my = JXFactory::getUser();
 $lastMessageRead = $my->getParam('message_last_read');
 $count = StreamMessage::countMessageSince($lastMessageRead);
-//$inboxUnreadCount = MessagingNotification::getUserNotification($my->id);
+$inboxUnreadCount1 = MessagingNotification::getUserNotification($my->id);
 $streamModel 	= StreamFactory::getModel('stream');
 
 // Groups
@@ -408,20 +408,20 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 								<h3><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display'); ?>"><?php echo $user->name; ?></a></h3>
 
 								<div class="btn-group">
-									<?php /*
-								    <a href="<?php echo JRoute::_('index.php?option=com_messaging'); ?>">Inbox</a>
-							    	<?php if($inboxUnreadCount): ?>
-								    <span style="font-weight: bold; color: #FB4C40; display: inline;">(<?php echo $inboxUnreadCount; ?>)</span>
+									
+								    <a href="<?php echo JRoute::_('index.php?option=com_messaging'); ?>"><?php echo JText::_('NAVIGATOR_LABEL_INBOX');?></a>
+							    	<?php if($inboxUnreadCount1): ?>
+								    <span style="font-weight: bold; color: #FB4C40; display: inline;">(<?php echo $inboxUnreadCount1; ?>)</span>
 									<?php endif; ?>
 									&nbsp;&bull;&nbsp;
-									*/ ?>
+									
 								    <a class="dropdown-toggler" data-toggle="dropdown" href="#"><?php echo JText::_('COM_PROFILE_LABEL_PROFILE_SETTINGS');?><span class="caret"></span></a>
 									
 								    <ul class="dropdown-menu">
-								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit'); ?>">&raquo;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_EDIT_PROFILE');?></a></li>
-									  <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=details'); ?>">&raquo;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_EDIT_DETAILS');?></a></li>
-								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=changeAvatar'); ?>">&raquo;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_PROFILE_AVATAR');?></a></li>
-								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=notification'); ?>">&raquo;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_NOTIFICATION');?></a></li>
+								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit'); ?>">&diams;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_EDIT_PROFILE');?></a></li>
+									  <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=details'); ?>">&diams;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_EDIT_DETAILS');?></a></li>
+								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=changeAvatar'); ?>">&diams;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_PROFILE_AVATAR');?></a></li>
+								      <li><a href="<?php echo JRoute::_('index.php?option=com_profile&view=edit&task=notification'); ?>">&diams;&nbsp;<?php echo JText::_('COM_PROFILE_LABEL_NOTIFICATION');?></a></li>
 								    </ul>
 								</div>
 							</div>
@@ -479,8 +479,8 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 						<!-- DAILY OVERVIEW START -->
 						<div>
 							<?php 						
-							//$companyView = StreamFactory::getView('company', '', 'html');
-							//echo $companyView->modGetDailyOverviewHtml();
+							$companyView = StreamFactory::getView('company', '', 'html');
+							echo $companyView->modGetDailyOverviewHtml();
 							?>
 						</div>
 						<!-- DAILY OVERVIEW END -->

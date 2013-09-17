@@ -23,7 +23,7 @@ JHtml::_('behavior.keepalive');
 
 	<form id="user-registration" action="<?php echo JRoute::_('index.php?option=com_users&task=reset.request'); ?>" method="post" class="form-validate">
 
-		<legend><?php echo JText::_('Forgotten your password?');?></legend>
+		<legend><?php echo JText::_('COM_USERS_LOGIN_RESET');?></legend>
 
 		<?php foreach ($this->form->getFieldsets() as $fieldset): ?>
 			<!-- note box -->
@@ -44,4 +44,4 @@ JHtml::_('behavior.keepalive');
 		</div>
 	</form>
 </div>
-<div class="login"><a href="<?php echo JRoute::_('');?>">Back to login page</a></div>
+<div class="login"><a href="<?php echo JRoute::_('');?>"><?php echo JText::_('COM_USERS_LOGIN_BACK'); ?></a></div>

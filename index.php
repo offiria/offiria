@@ -1,7 +1,7 @@
 <?php
 /**
  * @package		Joomla.Site
- * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -27,7 +27,12 @@ JDEBUG ? $_PROFILER->mark('afterLoad') : null;
 $app = JFactory::getApplication('site');
 
 // Initialise the application.
-$app->initialise();
+$config			= new JConfig();
+if ($config->default_language) {
+	$app->initialise(array('language' => $config->default_language));
+} else {
+	$app->initialise();
+}
 
 // Mark afterIntialise in the profiler.
 JDEBUG ? $_PROFILER->mark('afterInitialise') : null;

@@ -110,9 +110,10 @@ class StreamViewGroups extends StreamView
 			$total	= $model->countStream($filter);
 			$html 	.= $tmpl->fetch('stream.filter');
 			
-			if ($total <= 0) {
+			// if new group is created, then let's show some nice helper
+			// no posts in this group and not archived
+			if ($total <= 0 && !$group->archived) {
 			//if ($total <= 0 && $my->getParam('first_grp_create', 0) == 0) {
-				// if new group is created, then let's show some nice helper
 				$my->setParam('first_grp_create', 1);
 				$my->save();
 				$html 	.= $tmpl->fetch('group.first.create');
@@ -436,7 +437,7 @@ class StreamViewGroups extends StreamView
 		$filter['group_id'] = $group->id;
 		$filter['type'] 	= 'milestone';
 		$filter['order_by_asc'] = 'start_date';
-		$filter['status'] = 0;
+		//$filter['status'] = 0;  // only not-complete milestones
 		
 		$streamModel = StreamFactory::getModel('stream');
 		$milestones = $streamModel->getStream( $filter );

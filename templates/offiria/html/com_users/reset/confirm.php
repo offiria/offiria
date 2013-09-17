@@ -39,4 +39,4 @@ JHtml::_('behavior.formvalidation');
 		</div>
 	</form>
 </div>
-<div class="login"><a href="<?php echo JRoute::_('');?>">Back to login page</a></div>
+<div class="login"><a href="<?php echo JRoute::_('');?>"><?php echo JText::_('COM_USERS_LOGIN_BACK'); ?></a></div>

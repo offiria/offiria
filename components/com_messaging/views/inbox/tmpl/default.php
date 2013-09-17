@@ -87,9 +87,9 @@ defined('_JEXEC') or die;
 	<div class="btn-group pull-right">
 		<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="action"><span class="caret"></span></span></button>
 		<ul id="inbox-action" class="dropdown-menu">
-			<li><a id="action-read"><?php echo JText::_('COM_COMMUNITY_INBOX_DROPDOWN_MARKREAD'); ?></a></li>
-			<li><a id="action-unread"><?php echo JText::_('COM_COMMUNITY_INBOX_DROPDOWN_MARKUNREAD'); ?></a></li>
-			<li><a id="action-delete"><?php echo JText::_('COM_COMMUNITY_INBOX_DROPDOWN_DELETE'); ?></a></li>
+			<li><a id="action-read">&diams;&nbsp;<?php echo JText::_('COM_COMMUNITY_INBOX_DROPDOWN_MARKREAD'); ?></a></li>
+			<li><a id="action-unread">&diams;&nbsp;<?php echo JText::_('COM_COMMUNITY_INBOX_DROPDOWN_MARKUNREAD'); ?></a></li>
+			<li><a id="action-delete">&diams;&nbsp;<?php echo JText::_('COM_COMMUNITY_INBOX_DROPDOWN_DELETE'); ?></a></li>
 		</ul>
 	</div>
 </div>

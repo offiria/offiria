@@ -45,10 +45,11 @@ if(isset($get['start'])) unset($get['start']);
 			<?php echo JText::_('COM_STREAM_LABEL_DROPDOWN_ALL'); ?>
 			</a>
 			</li>
+			<li class="divider"></li>
 			<?php foreach($positions as $pos): ?>
 				<li <?php if($pos->id == $positionId) echo 'class="active"'; ?>>
 				<a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('position_id' => $pos->id )) ) ); ?>">
-				<?php echo $pos->category; ?></a>
+				&diams;&nbsp;<?php echo $pos->category; ?></a>
 				</li>
 			<?php endforeach; ?>
 		</ul>
@@ -70,10 +71,11 @@ if(isset($get['start'])) unset($get['start']);
 			<?php echo JText::_('COM_STREAM_LABEL_DROPDOWN_ALL'); ?>
 			</a>
 			</li>
+			<li class="divider"></li>
 			<?php foreach($departments as $dept): ?>
 				<li <?php if($dept->id == $departmentId) echo 'class="active"'; ?>>
 				<a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('department_id' => $dept->id )) ) ); ?>">
-				<?php echo $dept->category; ?></a>
+				&diams;&nbsp;<?php echo $dept->category; ?></a>
 				</li>
 			<?php endforeach; ?>
 		</ul>

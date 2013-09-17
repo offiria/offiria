@@ -11,7 +11,7 @@ $date = new JDate( $stream->created );
 			<img class="cAvatar" border="0" author="85" alt="" src="<?php echo $user->getThumbAvatarURL(); ?>">
 		</a>
 	</div>			
-	<div class="message-content">
+	<div class="message-content message-content-milestone">
 		<span class="label-compact label-milestone"><?php echo JText::_('COM_STREAM_LABEL_MILESTONE');?></span>
 		
 		<div class="message-content-compact milestone-compact">
@@ -24,9 +24,7 @@ $date = new JDate( $stream->created );
 					<?php } else { ?>
 					<?php echo JText::_('COM_STREAM_LABEL_MILESTONE_UPDATED');?> - 
 					<?php } ?>
-					<a href="<?php echo $stream->getUri();; ?>">
-						<?php echo StreamTemplate::escape($stream->message); ?>
-					</a>			
+					<a href="<?php echo $stream->getUri();; ?>"><?php echo StreamTemplate::escape($stream->message); ?></a>			
 				</span>
 
 				<span class="meta-date-compact">

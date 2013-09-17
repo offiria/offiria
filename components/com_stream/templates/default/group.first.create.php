@@ -1,7 +1,7 @@
 <div class="first-message">
 	<div class="first-message-icon groups pull-left"></div>
 	<div class="first-message-content">
-		<h2><?php echo JText::_('COM_STREAM_LABEL_PUBLIC_GROUP');?></h2>
+		<h2><?php echo JText::_('COM_STREAM_HELPER_NEW_GROUP_TITLE');?></h2>
 		<p><?php echo JText::_('COM_STREAM_HELPER_NEW_GROUP_INFO');?></p>
 		
 		<ul class="clearfix">

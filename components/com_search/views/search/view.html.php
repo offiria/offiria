@@ -8,6 +8,7 @@
 
 defined('_JEXEC') or die;
 
+require_once( JPATH_ROOT.DS.'components'.DS.'com_search'.DS.'helpers'.DS. 'search.php' );
 /**
  * HTML View class for the search component
  *
@@ -20,8 +21,6 @@ class SearchViewSearch extends JViewLegacy
 {
 	function display($tpl = null)
 	{
-		require_once JPATH_COMPONENT_ADMINISTRATOR.'/helpers/search.php';
-
 		// Initialise some variables
 		$app	= JFactory::getApplication();
 		$pathway = $app->getPathway();
@@ -53,6 +52,7 @@ class SearchViewSearch extends JViewLegacy
 		else {
 			$params->set('page_title',	JText::_('COM_SEARCH_SEARCH'));
 		}
+		$this->addPathway(JText::_('COM_SEARCH_SEARCH'));
 
 		$title = $params->get('page_title');
 		if ($app->getCfg('sitename_pagetitles', 0) == 1) {
@@ -193,5 +193,20 @@ class SearchViewSearch extends JViewLegacy
 		$this->action = $uri;
 
 		parent::display($tpl);
+	}
+	
+	public function addPathway( $text , $link = '' )
+	{
+		// Set pathways
+		$mainframe		= JFactory::getApplication();
+		$pathway		= $mainframe->getPathway();
+		
+		$pathwayNames	= $pathway->getPathwayNames();
+		
+		// Test for duplicates before adding the pathway
+		if( !in_array( $text , $pathwayNames ) )
+		{
+			$pathway->addItem( $text , $link );
+		}
 	}
 }

@@ -47,7 +47,7 @@ class plgSearchContent extends JPlugin
 		$tag = JFactory::getLanguage()->getTag();
 
 		require_once JPATH_SITE . '/components/com_content/helpers/route.php';
-		require_once JPATH_ADMINISTRATOR . '/components/com_search/helpers/search.php';
+		require_once JPATH_ROOT.DS.'components'.DS.'com_search'.DS.'helpers'.DS. 'search.php';
 
 		$searchText = $text;
 		if (is_array($areas)) {

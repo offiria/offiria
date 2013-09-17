@@ -42,9 +42,9 @@ $status = JRequest::getVar('status', '');
 		<ul class="dropdown-menu">
 			<li><a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('by' => 'everyone' )) ) ); ?>"><?php echo JText::_('COM_STREAM_LABEL_DROPDOWN_EVERYONES'); ?></a></li>
 			<li class="divider"></li>            
-			<li><a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('by' => 'mine' )) ) ); ?>"><?php echo JText::_('COM_STREAM_LABEL_DROPDOWN_MINE'); ?></a></li>
+			<li><a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('by' => 'mine' )) ) ); ?>">&diams;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_DROPDOWN_MINE'); ?></a></li>
 			<?php if (!$groupId) { ?>
-			<li><a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('by' => 'mygroups' )) ) ); ?>"><?php echo JText::_('COM_STREAM_LABEL_DROPDOWN_MY_GROUPS'); ?></a></li>	
+			<li><a href="<?php echo JRoute::_('index.php?' . http_build_query( array_merge($get, array('by' => 'mygroups' )) ) ); ?>">&diams;&nbsp;<?php echo JText::_('COM_STREAM_LABEL_DROPDOWN_MY_GROUPS'); ?></a></li>	
 			<?php } ?>
 		</ul>
 	</li>

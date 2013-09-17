@@ -31,7 +31,7 @@ defined('_JEXEC') or die;
 	<div class="searchPeople">
 		<!-- PEOPLE LISTING -->
 		<?php if ($showHeader) { ?>
-		<p class="older-stream-separator"><span>People</span></p>
+		<p class="older-stream-separator"><span><?php echo JText::_('NAVIGATOR_LABEL_PEOPLE'); ?></span></p>
 		<?php } ?>
 		<ul class="nav">
 			<li class="message-item">
@@ -47,8 +47,8 @@ defined('_JEXEC') or die;
 							<a href="<?php echo $result->href;?>" target="_blank" class="actor-link"><strong><?php echo $result->objectInfo->name;?></strong></a> 
 							<span style="color:#999;">@<?php echo $result->objectInfo->username;?></span>
 							<span style="float:right;" class="btn-group">
-								<button class="btn" data-toggle="dropdown" onclick="window.open('<?php echo $result->href;?>');">
-									View profile
+								<button class="btn" data-toggle="dropdown" onclick="document.location = '<?php echo $result->href;?>';">
+									<?php echo JText::_('NAVIGATOR_LABEL_PROFILE'); ?>
 								</button>
 							</span>
 						</div>
@@ -65,14 +65,32 @@ defined('_JEXEC') or die;
 				break; // profile case
 			case 'files':
 			default:
-				
 				$user = JXFactory::getUser($result->objectInfo->user_id);
 ?>
 	
 	<!-- Stream LISTING -->
 	<div class="searchStream">
 		<?php if ($showHeader) { ?>
-		<p class="older-stream-separator"><span><?php echo $result->objectInfo->type;?></span></p>
+		<p class="older-stream-separator"><span>
+			<?php
+				switch ($result->objectInfo->type) {
+					case 'update':
+						echo JText::_('COM_STREAM_LABEL_STATUS_UPDATE'); break;
+					case 'page':
+						echo JText::_('COM_STREAM_LABEL_PAGE');  break;
+					case 'milestone':
+						echo JText::_('COM_STREAM_LABEL_MILESTONE');  break;
+					case 'todo':
+						echo JText::_('COM_STREAM_LABEL_TODO');  break;
+					case 'files':
+						echo JText::_('COM_STREAM_LABEL_FILES'); break;
+					default:
+					case 'event':
+						echo JText::_('COM_STREAM_LABEL_EVENT');  break;
+						break;
+				}
+			?>
+		</span></p>
 		<?php } ?>
 		<ul class="nav">
 			<li class="message-item">
@@ -87,7 +105,7 @@ defined('_JEXEC') or die;
 							<a href="<?php echo $user->getURL();?>" target="_blank" class="actor-link"><strong><?php echo $result->text;?></strong></a> 
 							<span style="color:#999;">@<?php echo $user->get('username');?></span>
 							<span style="float:right;" class="btn-group">
-								<button class="btn" data-toggle="dropdown" onclick="window.open('<?php echo $result->href;?>');">
+								<button class="btn" data-toggle="dropdown" onclick="document.location = '<?php echo $result->href;?>';">
 									<?php echo $result->section;?>
 								</button>
 							</span>

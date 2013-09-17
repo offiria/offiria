@@ -3,10 +3,11 @@
 <?php if(count($milestones)) : ?>
 	<span class="label milestone-complete"><?php echo JText::sprintf(JText::_('COM_STREAM_LABEL_MILESTONES_COMPLETED'), $completedCount); ?></span>
 	<div class="clear"></div>
-
+	
 	<ul class="milestone-list">
 	<?php
 	$now 	= new JDate();
+	$completedMilestonesHtml = '';
 	foreach($milestones as $milestone){
 
 		$data 	= $milestone->getData();
@@ -46,7 +47,19 @@
 				$milestoneClass = 'completed';
 				break;
 		}
-	?>	
+		
+		if ($milestoneStatus == COMPLETED) {
+			$completedMilestonesHtml .= '<li>
+			<a href="' . $milestone->getUri() . '">' . StreamMessage::format($milestone->message) . '</a>
+			<div class="progress progress-info progress-striped tips" milestone="' . $milestone->id . '" title="' .  $milestone->getParam('progress', 0) . '%">
+				<div class="bar" style="width: ' . $milestone->getParam('progress') . '%;"></div>
+			</div>
+			<div class="milestone-details vanity-list">
+				<div class="small ' . $milestoneDaysClass . '">' .  $milestoneDaysText . '</div>
+			</div>
+		</li>';
+		} else {
+		?>	
 		<li>
 			<a href="<?php echo $milestone->getUri(); ?>"><?php echo StreamMessage::format($milestone->message); ?></a>
 			<div class="progress progress-info progress-striped tips" milestone="<?php echo $milestone->id; ?>" title="<?php echo $milestone->getParam('progress', 0);?>%">
@@ -62,8 +75,34 @@
 				-->
 			</div>
 		</li>
+	<?php }
+	}?>
+	</ul>
 
-	<?php } ?>
+	<div id="completed-milestone-list" style="display:none;">
+		<ul class="milestone-list">	
+			<?php echo $completedMilestonesHtml; ?>
+		</ul>
+		<div class="clear"></div>
+	</div>
+
+	<ul style="list-style-type: none; padding-bottom: 20px;">
+		<li>
+			<form class="edit" style="float: right !important;">
+			<table border="0" cellpadding="0" width="100%">
+				<tr>
+					<td><span class="small"><?php echo JText::_('COM_STREAM_LABEL_MILESTONES_SHOW_FINISHED'); ?>:</span></td>
+					<td>
+						
+						<div class="checkboxOne">
+						<input onclick="javascript:showCompletedMilestones(this.checked);" type="checkbox" id="compl_milestones_show" name="compl_milestones_show" value="1" style="visibility: hidden;"/>
+						<label for="compl_milestones_show"></label>
+						</div>
+					</td>
+				</tr>
+			</table>
+			</form>		
+		</li>
 	</ul>
 <?php else : ?>
 	<div class="alert-message block-message info">
@@ -71,3 +110,14 @@
 	</div>
 <?php endif; ?>
 </div>
+
+<script>
+function showCompletedMilestones(value) {
+	if (value === true) {
+		document.getElementById("completed-milestone-list").style.display = "inline";
+	} else {
+		document.getElementById("completed-milestone-list").style.display = "none";
+	}
+	return false
+}
+</script>
