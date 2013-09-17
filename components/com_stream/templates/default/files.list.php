@@ -25,6 +25,15 @@ function getStreamMessage($streamTbl, &$streamMsg, $stream_id)
 <script type="text/javascript">
 	var fileReplace = {
 		init: function() {
+			/* bind enter key to "save" button action */
+			$('#new_name').keydown( function(e) {
+		        var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+		        if(key == 13) {
+		            e.preventDefault();
+		            $('div.modal-footer input.btn').click();
+		        }
+		    });
+
 			/* bind action to delete action to remove attachment */
 			$('div.file-action a[href="#deleteFile"]').live("click",function()
 			{
