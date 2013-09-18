@@ -516,7 +516,8 @@ S.extend({
 
 				// reset end date condition, for non-event type date no minDate should be set
 				$(this).find('.end-date').datepicker('enable')
-					.datepicker('option', 'minDate', 0);
+					.datepicker('option', 'minDate', 0)
+					.datepicker('option', 'firstDay', 1);
 					
 				return false;
 			});
@@ -540,7 +541,7 @@ S.extend({
 			// Initizlize date picker
 			//$( "input.start-date, input.end-date" ).datepicker({ dateFormat: 'yy-mm-dd' });
 			$( "input.start-date" ).datepicker({ 
-				dateFormat: 'yy-mm-dd',								
+				dateFormat: 'yy-mm-dd',
 				onSelect: function(dateText, inst) {
 					var startDate = $(this).val();
 					var endDate = $(this).parent().next().find('.end-date').val() || '';
@@ -1521,7 +1522,7 @@ S.extend({
 						cache:false,
 						success:function (data) {
 							var comment = $('.message-item #comment-' + comment_id + '.comment-item').find('.comment-like');
-							comment.attr('original-title', data.likes).tipsy({fallback:'No likes', gravity:'s', trigger:'manual'}).tipsy('show');
+							comment.attr('original-title', data.likes).tipsy({fallback:S.text['label.no.likes'], gravity:'s', trigger:'manual'}).tipsy('show');
 						}
 					});
 

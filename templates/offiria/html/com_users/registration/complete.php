@@ -16,5 +16,5 @@ defined('_JEXEC') or die;
 		<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h1>
 	<?php endif; ?>
-	<span><a href="<?php echo JRoute::_('');?>">Back to login page</a></span>
+	<span><a href="<?php echo JRoute::_('');?>"><?php echo JText::_('COM_USERS_LOGIN_BACK'); ?></a></span>
 </div>

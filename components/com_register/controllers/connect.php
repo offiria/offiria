@@ -27,7 +27,7 @@ JTable::addIncludePath( JPATH_ROOT .DS.'components'.DS.'com_account' . DS . 'tab
 class RegisterControllerConnect extends JController
 {
 	
-	public function display() 
+	public function display($cachable = false, $urlparams = false) 
 	{		
 		// Only admin can use this function to invite guests
 		$mainframe	= JFactory::getApplication();

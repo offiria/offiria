@@ -40,10 +40,10 @@ $date = new JDate( $stream->created );
 		<input type="hidden" name="action" value="save" />				
 	</div>
 	
-<?php 	
-			$table = new StreamCategory();
-			 $categories = $table->getBlogs();
-?>	
+	<?php 	
+	$table = new StreamCategory();
+	$categories = $table->getBlogs();
+	?>	
 	<div class="stream-post-details-select">
 
 		<label><?php echo JText::_('COM_STREAM_DEFAULT_LABEL_PAGE_EDIT_CATEGORY_PROMPT'); ?></label>
@@ -66,7 +66,7 @@ $date = new JDate( $stream->created );
 	<div class="clear"></div>
 		
 	<div class="edit-file-button">
-		<span>Attach:</span>
+		<span><?php echo JText::_('COM_STREAM_LABEL_ATTACH'); ?></span>
 		<a onclick="return S.uploader.selectFile('edit-file-uploader');" href="#"><?php echo JText::_('COM_STREAM_BLOG_LABEL_UPLOAD'); ?></a>
 
 		<span id="edit-file-uploader" style="float:left;visibility:hidden;width:1px;height:1px"></span>
@@ -82,7 +82,7 @@ $date = new JDate( $stream->created );
 				<div  data-filename="<?php echo $file->filename; ?>" class="message-content-file" file_id="<?php echo $file->id; ?>">
 					<?php echo StreamTemplate::escape( JHtmlString::abridge($file->filename, 24)); ?>
 						<span class="small hint">(<?php echo StreamMessage::formatBytes($file->filesize, 1); ?>)</span>
-					<a file_id="<?php echo $file->id; ?>" href="#unlinkAttachment" class="meta-edit">Remove</a>
+					<a file_id="<?php echo $file->id; ?>" href="#unlinkAttachment" class="meta-edit"><?php echo JText::_('COM_STREAM_LABEL_DELETE'); ?></a>
 					<input type="hidden" value="<?php echo $file->id; ?>" name="attachment[]">
 				</div>
 			</li>
@@ -91,13 +91,11 @@ $date = new JDate( $stream->created );
 	} ?>
 	</ul>
 		
-		<div class="form-actions">
-			<button class="btn btn-primary" type="submit" name="message-edit-save">Save changes</button>
+	<div class="form-actions">
+		<button class="btn" type="reset" name="message-edit-cancel" onclick="javascript:document.location='<?php echo $stream->getUri(); ?>';return false;"><?php echo JText::_('COM_STREAM_BLOG_VIEW'); ?></button>
+		<button class="btn btn-info submit" type="submit" name="message-edit-save"><?php echo JText::_('COM_STREAM_LABEL_SAVE_CHANGES'); ?></button>
+	</div>
 
-			<span class="more-button">
-				<a href="<?php echo $stream->getUri(); ?>">&larr; View post</a>
-			</span>  
-		</div>
 </div>
 </form>
 <script type="text/javascript">

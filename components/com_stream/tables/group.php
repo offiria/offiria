@@ -106,10 +106,17 @@ class StreamTableGroup extends JTable
 	 */	 	
 	public function allowRead($userid)
 	{
+		// If the user is limited by group, do not allow them to access group
+		// beyond their assigned group
+		$user = JXFactory::getUser($userid);
+		$limitGroup = $user->getParam('groups_member_limited');
+		if($limitGroup) {
+			return JXUtility::csvExist($limitGroup, $this->id);  
+		}
+	
 		if(!$this->access)
 			return true;
 			
-		$user = JXFactory::getUser($userid);
 		$userGroups = $user->getParam('groups_member');
 		return JXUtility::csvExist($userGroups, $this->id);	
 	}

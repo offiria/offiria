@@ -63,5 +63,5 @@ $isSignUp = (empty($this->token));
 		</div>
 	</form>
 </div><!--end registration-->
-<div class="login"><a href="<?php echo JRoute::_('');?>">Back to login page</a></div>
+<div class="login"><a href="<?php echo JRoute::_('');?>"><?php echo JText::_('COM_USERS_LOGIN_BACK'); ?></a></div>
 

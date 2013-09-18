@@ -24,7 +24,7 @@ if (!$jxConfig->allowUsersRegister())
 
 class RegisterControllerRegister extends JController
 {
-	public function display() 
+	public function display($cachable = false, $urlparams = false) 
 	{		
 		// Only admin can use this function to invite guests
 		$jxConfig	= new JXConfig();
@@ -52,7 +52,7 @@ class RegisterControllerRegister extends JController
 										'password' => $password1,
 										'conf_pass' => $password2,
 										'email'		=> $email,
-										'group_limited' => $userInviteTable->group_limited);
+										'group_limited' => (isset($userInviteTable->group_limited) ? $userInviteTable->group_limited : ''));
 
 				$model = RegisterFactory::getModel('registration');
 				if ($model->registerUser($data))

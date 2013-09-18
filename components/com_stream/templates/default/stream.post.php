@@ -1,8 +1,16 @@
 <?php
 $document = JFactory::getDocument();
+require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'helpers'.DS.'access.php');
 require_once(JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'helpers'.DS.'html.php');
 require_once(JPATH_ROOT .DS.'components'.DS.'com_stream'.DS.'helpers'.DS.'milestones.php');
 /* Global javascripts */
+
+// Check permission
+// @todo: use standadized offiria authorise control, check for actual group permission as well
+if (!AccountAccessHelper::allowPublicStream($my->id))
+{
+	return;
+}
 ?>
 
 <div id="stream-post">

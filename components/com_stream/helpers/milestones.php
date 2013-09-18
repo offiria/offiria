@@ -4,12 +4,12 @@ class StreamMilestonesHelper {
 	/**
 	 *
 	 */	 	
-	public static function getSelectList($group_id = null, $selected = '')
+	public function getSelectList($group_id = null, $selected = '')
 	{
 		$streamModel = StreamFactory::getModel('stream');
 		$milestones = $streamModel->getStream(array('type' => 'milestone', 'group_id'=> $group_id ));
 		
-		$html = ' <select name="milestone"><option value="">None</option>';
+		$html = ' <select name="milestone"><option value="">' . JText::_('COM_STREAM_LABEL_TODO_NONE') . '</option>';
 
 		$now = new JDate();
 		

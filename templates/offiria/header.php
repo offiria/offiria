@@ -158,7 +158,7 @@ $inboxUnreadCount = MessagingNotification::getUserNotification($my->id);
 			
 						?>
 						<li class="analytics <?php if($option == 'com_analytics') { echo ' active'; } ?>"><a href="<?php echo JRoute::_('index.php?option=com_analytics'); ?>"><?php echo JText::_('JXLIB_ANALYTICS');?></a></li>
-						<li class="settings <?php if($option == 'com_account' && $view == 'account' ) { echo ' active'; } ?>"><a href="<?php echo JRoute::_('index.php?option=com_account&view=account'); ?>"><?php echo JText::_('JXLIB_SETTINGS');?></a></li>
+						<li class="settings <?php if($option == 'com_account' ) { echo ' active'; } ?>"><a href="<?php echo JRoute::_('index.php?option=com_account&view=account'); ?>"><?php echo JText::_('JXLIB_SETTINGS');?></a></li>
 						<?php } ?>
 				
 						<li class="logout"><a href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();"><?php echo JText::_('JXLIB_LOGOUT');?></a></li>

@@ -50,7 +50,7 @@
 			</div>
 			<div class="clear"></div>
 			<div class="modal-footer">
-				<input type="button" class="btn btn-primary progress-button" value="Next &raquo;" id="first-step-next" data-progress="modalSteps['first']"/>
+				<input type="button" class="btn btn-primary progress-button" value="<?php echo JText::_('COM_STREAM_LABEL_BUTTON_NEXT');?>" id="first-step-next" data-progress="modalSteps['first']"/>
 			</div>
 		</div>
 	
@@ -77,15 +77,15 @@
 				
 				<ul class="invite-form">
 					<li>
-						<label>Email 1</label>
+						<label><?php echo JText::_('COM_STREAM_LABEL_EMAIL1');?></label>
 						<input type="text" id="guest_email_1" name="invitation">
 					</li>
 					<li>
-						<label>Email 2</label>
+						<label><?php echo JText::_('COM_STREAM_LABEL_EMAIL2');?></label>
 						<input type="text" id="guest_email_2" name="invitation">
 					</li>
 					<li>
-						<label>Email 3</label>
+						<label><?php echo JText::_('COM_STREAM_LABEL_EMAIL3');?></label>
 						<input type="text" id="guest_email_3" name="invitation">
 					</li>
 					<li>
@@ -94,7 +94,7 @@
 				</ul>
 				<div class="modal-footer">
 					<span id="invitation-message" style="display:none"><?php echo JText::_('COM_STREAM_LABEL_SENDING_INVITATION');?></span>
-					<input type="button" class="btn btn-primary progress-button" value="Invite &raquo;" id="invite-3-friends" data-progress="modalSteps['second']" />
+					<input type="button" class="btn btn-primary progress-button" value="<?php echo JText::_('COM_STREAM_LABEL_BUTTON_INVITE');?>" id="invite-3-friends" data-progress="modalSteps['second']" />
 				</div>
 				
 			</form>
@@ -126,7 +126,7 @@
 					<!-- IMAGE CONTAINER -->
 					<div class="image-container">
 						<div id="image-feature-1">
-							<h3 class="image-title">Powerful Business Stream</h3>
+							<h3 class="image-title"><?php echo JText::_('COM_STREAM_LABEL_INTRODUCE_FEATURE1_TITLE');?></h3>
 							<div class="img-container-one clearfix">
 								<div class="img-container-one-inner">
 									<img src="<?php echo JURI::base(); ?>templates/offiria/images/welcome/nw-stream-message.png" alt="Stream Message" />
@@ -137,7 +137,7 @@
 							</div>
 						</div>
 						<div id="image-feature-2" style="display:none">
-							<h3 class="image-title">Milestones &amp; Tasks</h3>
+							<h3 class="image-title"><?php echo JText::_('COM_STREAM_LABEL_INTRODUCE_FEATURE2_TITLE');?></h3>
 							<div class="img-container-two clearfix">
 								<div class="img-container-two-inner">
 									<img src="<?php echo JURI::base(); ?>templates/offiria/images/welcome/nw-milestone-task.png" alt="Milestone / Task" />
@@ -148,7 +148,7 @@
 							</div>
 						</div>
 						<div id="image-feature-3" style="display:none">
-							<h3 class="image-title">Event Management</h3>
+							<h3 class="image-title"><?php echo JText::_('COM_STREAM_LABEL_INTRODUCE_FEATURE3_TITLE');?></h3>
 							<div class="img-container-three clearfix">
 								<div class="img-container-three-inner">
 									<img src="<?php echo JURI::base(); ?>templates/offiria/images/welcome/nw-event-management.png" alt="Event Management" />
@@ -176,19 +176,13 @@
 				<!-- INFOS CONTAINER -->
 				<div class="feature-info-container">
 					<div id="info-feature-1">
-						<p>
-							At the heart of <?php echo JText::_('CUSTOM_SITE_NAME');?> is the powerful Business Stream. It provides a continuous flow of information that is easy to follow. Public entries from all groups and individuals will be agregated into the global stream. This makes every piece of information easily discussed, tagged.
-						</p>
+						<p><?php echo JText::sprintf('COM_STREAM_LABEL_INTRODUCE_FEATURE1_DESC', JText::_('CUSTOM_SITE_NAME'));?></p>
 					</div>
 					<div id="info-feature-2" style="display:none">
-						<p>
-							You can set deadlines, attach the tasks to a milestone and upload files along with the announced tasks. Within each milestone, it becomes clear what are the remaining tasks available for the team to complete the milestone. <?php echo JText::_('CUSTOM_SITE_NAME');?> even show what's the progress percentage as you and your team work through them.
-						</p>
+						<p><?php echo JText::sprintf('COM_STREAM_LABEL_INTRODUCE_FEATURE2_DESC', JText::_('CUSTOM_SITE_NAME'));?></p>
 					</div>
 					<div id="info-feature-3" style="display:none">
-						<p>
-							Schedule a meeting, organize an open day, plan a family day, celebrate a colleague's birthday... you can track and manage them all within <?php echo JText::_('CUSTOM_SITE_NAME');?>'s powerful event management system. Company-wide calendar view also makes is extremely easy to see what's happening. Check out where the location is via the integrated Google map.
-						</p>
+						<p><?php echo JText::sprintf('COM_STREAM_LABEL_INTRODUCE_FEATURE2_DESC', JText::_('CUSTOM_SITE_NAME'));?></p>
 					</div>
 				</div>
 
@@ -196,7 +190,7 @@
 			<!-- END OF SLIDER -->
 
 			<div class="modal-footer">
-				<a href="#" data-show_feature="1" class="btn btn-primary progress-button"  data-progress="gettingStarted.showHighlight(1)">Next &raquo;</a>
+				<a href="#" data-show_feature="1" class="btn btn-primary progress-button"  data-progress="gettingStarted.showHighlight(1)"><?php echo JText::_('COM_STREAM_LABEL_BUTTON_NEXT');?></a>
 			</div>
 		</div>
 	
@@ -295,7 +289,7 @@ var gettingStarted = {
 			
 			if (next == 3)
 			{
-				$('a.btn-primary').html('Start using <?php echo JText::_('CUSTOM_SITE_NAME');?>!');
+				$('a.btn-primary').html('<?php echo JText::sprintf('COM_STREAM_LABEL_BUTTON_START_USING', JText::_('CUSTOM_SITE_NAME'));?>');
 			}
 		}
 	},

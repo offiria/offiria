@@ -25,7 +25,7 @@ if (!$jxConfig->allowUsersRegister())
 class RegisterControllerSignup extends JController
 {
 	
-	public function display() 
+	public function display($cachable = false, $urlparams = false) 
 	{		
 		// Only admin can use this function to invite guests
 		$mainframe	= JFactory::getApplication();

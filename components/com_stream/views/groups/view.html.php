@@ -111,8 +111,8 @@ class StreamViewGroups extends StreamView
 			$html 	.= $tmpl->fetch('stream.filter');
 			
 			// if new group is created, then let's show some nice helper
-			// no posts in this group and not archived
-			if ($total <= 0 && !$group->archived) {
+			// no posts in this group and not archived and only for group creator
+			if ($total <= 0 && !$group->archived && $group->creator == $my->id) {
 			//if ($total <= 0 && $my->getParam('first_grp_create', 0) == 0) {
 				$my->setParam('first_grp_create', 1);
 				$my->save();

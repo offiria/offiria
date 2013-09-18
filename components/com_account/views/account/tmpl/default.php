@@ -64,7 +64,7 @@ input[type=checkbox] {
 		<td><label class="" for="params_allow_invite" id="params_allow_invite-lbl"><?php echo JText::_('COM_ACCOUNT_LABEL_ALLOW_MEMBERS_INVITE');?></label></td>
 		<td><label>
 		  	<div class="checkboxThree">
-				<input type="checkbox" id="params_allow_invite" name="params[allow_invite]" value="1" <?php echo (intval($this->allow_invite) == 1) ? 'checked' : '';?>/>
+				<input type="checkbox" id="params_allow_invite" name="params[allow_invite]" value="1" <?php echo (intval($this->allow_invite) == 1) ? 'checked' : '';?> onchange="javascript:enableFields();"/>
 				<label for="params_allow_invite"></label>
 			</div></label>
 		</td>
@@ -78,7 +78,7 @@ input[type=checkbox] {
 	</tr>
 </table>
 <div class="submit">
-	<input type="hidden" value="advance" name="task">
+	<input type="hidden" value="display" name="task">
 	<input class="btn btn-info" type="submit" value="<?php echo JText::_('COM_STREAM_LABEL_SAVE');?>" name="submit" style="float: right !important;">
 </div>
 </form>
@@ -90,4 +90,15 @@ input[type=checkbox] {
 //			'notEmpty': $('#params_sitename')
 //		}); 
 	});
+	
+	function enableFields() {
+		if (document.getElementById('params_allow_invite').checked == true) {
+			document.getElementById("params_limit_email_domain").readOnly=false;
+		} else {
+			document.getElementById("params_limit_email_domain").readOnly=true;
+		}
+		
+		return false;
+	}
+	enableFields();
 </script>
