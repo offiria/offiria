@@ -28,4 +28,17 @@ class AccountAccessHelper
 		
 		return false;
 	}
+
+
+	/**
+	 * Allow user
+	 */
+	public static function allowPublicStream($userid) 
+	{
+		$user = JXFactory::getUser($userid);
+		if($user->getParam('groups_member_limited')) {
+			return false;
+		}
+		return true;
+	}
 }

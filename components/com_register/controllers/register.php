@@ -24,7 +24,7 @@ if (!$jxConfig->allowUsersRegister())
 
 class RegisterControllerRegister extends JController
 {
-	public function display() 
+	public function display($cachable = false, $urlparams = false) 
 	{		
 		// Only admin can use this function to invite guests
 		$jxConfig	= new JXConfig();
