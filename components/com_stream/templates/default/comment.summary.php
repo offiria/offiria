@@ -1,6 +1,6 @@
 <?php
 /**
- * @package		JomSocial
+ * @package		Offiria
  * @subpackage	Core 
  * @copyright (C) 2011 by Slashes & Dots Sdn Bhd - All rights reserved!
  * @license		GNU/GPL, see LICENSE.php

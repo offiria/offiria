@@ -1,7 +1,7 @@
 <?php
 /**
  * @category	Tables
- * @package		JomSocial
+ * @package		Offiria
  * @subpackage	Activities 
  * @copyright (C) 2008 by Slashes & Dots Sdn Bhd - All rights reserved!
  * @license		GNU/GPL, see LICENSE.php
