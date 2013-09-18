@@ -49,6 +49,13 @@ class StreamViewFiles extends StreamView
 			$user = JXFactory::getUser($user_id);
 			$title = JText::sprintf("%1s's files", $user->name);
 		}
+
+		// If user is limited to certain group, filter it
+		$limitGroup = $my->getParam('groups_member_limited');
+		if($limitGroup) {
+			$filter['group_id'] = $limitGroup;
+		}
+
 		
 		$fileModel = StreamFactory::getModel('files');
 		$files = $fileModel->getFiles( $filter, $jconfig->list_limit,JRequest::getVar('limitstart', 0) );
