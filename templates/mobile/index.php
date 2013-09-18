@@ -13,7 +13,7 @@ jimport('joomla.xfactory');
 jimport('joomla.utilities.xconfig');
 include_once(JPATH_ROOT.DS.'components'.DS.'com_stream'.DS.'factory.php');
 
-$document =& JFactory::getDocument();
+$document = JFactory::getDocument();
 $document->setGenerator('Offiria');
 
 /* Global javascripts */
@@ -65,7 +65,7 @@ $groupIFollow 	= JXUtility::csvDiff($groupIFollow, $groupIJoin);
 $myGroupsIds 	= JXUtility::csvMerge($groupIFollow, $groupIJoin);
 
 class StreamGroupSorter {
-	public function sortLastActive($groupA, $groupB){
+	public static function sortLastActive($groupA, $groupB){
 		$my = JXFactory::getUser();
 		$diffA = $groupA->getParam('last_message') - $my->getParam('group_'.$groupA->id.'_last');
 		$diffB = $groupB->getParam('last_message') - $my->getParam('group_'.$groupB->id.'_last');
@@ -431,7 +431,7 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow)
 		<div class="contentContainer" id="contents">
 		<?php
 		// get system message to be outputted in custom container
-		$app =& JFactory::getApplication();
+		$app = JFactory::getApplication();
 		$queue = $app->getMessageQueue();
 
 		// store all messages
