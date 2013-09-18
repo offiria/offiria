@@ -191,11 +191,17 @@ class StreamTableFile extends JTable
 	public function allowDownload($userid){		
 				
 		// If this is a group, and the group is private, only members can download it
+		$my = JXFactory::getUser($userid);
+		$limitGroup = $my->getParam('groups_member_limited');
+		if($limitGroup) {
+			return JXUtility::csvExist($limitGroup, $this->group_id);	
+		}
+
 		if( $this->group_id ){
 		
 			$group	= JTable::getInstance( 'Group' , 'StreamTable' );
 			$group->load($this->group_id);
-			$my = JXFactory::getUser($userid);
+			
 			
 			// People need to be able to read the group
 			if( !$my->authorise('stream.group.read', $group) ){
