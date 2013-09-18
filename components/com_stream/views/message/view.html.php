@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
+require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'helpers'.DS.'access.php');
 
 /**
  * HTML View class for the Administrator component
@@ -19,6 +20,15 @@ class StreamViewMessage extends StreamView
 {
 	public function show($stream)
 	{
+		
+		$my = JXFactory::getUser();
+		if (!AccountAccessHelper::allowPublicStream($my->id))
+		{
+			$app	= JFactory::getApplication();
+		    $app->enqueueMessage( JText::_('COM_STREAM_ERROR_NO_ACCESS' ) , 'error' );
+			return;
+		}
+
 		$doc = JFactory::getDocument();
 		$this->_attachScripts();
 		// Pathway to group
