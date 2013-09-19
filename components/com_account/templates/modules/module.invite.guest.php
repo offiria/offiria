@@ -70,7 +70,7 @@
 		if(! $my->getParam(ALERT_INVITE_INTRO)){
 			echo '<div class="alert alert-info" data-alert_id="'.ALERT_INVITE_INTRO.'">
 			<a data-dismiss="alert" class="close">×</a>
-			<h4>' . JText::_('COM_STREAM_HELPER_INVITE1') . ':</h4>
+			<h4>' . JText::_('COM_STREAM_HELPER_INVITE1') . '</h4>
 			<ul class="textlist">
 				<li class="divider"></li>
 				<li>' . JText::_('COM_STREAM_HELPER_INVITE2') . '</li>

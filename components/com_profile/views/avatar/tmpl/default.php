@@ -15,7 +15,7 @@
 <div id="profile-avatar">
 <?php $avatarExists = ($this->user->getAvatarPath()) ? true : false; ?>
 <form method="post" id="avatar-form" action="<?php echo JRoute::_("index.php?option=com_profile&view=edit");?>" enctype="multipart/form-data">
-<input type="file" name="avatar" id="avatar-file"/>
+<input type="file" name="avatar" id="avatar-file" class="btn btn-info"/>
 <input type="hidden" name="task" value="changeAvatar" />
 <input type="submit" class="btn btn-info" value="<?php echo JText::_('COM_PROFILE_LABEL_UPLOAD');?>" />
 </form>

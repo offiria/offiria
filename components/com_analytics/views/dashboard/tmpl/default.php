@@ -2,7 +2,7 @@
 /**
  * @version     1.0.0
  * @package     com_administrator
- * @copyright   Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @copyright   Copyright (C) 2011. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Created by com_combuilder - http://www.notwebdesign.com
  */
@@ -29,7 +29,7 @@ defined('_JEXEC') or die;
 		},
 		fetchFilterAnalytic: function(index)
 		{
-			var selection = ['All', 'New Post'];
+			var selection = ['<?php echo JText::_('COM_ANALYTICS_LABEL_ALL');?>', '<?php echo JText::_('COM_ANALYTICS_LABEL_NEW_POST');?>'];
 			$('#dropdown-label').html(selection[index]);
 			$('#analytic_filter_type').val(index);
 			analytics.fetchProfileAnalytic();

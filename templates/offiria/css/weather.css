@@ -1,0 +1,58 @@
+.weather_sp1 {
+	padding: 5px;
+}
+.weather_sp1_c {
+	margin: 0 0 10px;
+}
+.weather_sp1_cleft {
+	float:left;
+}
+p.spw_current_temp {
+	font-size:18px;
+	margin:-30px 0 0 15px;
+}
+.weather_sp1_cright {
+	float:left;
+	position:absolute;
+	margin:0 0 0 90px;
+}
+p.weather_sp1_city {
+	font-size:24px;
+	line-height:24px;
+	font-weight:700;
+	margin: 5px 0 0;
+	padding:0;
+}
+
+.spw_row {
+	color: #BGBGBG;
+	font-size: 10px;
+	line-height: 15px;
+}
+.block_even,
+.block_odd {
+	text-align:center;
+}
+span.weather_sp1_temp, 
+span.weather_sp1_list_temp {
+	font-size:10px;
+}
+.list_even, .list_odd {
+	width:100%;
+	border-top:1px dashed #e0e0e0;
+}
+span.weather_sp1_list_day,
+span.weather_sp1_list_temp,
+span.weather_sp1_list_icon {
+	height: 25px;
+	line-height: 25px;
+	display:block;
+	float:left;
+	width:33%;
+}
+img.spw_icon_big {
+	height:86px
+}
+img.spw_icon {
+	height:25px
+}

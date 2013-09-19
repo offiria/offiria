@@ -31,6 +31,7 @@ class AccountViewAdvance extends AccountView
 		$scribd_api		= $configHelper->get('scribd_api');
 		$scribd_secret	= $configHelper->get('scribd_secret');
 		$scribdenable	= $configHelper->get('scribdenable');
+		$diffbotenable	= $configHelper->get('diffbotenable');
 		$diffbot		= $configHelper->get('diffbot');
 		
 		$mailer			= $configHelper->get('mailer');
@@ -43,6 +44,19 @@ class AccountViewAdvance extends AccountView
 		$smtphost		= $configHelper->get('smtphost');
 		$smtpsecure		= $configHelper->get('smtpsecure');
 		$smtpport		= $configHelper->get('smtpport'); // 25
+		
+		// weather module
+		$module_weatherenable = $configHelper->get('module_weatherenable');
+		$weather_showcity	= $configHelper->get('weather_showcity');	// default: 1
+		$weather_condition	= $configHelper->get('weather_condition');	// default: 1
+		$weather_humidity	= $configHelper->get('weather_humidity');	// default: 1
+		$weather_wind		= $configHelper->get('weather_wind');		// default: 1
+		$weather_forecast	= $configHelper->get('weather_forecast');	// default: 4
+		$weather_layout		= $configHelper->get('weather_layout');		// default: block
+		$weather_separator	= $configHelper->get('weather_separator');	// default: /
+		$weather_tempUnit	= $configHelper->get('weather_tempUnit');  	// default: c
+		
+		// @todo: usage of advanced options in weather module (moduleclass_sfx, cache, useCache, cacheTime)
 		
 		// process all enabled/disabled modules
 		foreach ($GLOBALS['MODULES'] as $key => $value) {
@@ -59,6 +73,7 @@ class AccountViewAdvance extends AccountView
 			$scribd_api		= $postParam['scribd_api'];
 			$scribd_secret	= $postParam['scribd_secret'];
 			$scribdenable	= $postParam['scribdenable'];
+			$diffbotenable	= $postParam['diffbotenable'];
 			$diffbot		= $postParam['diffbot'];		
 		
 			$mailer			= $postParam['mailer'];
@@ -71,6 +86,17 @@ class AccountViewAdvance extends AccountView
 			$smtphost		= $postParam['smtphost'];
 			$smtpsecure		= $postParam['smtpsecure'];
 			$smtpport		= $postParam['smtpport'];
+
+			// weather module
+			$module_weatherenable = $postParam['module_weatherenable'];
+			$weather_showcity	= $postParam['weather_showcity'];
+			$weather_condition	= $postParam['weather_condition'];
+			$weather_humidity	= $postParam['weather_humidity'];
+			$weather_wind		= $postParam['weather_wind'];
+			$weather_forecast	= $postParam['weather_forecast'];
+			$weather_layout		= $postParam['weather_layout'];
+			$weather_separator	= $postParam['weather_separator'];
+			$weather_tempUnit	= $postParam['weather_tempUnit'];
 			
 			// process all enabled/disabled modules
 			foreach ($GLOBALS['MODULES'] as $key => $value) {
@@ -78,12 +104,12 @@ class AccountViewAdvance extends AccountView
 			}
 		}
 		
-
 		$this->assignRef('crocodocs', $crocodocs);
 		$this->assignRef('crocodocsenable', $crocodocsenable);
 		$this->assignRef('scribd_api', $scribd_api);
 		$this->assignRef('scribd_secret', $scribd_secret);
 		$this->assignRef('scribdenable', $scribdenable);
+		$this->assignRef('diffbotenable', $diffbotenable);
 		$this->assignRef('diffbot', $diffbot);
 		
 		$this->assignRef('mailer', $mailer);
@@ -96,6 +122,17 @@ class AccountViewAdvance extends AccountView
 		$this->assignRef('smtphost', $smtphost);
 		$this->assignRef('smtpsecure', $smtpsecure);
 		$this->assignRef('smtpport', $smtpport);
+
+		// weather module
+		$this->assignRef('module_weatherenable', $module_weatherenable);
+		$this->assignRef('weather_showcity', $weather_showcity);
+		$this->assignRef('weather_condition', $weather_condition);
+		$this->assignRef('weather_humidity', $weather_humidity);
+		$this->assignRef('weather_wind', $weather_wind);
+		$this->assignRef('weather_forecast', $weather_forecast);
+		$this->assignRef('weather_layout', $weather_layout);
+		$this->assignRef('weather_separator', $weather_separator);
+		$this->assignRef('weather_tempUnit', $weather_tempUnit);
 		
 		// process all enabled/disabled modules
 		foreach ($GLOBALS['MODULES'] as $key => $value) {

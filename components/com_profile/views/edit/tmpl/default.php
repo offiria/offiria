@@ -26,10 +26,6 @@ $my = JXFactory::getUser();
 				<?php echo $this->profileForm->getInput('name', 'params', $this->escape($this->user->name)); ?>
 			</li>			
 			<li>
-				<?php echo $this->profileForm->getLabel('work_department', 'params'); ?>
-				<?php echo $this->profileForm->getInput('work_department', 'params', $this->escape($this->user->name)); ?>
-			</li>			
-			<li>
 			  <?php echo $this->profileForm->getLabel('email', 'params'); ?>
 			  <?php echo $this->profileForm->getInput('email', 'params', $this->userEmail); ?>
 			</li>	

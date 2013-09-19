@@ -66,7 +66,7 @@ class AccountViewAccount extends AccountView
 		$this->assignRef('allow_anon', $allowAnon);
 		
 		$this->assign('domain_editable', $configHelper->allowChangeDomain());
-		
+
 		$doc = JFactory::getDocument();
 		$doc->setTitle(JText::_("COM_ACCOUNT_LABEL_ACCOUNT_SETTING"));
 		$this->addPathway( JText::_('JXLIB_SETTINGS'), JRoute::_('index.php?option=com_account&view=account'));

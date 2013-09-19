@@ -38,14 +38,14 @@ $return = base64_encode('index.php?option=com_stream&view=company');
 
 <form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form" >
 	<div class="login-top">	
-		<label for="modlgn-username" title="Username"><?php echo JText::_('MOD_LOGIN_VALUE_USERNAME') ?></label>
-		<input id="modlgn-username" type="text" name="username" class="offiria_inputbox" title="Username" />
+		<label for="modlgn-username" title="<?php echo JText::_('MOD_LOGIN_VALUE_USERNAME') ?>"><?php echo JText::_('MOD_LOGIN_VALUE_USERNAME') ?></label>
+		<input id="modlgn-username" type="text" name="username" class="offiria_inputbox" title="<?php echo JText::_('MOD_LOGIN_VALUE_USERNAME') ?>" />
 		
-		<label for="modlgn-password" title="Password"><?php echo JText::_('JGLOBAL_PASSWORD') ?></label>
-		<input id="modlgn-passwd" type="password" name="password" class="offiria_inputbox" title="Password" />
+		<label for="modlgn-password" title="<?php echo JText::_('JGLOBAL_PASSWORD') ?>"><?php echo JText::_('JGLOBAL_PASSWORD') ?></label>
+		<input id="modlgn-passwd" type="password" name="password" class="offiria_inputbox" title="<?php echo JText::_('JGLOBAL_PASSWORD') ?>" />
 
 		<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
-			<label for="modlgn-remember" title="Remember Me"><input id="modlgn-remember" type="checkbox" name="remember" class="inputbox" value="yes"/><?php echo JText::_('MOD_LOGIN_REMEMBER_ME') ?></label>
+			<label for="modlgn-remember" title="<?php echo JText::_('MOD_LOGIN_REMEMBER_ME') ?>"><input id="modlgn-remember" type="checkbox" name="remember" class="inputbox" value="yes"/><?php echo JText::_('MOD_LOGIN_REMEMBER_ME') ?></label>
 		<?php endif; ?>
 
 		<input type="submit" name="Submit" class="offiria_inputsubmit" value="<?php echo JText::_('JLOGIN') ?>" />

@@ -174,7 +174,7 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 		<h3><?php echo $title; ?></h3>
 		<?php
 		// Only show list of groups if there is any
-	   if(!empty($groups)):
+		if(!empty($groups)):
 		?>
 		<ul>
 			<?php foreach($groups as $group) { ?>
@@ -405,7 +405,7 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 							</div>
 
 							<div class="user-details">
-								<h3><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display'); ?>"><?php echo $user->name; ?></a></h3>
+								<h3><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display'); ?>"><?php echo $my->name; ?></a></h3>
 
 								<div class="btn-group">
 									
@@ -611,9 +611,8 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 							}
 						}
 						?>
-				
+
 						<jdoc:include type="modules" name="left" style="default"/>
-					
 					</div><!--end .sidebar-left-inner-->
 					
 					<div class="clear"></div>
@@ -728,9 +727,9 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 						</div>		
 						<div id="<?php if (($view == 'groups' && preg_match("/^show(_.+)?$/", $task) && $group_id > 0) || $view == 'customlist'): ?>group-pages<?php endif; ?>" class="sidebar-right-inner blocks">
 							<?php
-							$accountView = AccountFactory::getView('invite');
+							$accountView = AccountFactory::getView('');
 							if ($view == 'groups') {
-								// if groups page are opend, then move the birthday module at the last
+								// if groups page are opened, then move the birthday module at the last
 								JXModule::addBuffer('right', $accountView->modMembersBirthday(), 'module.members.birthday');
 							} else {
 								// adding birthday as a first module
@@ -738,20 +737,26 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 								$birthday =& JXModule::getBuffer('right_bday');
 								if (is_array($birthday) && count($birthday)) echo $birthday[0];
 							}
+							JXModule::addBuffer('right', $accountView->modWeather(), 'weatherenable');
 							
 							// Add guest invite right module
+							$accountView = AccountFactory::getView('invite');
 							JXModule::addBuffer('right', $accountView->modMemberInvite(), 'module.invite.guest');
+							// Add weather module
+							
 							$buffer =& JXModule::getBuffer('right');
 							foreach($buffer as $buff) {
 								echo $buff;
 							}
+							
+							
+							
 							?>
 							<?php /* if($option == 'com_stream' && $view == 'company') { ?>
 							<img src="<?php echo JURI::root().'components/com_stream/assets/images/hot_topics.png'; ?>" />
 							<?php } */?>
-
+							
 						</div><!-- end .sidebar-right-inner -->
-			
 					</div><!-- end #sidebar-right -->
 					
 				<div class="clear"></div>

@@ -8,7 +8,7 @@
  */
 // No direct access.
 defined('_JEXEC') or die;
-$user = JXFactory::getUser();
+$my = JXFactory::getUser();
 $inboxUnreadCount = MessagingNotification::getUserNotification($my->id);
 ?>
 	<div id="oHeader-inner" class="navbar-inner">
@@ -146,15 +146,20 @@ $inboxUnreadCount = MessagingNotification::getUserNotification($my->id);
 						</li>
 
 						<!-- members -->
+						<?php
+						// Hide for limited access user 
+						if($my->authorise('people.profiles.list')){
+						?>	
 						<li class="members<?php if($option == 'com_people' && $view == 'members' ) { echo ' active'; } ?>">
 							<a href="<?php echo JRoute::_('index.php?option=com_people&view=members'); ?>"><?php echo JText::_('NAVIGATOR_LABEL_PEOPLE');?></a>
 						</li>
+						<?php } ?>
 					</ul>
 				
 					<ul class="nav clearfix pull-right">
 						<?php 
 							// If current user is an admin, you can pretty much do everything
-							if( $user->isAdmin() ){
+							if( $my->isAdmin() ){
 			
 						?>
 						<li class="analytics <?php if($option == 'com_analytics') { echo ' active'; } ?>"><a href="<?php echo JRoute::_('index.php?option=com_analytics'); ?>"><?php echo JText::_('JXLIB_ANALYTICS');?></a></li>

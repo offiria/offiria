@@ -25,7 +25,7 @@ $positions = $Category->getByCategory('position');
 		<table class="table table-bordered table-striped table-novborder">
 			<tr>
 				<td class="table-header"><?php echo JText::_('COM_ACCOUNT_LABEL_DEPARTMENT_NAME'); ?></td>
-				<td class="table-header" colspan="2"></td>
+				<td class="table-header"><div style="float: right !important;"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></idv></td>
 			</tr>
 			<?php if (!empty($departments)): ?>
 			<?php foreach ($departments as $dept): ?>
@@ -34,7 +34,7 @@ $positions = $Category->getByCategory('position');
 				<td>
 					<span>
 						<a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment&action=remove&category_id=' . $dept->id);
-						?>" onclick="javascript:return confirm('<?php echo JText::_('COM_ACCOUNT_LABEL_DEPARTMENT_REMOVE_CONFIRMATION'); ?>');"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></a>
+						?>" onclick="javascript:return confirm('<?php echo JText::_('COM_ACCOUNT_LABEL_DEPARTMENT_REMOVE_CONFIRMATION'); ?>');" data-dismiss="alert" class="close tips" title="<?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?>">×</a>
 					</span>
 				</td>
 			</tr>
@@ -42,10 +42,10 @@ $positions = $Category->getByCategory('position');
 			<?php endif; ?>
 			<tr>
 				<td colspan="2">
-					<form class="well form-search" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment'); ?>">
+					<form class="edit" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment'); ?>">
 					<label><?php echo JText::_('COM_ACCOUNT_LABEL_ADD_NEW_DEPARTMENT'); ?></label>
 					<input type="text" class="input-medium" id="department_category" name="department">
-						<button class="btn btn-primary" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
+					<button class="btn btn-info" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
 					</form>
 				</td>
 			</tr>
@@ -55,7 +55,7 @@ $positions = $Category->getByCategory('position');
 		<table class="table table-bordered table-striped table-novborder">
 			<tr>
 				<td class="table-header"><?php echo JText::_('COM_ACCOUNT_LABEL_POSITION_NAME'); ?></td>
-				<td class="table-header" colspan="2"></td>
+				<td class="table-header"><div style="float: right !important;"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></idv></td>
 			</tr>
 			<?php if (!empty($positions)): ?>
 			<?php foreach ($positions as $pos): ?>
@@ -63,8 +63,8 @@ $positions = $Category->getByCategory('position');
 				<td><?php echo $pos->category; ?></td>
 				<td>
 					<span>
-						<a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment&action=remove&category_id=' . $pos->id);
-						?>" onclick="javascript:return confirm('<?php echo JText::_('COM_ACCOUNT_LABEL_POSITION_REMOVE_CONFIRMATION'); ?>');"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></a>
+						<a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment&action=remove&category_id=' . $dept->id);
+						?>" onclick="javascript:return confirm('<?php echo JText::_('COM_ACCOUNT_LABEL_POSITION_REMOVE_CONFIRMATION'); ?>');" data-dismiss="alert" class="close tips" title="<?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?>">×</a>
 					</span>
 				</td>
 			</tr>
@@ -72,10 +72,10 @@ $positions = $Category->getByCategory('position');
 			<?php endif; ?>
 			<tr>
 				<td colspan="2">
-					<form class="well form-search" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment'); ?>">
+					<form class="edit" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment'); ?>">
 					<label><?php echo JText::_('COM_ACCOUNT_LABEL_ADD_NEW_POSITION'); ?></label>
 					<input type="text" class="input-medium" id="position_category" name="position">
-						<button class="btn btn-primary" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
+						<button class="btn btn-info" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
 					</form>
 				</td>
 			</tr>

@@ -10,35 +10,34 @@ $positions = $category->getByCategory('position');
 	<?php } else { ?>
 	<?php echo $this->user->name; ?> <?php echo JText::_('COM_PROFILE_DESCRIPTION_OTHER_SHARE'); ?>
 	<?php } ?>
-  </div>
-<?php
-$fieldSets = $this->form->getFieldsets('params');
-foreach ($fieldSets as $name => $fieldSet) :
-	?>
-	<div class="data-grid">
+</div>
+
+<table border="0" cellpadding="0" class="table data-grid">
+	<col width="30%"/>
+	<col width="70%"/>
 	<?php
-	if (isset($fieldSet->description) && trim($fieldSet->description)) :
-		echo '<h3>'.$this->escape(JText::_($fieldSet->description)).'</h3>';
-	endif;
-	?>
-	
-		<ul>
-			<?php foreach ($this->form->getFieldset($name) as $id => $field) : ?>
-			<?php $values = json_decode($field->value, true); ?>
-			<?php if (($field->fieldname == 'personal_birthday' && $values[0]['personal_birthday_age_public'] == 'Public') || ($field->fieldname != 'personal_birthday')) : ?>
-			<li>
-				<?php echo '<div class="profile-details-box">'; ?>
-
-				<?php echo $field->label; ?>
-				
-				<?php echo '<div class="profile-data">'; ?>
-					
+	$fieldSets = $this->form->getFieldsets('params');
+	foreach ($fieldSets as $name => $fieldSet) {
+		if (isset($fieldSet->description) && trim($fieldSet->description)) {
+			?>
+			<tr>
+				<td colspan="2" class="table-title"><label><?php echo $this->escape(JText::_($fieldSet->description));?></label></td>
+			</tr>	
+			<?
+		}
+		
+		
+		foreach ($this->form->getFieldset($name) as $id => $field) {
+			$values = json_decode($field->value, true);
+			if (($field->fieldname == 'personal_birthday' && $values[0]['personal_birthday_age_public'] == 'Public') || ($field->fieldname != 'personal_birthday')) {
+				?>
+				<tr>
+					<td><?php echo $field->label;?></td>
+					<td>
 				<?php
-				
-
 				if(!is_array($values) || is_null($values)){
 					if ($field->fieldname == 'work_department' && !empty ($depts)) {
-					    	// if it's department, lets fetch the value
+					   	// if it's department, lets fetch the value
 						foreach ($depts as $dept) { if ($field->value == $dept->id) echo $dept->category; }
 					} elseif ($field->fieldname == 'work_position' && !empty ($positions)) {
 						// if it's position, lets fetch the value
@@ -48,41 +47,23 @@ foreach ($fieldSets as $name => $fieldSet) :
 						echo StreamTemplate::escape($field->value);
 					}
 				} else {
-
-					echo '<ul>';
-
+					echo '<ul class="profile-data">';
 					foreach($values as $value){
-						if ($field->fieldname != 'personal_birthday') {
-							echo '<li><div class="profile-arrow">&#8250;</div>';
-						} else {
-							echo '<li>';
-						}
-						// Get the last item so we can wrap it with rounded brackets
-						//$last_item = end($value);
-
+						echo '<li><div class="profile-arrow">&#8250;</div>';
 						foreach($value as $elementKey=>$elementValue){
 							echo '<div class="' . $elementKey . ' details-' . strtolower(str_replace(' ', '-', $elementValue)) . '">';
 							echo StreamTemplate::escape($elementValue);
 							echo '</div>';
 						}
-
 						echo '<div class="clear"></div></li>';
 					}
-
 					echo '</ul>';
 				}
-				
-				echo '</div>';
-				
-				echo '</div>';
-				
-				echo '<div class="clear"></div>';
 				?>
-
-			</li>
-			<?php endif; ?>
-			<?php endforeach; ?>
-		</ul>
-	</div>
-	
-<?php endforeach; ?>
+				</td>
+			</tr>				
+			<?php
+			}
+		}
+	} ?>
+</table>

@@ -35,7 +35,8 @@ defined('_JEXEC') or die;
 		<table class="table table-bordered table-striped table-novborder">
 			<tr>
 				<td class="table-header"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY');?></td>
-				<td class="table-header" colspan="2">#</td>
+				<td class="table-header">#</td>
+				<td class="table-header"><div style="float: right !important;"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></idv></td>
 			</tr>
 			<?php
 			if (count($lists) > 0): 
@@ -47,7 +48,7 @@ defined('_JEXEC') or die;
 				<td>
 					<span>
 						<a href="<?php echo JRoute::_('index.php?option=com_account&view=account&task=categories&action=remove&category=' . $list->id);
-						?>" onclick="javascript:return confirm('<?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE_CONFIRMATION'); ?>');"><?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?></a>
+						?>" onclick="javascript:return confirm('<?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE_CONFIRMATION'); ?>');" data-dismiss="alert" class="close tips" title="<?php echo JText::_('COM_ACCOUNT_LABEL_CATEGORY_REMOVE'); ?>">×</a>
 					</span>
 				</td>
 			</tr>
@@ -62,10 +63,10 @@ defined('_JEXEC') or die;
 			
 			<tr>
 				<td colspan="3">
-					<form class="well form-search" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=categories'); ?>">
+					<form method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=categories'); ?>">
 						<label><?php echo JText::_('COM_ACCOUNT_LABEL_ADD_NEW_CATEGORY'); ?></label>
 						<input type="text" class="input-medium" id="<?php echo $type; ?>_category" name="<?php echo $type; ?>_category">
-						<button class="btn btn-primary" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
+						<button class="btn btn-info" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
 					</form>
 				</td>
 			</tr>

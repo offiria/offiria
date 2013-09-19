@@ -21,10 +21,11 @@ class AccountControllerAccount extends JController
 	{		
 		if ($_POST)
 		{
+			
 			$proceedSave	= true;
 			$configHelper	= new JXConfig();
 			$mainframe		= JFactory::getApplication();
-			
+
 			// Set the posted data to update the configuration
 			$postdata = JRequest::getVar('params');
 						
@@ -33,7 +34,7 @@ class AccountControllerAccount extends JController
 			$param[JXConfig::SITENAME]		= $postdata['sitename'];
 			$param[JXConfig::ALLOW_INVITE]	= (isset($postdata['allow_invite'])) ? intval($postdata['allow_invite']) : '0';
 			$param[JXConfig::ALLOW_ANON]	= (isset($postdata['allow_anon'])) ? intval($postdata['allow_anon']) : '0';
-			
+
 			// Check list of limit email domains and append limit email list into param
 			$limitEmailDomain			= JXConfig::LIMIT_EMAIL_DOMAIN;
 			if (empty($postdata['limit_email_domain']))
@@ -118,6 +119,7 @@ class AccountControllerAccount extends JController
 				{
 					$jUri	= JURI::getInstance();
 					$newUrl	= $jUri->toString(array('scheme')).$param[JXConfig::DOMAIN_NAME].$configHelper->getDomainSuffix();
+
 				}
 
 				// if failed to save into configuration.php
@@ -132,8 +134,8 @@ class AccountControllerAccount extends JController
 				}
 			}
 		}
-		
-		parent::display();
+
+		parent::display( null );
 	}
 	
 	/*
@@ -166,6 +168,19 @@ class AccountControllerAccount extends JController
 			$param['smtphost']		= $postdata['smtphost'];
 			$param['smtpsecure']	= $postdata['smtpsecure'];
 			$param['smtpport']		= $postdata['smtpport'];
+
+			// weather module
+			$param['module_weatherenable'] = $postdata['module_weatherenable'];
+			$param['weather_location']	= $postdata['weather_location'];
+			$param['weather_locationt']	= $postdata['weather_locationt'];
+			$param['weather_showcity']	= $postdata['weather_showcity'];
+			$param['weather_condition']	= $postdata['weather_condition'];
+			$param['weather_humidity']	= $postdata['weather_humidity'];
+			$param['weather_wind']		= $postdata['weather_wind'];
+			$param['weather_forecast']	= $postdata['weather_forecast'];
+			$param['weather_layout']	= $postdata['weather_layout'];
+			$param['weather_separator']	= $postdata['weather_separator'];
+			$param['weather_tempUnit']	= $postdata['weather_tempUnit'];
 			
 			// process all enabled/disabled modules
 			foreach ($GLOBALS['MODULES'] as $key => $value) {

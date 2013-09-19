@@ -62,7 +62,7 @@ class ProfileControllerEdit extends JController
 				// so that "0" can be used as password e.g.
 				if($params['password'] != $params['password2']) 
 				{
-					$mainframe->redirect(JRoute::_('index.php?option=com_profile&view=edit'), JText::_('PASSWORDS_DO_NOT_MATCH'), 'error');
+					$mainframe->redirect(JRoute::_('index.php?option=com_profile&view=edit'), JText::_('COM_REGISTER_ERRMSG_PASSWORD_MISMATCH'), 'error');
 					return false;
 				}
 			}

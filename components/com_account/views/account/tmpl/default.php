@@ -92,10 +92,11 @@ input[type=checkbox] {
 	});
 	
 	function enableFields() {
-		if (document.getElementById('params_allow_invite').checked == true) {
-			document.getElementById("params_limit_email_domain").readOnly=false;
+		var d = document;
+		if (d.getElementById('params_allow_invite').checked == true) {
+			d.getElementById("params_limit_email_domain").readOnly=false;
 		} else {
-			document.getElementById("params_limit_email_domain").readOnly=true;
+			d.getElementById("params_limit_email_domain").readOnly=true;
 		}
 		
 		return false;

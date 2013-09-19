@@ -51,4 +51,55 @@ class AccountView extends JView
 		}
 	}
 
+	
+	public function modMembersBirthday() {
+		$html = '';
+		$members = ''; 
+		$i = 0;
+
+		$birthdayHelper = new AccountBirthdayHelper();
+		$birthdaymember = $birthdayHelper->getBirthdayMembest();
+		
+		$numOfMembers = count($birthdaymember);
+		if ($numOfMembers > 0) {
+			foreach ($birthdaymember as $key => $value) {
+				$i++;
+				$members .= '<a href="' . JRoute::_('index.php?option=com_messaging&view=inbox&to=' . $key) . '"><b>' . $value . '</b></a>';
+				if ($i == $numOfMembers) {	// last member, don't add separator
+				} elseif ($i == $numOfMembers - 1) { // last but one member, add 'and' separator	
+					$members .= ' ' . JText::_('COM_ACCOUNT_LABEL_MEMBERS_BIRTHDAY_AND') . ' ';		
+				} else {
+					$members .= ', ';		
+				}
+			}
+
+			ob_start();
+			require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'templates'.DS.'modules'.DS.'module.members.birthday.php');
+			$html = ob_get_contents();
+			ob_end_clean();
+		}
+		return $html;;
+	}
+	
+	public function modWeather() {
+		$document = JFactory::getDocument();
+		$params = new JXConfig();
+		$my = JXFactory::getUser();
+	
+		if ($my->getParam('timezone')) {
+			$helper = new modSPWeatherHelper($params, $my->getParam('timezone'));
+			$location   = substr($my->getParam('timezone'), strpos($my->getParam('timezone'), "/")+1, strlen($my->getParam('timezone')));
+		} else {
+			$helper = new modSPWeatherHelper($params, $params->get('default_timezone'));
+			$location   = substr($params->get('weather_location'), strpos($params->get('weather_location'), "/")+1, strlen($params->get('weather_location')));
+		}
+		$data                   = $helper->getData();
+		$data['forecast']       = $helper->getForecastData();
+
+		ob_start();
+		require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'templates'.DS.'modules'.DS.'module.weather.php');
+		$html = ob_get_contents();
+		ob_end_clean();	
+		return $html;
+	}
 }
