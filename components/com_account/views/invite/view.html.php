@@ -49,7 +49,7 @@ class AccountViewInvite extends AccountView
 		$this->assignRef('inviteEmail', $inviteEmail);
 		$this->assignRef('pagination', $pagination);
 		$this->assignRef('pendingStat', $pendingStat);
-		$this->assignRef('allowInvite', $configHelper->allowUsersRegister());
+		$this->assign('allowInvite', $configHelper->allowUsersRegister());
 		$this->assignRef('results', $result);
 		$this->assignRef('myJoinedGroups', $myJoinedGroups);
 

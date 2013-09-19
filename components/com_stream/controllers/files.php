@@ -15,7 +15,7 @@ class StreamControllerFiles extends JController {
 	/**
 	 *
 	 */
-	public function display() {
+	public function display($cachable = false, $urlparams = false) {
 		$view = StreamFactory::getView('files', '', 'html');
 		echo $view->display();
 	}

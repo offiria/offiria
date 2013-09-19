@@ -17,7 +17,7 @@ class StreamControllerBlog extends JController
 	/**
 	 *
 	 */	 	
-	public function display()
+	public function display($cachable = false, $urlparams = false)
 	{
 		$view 	= StreamFactory::getView( 'blog', '', 'html');
 		echo $view->display();

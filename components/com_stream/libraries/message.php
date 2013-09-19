@@ -4,7 +4,7 @@ jimport('joomla.user.helper');
 include_once(JPATH_LIBRARIES.DS.'joomla'.DS.'html'.DS.'html'.DS.'string.php');
 class StreamMessage
 {
-	public function format($str, $options = array())
+	public static function format($str, $options = array())
 	{
 		// it need to be escaped first
 		$str = StreamTemplate::escape($str);
@@ -17,7 +17,7 @@ class StreamMessage
 		$uriBase = '';
 		if (isset($options['fullUri']) && $options['fullUri'])
 		{			
-			$uri		=& JURI::getInstance();
+			$uri		= JURI::getInstance();
 			$uriBase	= $uri->toString( array('scheme', 'host', 'port'));
 		}
 		
@@ -113,7 +113,7 @@ class StreamMessage
 	/**
 	 * Return attachment view for the given stream
 	 */
-	public function getAttachmentHTML($stream)
+	public static function getAttachmentHTML($stream)
 	{
 		
 		$my = JXFactory::getUser();
@@ -361,7 +361,7 @@ class StreamMessage
 	/**
 	 * Return nicely formatted filesize
 	 */	 	
-	function formatBytes($size, $precision = 2)
+	static public function formatBytes($size, $precision = 2)
 	{
 	    if($size == 0)
 	    	return '0';
@@ -376,7 +376,7 @@ class StreamMessage
 	/**
 	 *  Return the number of new message since the last message id
 	 */	 	
-	public function countMessageSince( $message_id )
+	public static function countMessageSince( $message_id )
 	{
 		$my = JXFactory::getUser();
 		$model = StreamFactory::getModel('stream');
@@ -386,7 +386,7 @@ class StreamMessage
 	/**
 	 *  Return the number of new message since the last message id
 	 */	 	
-	public function lastMessageId( )
+	public static function lastMessageId( )
 	{
 		$model = StreamFactory::getModel('stream');
 		return $model->lastMessageId();	
@@ -395,7 +395,7 @@ class StreamMessage
 	/**
 	 *  Auto-link the given string
 	 */	 	
-	function autoLink($text)
+	public static function autoLink($text)
 	{
 		/* subdomain must be taken into consideration too */
 	   $pattern  = '~(
@@ -430,7 +430,7 @@ class StreamMessage
 	/**
 	 * Return all the links inside the message
 	 */	 	
-	function getLinks($text)
+	public static function getLinks($text)
 	{
 		/* subdomain must be taken into consideration too */
 		$pattern  = '#\b(((http|https)+://[^-][a-zA-Z0-9-]*?[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))#';
@@ -452,7 +452,7 @@ class StreamMessage
 	{
 		if ( intval( $messageId ) > 0 )
 		{
-			$uri	=& JURI::getInstance();
+			$uri	= JURI::getInstance();
 			$base	= $uri->toString( array('scheme', 'host', 'port'));
 			return $base . JRoute::_( 'index.php?option=com_stream&view=message&task=show&message_id='.$messageId );
 		}
@@ -465,7 +465,7 @@ class StreamMessage
 	{
 		if ( intval( $groupId ) > 0 )
 		{
-			$uri	=& JURI::getInstance();
+			$uri	= JURI::getInstance();
 			$base	= $uri->toString( array('scheme', 'host', 'port'));
 
 			return $base . JRoute::_( 'index.php?option=com_stream&view=groups&task=show&group_id='.$groupId );

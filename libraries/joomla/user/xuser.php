@@ -405,7 +405,7 @@ class JXUser extends JUser
 	
 	
 	// Get registered users in system using com_stream StreamModelUser
-	public function getRegisteredUsers()
+	public static function getRegisteredUsers()
 	{
 		jimport('joomla.application.component.model');
 		JModel::addIncludePath( JPATH_ROOT . DS . 'components'.DS.'com_stream'.DS.'models' );

@@ -1,5 +1,5 @@
 <?php
-$document =& JFactory::getDocument();
+$document = JFactory::getDocument();
 $docTitle = $document->getTitle();
 $task = JRequest::getVar('task');
 ?>

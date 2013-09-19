@@ -1,9 +1,8 @@
 <?php
 /**
- * @version		$Id: default.php 21397 2011-05-26 23:58:47Z dextercowley $
  * @package		Joomla.Site
  * @subpackage	com_users
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  * @since		1.5
  */
@@ -23,8 +22,6 @@ JHtml::_('behavior.formvalidation');
 
 	<form id="user-registration" action="<?php echo JRoute::_('index.php?option=com_users&task=remind.remind'); ?>" method="post" class="form-validate">
 
-		<legend><?php echo JText::_('FORGOT YOUR USERNAME?');?></legend>
-
 		<?php foreach ($this->form->getFieldsets() as $fieldset): ?>
 		<p><?php echo JText::_($fieldset->label); ?></p>		<fieldset>
 			<dl>
@@ -36,9 +33,8 @@ JHtml::_('behavior.formvalidation');
 		</fieldset>
 		<?php endforeach; ?>
 		<div>
-			<input type="submit" class="offiria_inputsubmit" value="<?php echo JText::_('JSUBMIT'); ?>">
+			<button type="submit" class="validate"><?php echo JText::_('JSUBMIT'); ?></button>
 			<?php echo JHtml::_('form.token'); ?>
 		</div>
 	</form>
 </div>
-<span><a href="<?php echo JRoute::_('');?>">Back to login page</a></span>

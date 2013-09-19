@@ -12,7 +12,7 @@ defined('JPATH_PLATFORM') or die;
 class JXModule {
 	public static $buffer = array();
 	
-	public function &getBuffer($position)
+	public static function &getBuffer($position)
 	{
 		static $instance = null;
 		if($instance == null){
@@ -26,7 +26,7 @@ class JXModule {
 		return $instance[$position];
 	}
 	
-	public function addBuffer($position, $html)
+	public static function addBuffer($position, $html)
 	{
 		$buff =& JXModule::getBuffer($position);
 		$buff[] = $html;

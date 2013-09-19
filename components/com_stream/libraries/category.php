@@ -22,7 +22,7 @@ class StreamCategory
 	 * @return stdClass containing category props 
 	 */
 	public function getByCategory($category) {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = 'SELECT * FROM ' . $db->nameQuote('#__stream_category') .
 			'WHERE ' . $db->nameQuote('type') . "='$category'";
 		
@@ -37,7 +37,7 @@ class StreamCategory
 	 * @deprecated @see getByCategory($category)
 	 */
 	public function getBlogs() {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = 'SELECT * FROM ' . $db->nameQuote('#__stream_category') .
 			'WHERE ' . $db->nameQuote('type') . "='blog'";
 		
@@ -52,7 +52,7 @@ class StreamCategory
 	 * @deprecated @see getByCategory($category)
 	 */
 	public function getEvents() {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = 'SELECT * FROM ' . $db->nameQuote('#__stream_category') .
 			'WHERE ' . $db->nameQuote('type') . "='event'";
 		
@@ -67,7 +67,7 @@ class StreamCategory
 	 * @deprecated @see getByCategory($category)
 	 */
 	public function getGroups() {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = 'SELECT * FROM ' . $db->nameQuote('#__stream_category') .
 			'WHERE ' . $db->nameQuote('type') . "='group'";
 		
@@ -82,7 +82,7 @@ class StreamCategory
 	 * @deprecated @see getByCategory($category)
 	 */
 	public function getDepartment() {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = 'SELECT * FROM ' . $db->nameQuote('#__stream_category') .
 			'WHERE ' . $db->nameQuote('type') . "='department'";
 		
@@ -94,7 +94,7 @@ class StreamCategory
 	public function countMessageByCategoryId($category, $type='') {
 		/* group category is stored in another table */
 		$table = ($type == 'group') ? '#__groups' : '#__stream';
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$query = 'SELECT * FROM ' . $db->nameQuote($table) . ' ' .
 			'WHERE ' . $db->nameQuote('category_id') . "='$category'";
 		$db->setQuery($query);

@@ -1,5 +1,5 @@
 <?php
-$document =& JFactory::getDocument();
+$document = JFactory::getDocument();
 $docTitle = $document->getTitle();
 $groupTitle = StreamTemplate::escape($docTitle);
 $task = JRequest::getVar('task');

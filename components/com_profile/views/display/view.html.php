@@ -54,8 +54,8 @@ class ProfileViewDisplay extends ProfileView
 		$this->assignRef('my', $my);
 		$this->assignRef('analyticIndex', $analyticIndex);
 		$this->assignRef('analyticType', $validGroupType);
-		$this->assignRef('lastStatus', $lastStatus[0]->message);
-		$this->assignRef('analyticHtml', $this->generateAnalytics($user));
+		$this->assign('lastStatus', $lastStatus[0]->message);
+		$this->assign('analyticHtml', $this->generateAnalytics($user));
 		
 		switch($task){
 			case 'activities':
@@ -76,7 +76,7 @@ class ProfileViewDisplay extends ProfileView
 				// Bio
 				JForm::addFieldPath(JPATH_COMPONENT . DS . 'models' . DS . 'fields');
 		
-				$form =& JForm::getInstance('form', JPATH_ROOT.DS.'components'.DS.'com_profile'.DS.'models'.DS.'forms'.DS.'details.xml');
+				$form = JForm::getInstance('form', JPATH_ROOT.DS.'components'.DS.'com_profile'.DS.'models'.DS.'forms'.DS.'details.xml');
 				$detailModel = ProfileFactory::getModel('detail');
 				$form->bind(array('params'=>$detailModel->getDetails($user->id)));
 				$this->assignRef('form', $form);
@@ -88,8 +88,8 @@ class ProfileViewDisplay extends ProfileView
 				
 				$streamModel = StreamFactory::getModel('stream');
 				$blogs = $streamModel->getStream( array( 'type' => 'page', 'user_id' => $user->id), 10);
-				$this->assignRef('blogs', $blogs);
-				$this->assignRef('blogCount', $streamModel->countStream(array( 'type' => 'page', 'user_id' => $user->id)));
+				$this->assign('blogs', $blogs);
+				$this->assign('blogCount', $streamModel->countStream(array( 'type' => 'page', 'user_id' => $user->id)));
 				
 				
 				$links = $user->getParam('links', '');
@@ -135,9 +135,19 @@ class ProfileViewDisplay extends ProfileView
 		$chartData2 = JAnalytics::get(array('message.like', 'comment.like'), $user->id, null, '', $analyticsGroupBy);
 		
 		$linechart = new HighRollerLineChart();
+		$linechart->legend = new stdClass();
+		$linechart->credits = new stdClass();
 		$linechart->chart->renderTo = 'linechart';
 		$linechart->chart->type = 'area';
-		//$linechart->tooltip->enabled = false;
+		
+		$linechart->yAxis = new stdClass();
+		$linechart->yAxis->title = new stdClass();
+		$linechart->yAxis->labels = new stdClass();
+
+		$linechart->xAxis = new stdClass();
+		$linechart->xAxis->title = new stdClass();
+		$linechart->xAxis->labels = new stdClass();
+
 		$linechart->yAxis->title->text = '';
 		$linechart->yAxis->min = 0;
 		$linechart->yAxis->labels->enabled = true;
@@ -168,8 +178,8 @@ class ProfileViewDisplay extends ProfileView
 	public function addPathway( $text , $link = '' )
 	{
 		// Set pathways
-		$mainframe		=& JFactory::getApplication();
-		$pathway		=& $mainframe->getPathway();
+		$mainframe		= JFactory::getApplication();
+		$pathway		= $mainframe->getPathway();
 		
 		$pathwayNames	= $pathway->getPathwayNames();
 		

@@ -94,7 +94,7 @@ if ($_GET) {
 	}
 
 	// update connection based on the new database created
-	$dbo = DBConnection::connect($db_name, NULL, $db_uname, $db_pw);
+	$dbo = DBConnection::connect($db_name, $db_host, $db_uname, $db_pw);
 
 	if ($canProceed && !$database->populateDatabase($dbo, FRAMEWORK_SQL_FILEPATH)) {
 		$canProceed = false;

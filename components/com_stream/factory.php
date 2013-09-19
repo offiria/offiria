@@ -35,7 +35,7 @@ class StreamFactory
 	 * Return the model instance
 	 * @param type $name 
 	 */
-	public function getModel( $name = '', $prefix = '', $config = array() )
+	public static function getModel( $name = '', $prefix = '', $config = array() )
 	{
 		static $modelInstances = null;
 		
@@ -67,7 +67,7 @@ class StreamFactory
 	/**
 	 * Return single instance view
 	 */	 	
-	public function getView( $name='', $prefix='', $viewType='' )
+	public static 	function getView( $name='', $prefix='', $viewType='' )
 	{
 		static $viewInstances = null;
 		
@@ -99,7 +99,7 @@ class StreamFactory
 	/**
 	 * Include the given file
 	 */	 	
-	public function load($src){
+	public static function load($src){
 		$src = str_replace('.', DS, $src);
 		include_once(JPATH_ROOT.DS.'components'.DS.'com_stream'.DS.$src. '.php');
 	}

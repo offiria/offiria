@@ -23,7 +23,7 @@ class AnalyticsControllerDashboard extends JController
 	/**
 	 *
 	 */	 	
-	public function display()
+	public function display($cachable = false, $urlparams = false)
 	{		
 		JRequest::setVar('view', 'dashboard');
 		parent::display();

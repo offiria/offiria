@@ -24,7 +24,7 @@ if(!class_exists('plgSystemMobile'))
 			parent::__construct($subject, $config);
 
 			// detect the browser by checking user agent
-			$browser =& JBrowser::getInstance();
+			$browser = JBrowser::getInstance();
 			$ua = $browser->getAgentString();
 
 			switch ($ua) {

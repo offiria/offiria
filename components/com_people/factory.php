@@ -12,12 +12,12 @@ JLoader::register('StreamCategory', JPATH_ROOT .DS.'components'.DS.'com_stream'.
 JTable::addIncludePath( JPATH_ROOT .DS.'components'.DS.'com_profile' . DS . 'tables' );                     
 JTable::addIncludePath( JPATH_ROOT .DS.'components'.DS.'com_stream' . DS . 'tables' );                     
 
-class AFactory 
+class PeopleFactory 
 {
 	/**
 	 *  Return single instance of the model object
 	 */	 	
-	public function getModel($name)
+	public static function getModel($name)
 	{
 		static $modelInstances = null;
 		

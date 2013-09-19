@@ -15,7 +15,7 @@ class StreamControllerEvents extends JController {
 	/**
 	 *
 	 */
-	public function display() {
+	public function display($cachable = false, $urlparams = false) {
 		$view = StreamFactory::getView('events', '', 'html');
 		echo $view->display();
 	}

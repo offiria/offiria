@@ -14,7 +14,7 @@ jimport('joomla.utilities.xconfig');
 include_once(JPATH_ROOT.DS.'components'.DS.'com_stream'.DS.'factory.php');
 include_once(JPATH_ROOT.DS.'components'.DS.'com_account'.DS.'factory.php');
 
-$document =& JFactory::getDocument();
+$document = JFactory::getDocument();
 $document->setGenerator(JText::_('CUSTOM_SITE_NAME'));
 $my = JXFactory::getUser();
 
@@ -92,7 +92,7 @@ $groupIFollow 	= JXUtility::csvDiff($groupIFollow, $groupIJoin);
 $myGroupsIds 	= JXUtility::csvMerge($groupIFollow, $groupIJoin);
 
 class StreamGroupSorter {
-	public function sortLastActive($groupA, $groupB){
+	public static function sortLastActive($groupA, $groupB){
 		$my = JXFactory::getUser();
 		$diffA = $groupA->getParam('last_message') - $my->getParam('group_'.$groupA->id.'_last');
 		$diffB = $groupB->getParam('last_message') - $my->getParam('group_'.$groupB->id.'_last');
@@ -145,7 +145,7 @@ usort($otherGroups, array('StreamGroupSorter', 'sortLastActive'));
 $memberCount = offiria_get_membercount();
 
 function offiria_get_membercount(){
-	$db		=& JFactory::getDBO();
+	$db		= JFactory::getDBO();
 	$query	=  'SELECT count(*)
 				FROM ' . $db->nameQuote( '#__users' );
 
@@ -629,7 +629,7 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 
 							<?php
 							// get system message to be outputted in custom container
-							$app =& JFactory::getApplication();
+							$app = JFactory::getApplication();
 							$queue = $app->getMessageQueue();
 				
 							// store all messages

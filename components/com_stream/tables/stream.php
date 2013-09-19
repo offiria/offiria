@@ -71,7 +71,7 @@ class StreamTableStream extends JTable
 	/**
 	 *
 	 */	 	
-	public function load( $id )
+	public function load( $id = NULL, $reset = true )
 	{
 		$ret = parent::load($id);
 		$this->_params = new JParameter($this->params);
@@ -430,7 +430,7 @@ class StreamTableStream extends JTable
 	 */	 	
 	public function getUri()
 	{
-		$uri	=& JURI::getInstance();
+		$uri	= JURI::getInstance();
 		$base	= $uri->toString( array('scheme', 'host', 'port'));
 		if (intval($this->group_id) > 0)
 		{
@@ -508,6 +508,9 @@ class StreamTableStream extends JTable
     public function __set ( $name, $value )
     {
     	$rawObj = json_decode($this->raw);
+    	if(empty($rawObj)){
+    		$rawObj = new stdClass();
+    	}
     	$rawObj->$name =  $value;
     	$this->raw = json_encode( $rawObj );
 	}

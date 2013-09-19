@@ -385,7 +385,7 @@ class JParameter extends JRegistry
 	 * @deprecated  12.1
 	 * @since   11.1
 	 */
-	public function loadSetupFile($path)
+	public function loadSetupFile($path = '')
 	{
 		$result = false;
 

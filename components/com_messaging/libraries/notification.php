@@ -5,7 +5,7 @@ require_once(JPATH_ROOT.DS.'components'.DS.'com_messaging'.DS.'factory.php');
 
 class MessagingNotification
 {
-	public function getUserNotification($userid)
+	public static function getUserNotification($userid)
 	{
 		$messagingModel = MessagingFactory::getModel('inbox');
 		return $messagingModel->getTotalNotifications($userid);

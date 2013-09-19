@@ -17,14 +17,14 @@ class PeopleControllerMembers extends JController
 	/**
 	 *
 	 */	 	
-	public function display(){
+	public function display($cachable = false, $urlparams = false){
 		
 		JRequest::setVar('view', 'members');
 		parent::display(true);
 	}
 
 	public function listUser() {
-		$model = AFactory::getModel('members');
+		$model = PeopleFactory::getModel('members');
 		$results = $model->getMembers();
 		// filter needed value only
 		$vals = array();

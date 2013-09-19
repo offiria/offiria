@@ -37,16 +37,16 @@ class StreamTableGroup extends JTable
 		parent::__construct( '#__groups', 'id', $db );
 	}
 	
-	public function load($id)
+	public function load($keys = NULL, $reset = true)
 	{
-		$ret = parent::load($id);
+		$ret = parent::load($keys);
 		$this->_params->loadString($this->params);
 		return $ret;
 	}
 	
-	public function bind($data)
+	public function bind($src, $ignore = Array())
 	{
-		$ret = parent::bind($data);
+		$ret = parent::bind($src);
 		$this->_params->loadString($this->params);
 		return $ret;
 		
@@ -172,7 +172,7 @@ class StreamTableGroup extends JTable
 	 * @return array id(s) of groups name
 	 */
 	public function listGroupsByUser($userid) {
-		$db =& JFactory::getDbo();
+		$db = JFactory::getDbo();
 		$q = "SELECT " . $db->nameQuote('id') . " FROM " . $db->nameQuote('#__groups') .
 			" WHERE " . $db->nameQuote('members') . " LIKE '%" . $userid . "%'";
 		$db->setQuery($q);
@@ -192,7 +192,7 @@ class StreamTableGroup extends JTable
 	 */	 	
 	public function getUri()
 	{
-		$uri	=& JURI::getInstance();
+		$uri	= JURI::getInstance();
 		$base	= $uri->toString( array('scheme', 'host', 'port'));
 		return $base . JRoute::_( 'index.php?option=com_stream&view=groups&task=show&group_id='.$this->id);
 	}
