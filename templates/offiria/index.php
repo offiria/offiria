@@ -408,7 +408,7 @@ function offiria_list_groups($groups, $title, $groupIJoin, $groupIFollow, $opt=a
 							</div>
 
 							<div class="user-details">
-								<h3><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display'); ?>"><?php echo $user->name; ?></a></h3>
+								<h3><a href="<?php echo JRoute::_('index.php?option=com_profile&view=display'); ?>"><?php echo $my->name; ?></a></h3>
 
 								<div class="btn-group">
 									<?php /*

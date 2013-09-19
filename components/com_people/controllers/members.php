@@ -20,6 +20,18 @@ class PeopleControllerMembers extends JController
 	public function display($cachable = false, $urlparams = false){
 		
 		JRequest::setVar('view', 'members');
+		$my = JXFactory::getUser();
+		$username	= JRequest::getVar('user', '');
+		$user		= JXFactory::getUser($username);
+		
+		// People need to be able to read the group
+		if( !$my->authorise('profile.read', $user) ){
+			$app	= JFactory::getApplication();
+		    $app->enqueueMessage( JText::_('JERROR_LOGIN_DENIED' ) , 'error' );
+		    return;
+		}
+
+
 		parent::display(true);
 	}
 
