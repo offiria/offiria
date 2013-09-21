@@ -86,9 +86,10 @@ switch($milestoneStatus) {
 								echo JText::_('COM_STREAM_LABEL_DUE_DATE') . ': ' . $startDate->format( JText::_('JXLIB_DATE_SHORT_FORMAT')) . '&nbsp;&#8226;&nbsp;';
 
 								if($milestoneTaskCount > 0) {
-									echo $milestoneTaskCompletedCount . '/' . $milestoneTaskCount . ' task completed';
+									//echo $milestoneTaskCompletedCount . '/' . $milestoneTaskCount . ' task completed';								
+									echo sprintf(JText::_('COM_STREAM_NO_TASK_COMPLETED'), $milestoneTaskCompletedCount, $milestoneTaskCount);
 								} else {
-									echo 'No tasks assigned';
+									echo JText::_('COM_STREAM_NO_TASK_IN_MILESTONE');
 								}
 								?>
 							</div>

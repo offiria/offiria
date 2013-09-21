@@ -31,7 +31,7 @@ class JXModule {
 	{
 		// convert the module file name to permission ID
 		$configHelper	= new JXConfig();
-		if ($configHelper->get('module_' . str_replace(".", "_", $module)) == '1') {
+		if ($configHelper->get('module_' . str_replace(".", "_", $module)) === '1') {
 			$buff =& JXModule::getBuffer($position);
 			$buff[] = $html;
 		}

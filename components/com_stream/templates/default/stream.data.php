@@ -85,10 +85,18 @@ $date = new JDate();
 			}
 			?>
 		</ol>
-		
 		<?php if($total == 0) { ?>
 		<div class="alert-message block-message info alert-empty-stream">       
-			<p><?php echo JText::_('COM_STREAM_NO_MESSAGE'); ?></p>        
+			<p><?php
+			if ($task == 'show_events' || $view == 'events') {
+				echo JText::_('COM_STREAM_NO_EVENT'); 
+			} elseif ($task == 'show_todos' || $view == 'todo') {
+				echo JText::_('COM_STREAM_NO_TODO'); 
+			} elseif ($task == 'show_files' || $view == 'files') {
+				echo JText::_('COM_STREAM_NO_FILES'); 	
+			} else {
+				echo JText::_('COM_STREAM_NO_MESSAGE'); 
+			} ?></p>  
 		</div>
 		<?php } ?>
 	</div>

@@ -119,7 +119,7 @@ $task = JRequest::getVar('task');
 			</div>
 			<div id="cl-btn-editcancel" style="display: none;">
 				<a class="btn" href="#cancel"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></a>
-				<button class="btn btn-primary" type="submit"><?php echo JText::_('COM_STREAM_LABEL_SAVE'); ?></button>
+				<button class="btn btn-info" type="submit"><?php echo JText::_('COM_STREAM_LABEL_SAVE'); ?></button>
 			</div>
 			<div class="clear"></div>
 		</div>

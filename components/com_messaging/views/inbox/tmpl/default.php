@@ -64,7 +64,7 @@ defined('_JEXEC') or die;
 							</noscript>
 						</div>
 						<div class="pull-right">
-							<input type="submit" value="<?php echo JText::_('COM_COMMUNITY_COMPOSE_SEND'); ?>" class="btn btn-primary">
+							<input type="submit" value="<?php echo JText::_('COM_COMMUNITY_COMPOSE_SEND'); ?>" class="btn btn-info">
 						</div>
 						<div class="clear"></div>
 					</div>

@@ -53,9 +53,9 @@ class AccountView extends JView
 
 	
 	public function modMembersBirthday() {
-		$html = '';
-		$members = ''; 
-		$i = 0;
+		$html 		= '';
+		$members 	= ''; 
+		$i 			= 0;
 
 		$birthdayHelper = new AccountBirthdayHelper();
 		$birthdaymember = $birthdayHelper->getBirthdayMembest();
@@ -82,10 +82,12 @@ class AccountView extends JView
 	}
 	
 	public function modWeather() {
-		$document = JFactory::getDocument();
-		$params = new JXConfig();
-		$my = JXFactory::getUser();
-	
+		$html 		= '';
+		$document 	= JFactory::getDocument();
+		$params 	= new JXConfig();
+		$my 		= JXFactory::getUser();
+		
+		// @todo: usage of advanced options in weather module (moduleclass_sfx, cache, useCache, cacheTime)
 		if ($my->getParam('timezone')) {
 			$helper = new modSPWeatherHelper($params, $my->getParam('timezone'));
 			$location   = substr($my->getParam('timezone'), strpos($my->getParam('timezone'), "/")+1, strlen($my->getParam('timezone')));
@@ -93,13 +95,19 @@ class AccountView extends JView
 			$helper = new modSPWeatherHelper($params, $params->get('default_timezone'));
 			$location   = substr($params->get('weather_location'), strpos($params->get('weather_location'), "/")+1, strlen($params->get('weather_location')));
 		}
-		$data                   = $helper->getData();
-		$data['forecast']       = $helper->getForecastData();
 
-		ob_start();
-		require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'templates'.DS.'modules'.DS.'module.weather.php');
-		$html = ob_get_contents();
-		ob_end_clean();	
+		if (is_array($helper->error())) {
+			JFactory::getApplication()->enqueueMessage( implode('<br /><br />', $helper->error()) , 'error');
+		} else {
+			$document->addStylesheet(JURI::base(true) . '/templates/'.$document->template.'/css/weather.css');
+			$forecast 		= $helper->getForecastData();
+			$weather_datax	= $helper->getData();
+			$weather_data	= $weather_datax['query']['results']['rss']['channel'];
+			ob_start();
+			require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'templates'.DS.'modules'.DS.'module.weather.php');
+			$html = ob_get_contents();
+			ob_end_clean();	
+		}
 		return $html;
 	}
 }

@@ -68,7 +68,7 @@ if (isset($data->tags) && strlen($data->tags) > 0) {
 			<div class="form-tags">
 				<form>
 					<input type="text" class="tag-input tag-typeahead" maxlength="20"/>
-					<div class="btn btn-primary tag-add"><?php echo JText::_('COM_STREAM_LABEL_ADD_TAG'); ?></div>
+					<div class="btn btn-info tag-add"><?php echo JText::_('COM_STREAM_LABEL_ADD_TAG'); ?></div>
 					<div class="btn tag-cancel"><?php echo JText::_('COM_STREAM_LABEL_FINISH_TAGGING'); ?></div>
 				</form>
 				

@@ -108,7 +108,7 @@ if(!empty($messages))
 			        }, false);
 			</script>
 
-			<button id="replybutton" class="btn btn-primary ajax-wait submit pull-right"><?php echo JText::_('COM_COMMUNITY_ADD_REPLY_BUTTON'); ?></button>
+			<button id="replybutton" class="btn btn-info ajax-wait submit pull-right"><?php echo JText::_('COM_COMMUNITY_ADD_REPLY_BUTTON'); ?></button>
 			<div class="clear"></div>
 		</div>
 	</form>

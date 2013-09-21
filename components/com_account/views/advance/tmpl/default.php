@@ -226,7 +226,20 @@ input[type=checkbox] {
 			</select>		
 		</td>
 	</tr>	
-
+	<tr>
+		<td><label id="jform_weather_useCache-lbl" for="jform_weather_useCache" class="tips" title="<?php echo JText::_('COM_ACCOUNT_WEATHER_USECACHE_DESC');?>"><?php echo JText::_('COM_ACCOUNT_WEATHER_USECACHE');?></label></td>
+		<td colspan="3">
+			<div class="checkboxOne" >
+				<input type="checkbox" id="jform_weather_useCache" name="jform[weather_useCache]" value="1" <?php echo ($this->weather_useCache == '1') ? 'checked="checked"' : '';?> onchange="javascript:enableFields();"//>
+				<label for="jform_weather_useCache"></label>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td><label id="jform_weather_cacheTime-lbl" for="jform_weather_cacheTime" class="tips" title="<?php echo JText::_('COM_ACCOUNT_WEATHER_CACHETIME_DESC');?>"><?php echo JText::_('COM_ACCOUNT_WEATHER_CACHETIME');?></label></td>
+		<td colspan="3"><input type="text" name="jform[weather_cacheTime]" id="jform_weather_cacheTime" value="<?php echo $this->weather_cacheTime;?>" size="1"></td>
+	</tr>
+	
 	<!-- MODULE SETTINGS -->
 	<tr>
 		<td colspan="4" class="table-title"><label><?php echo JText::_('COM_ACCOUNT_LABEL_MODULES');?></label></td>
@@ -235,7 +248,8 @@ input[type=checkbox] {
 		<td><label id="jform_mailer-lbl" class="hasTip" title=""><?php echo JText::_('COM_ACCOUNT_LABEL_MODULES_TITLE');?></label></td>
 		<td colspan="3">
 			<table>
-				<?php foreach ($GLOBALS['MODULES'] as $key => $value) {
+				<?php 			
+				foreach ($this->Modules as $key => $value) {
 					$checked = (($this->{'module_' . $key}) ? 'checked="yes"' : ''); ?>
 					<tr>
 						<td><?php echo $value; ?></td>
@@ -322,6 +336,12 @@ input[type=checkbox] {
 			d.getElementById("jform_weather_layout").disabled=false;
 			d.getElementById("jform_weather_separator").readOnly=false;
 			d.getElementById("jform_weather_tempUnit").disabled=false;
+			d.getElementById("jform_weather_useCache").disabled=false;
+			if (d.getElementById('jform_weather_useCache').checked == true) {
+				d.getElementById("jform_weather_cacheTime").readOnly=false;
+			} else {
+				d.getElementById("jform_weather_cacheTime").readOnly=true;
+			}
 		} else {
 			d.getElementById("jform_weather_showcity").disabled=true;
 			d.getElementById("jform_weather_condition").disabled=true;
@@ -331,6 +351,8 @@ input[type=checkbox] {
 			d.getElementById("jform_weather_layout").disabled=true;
 			d.getElementById("jform_weather_separator").readOnly=true;
 			d.getElementById("jform_weather_tempUnit").disabled=true;
+			d.getElementById("jform_weather_useCache").disabled=true;
+			d.getElementById("jform_weather_cacheTime").readOnly=true;
 		}
 		return false;
 	}

@@ -181,10 +181,26 @@ class AccountControllerAccount extends JController
 			$param['weather_layout']	= $postdata['weather_layout'];
 			$param['weather_separator']	= $postdata['weather_separator'];
 			$param['weather_tempUnit']	= $postdata['weather_tempUnit'];
-			
+			$param['weather_useCache']	= $postdata['weather_useCache'];
+			$param['weather_cacheTime']	= $postdata['weather_cacheTime'];
+
 			// process all enabled/disabled modules
-			foreach ($GLOBALS['MODULES'] as $key => $value) {
-				$param['module_' . $key] = $postdata['module_' . $key];
+			$modules = array(
+				"module_invite_guest",
+				"module_members_birthday",
+				"event_module_attendee",
+				"file_module_list",
+				"file_module_storagestats",
+				"group_module_eventslist",
+				"group_module_groups",
+				"group_module_info",
+				"group_module_memberlist",
+				"group_module_milestones",
+				"group_module_archive",
+				"stream_tag_trending",
+				"todo_module_pending");
+			foreach ($modules as $key => $value) {
+				$param['module_' . $value] = $postdata['module_' . $value];
 			}
 			
 			$saveAction = $configHelper->saveConfig($param);

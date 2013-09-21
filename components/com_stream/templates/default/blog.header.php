@@ -4,7 +4,7 @@
 ?>
 <div class="blue-button">
 	<a class="btn btn-info" href="<?php echo JRoute::_('index.php?option=com_stream&view=company'); ?>#newBlog">
-		<i class="icon-plus icon-white"></i>New Blog
+		<i class="icon-plus icon-white"></i><?php echo JText::_('COM_STREAM_BLOG_NEW_BLOG'); ?>
 	</a>
 </div>
 <ul class="nav nav-pills filter">

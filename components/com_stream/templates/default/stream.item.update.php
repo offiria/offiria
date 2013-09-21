@@ -66,7 +66,7 @@ $data = json_decode($stream->raw);
 						<input type="text" class="topic-input" />
 						<input type="button" class="topic-add stream-form-topic-add" name="" value="Add Topic" />
 					</div>
-					<a href="javascript:void(0)" class="message-topic-edit topic-edit-change">Edit</a>
+					<a href="javascript:void(0)" class="message-topic-edit topic-edit-change"><?php echo JText::_('COM_STREAM_LABEL_EDIT');?></a>
 					<?php endif; ?>
 				</div>
 

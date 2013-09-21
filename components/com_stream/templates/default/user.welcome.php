@@ -50,7 +50,7 @@
 			</div>
 			<div class="clear"></div>
 			<div class="modal-footer">
-				<input type="button" class="btn btn-primary progress-button" value="<?php echo JText::_('COM_STREAM_LABEL_BUTTON_NEXT');?>" id="first-step-next" data-progress="modalSteps['first']"/>
+				<input type="button" class="btn btn-info progress-button" value="<?php echo JText::_('COM_STREAM_LABEL_BUTTON_NEXT');?>" id="first-step-next" data-progress="modalSteps['first']"/>
 			</div>
 		</div>
 	
@@ -94,7 +94,7 @@
 				</ul>
 				<div class="modal-footer">
 					<span id="invitation-message" style="display:none"><?php echo JText::_('COM_STREAM_LABEL_SENDING_INVITATION');?></span>
-					<input type="button" class="btn btn-primary progress-button" value="<?php echo JText::_('COM_STREAM_LABEL_BUTTON_INVITE');?>" id="invite-3-friends" data-progress="modalSteps['second']" />
+					<input type="button" class="btn btn-info progress-button" value="<?php echo JText::_('COM_STREAM_LABEL_BUTTON_INVITE');?>" id="invite-3-friends" data-progress="modalSteps['second']" />
 				</div>
 				
 			</form>
@@ -190,7 +190,7 @@
 			<!-- END OF SLIDER -->
 
 			<div class="modal-footer">
-				<a href="#" data-show_feature="1" class="btn btn-primary progress-button"  data-progress="gettingStarted.showHighlight(1)"><?php echo JText::_('COM_STREAM_LABEL_BUTTON_NEXT');?></a>
+				<a href="#" data-show_feature="1" class="btn btn-info progress-button"  data-progress="gettingStarted.showHighlight(1)"><?php echo JText::_('COM_STREAM_LABEL_BUTTON_NEXT');?></a>
 			</div>
 		</div>
 	
@@ -230,7 +230,7 @@ var gettingStarted = {
 	sendInvitation: function() {
 		if ($('#guest_email_1').val() == '' || $('#guest_email_2').val() == '' || $('#guest_email_3').val() == '')
 		{
-			showInvitationMsg('<?php echo JText::_('Please provide the email(s) to invite.');?>');
+			showInvitationMsg('<?php echo JText::_('COM_STREAM_LABEL_SENDING_ERROR');?>');
 			return false;
 		}
 		$.ajax({
@@ -285,11 +285,11 @@ var gettingStarted = {
 			$('div#image-feature-'+next+', div#info-feature-'+next).fadeIn().show();
 			$('li#feature-'+count).removeClass('active');
 			$('li#feature-'+next).addClass('active');
-			$('a.btn-primary').data('progress', 'gettingStarted.showHighlight('+next+')');
+			$('a.btn-info').data('progress', 'gettingStarted.showHighlight('+next+')');
 			
 			if (next == 3)
 			{
-				$('a.btn-primary').html('<?php echo JText::sprintf('COM_STREAM_LABEL_BUTTON_START_USING', JText::_('CUSTOM_SITE_NAME'));?>');
+				$('a.btn-info').html('<?php echo JText::sprintf('COM_STREAM_LABEL_BUTTON_START_USING', JText::_('CUSTOM_SITE_NAME'));?>');
 			}
 		}
 	},

@@ -15,14 +15,31 @@ jimport('joomla.form.form');
 jimport('joomla.utilities.xconfig');
 jimport('joomla.xfactory');
 
-
 /**
  * HTML View class for the Account component
  */
 class AccountViewAdvance extends AccountView
 {
+	protected $Modules = array();
+	
 	function display($tpl=null)
 	{		
+		$this->Modules = array(
+			"module_invite_guest" 		=> JText::_('COM_ACCOUNT_LABEL_INVITE_FRIENDS_HERE_DESC'),
+			"module_members_birthday" 	=> JText::_('COM_ACCOUNT_LABEL_MEMBERS_BIRTHDAY_DESC'),
+			"event_module_attendee" 	=> JText::_('COM_STREAM_LABEL_ATTENDEES_DESC'),
+			"file_module_list" 			=> JText::_('COM_STREAM_LABEL_RELATED_FILES_DESC'),
+			"file_module_storagestats" 	=> JText::_('COM_STREAM_LABEL_STORAGE_USAGE_DESC'),
+			"group_module_eventslist" 	=> JText::_('COM_STREAM_LABEL_UPCOMING_EVENTS_DESC'),
+			"group_module_groups" 		=> JText::_('COM_STREAM_LABEL_NEW_GROUP_DESC'),
+			"group_module_info" 		=> JText::_('COM_STREAM_LABEL_GROUP_INFO_DESC'),
+			"group_module_memberlist" 	=> JText::_('COM_STREAM_LABEL_GROUP_MEMBERS_DESC'),
+			"group_module_milestones" 	=> JText::_('COM_STREAM_LABEL_MILESTONES_DESC'),
+			"group_module_archive" 		=> JText::_('COM_STREAM_BLOG_ARCHIVE_DESC'),
+			"stream_tag_trending" 		=> JText::_('COM_STREAM_LABEL_TRENDING_TAGS_DESC'),
+			"todo_module_pending" 		=> JText::_('COM_STREAM_LABEL_PENDING_TASKS_DESC')
+			);
+
 		$defaultAdmin	= JXFactory::getUser(42);
 		
 		$configHelper	= new JXConfig();		
@@ -55,11 +72,12 @@ class AccountViewAdvance extends AccountView
 		$weather_layout		= $configHelper->get('weather_layout');		// default: block
 		$weather_separator	= $configHelper->get('weather_separator');	// default: /
 		$weather_tempUnit	= $configHelper->get('weather_tempUnit');  	// default: c
+		$weather_useCache	= $configHelper->get('weather_useCache');	// default: 1 enabled
+		$weather_cacheTime	= $configHelper->get('weather_cacheTime');	// default: 900
 		
-		// @todo: usage of advanced options in weather module (moduleclass_sfx, cache, useCache, cacheTime)
-		
+	
 		// process all enabled/disabled modules
-		foreach ($GLOBALS['MODULES'] as $key => $value) {
+		foreach ($this->Modules as $key => $value) {
 			${'module_' . $key} = $configHelper->get('module_' . $key);
 		}
 
@@ -97,9 +115,11 @@ class AccountViewAdvance extends AccountView
 			$weather_layout		= $postParam['weather_layout'];
 			$weather_separator	= $postParam['weather_separator'];
 			$weather_tempUnit	= $postParam['weather_tempUnit'];
+			$weather_useCache	= $postParam['weather_useCache'];
+			$weather_cacheTime	= $postParam['weather_cacheTime'];
 			
 			// process all enabled/disabled modules
-			foreach ($GLOBALS['MODULES'] as $key => $value) {
+			foreach ($this->Modules as $key => $value) {
 				${'module_' . $key} = $postParam['module_' . $key];
 			}
 		}
@@ -133,9 +153,11 @@ class AccountViewAdvance extends AccountView
 		$this->assignRef('weather_layout', $weather_layout);
 		$this->assignRef('weather_separator', $weather_separator);
 		$this->assignRef('weather_tempUnit', $weather_tempUnit);
-		
+		$this->assignRef('weather_useCache', $weather_useCache);
+		$this->assignRef('weather_cacheTime', $weather_cacheTime);
+
 		// process all enabled/disabled modules
-		foreach ($GLOBALS['MODULES'] as $key => $value) {
+		foreach ($this->Modules as $key => $value) {
 			$this->assignRef('module_' . $key, ${'module_' . $key});
 		}
 		

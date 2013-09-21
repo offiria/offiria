@@ -268,8 +268,8 @@ $(document).ready(function() {
 	</div>
 	<div class="modal-footer">
 		<a class="btn" data-dismiss="modal"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></a>
-		<input type="button" class="btn btn-primary edit-file-control" value="<?php echo JText::_('COM_STREAM_LABEL_SAVE');?>" />
-		<input type="button" class="btn btn-primary replace-file-control" value="<?php echo JText::_('COM_STREAM_LABEL_REPLACE');?>" />
+		<input type="button" class="btn btn-info edit-file-control" value="<?php echo JText::_('COM_STREAM_LABEL_SAVE');?>" />
+		<input type="button" class="btn btn-info replace-file-control" value="<?php echo JText::_('COM_STREAM_LABEL_REPLACE');?>" />
 	</div>
 </div>
 

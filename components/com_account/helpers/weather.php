@@ -16,14 +16,13 @@ class modSPWeatherHelper
 	private $data = array();
 	private $forecast = array();
 	private $woeid;
-	private $location;
+	#private $location;
 	private $wlocation;
 	private $params;
 	#private $moduleID;
-	private $moduledir;
+	#private $moduledir;
 	private $nightIDs = array(27,29,31,33);
 	private $iconURL = 'http://l.yimg.com/os/mit/media/m/weather/images/icons/l/%d%s-100567.png';
-
 
 	/**
 	* Init Class Params
@@ -37,7 +36,7 @@ class modSPWeatherHelper
 		jimport('joomla.filesystem.folder');
 		$this->params    = $params;
 		$this->wlocation = $wlocation;
-		#$this->moduledir = 'Weather'; //basename(dirname(__FILE__));
+		$this->moduledir = 'Weather'; //basename(dirname(__FILE__));
 		$this->getWoeId();
 		$this->data      = $this->_getWeatherData();
 		$this->forecast  = $this->_getForecastData();
@@ -142,7 +141,6 @@ class modSPWeatherHelper
 	*/
 	private function Cache( $file,  $datafn, $datafnarg=array(), $time=900, $onerror='')
 	{
-
 		if (is_writable(JPATH_CACHE))
 		{
 			// check cache dir or create cache dir
@@ -152,7 +150,7 @@ class modSPWeatherHelper
 				JFolder::create(JPATH_CACHE.'/'.$this->moduledir.'/'); 
 			}
 
-			$cache_file = JPATH_CACHE.'/'.$this->moduledir.'/'.$this->moduleID.'-'.$file;
+			$cache_file = JPATH_CACHE.'/'.$this->moduledir.'/'.$this->moduledir.'-'.$file;
 
 			// check cache file, if not then write cache file
 			if ( !JFile::exists($cache_file) )
@@ -246,7 +244,7 @@ class modSPWeatherHelper
 		$URL = $this->makeYQL($query);
 
 
-		if( $this->params->get('useCache')==='1' )
+		if( $this->params->get('weather_useCache')==='1' )
 		{
 			$data = $this->Cache(
 				'woeid.json',
@@ -260,7 +258,7 @@ class modSPWeatherHelper
 		}
 
 		$data = json_decode($data,true);
-
+		
 		$this->woeid = $data['query']['results']['place']['woeid'];
 	}
 
@@ -273,7 +271,7 @@ class modSPWeatherHelper
 	{
 		$query = 'select id from xml where url="http://xoap.weather.com/search/search?where='.$this->wlocation.'" and itemPath="search.loc" limit 1';
 		$URL = $this->makeYQL($query);
-		if( $this->params->get('useCache')==='1' )
+		if( $this->params->get('weather_useCache')==='1' )
 		{
 			$data = $this->Cache(
 				'location.json',
@@ -301,13 +299,13 @@ class modSPWeatherHelper
 		$query = 'select * from xml where url="http://weather.yahooapis.com/forecastrss?w='.$this->woeid.'&u='.$this->params->get('weather_tempUnit').'"';
 
 		$URL = $this->makeYQL($query);
-		if( $this->params->get('useCache')==='1' )
+		if( $this->params->get('weather_useCache')==='1' )
 		{
 			$data = $this->Cache(
 				'weather.json',
 				array($this,'getCurl'),
 				array($URL),
-				(int) $this->params->get('cacheTime'),
+				(int) $this->params->get('weather_cacheTime'),
 				array($this,'onDataError')
 			);
 		} else {
@@ -325,20 +323,20 @@ class modSPWeatherHelper
 	{
 
 
-		$data = $this->_getWeatherData();
+		$data = $this->data;
 
-		$location = explode('_',$data['query']['results']['rss']['channel']['item']['guid']['content']);
+		$location = explode('_',$this->data['query']['results']['rss']['channel']['item']['guid']['content']);
 		$this->location =  $location[0];
 		$query = 'SELECT * FROM rss WHERE url="http://xml.weather.yahoo.com/forecastrss/'.$this->location.'&d='.$this->params->get('weather_forecast').'_'.strtolower($this->params->get('weather_tempUnit')).'.xml"';
 		$URL = $this->makeYQL($query);
 
-		if( $this->params->get('useCache')==='1' )
+		if( $this->params->get('weather_useCache')==='1' )
 		{
 			$data = $this->Cache(
 				'forecast.json',
 				array($this,'getCurl'),
 				array($URL),
-				(int) $this->params->get('cacheTime'),
+				(int) $this->params->get('weather_cacheTime'),
 				array($this,'onForecastError')
 			);
 

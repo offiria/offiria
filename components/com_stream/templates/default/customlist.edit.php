@@ -22,7 +22,7 @@ else {
 		</div>
 		<div class="modal-footer">
 			<a class="btn" data-dismiss="modal"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></a>
-			<input type="submit" class="btn btn-primary " name="btnSubmit" value="<?php echo JText::_('COM_STREAM_LABEL_SAVE'); ?>">
+			<input type="submit" class="btn btn-info " name="btnSubmit" value="<?php echo JText::_('COM_STREAM_LABEL_SAVE'); ?>">
 			<input name="customlist_id" type="hidden" value="<?php echo $customList->id; ?>">
 		</div>
 	</form>

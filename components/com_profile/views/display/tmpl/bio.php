@@ -3,16 +3,17 @@ $my = JXFactory::getUser();
 $category = new StreamCategory();
 $depts = $category->getByCategory('department');
 $positions = $category->getByCategory('position');
-?>
-<div class="alert alert-info">
-	<?php if($this->user->id == $my->id){ ?>
-	<?php echo JText::_('COM_PROFILE_DESCRIPTION_YOU_SHARE'); ?>
-	<?php } else { ?>
-	<?php echo $this->user->name; ?> <?php echo JText::_('COM_PROFILE_DESCRIPTION_OTHER_SHARE'); ?>
-	<?php } ?>
-</div>
 
-<table border="0" cellpadding="0" class="table data-grid">
+if ($this->user->id == $my->id) {
+	echo '<div class="alert alert-info">' . JText::_('COM_PROFILE_DESCRIPTION_YOU_SHARE') . '</div>';
+} else {
+	if ($my->getGettingStartedCompletion('COMPLETE_PROFILE') < 100) {
+		echo '<div class="alert alert-info">' . $this->user->name . ' ' . JText::_('COM_PROFILE_DESCRIPTION_OTHER_SHARE') . '</div>';
+	}
+} 
+?>
+
+<table border="0" cellpadding="0" class="table">
 	<col width="30%"/>
 	<col width="70%"/>
 	<?php
@@ -33,7 +34,7 @@ $positions = $category->getByCategory('position');
 				?>
 				<tr>
 					<td><?php echo $field->label;?></td>
-					<td>
+					<td class="data-grid">
 				<?php
 				if(!is_array($values) || is_null($values)){
 					if ($field->fieldname == 'work_department' && !empty ($depts)) {

@@ -60,7 +60,7 @@ $rdata		= json_decode($stream->raw);
 			<?php echo JText::_('COM_STREAM_LABEL_MESSAGE_GROUP_EDIT'); ?> 
 		</label>
 		<select name="group_id">
-			<option value="0">Public</option>
+			<option value="0"><?php echo JText::_('COM_STREAM_LABEL_PUBLIC'); ?></option>
 			<?php
 			$my = JXFactory::getUser();
 			$groups = $my->getParam('groups_member');

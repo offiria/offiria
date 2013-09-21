@@ -79,6 +79,6 @@
 	</div>
 	<div class="modal-footer">
 		<a class="btn" data-dismiss="modal"><?php echo JText::_('COM_STREAM_LABEL_CANCEL'); ?></a>
-		<a href="#" id="groups-edit-save" class="btn btn-primary" name="groups-edit-save"><?php echo JText::_('COM_STREAM_LABEL_SAVE'); ?></a>
+		<a href="#" id="groups-edit-save" class="btn btn-info" name="groups-edit-save"><?php echo JText::_('COM_STREAM_LABEL_SAVE'); ?></a>
 	</div>
 </div>
