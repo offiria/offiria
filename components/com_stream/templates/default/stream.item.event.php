@@ -255,10 +255,10 @@ endif; ?>
 if( $my->authorise('stream.message.edit', $stream) ) {
 ?>
 <div class="message-remove">
-	<a href="javascript:void(0);" class="remove" original-title="Delete">Delete</a>
+	<a href="javascript:void(0);" class="remove" original-title="Delete"><?php echo JText::_('COM_STREAM_LABEL_DELETE'); ?></a>
 </div>
 <?php } ?>
-	
+
 <div class="clear"></div>
 </li>
 

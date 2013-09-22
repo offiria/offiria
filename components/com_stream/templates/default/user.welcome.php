@@ -1,3 +1,7 @@
+<?php 
+$config 	  = new JXConfig();
+$allow_invite = $config->get('allow_invite');
+?>
 <link rel="stylesheet" href="<?php echo JURI::root();?>media/uploader/fileuploader.css" type="text/css" />
 <script src="<?php echo JURI::root();?>media/uploader/fileuploader.js" type="text/javascript"></script>
 <div class="welcome-message modal" style="display:none;">
@@ -9,10 +13,10 @@
 		
 		<div id="step-1-avatar" class="modal-body">
 			<div class="modal-title">
-				<ul class="steps clearfix <?php echo ($my->isAdmin()) ? '' : 'is-user';?>">
+				<ul class="steps clearfix <?php echo ($allow_invite == '1') ? '' : 'is-user';?>">
 					<li class="step1"><?php echo JText::_('COM_STREAM_LABEL_UPLOAD_AVATAR');?></li>
 					<li class="steps-no-divider"></li>
-					<?php if ($my->isAdmin()) { ?>
+					<?php if ($allow_invite == '1') { ?>
 					<li><?php echo JText::_('COM_STREAM_LABEL_INVITE_FRIENDS');?></li>
 					<li class="steps-no-divider"></li>
 					<?php } ?>
@@ -57,10 +61,10 @@
 		<div id="step-2-invitation" class="modal-body" style="display:none">
 			
 			<div class="modal-title">
-				<ul class="steps clearfix <?php echo ($my->isAdmin()) ? '' : 'is-user';?>">
+				<ul class="steps clearfix <?php echo ($allow_invite == '1') ? '' : 'is-user';?>">
 					<li class="step1"><?php echo JText::_('COM_STREAM_LABEL_UPLOAD_AVATAR');?></li>
 					<li class="steps-divider"></li>
-					<?php if ($my->isAdmin()) { ?>
+					<?php if ($allow_invite == '1') { ?>
 					<li class="step2"><?php echo JText::_('COM_STREAM_LABEL_INVITE_FRIENDS');?></li>
 					<li class="steps-no-divider"></li>
 					<?php } ?>
@@ -73,7 +77,7 @@
 			
 			<div class="invitation-message alert alert-error" style="display:none"></div>
 			
-			<form method="get" id="guest_invite_form" action="/e20/index.php/component/account/?view=invite">
+			<form method="get" id="guest_invite_form" action="/component/account/?view=invite">
 				
 				<ul class="invite-form">
 					<li>
@@ -89,11 +93,12 @@
 						<input type="text" id="guest_email_3" name="invitation">
 					</li>
 					<li>
-						<span><a href="javascript:void(0);" onclick="gettingStarted.showHighlight(0);"><?php echo JText::_('COM_STREAM_LABEL_SKIP_THIS');?></a></span>
+						<!--span><a href="javascript:void(0);" onclick="gettingStarted.showHighlight(0);"><?php echo JText::_('COM_STREAM_LABEL_SKIP_THIS');?></a></span-->
 					</li>
 				</ul>
 				<div class="modal-footer">
 					<span id="invitation-message" style="display:none"><?php echo JText::_('COM_STREAM_LABEL_SENDING_INVITATION');?></span>
+					<input type="button" class="btn btn-warning progress-button" onclick="gettingStarted.showHighlight(0);" value="<?php echo JText::_('COM_STREAM_LABEL_SKIP_THIS');?>" id="skip-invite-3-friends" />
 					<input type="button" class="btn btn-info progress-button" value="<?php echo JText::_('COM_STREAM_LABEL_BUTTON_INVITE');?>" id="invite-3-friends" data-progress="modalSteps['second']" />
 				</div>
 				
@@ -105,10 +110,10 @@
 		<div id="step-3-feature-highlight" class="modal-body" style="display:none">
 			
 			<div class="modal-title">
-				<ul class="steps clearfix <?php echo ($my->isAdmin()) ? '' : 'is-user';?>">
+				<ul class="steps clearfix <?php echo ($allow_invite == '1') ? '' : 'is-user';?>">
 					<li class="step1"><?php echo JText::_('COM_STREAM_LABEL_UPLOAD_AVATAR');?></li>
 					<li class="steps-divider"></li>
-					<?php if ($my->isAdmin()) { ?>
+					<?php if ($allow_invite == '1') { ?>
 					<li class="step2"><?php echo JText::_('COM_STREAM_LABEL_INVITE_FRIENDS');?></li>
 					<li class="steps-divider"></li>
 					<?php } ?>
@@ -332,7 +337,7 @@ var gettingStarted = {
 	}
 };
 
-var modalSteps = {'first' : <?php echo ($my->isAdmin()) ? 'gettingStarted.firstToSecond' : 'gettingStarted.firstToThird';?>, 
+var modalSteps = {'first' : <?php echo ($allow_invite == '1') ? 'gettingStarted.firstToSecond' : 'gettingStarted.firstToThird';?>, 
 					'second': gettingStarted.secondToThird
 				};
 				

@@ -75,10 +75,10 @@ if (isset($data->category_id)) {
 			<div class="message-meta-compact" style="display: none;">
 				
 				<a class="meta-like" href="#<?php echo (!$stream->isLike($my->id))? '' : 'un'; ?>like"><?php echo (!$stream->isLike($my->id)) ? JText::_('COM_STREAM_LIKE_LABEL') : JText::_('COM_STREAM_UNLIKE_LABEL'); ?></a>
-				<a class="meta-comment" href="#comment">Comment</a>
+				<a class="meta-comment" href="#comment"><?php echo JText::_('COM_STREAM_LABEL_COMMENT'); ?></a>
 				<?php
 				if( $my->authorise('stream.message.edit', $stream) ){ ?>
-					<a class="meta-edit" href="#edit">Edit</a>
+					<a class="meta-edit" href="#edit"><?php echo JText::_('COM_STREAM_LABEL_EDIT'); ?></a>
 					<?php
 				}
 				?>

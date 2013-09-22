@@ -37,6 +37,7 @@ $my = JXFactory::getUser();
 			<li>
 				<label id="params_confirm_password-lbl" class="" for="params_confirm_password"><?php echo JText::_('COM_PROFILE_LABEL_CONFIRM_PASSWORD');?></label>
 				<input type="password" value="" id="confirm_password" name="confirm_password">
+				<div class="" id="passwordStrength"></div>
 			</li>
 			<?php endif; ?>
 			<li>
@@ -67,7 +68,7 @@ $my = JXFactory::getUser();
 		</ul>
 		
 		<div class="submit">
-			<input type="submit" class="btn btn-info " name="btnSubmit" value="<?php echo JText::_('COM_PROFILE_LABEL_SAVE');?>" />
+			<input type="submit" class="btn btn-info" id="submitProfile" name="btnSubmit" value="<?php echo JText::_('COM_PROFILE_LABEL_SAVE');?>" />
 		</div>
 		
 	</form>
@@ -79,6 +80,53 @@ $my = JXFactory::getUser();
 		S.validate.form($('#profile-edit form'), {
 			'notEmpty': $('#params_name'),
 			'email': $('#params_email')
+		});
+	});
+
+	$(document).ready(function() {
+		$('#password, #confirm_password').on('keyup', function(e) {
+			if($('#password').val() == '' && $('#confirm_password').val() == '')
+			{
+				$('#passwordStrength').removeClass().html('');
+				return false;
+			} 
+			$('#submitProfile').attr('disabled', 'disabled');
+			if(($('#password').val() != '' && $('#confirm_password').val() == '') ||
+				($('#password').val() == '' && $('#confirm_password').val() != '') ||	
+				($('#password').val() != $('#confirm_password').val()))
+			{
+				$('#passwordStrength').removeClass().addClass('alert alert-error').html('<?php echo JText::_('COM_REGISTER_ERRMSG_PASSWORD_MISMATCH'); ?>');
+				return false;
+			}
+ 
+			// Must have capital letter, numbers and lowercase letters
+			var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+ 
+			// Must have either capitals and lowercase letters or lowercase and numbers
+			var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+ 
+			// Must be at least 6 characters long
+			var okRegex = new RegExp("(?=.{4,}).*", "g");
+ 
+			
+			if (okRegex.test($(this).val()) === false) {
+				// If ok regex doesn't match the password
+				$('#passwordStrength').removeClass().addClass('alert alert-error').html('<?php echo JText::_('COM_REGISTER_ERRMSG_PASSWORD_SHORT'); ?>');
+			} else if (strongRegex.test($(this).val())) {
+				// If reg ex matches strong password
+				$('#passwordStrength').removeClass().addClass('alert alert-success').html('<?php echo JText::_('COM_REGISTER_ERRMSG_PASSWORD_GOOD'); ?>');
+				$('#submitProfile').removeAttr('disabled');
+			} else if (mediumRegex.test($(this).val())) {
+				// If medium password matches the reg ex
+				$('#passwordStrength').removeClass().addClass('alert alert-info').html('<?php echo JText::_('COM_REGISTER_ERRMSG_PASSWORD_MEDIUM'); ?>');
+				$('#submitProfile').removeAttr('disabled');
+			} else {
+				// If password is ok
+				$('#passwordStrength').removeClass().addClass('alert alert-error').html('<?php echo JText::_('COM_REGISTER_ERRMSG_PASSWORD_WEAK'); ?>');
+				$('#submitProfile').removeAttr('disabled');
+			}
+        
+			return true;
 		});
 	});
 </script>
