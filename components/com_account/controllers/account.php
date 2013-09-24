@@ -368,21 +368,28 @@ class AccountControllerAccount extends JController
 			$c = new StreamCategory();
 			$department = JRequest::getVar('department', NULL);
 			$position = JRequest::getVar('position', NULL);
+			$type = JRequest::getVar('type', null);
 
-			// give precedence at the top of form
-			$type = (!empty($department)) ? 'department' : 'position';
+			// No position/department specified, throw an error
+			if(empty($$type)){
+				$mainframe->redirect(JRoute::_('index.php?option=com_account&task=manageDepartment&view=account'), 
+										   JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_ERROR_CREATE'), 'error');
+			}
+
 			$category = (!empty($department)) ? $department : $position;
 			if ($table->create($category, $type)) {
 				$mainframe->redirect(JRoute::_('index.php?option=com_account&task=manageDepartment&view=account'), 
 									 JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_SUCCESS_CREATE'));
 			}
 			else {
-				$mainframe->enqueueMessage(JRoute::_('index.php?option=com_account&task=manageDepartment&view=account'), 
-										   JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_ERROR_CREATE'), 'error');
-				if ($c->isExist($category, $position)) {
+				
+				if ($c->isExist($category, $$type)) {
 					$mainframe->redirect(JRoute::_('index.php?option=com_account&task=manageDepartment&view=account'), 
 										 JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_ALREADY_EXIST'), 'error');
 				}
+
+				$mainframe->redirect(JRoute::_('index.php?option=com_account&task=manageDepartment&view=account'), 
+										   JText::_('COM_ACCOUNT_LABEL_'.strtoupper($type).'_ERROR_CREATE'), 'error');
 			}
 		}
 
@@ -473,19 +480,19 @@ class AccountControllerAccount extends JController
 		}
 
 		if ($_POST) {
+			$type = JRequest::getVar('type', null);
 			if (JRequest::getVar('blog_category')) { 
-				$type = 'blog';
 				$category = JRequest::getVar('blog_category');
 			}
 			else if (JRequest::getVar('event_category')) {
-				$type = 'event';
 				$category = JRequest::getVar('event_category');
 			}
 			else if (JRequest::getVar('group_category')) {
-				$type = 'group';
 				$category = JRequest::getVar('group_category');
 			}
 			else {
+				$mainframe->redirect(JRoute::_('index.php?option=com_account&task=categories&view=account'), 
+										   JText::_('COM_ACCOUNT_LABEL_ERROR_CREATE'), 'error');
 				return false;
 			}
 
@@ -494,10 +501,14 @@ class AccountControllerAccount extends JController
 									 JText::_('COM_ACCOUNT_LABEL_SUCCESS_CREATE'));
 			}
 			else {
-				$mainframe->enqueueMessage(JRoute::_('index.php?option=com_account&task=categories&view=account'), 
-										   JText::_('COM_ACCOUNT_LABEL_ERROR_CREATE'), 'error');
+				
 				if ($c->isExist($category, $type)) {
-					$mainframe->enqueueMessage(JText::_('COM_ACCOUNT_LABEL_ALREADY_EXIST'), 'error');
+					$mainframe->redirect(JRoute::_('index.php?option=com_account&task=categories&view=account'), 
+						JText::_('COM_ACCOUNT_LABEL_ALREADY_EXIST'), 'error');
+				} else {
+
+					$mainframe->redirect(JRoute::_('index.php?option=com_account&task=categories&view=account'), 
+										   JText::_('COM_ACCOUNT_LABEL_ERROR_CREATE'), 'error');
 				}
 			}
 
