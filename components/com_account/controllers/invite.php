@@ -257,9 +257,12 @@ class AccountControllerInvite extends JController
 		$currentTemplate = JText::_('CUSTOM_TEMPLATE');
 		
 		$jConfig = new JXConfig();
-		
-		$invitationUrl = JRoute::_('index.php?option=com_register&view=register&code='.md5($receiverEmail).'&token='.$token.'&email='.$receiverEmail, true, 2);		
-		
+		// Sadly, JRoute will always replace + with %20 , hence we need to hardcode this
+		$receiverEmailPlaceholder = str_replace('+', 'PLUS_SIGN_HOLDER', $receiverEmail);
+		$invitationUrl = JRoute::_('index.php?option=com_register&view=register&code='.md5($receiverEmail).'&token='.$token.'&email='.$receiverEmailPlaceholder, true, 2);		
+		// Restore + sign
+		$invitationUrl = str_replace('PLUS_SIGN_HOLDER', '%2B', $invitationUrl);
+
 		ob_start();
 		require_once(JPATH_ROOT .DS.'components'.DS.'com_account'.DS.'templates'.DS.'emailInvite.php');
 		$html = ob_get_contents();
