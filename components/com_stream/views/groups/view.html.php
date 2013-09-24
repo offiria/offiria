@@ -32,11 +32,24 @@ class StreamViewGroups extends StreamView
 		$filter = array();
 		if(JRequest::getVar('filter', 'all') == 'joined'){
 			$groupIJoin 	= $my->getParam('groups_member');
-			$filter['id'] = $groupIJoin;
+			if(empty($groupIJoin)){
+				// force the system to seach for dummy group since it
+				// will skip seach for empty value
+				$filter['id'] = '-1';
+			} else {
+				$filter['id'] = $groupIJoin;
+			}
+			
 		}
 		if(JRequest::getVar('filter', 'all') == 'followed'){
 			$groupIJoin 	= $my->getParam('groups_follow');
-			$filter['id'] = $groupIJoin;
+			if(empty($groupIJoin)){
+				// force the system to seach for dummy group since it
+				// will skip seach for empty value
+				$filter['id'] = '-1';
+			} else {
+				$filter['id'] = $groupIJoin;
+			}
 		}
 		if(JRequest::getVar('filter', 'all') == 'archived'){
 			$filter['archived'] = 1;
