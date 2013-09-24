@@ -65,6 +65,7 @@ defined('_JEXEC') or die;
 					<form class="well form-search" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=categories'); ?>">
 						<label><?php echo JText::_('COM_ACCOUNT_LABEL_ADD_NEW_CATEGORY'); ?></label>
 						<input type="text" class="input-medium" id="<?php echo $type; ?>_category" name="<?php echo $type; ?>_category">
+						<input type="hidden" value="<?php echo $type; ?>" name="type"/>
 						<button class="btn" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
 					</form>
 				</td>
