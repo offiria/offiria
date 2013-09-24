@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 // Register dependent classes.
-define('FINDER_PATH_INDEXER', JPATH_ADMINISTRATOR . '/components/com_finder/helpers/indexer');
+define('FINDER_PATH_INDEXER', JPATH_ROOT . '/components/com_finder/helpers/indexer');
 JLoader::register('FinderIndexerHelper', FINDER_PATH_INDEXER . '/helper.php');
 JLoader::register('FinderIndexerQuery', FINDER_PATH_INDEXER . '/query.php');
 JLoader::register('FinderIndexerResult', FINDER_PATH_INDEXER . '/result.php');
