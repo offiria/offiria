@@ -42,7 +42,7 @@ $positions = $Category->getByCategory('position');
 			<?php endif; ?>
 			<tr>
 				<td colspan="2">
-					<form class="well form-search" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment'); ?>">
+					<form class="well form-search" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment&type=department'); ?>">
 					<label><?php echo JText::_('COM_ACCOUNT_LABEL_ADD_NEW_DEPARTMENT'); ?></label>
 					<input type="text" class="input-medium" id="department_category" name="department">
 						<button class="btn" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
@@ -72,7 +72,7 @@ $positions = $Category->getByCategory('position');
 			<?php endif; ?>
 			<tr>
 				<td colspan="2">
-					<form class="well form-search" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment'); ?>">
+					<form class="well form-search" method="post" action="<?php echo JRoute::_('index.php?option=com_account&view=account&task=manageDepartment&type=position'); ?>">
 					<label><?php echo JText::_('COM_ACCOUNT_LABEL_ADD_NEW_POSITION'); ?></label>
 					<input type="text" class="input-medium" id="position_category" name="position">
 						<button class="btn" type="submit"><?php echo JText::_('COM_ACCOUNT_LABEL_ADD'); ?></button>
