@@ -54,7 +54,7 @@ class RegisterModelRegistration extends JModel
 			{
 				$activity = JTable::getInstance('Activity', 'StreamTable');
 				$activity->addUser($user->id);
-				return true;
+				return $user->id;
 			}
 			else
 			{
@@ -67,6 +67,7 @@ class RegisterModelRegistration extends JModel
 			$this->setError(JText::_('COM_REGISTER_ERRMSG_PASSWORD_MISMATCH'));
 			return false;
 		}
+		return false;
 	}
 }
 

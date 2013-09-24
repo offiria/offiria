@@ -55,11 +55,38 @@ class RegisterControllerRegister extends JController
 										'group_limited' => $userInviteTable->group_limited);
 
 				$model = RegisterFactory::getModel('registration');
-				if ($model->registerUser($data))
+
+				if ($userid = $model->registerUser($data))
 				{
 					$userInviteTable->status = AccountTableUsersInvite::REGISTERED;
 					$userInviteTable->store();
-					$mainframe->redirect(JURI::base(), JText::_('COM_REGISTER_MSG_REGISTRATION_SUCCESSFUL'));
+
+					// If user is invited to a certain group only, add the user into the group
+					if( $userInviteTable->group_limited ){
+						// Include tables
+						JTable::addIncludePath( JPATH_ROOT .DS.'components'.DS.'com_stream' . DS . 'tables' );
+						$groups = explode(',', $userInviteTable->group_limited);
+						$user = JXFactory::getUser($userid);
+
+						foreach ($groups as $group_id) {
+							
+							$group = $group	= JTable::getInstance( 'Group' , 'StreamTable' );
+							$group->load($group_id);
+
+							// If you join, you'd also follow it
+							$group->members = JXUtility::csvInsert($group->members, $user->id);
+							$group->followers = JXUtility::csvInsert($group->followers, $user->id);
+							$group->store();
+
+							// Store user cache
+							$groupList = $user->getParam('groups_member');
+							$groupList = JXUtility::csvInsert($groupList, $group->id);
+							$user->setParam('groups_member', $groupList);
+							$user->save();
+						}
+					}
+					exit;
+					//$mainframe->redirect(JURI::base(), JText::_('COM_REGISTER_MSG_REGISTRATION_SUCCESSFUL'));
 				}
 				else
 				{
@@ -74,4 +101,4 @@ class RegisterControllerRegister extends JController
 			$mainframe->redirect(JURI::base(), JText::_('COM_REGISTER_ERRMSG_NO_VALID_INVITATION'), 'error');
 		}
 	}
-}
+}	

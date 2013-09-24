@@ -19,7 +19,7 @@ class RegisterFactory
 	/**
 	 *  Return single instance of the model object
 	 */	 	
-	public function getModel($name)
+	public static function getModel($name)
 	{
 		static $modelInstances = null;
 		
