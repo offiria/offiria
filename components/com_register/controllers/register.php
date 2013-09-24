@@ -85,8 +85,8 @@ class RegisterControllerRegister extends JController
 							$user->save();
 						}
 					}
-					exit;
-					//$mainframe->redirect(JURI::base(), JText::_('COM_REGISTER_MSG_REGISTRATION_SUCCESSFUL'));
+					
+					$mainframe->redirect(JURI::base(), JText::_('COM_REGISTER_MSG_REGISTRATION_SUCCESSFUL'));
 				}
 				else
 				{
