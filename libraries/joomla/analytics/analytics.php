@@ -1,10 +1,9 @@
 <?php
 /**
- * @package     Joomla.Platform
- * @subpackage  Log
- *
- * @copyright   Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE
+ * @package		Offiria
+ * @subpackage	Core 
+ * @copyright 	Copyright (C) 2011 - 2013 Slashes & Dots Sdn Bhd. All rights reserved.
+ * @license		GNU/GPL, see LICENSE.php
  */
 
 defined('JPATH_PLATFORM') or die;

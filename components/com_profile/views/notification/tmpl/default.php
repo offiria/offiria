@@ -2,7 +2,7 @@
 
 /**
  * @package		Offiria
- * @subpackage	Core 
+ * @subpackage	com_profile
  * @copyright (C) 2011 by Slashes & Dots Sdn Bhd - All rights reserved!
  * @license		GNU/GPL, see LICENSE.php
  */
