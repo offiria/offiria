@@ -1,1 +1,0 @@
-java -jar yuicompressor-2.4.2.jar -o media\stream\script.pack.js media\stream\script.js
