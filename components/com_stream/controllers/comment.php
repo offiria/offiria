@@ -25,7 +25,7 @@ class StreamControllerComment extends JController
 	/**
 	 *  Return HTML of all
 	 */	 	
-	public function  showall()
+	public function showall()
 	{
 		$stream_id = JRequest::getVar('message_id');
 		$html = StreamComment::getCommentsHTML($stream_id);
