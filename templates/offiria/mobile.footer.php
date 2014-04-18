@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 	
 	<div id="oFooter-inner" class="container">
 		<div id="oFooter-left" class="span6">
-			<span>Copyright &copy; 2007 - 2012 <?php echo JText::_('CUSTOM_COMPANY_SITE');?>. Powered by Offiria - Version: 2.1.0</span>
+			<span>Copyright &copy; 2007 - 2014 <?php echo JText::_('CUSTOM_COMPANY_SITE');?>. Powered by Offiria - Version: 2.1.1</span>
 		</div>
 		
 		<div id="oFooter-right" class="span4">
