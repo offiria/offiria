@@ -14,9 +14,9 @@ class StreamModelUser {
 	}
 	
 	
-	public function search($username, $filter = null){
+	public function search($name, $filter = null){
 
-		if(empty($username)){
+		if(empty($name)){
 			return array();
 		}
 
@@ -36,9 +36,9 @@ class StreamModelUser {
 		
 		// Select those with username start with the given name
 		// and later search those with the given username in the middle
-		$query = " SELECT * FROM (SELECT id FROM #__users WHERE `username` LIKE " . $db->Quote($username.'%')
+		$query = " SELECT * FROM (SELECT id FROM #__users WHERE `name` LIKE " . $db->Quote($name.'%')
 				." UNION"
-				." SELECT id FROM #__users WHERE `username` LIKE " . $db->Quote('%'.$username.'%') ." ) as t"
+				." SELECT id FROM #__users WHERE `name` LIKE " . $db->Quote('%'.$name.'%') ." ) as t"
 				." WHERE " . implode(' AND ',$where);
 
 		$db->setQuery( $query );
