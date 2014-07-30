@@ -490,7 +490,8 @@ class StreamMessage
 		$str = StreamTemplate::escape($strMessage);
 		
 		// Autolinked the @username 
-		preg_match_all("/@([\w.]+)/", $str, $matches, PREG_SET_ORDER);
+		// Updated Regex to match lowercase email address as username. matches @user or @user@example.com
+		preg_match_all("/@([a-z_0-9.@]+)|@([a-z_0-9.]+)/", $str, $matches, PREG_SET_ORDER);
 		
 		if(!empty( $matches )) 
 		{
