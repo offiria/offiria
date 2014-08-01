@@ -412,7 +412,12 @@ class StreamControllerSystem extends JController
 		$allowedExtensions = explode(',', $mediaparams->get('upload_extensions'));
 		
 		// max file size in bytes
-		$sizeLimit = 5 * 1024 * 1024;
+		$config = new JConfig();
+		if (isset($config->uploadmaxsize) && ctype_digit(strval($config->uploadmaxsize)) && strval($config->uploadmaxsize) > 0) {
+			$sizeLimit = strval($config->uploadmaxsize) * 1024 * 1024;
+		} else {
+			$sizeLimit = 5 * 1024 * 1024;
+		}
 		
 		$uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
 		

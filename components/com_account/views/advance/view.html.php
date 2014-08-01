@@ -43,6 +43,7 @@ class AccountViewAdvance extends AccountView
 		$smtphost		= $configHelper->get('smtphost');
 		$smtpsecure		= $configHelper->get('smtpsecure');
 		$smtpport		= $configHelper->get('smtpport'); // 25
+		$uploadmaxsize	= $configHelper->get('uploadmaxsize');
 		//overwrite value with postParam when save error
 		$error = array();
 		if ($_POST)
@@ -65,6 +66,7 @@ class AccountViewAdvance extends AccountView
 			$smtphost		= $postParam['smtphost'];
 			$smtpsecure		= $postParam['smtpsecure'];
 			$smtpport		= $postParam['smtpport'];
+			$uploadmaxsize	= $postParam['uploadmaxsize'];
 		}
 		
 
@@ -85,6 +87,7 @@ class AccountViewAdvance extends AccountView
 		$this->assignRef('smtphost', $smtphost);
 		$this->assignRef('smtpsecure', $smtpsecure);
 		$this->assignRef('smtpport', $smtpport);
+		$this->assignRef('uploadmaxsize', $uploadmaxsize);
 		
 		$doc = JFactory::getDocument();
 		$doc->setTitle(JText::_("COM_ACCOUNT_LABEL_ACCOUNT_ADVANCE_SETTING"));

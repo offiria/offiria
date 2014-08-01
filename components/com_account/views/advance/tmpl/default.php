@@ -128,6 +128,17 @@ $jxConfig = new JXConfig();
 				</ul>
 		</fieldset>
 		
+		<!-- UPLOAD SETTINGS -->
+		<h3 class="section-title"><?php echo JText::_('COM_ACCOUNT_LABEL_UPLOAD');?></h3>
+		<fieldset class="adminform">
+			<ul class="adminformlist">
+				<li>
+					<label id="jform_uploadmaxsize" for="jform_uploadmaxsize" class="hasTip" title=""><?php echo JText::_('COM_ACCOUNT_LABEL_UPLOAD_MAXSIZE');?></label>					
+					<input type="text" name="jform[uploadmaxsize]" id="jform_diffbot" value="<?php echo $this->uploadmaxsize;?>" size="30">
+				</li>
+			</ul>
+		</fieldset>
+		
 		<div class="submit">
 			<input type="hidden" value="advance" name="task">
 			<input class="btn btn-info" type="submit" value="<?php echo JText::_('COM_STREAM_LABEL_SAVE');?>" name="submit">

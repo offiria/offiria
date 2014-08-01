@@ -71,4 +71,5 @@ class JConfig {
 	public $captcha = '0';
 	public $style = 'blue';
 	public $postfix_domain = '.offiria.com';
+	//___JConfig_END___ Do not delete or modify this line which is used to to add new parameter
 }

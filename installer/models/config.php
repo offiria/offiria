@@ -22,7 +22,16 @@ class ConfigManager
 		return $matches;
 	}
 
-	public function add($key, $value) {}
+	public function add($key, $value) {
+		$buffer = $this->buffer;
+		$pattern = "~\t\/\/*.*___JConfig_END___.*~";
+		if (!preg_match($pattern, $buffer, $matches)) return false;
+		
+		$originalLine = $matches[0];
+		$newLine = "\tpublic $".$key." = '".$value."';\n".$originalLine;
+		$this->buffer = str_replace($originalLine, $newLine, $this->buffer);
+		return $this;
+	}
 
 	public function modify($key, $new) {
 		$finder = $this->find($key);
