@@ -166,6 +166,7 @@ class AccountControllerAccount extends JController
 			$param['smtphost']		= $postdata['smtphost'];
 			$param['smtpsecure']	= $postdata['smtpsecure'];
 			$param['smtpport']		= $postdata['smtpport'];
+			$param['uploadmaxsize']		= $postdata['uploadmaxsize'];
 			
 			$saveAction = $configHelper->saveConfig($param);
 			

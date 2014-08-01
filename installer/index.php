@@ -53,6 +53,7 @@ if ($_GET) {
 	$admin_email 	  = $_GET['admin_email'];
 	$sitename		  = $_GET['sitename'];
 	$default_timezone = $_GET['default_timezone'];
+	$uploadmaxsize	  = $_GET['uploadmaxsize'];
 
 	// to passed variables
 	$variables = $_SERVER['QUERY_STRING'];
@@ -143,6 +144,9 @@ if ($_GET) {
 	$config->modify('default_timezone', $default_timezone);
 	$config->modify('log_path', INSTALLATION_DIR.DS.'log');
 	$config->modify('tmp_path', INSTALLATION_DIR.DS.'tmp');
+	if (!$config->modify('uploadmaxsize', $uploadmaxsize)) {
+		$config->add('uploadmaxsize', $uploadmaxsize);
+	}
 	if ($canProceed && !$config->save()) {
 		$canProceed = false;
 		$errorMessage = 'Failed to save configuration files';
@@ -389,6 +393,12 @@ if ($_GET) {
 													<option <?php echo $selected; ?> value="<?php echo $key; ?>"><?php echo $value; ?></option>
 													<?php endforeach; ?>
 												</select>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="domain">Max size for file upload (in MB)</label>
+											<div class="controls">
+												<input class="span3 validate[required,custom[integer],min[1]]" type="text" name="uploadmaxsize" value="<?php echo @$_GET['uploadmaxsize']; ?>" />
 											</div>
 										</div>
 									</div>
